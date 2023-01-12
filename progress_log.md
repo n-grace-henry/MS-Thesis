@@ -1,4 +1,4 @@
-# 2023-01-11
+## 2023-01-11
 Picked up working on the second set of 8 12AA standards. Did not remember where I left off last time I stopped working on them. 
 I am pretty sure I finished derivitization by acetylation last time so I started liquid-liquid but I am not certain. 
 
@@ -8,5 +8,9 @@ Sample 3 has lots of large chunks, sample 1 has some, and sample 2 has none. May
 These evaporated way faster than the standards usually do. 
 After evaporation all the samples had a lot of chunks on the inside of the vial that I'm not sure will end up dissolving. 
 Not sure how this would be prevented.
-These samples have been heated for 120 minutes and evaporated.
+These samples have been heated for 120 minutes and evaporated at temp.
 Evaporated samples were returned to the fridge. 
+
+## 2023-01-12
+Started the derivitization by acylation step on the 3 test scale samples.
+Heated to 110 degrees C for 120 minutes at appriximately 12:45pm. 
