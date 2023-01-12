@@ -14,3 +14,5 @@ Evaporated samples were returned to the fridge.
 ## 2023-01-12
 Started the derivitization by acylation step on the 3 test scale samples.
 Heated to 110 degrees C for 120 minutes at appriximately 12:45pm. 
+Evaporated the samples at room temp under N2, started at 1:50ish, all evaporations finished by 3:30. All evaporated at a similar speed.
+Put back in the fridge to end the day.
