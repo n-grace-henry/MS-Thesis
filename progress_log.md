@@ -16,3 +16,12 @@ Started the derivitization by acylation step on the 3 test scale samples.
 Heated to 110 degrees C for 120 minutes at appriximately 12:45pm. 
 Evaporated the samples at room temp under N2, started at 1:50ish, all evaporations finished by 3:30. All evaporated at a similar speed.
 Put back in the fridge to end the day.
+
+## 2023-01-13
+Realized I skipped repeating on step 9 of liquid-liquid with the standards from the 11th so further reason these might not be high quality and there is much less in the vial.
+
+Liquid-liquid extraction for the three scale samples. 
+The hexanes:DCM mixture did a good job redissolving the samples so the chunks and crust that was there after the last step is gone.
+
+After centrifuging the top fraction was clear with nothing in it. 
+The bottom section looked orangey in color and had some chunks. 
