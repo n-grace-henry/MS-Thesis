@@ -22,6 +22,8 @@ Realized I skipped repeating on step 9 of liquid-liquid with the standards from 
 
 Liquid-liquid extraction for the three scale samples. 
 The hexanes:DCM mixture did a good job redissolving the samples so the chunks and crust that was there after the last step is gone.
+When transfering from the disposable tubes to the GC vial there seemed to be some very small particulates around the edge of the tube that did not transfer fully to the GC vial.
+Tubes were filled twice with DCM and transfered to the GC vial. 
 
 After centrifuging the top fraction was clear with nothing in it. 
 The bottom section looked orangey in color and had some chunks. 
