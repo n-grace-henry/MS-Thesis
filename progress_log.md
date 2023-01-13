@@ -18,7 +18,8 @@ Evaporated the samples at room temp under N2, started at 1:50ish, all evaporatio
 Put back in the fridge to end the day.
 
 ## 2023-01-13
-Realized I skipped repeating on step 9 of liquid-liquid with the standards from the 11th so further reason these might not be high quality and there is much less in the vial.
+Realized I skipped repeating on step 9 of liquid-liquid with the standards from the 11th so further reason these might not be high quality. 
+There may be residue of the sample left in the disposable tube. 
 
 Liquid-liquid extraction for the three scale samples. 
 The hexanes:DCM mixture did a good job redissolving the samples so the chunks and crust that was there after the last step is gone.
