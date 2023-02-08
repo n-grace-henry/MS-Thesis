@@ -9,3 +9,5 @@ Neither batch of standards produced any peaks.
 SAL_2 had some good peaks but nothing from SAL_3 and only 4 peaks on SAL_1
 
 ## 2023-02-07
+Starting to dissolve scales for one more test salmon sample, trying 10 full scales to see what will happen.
+Weight is 0.0074g.
