@@ -11,3 +11,9 @@ SAL_2 had some good peaks but nothing from SAL_3 and only 4 peaks on SAL_1
 ## 2023-02-07
 Starting to dissolve scales for one more test salmon sample, trying 10 full scales to see what will happen.
 Weight is 0.0074g.
+Putting individual amino acids into each of the vials to make new standards with a higher concentration.
+Each vial will get 20ul of each of 11 amino acids, and 80 of Tyrosine. 
+
+In total there are 5 standards of 12AA.
+I am not starting the prep process on these today, I am only mixing them in the vials in order to save time since it is late in that day.
+
