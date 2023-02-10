@@ -18,6 +18,8 @@ Each vial will get 20ul of each of 11 amino acids, and 80 of Tyrosine.
 In total there are 5 standards of 12AA.
 I am not starting the prep process on these today, I am only mixing them in the vials in order to save time since it is late in that day.
 
-Evaporating the one test salmon sample to dryness, but do not have time to add thje 1 mL of 0.01N HCl, I will do this tomorrow before the column purification.
+Evaporating the one test salmon sample to dryness, but do not have time to add the 1 mL of 0.01N HCl, I will do this tomorrow before the column purification.
 
-
+## 2023-02-10
+Ran out of time last time I was working to evaporate the sample to dryness. Doing that today and I will add the 1 mL of 0.01N HCl.
+I will stop for now after this since the next stage is a little time consuming.
