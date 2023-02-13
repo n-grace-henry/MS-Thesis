@@ -36,7 +36,7 @@ Doing the first prep step on the 5 standards I started prepping the other day.
 Adding the 4:1 made a clear separation in the vials. I shook them up but they separated again pretty quick. We'll see what they look like after heating. 
 I think it's because there's so much water in the standard solutions. 
 
-3 new salmon samples have been in HCl for 70 minutes and evaporated to dryness.
+3 new salmon samples have been in HCl for 70 minutes and evaporated to dryness. I added the 1 mL of 0.01 N HCl and am letting them sit like this.
 
 5 amino acid standards have heen hydrolyzed and evaporated.
 
