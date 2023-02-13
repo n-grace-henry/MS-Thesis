@@ -38,6 +38,8 @@ I think it's because there's so much water in the standard solutions.
 
 3 new salmon samples have been in HCl for 70 minutes and evaporated to dryness.
 
-5 amino acid standards have heen hydrolyzed and evaporated. 
+5 amino acid standards have heen hydrolyzed and evaporated.
+
+I realized I did the wrong 4:1 solution in the 5 standards so they need to be thrown out...
 
 
