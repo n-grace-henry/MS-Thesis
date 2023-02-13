@@ -23,3 +23,6 @@ Evaporating the one test salmon sample to dryness, but do not have time to add t
 ## 2023-02-10
 Ran out of time last time I was working to evaporate the sample to dryness. Doing that today and I will add the 1 mL of 0.01N HCl.
 I will stop for now after this since the next stage is a little time consuming.
+
+## 2023-02-13
+Prepared column and did column purification on the one salmon sample 
