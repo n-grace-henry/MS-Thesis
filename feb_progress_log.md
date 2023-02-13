@@ -31,3 +31,9 @@ SAL_230207 spilled during the dripping down out of the column stage so that samp
 
 Starting over on two new salmon samples. One will be Chinook, one will be Sockeye because I'm running out of Sockeye test scales. 
 Chinook scales are being pulled from the scale card and sonicated for 6 minutes.
+
+Doing the first prep step on the 5 standards I started prepping the other day.
+Adding the 4:1 made a clear separation in the vials. I shook them up but they separated again pretty quick. We'll see what they look like after heating. 
+I think it's because there's so much water in the standard solutions. 
+
+
