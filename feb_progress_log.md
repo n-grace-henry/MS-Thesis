@@ -10,7 +10,7 @@ SAL_2 had some good peaks but nothing from SAL_3 and only 4 peaks on SAL_1
 
 ## 2023-02-07
 Starting to dissolve scales for one more test salmon sample, trying 10 full scales to see what will happen.
-Weight is 0.0074g.
+Weight is 0.0074g, ID: SAL_230207.
 
 Putting individual amino acids into each of the vials to make new standards with a higher concentration.
 Each vial will get 20ul of each of 11 amino acids, and 80 of Tyrosine. 
@@ -25,4 +25,8 @@ Ran out of time last time I was working to evaporate the sample to dryness. Doin
 I will stop for now after this since the next stage is a little time consuming.
 
 ## 2023-02-13
-Prepared column and did column purification on the one salmon sample 
+Prepared column and did column purification on the one salmon sample, ID: SAL_230207
+
+SAL_230207 spilled during the dripping down out of the column stage so that sample is done.
+
+Starting over on two new salmon samples. One will be Chinook, one will be Sockeye because I'm running out of Sockeye test scales. 
