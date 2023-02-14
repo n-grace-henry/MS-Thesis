@@ -42,4 +42,6 @@ I think it's because there's so much water in the standard solutions.
 
 I realized I did the wrong 4:1 solution in the 5 standards so they need to be thrown out...
 
+Starting 3 new 11 amino acid standard mixes. Each vial got 20ul of each of 11 amino acids, and 80 of Tyrosine. 
+
 
