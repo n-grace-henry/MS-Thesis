@@ -7,3 +7,5 @@ Wood (green), Egegik (red), Kvichak (blue)
 Year, category (CSIA-half, bulk-half, punched), ocean age (two or three)
 
 Sonicating for 10 minutes to remove the residue from the scale card.
+
+After cutting and punching, I will weigh each sample.
