@@ -50,3 +50,5 @@ Added the 1 mL of 0.01 HCl this morning and letting the sample dissolve.
 The sample is very dry and solid at the bottom of the vial so it's a little challenging to fully dissolve but going ok so far. 
 The Sockeye sample is dissolving the worst but both the Chinook ones are looking pretty good. Will wait the full 30 minutes before starting the defatting process so I'm hoping the sample will be fully dissolved by then.
 
+Adding 2 mL of the 3:2 hexanes:DCM to all of the samples and creating an emulsion, following by centrifuge to de-fat. 
+
