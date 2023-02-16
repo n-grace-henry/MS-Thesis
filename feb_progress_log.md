@@ -48,3 +48,5 @@ Starting 3 new 11 amino acid standard mixes. Each vial got 20ul of each of 11 am
 Took overnight to dry salmon samples after the column purification because I turned off the heat because I had to go home. 
 Added the 1 mL of 0.01 HCl this morning and letting the sample dissolve. 
 The sample is very dry and solid at the bottom of the vial so it's a little challenging to fully dissolve but going ok so far. 
+The Sockeye sample is dissolving the worst but both the Chinook ones are looking pretty good. Will wait the full 30 minutes before starting the defatting process so I'm hoping the sample will be fully dissolved by then.
+
