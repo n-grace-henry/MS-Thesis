@@ -44,4 +44,7 @@ I realized I did the wrong 4:1 solution in the 5 standards so they need to be th
 
 Starting 3 new 11 amino acid standard mixes. Each vial got 20ul of each of 11 amino acids, and 80 of Tyrosine. 
 
-
+## 2023-02-16
+Took overnight to dry salmon samples after the column purification because I turned off the heat because I had to go home. 
+Added the 1 mL of 0.01 HCl this morning and letting the sample dissolve. 
+The sample is very dry and solid at the bottom of the vial so it's a little challenging to fully dissolve but going ok so far. 
