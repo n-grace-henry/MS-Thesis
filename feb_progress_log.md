@@ -52,3 +52,12 @@ The Sockeye sample is dissolving the worst but both the Chinook ones are looking
 
 Adding 2 mL of the 3:2 hexanes:DCM to all of the samples and creating an emulsion, following by centrifuge to de-fat. 
 
+## 2023-02-17
+The salmon salmons were drying under N2 overnight. Removed them today and they are fully dry.
+
+## 2023-02-18
+Started on the esterification with the three standards and the three scale test samples.
+Added the 4:1 IPA mixture and waited the 120 minutes, then dissolved. 
+The scales dissolved quickly, the standards are taking quite a bit longer. 
+
+
