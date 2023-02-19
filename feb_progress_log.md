@@ -57,7 +57,13 @@ The salmon salmons were drying under N2 overnight. Removed them today and they a
 
 ## 2023-02-18
 Started on the esterification with the three standards and the three scale test samples.
-Added the 4:1 IPA mixture and waited the 120 minutes, then dissolved. 
-The scales dissolved quickly, the standards are taking quite a bit longer. 
+Added the 4:1 IPA mixture and waited the 120 minutes, then evaporated. 
+The scales evaporated quickly, the standards are taking quite a bit longer. 
+
+## 2023-02-19
+Started the derivitization by acylation. 
+The standards are looking great and everything is doing what it should, but the scales were pretty crusty after evaporating yesterday.
+These will evaporate at room temp under N2 today and I am gonna leave them because I don't have that much time to wait. 
+They are not on heat so burning is not a control. 
 
 
