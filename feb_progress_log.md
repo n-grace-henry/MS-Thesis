@@ -66,4 +66,6 @@ The standards are looking great and everything is doing what it should, but the 
 These will evaporate at room temp under N2 today and I am gonna leave them because I don't have that much time to wait. 
 They are not on heat so burning is not a control. 
 
+Mixed 5 new standard solutions that I will prep later when I know if these current standards are successful. 
+
 
