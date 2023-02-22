@@ -73,6 +73,9 @@ Doing liquid-liquid extraction on the 6 samples.
 All the samples had some residue on the bottom but after adding chemicals and shaking this went away completley. 
 So far everything suggests that these samples are going to look good. 
 
+Spilled a tiny bit of C2 when transfering with a pipette into the glass tube. 
+Still gonna run it but something to keep in mind if the results are weird.
+
 
 
 
