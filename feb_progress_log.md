@@ -68,4 +68,11 @@ They are not on heat so burning is not a control.
 
 Mixed 5 new standard solutions that I will prep later when I know if these current standards are successful. 
 
+## 2023-02-22
+Doing liquid-liquid extraction on the 6 samples. 
+All the samples had some residue on the bottom but after adding chemicals and shaking this went away completley. 
+So far everything suggests that these samples are going to look good. 
+
+
+
 
