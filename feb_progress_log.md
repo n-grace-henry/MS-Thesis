@@ -76,6 +76,16 @@ So far everything suggests that these samples are going to look good.
 Spilled a tiny bit of C2 when transfering with a pipette into the glass tube. 
 Still gonna run it but something to keep in mind if the results are weird.
 
+## 2023-02-28
+Starting a test run on the GC of two of the samples I just made to see if they are the same, and then the 3 unknown scale samples.
+I restarted the computer because it is going a little bit slow this morning. 
+Got liquid N, and filled the ethyl acetate and DCM vials.
+Set up a sequence and checked all the settings. 
+I have the setting to match the post-it note exactly, and don't have anything checked that is not on the post-it, but that really seems like not enough. 
+
+Had some weirdness with starting the run.
+Had a pop-up that said "no export template selected", so I went to the templates option and chose the one that seemed the most right, the N CSIA one. 
+
 
 
 
