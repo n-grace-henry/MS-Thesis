@@ -1,2 +1,4 @@
-date, ID, weight(g), scales, box, location
-2023-03-04, SAL_230304, 0.0073, 10, NA, NA 
+date, ID, weight(mg), scales, box, location
+2023-03-04, A, 12.9, 15, NA, NA 
+2023-03-04, B, 11.9, 15, NA, NA 
+2023-03-04, C, 11.9, 15, NA, NA 
