@@ -13,4 +13,4 @@ The individual amino acids are all mixed to 0.05 M.
 
 I pulled a bunch of sockeye scales that I will use for more testing of the proper mass. 
 
-On the new standards I am doing the isopropanol esterfication stage today. They will all take a different amount of time to dry. 
+On the new standards I am doing the isopropanol esterfication stage today. I expect some of these will take a very long time to evaporate under N2 so I might turn off the heat and let them go overnight. 
