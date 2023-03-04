@@ -9,3 +9,8 @@ Take a lot of one amino acid and run it to see if I get any signal 200 uL and on
 Gordon thinks the standard issue is from having too small of a mass of nitrogen in 20 uL of each amino acid. 
 I am preparing standards of only one amino acid with a much higher amount to see if we can get a signal.
 I will prepare Ala_0.2 which is 200 uL of alanine, Ala_2, which is 2 mL of alanine and do the same volumes with norleucine as well.
+The individual amino acids are all mixed to 0.05 M. 
+
+I pulled a bunch of sockeye scales that I will use for more testing of the proper mass. 
+
+On the new standards I am doing the isopropanol esterfication stage today. They will all take a different amount of time to dry. 
