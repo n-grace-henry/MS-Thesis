@@ -14,3 +14,7 @@ The individual amino acids are all mixed to 0.05 M.
 I pulled a bunch of sockeye scales that I will use for more testing of the proper mass. 
 
 On the new standards I am doing the isopropanol esterfication stage today. I expect some of these will take a very long time to evaporate under N2 so I might turn off the heat and let them go overnight. 
+
+## 2023-03-05
+I left the 2 mL standards overnight under N2 to dry with no heat because it was taking forever. Today in the morning they were not fully evaporated and looked kind of gooey. I think this is just because there is so much amino acid in them so I closed the lids and will continue from here. 
+
