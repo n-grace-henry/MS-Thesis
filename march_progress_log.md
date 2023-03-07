@@ -20,3 +20,4 @@ I left the 2 mL standards overnight under N2 to dry with no heat because it was 
 
 ## 2023-03-07
 Mixed new 4:1 IPA: acetyl chloride. 
+Doing derivatization of the 4 standards. Chem doesn't mix great with sample because there was still so much goo leftover. 
