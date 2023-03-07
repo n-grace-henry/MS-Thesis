@@ -18,3 +18,5 @@ On the new standards I am doing the isopropanol esterfication stage today. I exp
 ## 2023-03-05
 I left the 2 mL standards overnight under N2 to dry with no heat because it was taking forever. Today in the morning they were not fully evaporated and looked kind of gooey. I think this is just because there is so much amino acid in them so I closed the lids and will continue from here. 
 
+## 2023-03-07
+Mixed new 4:1 IPA: acetyl chloride. 
