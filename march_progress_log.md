@@ -23,3 +23,8 @@ Mixed new 4:1 IPA: acetyl chloride.
 
 Doing derivatization of the 4 standards. Chem doesn't mix great with sample because there was still so much goo leftover. 
 Samples will be left to dry over night to make sure that they are fully dry. 
+
+## 2023-03-08
+The 2 mL standards have large crystalized looking chunks and the buffer water mostly dissolved this but not everything.
+The 0.2 mL samples look pretty good. 
+Doing liquid-liquid extraction today and getting samples into the GC vials. 
