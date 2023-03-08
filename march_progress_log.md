@@ -28,3 +28,5 @@ Samples will be left to dry over night to make sure that they are fully dry.
 The 2 mL standards have large crystalized looking chunks and the buffer water mostly dissolved this but not everything.
 The 0.2 mL samples look pretty good. 
 Doing liquid-liquid extraction today and getting samples into the GC vials. 
+
+Raising standards in 100 uL ethyl acetate. 
