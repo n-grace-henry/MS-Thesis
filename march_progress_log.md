@@ -30,3 +30,6 @@ The 0.2 mL samples look pretty good.
 Doing liquid-liquid extraction today and getting samples into the GC vials. 
 
 Raising standards in 100 uL ethyl acetate. 
+
+## 2023-03-13
+Starting the 3 15 scale test samples. Added 40 uL of norleucine since it seems like 20 uL isn't enough. 
