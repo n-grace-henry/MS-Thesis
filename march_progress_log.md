@@ -33,3 +33,9 @@ Raising standards in 100 uL ethyl acetate.
 
 ## 2023-03-13
 Starting the 3 15 scale test samples. Added 40 uL of norleucine since it seems like 20 uL isn't enough. 
+
+## 2023-03-14 
+Filtered the 3 test samples through the column. Everything is going as it should. I prepared the columns yesterday.
+
+## 2023-03-15
+De-fatted the 3 test samples. Blowing down the samples completely overnight under N2 at room temperature. 
