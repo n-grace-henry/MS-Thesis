@@ -39,3 +39,10 @@ Filtered the 3 test samples through the column. Everything is going as it should
 
 ## 2023-03-15
 De-fatted the 3 test samples. Blowing down the samples completely overnight under N2 at room temperature. 
+
+## 2023-03-27
+Added newly mixed standards to vials after shaking the solutions pretty thoroughly and letting them sit for a second for the bubbles to go away.
+Standard mixes have all 12 amino acids at 40 uL, 60 uL, 80 uL or 100 uL of each. 
+Tyrosine has 4 times the above listed volumes (160 uL, etc.).
+
+Adding 4:1 IPA:acetyle chloride to the 4 standard mixes and the three scale samples and heating 120 minutes. 
