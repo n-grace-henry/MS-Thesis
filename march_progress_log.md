@@ -47,4 +47,4 @@ Tyrosine has 4 times the above listed volumes (160 uL, etc.).
 
 Adding 4:1 IPA:acetyle chloride to the 4 standard mixes and the three scale samples and heating 120 minutes. 
 
-Blowing down overnight before starting on the next step.
+Blowing down overnight to dry before starting on the next step.
