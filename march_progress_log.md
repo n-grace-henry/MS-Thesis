@@ -46,3 +46,5 @@ Standard mixes have all 12 amino acids at 40 uL, 60 uL, 80 uL or 100 uL of each.
 Tyrosine has 4 times the above listed volumes (160 uL, etc.).
 
 Adding 4:1 IPA:acetyle chloride to the 4 standard mixes and the three scale samples and heating 120 minutes. 
+
+Blowing down overnight before starting on the next step.
