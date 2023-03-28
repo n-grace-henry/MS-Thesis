@@ -15,5 +15,7 @@ year, district, sample_ID, age_class, scale_num
 1998, wood, 1998_wood_3, 3, 8
 1998, kvichak, 1998_kvichak_2, 2, 30
 1998, kvichak, 1998_kvichak_3, 3, 6
-1998, egegil, 1998_egegik_2, 2, 30
-1998, egegil, 1998_egegik_3, 3, 17
+1998, egegik, 1998_egegik_2, 2, 30
+1998, egegik, 1998_egegik_3, 3, 17
+1995, wood, 1995_wood_2, 2, 30
+1995, wood, 1995_wood_3, 3, 16
