@@ -54,3 +54,5 @@ I realized that I left the heat on overnight as well so it's possible the sample
 To be safe I am remaking the 4 standards following the same steps as yesterday but I will try to carry on with the same scale samples. 
 
 Letting the scale samples sit and redoing the esterfication step with the four new standards. 
+
+To properly time the blowing down of the standards I will let sit under N2 with heat for 1 hour and then I will turn off the heat and check back in a few hours. 
