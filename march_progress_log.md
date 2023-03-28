@@ -48,3 +48,9 @@ Tyrosine has 4 times the above listed volumes (160 uL, etc.).
 Adding 4:1 IPA:acetyle chloride to the 4 standard mixes and the three scale samples and heating 120 minutes. 
 
 Blowing down overnight to dry before starting on the next step.
+
+## 2023-03-28
+I realized that I left the heat on overnight as well so it's possible the samples are all burned. Visually they look normal.
+To be safe I am remaking the 4 standards following the same steps as yesterday but I will try to carry on with the same scale samples. 
+
+Letting the scale samples sit and redoing the esterfication step with the four new standards. 
