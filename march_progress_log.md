@@ -63,4 +63,6 @@ Performed derivitization by acylation on the standards and test scale samples. L
 Mixed fresh 4:1 toluene:pivaloyal chloride 
 
 ## 2023-03-31
-Performed liquid-liquid extraction on the test standards and test samples
+Performed liquid-liquid extraction on the test standards and test samples.
+
+15 scales might be a little bit too much because all the samples are looking very chunky.
