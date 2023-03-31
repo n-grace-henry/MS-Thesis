@@ -60,5 +60,7 @@ To properly time the blowing down of the standards I will let sit under N2 with 
 ## 2023-03-29
 Performed derivitization by acylation on the standards and test scale samples. Let blow down with no heat under N2 overnight.
 
+Mixed fresh 4:1 toluene:pivaloyal chloride 
+
 ## 2023-03-31
 Performed liquid-liquid extraction on the test standards and test samples
