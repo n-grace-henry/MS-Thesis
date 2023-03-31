@@ -56,3 +56,9 @@ To be safe I am remaking the 4 standards following the same steps as yesterday b
 Letting the scale samples sit and redoing the esterfication step with the four new standards. 
 
 To properly time the blowing down of the standards I will let sit under N2 with heat for 1 hour and then I will turn off the heat and check back in a few hours. 
+
+## 2023-03-29
+Performed derivitization by acylation on the standards and test scale samples. Let blow down with no heat under N2 overnight.
+
+## 2023-03-31
+Performed liquid-liquid extraction on the test standards and test samples
