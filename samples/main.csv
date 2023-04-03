@@ -37,3 +37,5 @@ year, district, sample_ID, age_class, scale_num
 1989, egegik, 1989_egegik_3, 3, 24
 1986, wood, 1986_wood_2, 2, 30
 1986, wood, 1986_wood_3, 3, 23
+1986, egegik, 1986_egegik_2, 2, 30 
+1986, egegik, 1986_egegik_3, 3, 5
