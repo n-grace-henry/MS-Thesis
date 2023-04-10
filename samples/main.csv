@@ -45,3 +45,5 @@ year, district, sample_ID, age_class, scale_num
 1983, kvichak, 1983_kvichak_3, 3, 3
 1980, wood, 1980_wood_2, 2, 30
 1980, wood, 1980_wood_3, 3, 12
+1980, kvichak, 1980_kvichak_2, 2, 30
+1980, kvichak, 1980_kvichak_3, 3, 8
