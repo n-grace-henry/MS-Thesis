@@ -9,3 +9,6 @@ Year, category (CSIA-half, bulk-half, punched), ocean age (two or three)
 Sonicating for 10 minutes to remove the residue from the scale card.
 
 After cutting and punching, I will weigh each sample.
+
+## 2023-04-11
+Pulled and sonicated scales from 2004 and organized into vials. Will take a scale count when I weight because every now and then scales are lost while pulling or moving into vials. 
