@@ -23,6 +23,16 @@ year, district, sample_ID, age_class, scale_num
 2013, kvichak, 2013_kvichak_3, 3, 30
 2013, egegik, 2013_egegik_2, 2, 27
 2013, egegik, 2013_egegik_3, 3, 30
+2010, wood, 2010_wood_2, 2, 30
+2010, wood, 2010_wood_3, 3, 11
+2010, kvichak, 2010_kvichak_2, 2, 30
+2010, kvichak, 2010_kvichak_3, 3, 7
+2010, egegik, 2010_egegik_2, 2, 28
+2010, egegik, 2010_egegik_3, 3, 30
+2007, wood, 2007_wood_2, 2, 30
+2007, wood, 2007_wood_3, 3, 11
+2007, kvichak, 2007_kvichak_2, 2, 30
+2007, kvichak, 2007_kvichak_3, 3, 21
 
 2004, wood, 2004_wood_2, 2, 28
 2004, wood, 2004_wood_3, 3, 22
