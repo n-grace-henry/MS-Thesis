@@ -5,6 +5,18 @@ year, district, sample_ID, age_class, scale_num
 2022, kvichak, 2022_kvichak_3, 3, 15
 2022, egegik, 2022_egegik_2, 2, 30
 2022, egegik, 2022_egegik_3, 3, 15
+2019, wood, 2019_wood_2, 2, 30
+2019, wood, 2019_wood_3, 3, 2
+2019, kvichak, 2019_kvichak_2, 2, 30
+2019, kvichak, 2019_kvichak_3, 3, 15
+2019, egegik, 2019_egegik_2, 2, 30
+2019, egegik, 2019_egegik_2, 2, 3
+2016, wood, 2016_wood_2, 2, 30
+2016, wood, 2016_wood_3, 3, 18
+2016, kvichak, 2016_kvichak_2, 2, 30
+2016, kvichak, 2016_kvichak_3, 3, 10
+2016, egegik, 2016_egegik_2, 2,30
+2016, egegik, 2016_egegik_3, 3, 7
 
 2004, wood, 2004_wood_2, 2, 28
 2004, wood, 2004_wood_3, 3, 22
