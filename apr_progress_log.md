@@ -9,3 +9,10 @@ The samples look the exact same as before trimming the column so we are not sure
 We are noticing that we get about 5 peaks on the standards (there should be 12) on the lower concentrations (40 uL and 60 uL), but the peaks shrink at higher concentrations. 
 Next step is to raise the 80 and 60 in 200 uL of ethyl acetate and see if this changes anything. 
 We might also try replacing all the amino acid powders that we have. 
+
+## 2023-04-25 
+Starting 6 new standard samples. 
+I have 2 of each phenylalanine, glutamic acid and norleucine. 
+Of each I have a 20 uL and a 40 uL, so 6 samples total.
+Glu-40 leaked during the esterfication so not sure if that will be a good sample but everything else is looking fine.
+Evaporated under N2 on heat for about an hour and a half.
