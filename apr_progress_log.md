@@ -16,3 +16,8 @@ I have 2 of each phenylalanine, glutamic acid and norleucine.
 Of each I have a 20 uL and a 40 uL, so 6 samples total.
 Glu-40 leaked during the esterfication so not sure if that will be a good sample but everything else is looking fine.
 Evaporated under N2 on heat for about an hour and a half.
+
+## 2023-04-27
+Doing derivatization by acylation on the 6 samples from yesterday.
+Glu-40 might leak again so just something to remember.
+Letting evaporate with no heat under N2 overnight to ensure fully dry and to save time.
