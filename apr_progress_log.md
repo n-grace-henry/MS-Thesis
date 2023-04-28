@@ -21,3 +21,7 @@ Evaporated under N2 on heat for about an hour and a half.
 Doing derivatization by acylation on the 6 samples from yesterday.
 Glu-40 might leak again so just something to remember.
 Letting evaporate with no heat under N2 overnight to ensure fully dry and to save time.
+
+## 2023-04-28
+Doing liquid liquid extraction on the 6 samples.
+Everything looks normal at this stage and no weirdness.
