@@ -13,9 +13,9 @@ year, district, sample_ID, age_class, scale_num
 2019, egegik, 2019_egegik_2, 2, 3
 2016, wood, 2016_wood_2, 2, 30
 2016, wood, 2016_wood_3, 3, 18
-2016, kvichak, 2016_kvichak_2, 2, 30
+2016, kvichak, 2016_kvichak_2, 2, 29
 2016, kvichak, 2016_kvichak_3, 3, 10
-2016, egegik, 2016_egegik_2, 2,30
+2016, egegik, 2016_egegik_2, 2, 31
 2016, egegik, 2016_egegik_3, 3, 7
 2013, wood, 2013_wood_2, 2, 30
 2013, wood, 2013_wood_3, 3, 18
@@ -85,12 +85,12 @@ year, district, sample_ID, age_class, scale_num
 1980, kvichak, 1980_kvichak_3, 3, 8
 1980, egegik, 1980_egegik_2, 2, 30
 1980, egegik, 1980_egegik_3, 3, 5
-1977, wood, 1977_wood_2, 2, 30
-1977, wood, 1977_wood_3, 3, 25
+1977, wood, 1977_wood_2, 2, 31
+1977, wood, 1977_wood_3, 3, 23
 1977, kvichak, 1977_kvichak_2, 2, 30
 1977, kvichak, 1977_kvichak_3, 3, 5
 1977, egegik, 1977_egegik_2, 2, 30
-1977, egegik, 1977_egegik_3, 3, 18
+1977, egegik, 1977_egegik_3, 3, 17
 1974, wood, 1974_wood_2, 2, 30
 1974, wood, 1974_wood_3, 3, 11
 1974, kvichak, 1974_kvichak_2, 2, 30
@@ -101,7 +101,7 @@ year, district, sample_ID, age_class, scale_num
 1971, wood, 1971_wood_3, 3, 22
 1971, kvichak, 1971_kvichak_2, 2, 30
 1971, kvichak, 1971_kvichak_3, 3, 13
-1971, egegik, 1971_egegik_2, 2, 30
+1971, egegik, 1971_egegik_2, 2, 29
 1971, egegik, 1971_egegik_3, 3, 19
 1968, wood, 1968_wood_2, 2, 30
 1968, wood, 1968_wood_3, 3, 21
