@@ -1,9 +1,9 @@
 year, district, sample_ID, age_class, scale_num, status, weight
-2022, wood, 2022_wood_2, 2, 30, pulled, N/A
-2022, wood, 2022_wood_3, 3, 24, pulled, N/A
-2022, kvichak, 2022_kvichak_2, 2, 29, pulled, N/A
-2022, kvichak, 2022_kvichak_3, 3, 15, pulled, N/A
-2022, egegik, 2022_egegik_2, 2, 30, pulled, N/A
+2022, wood, 2022_wood_2, 2, 30, punched/cut, N/A
+2022, wood, 2022_wood_3, 3, 24, punched/cut, N/A
+2022, kvichak, 2022_kvichak_2, 2, 29, punched/cut, N/A
+2022, kvichak, 2022_kvichak_3, 3, 15, punched, N/A
+2022, egegik, 2022_egegik_2, 2, 30, punched, N/A
 2022, egegik, 2022_egegik_3, 3, 15, pulled, N/A
 2019, wood, 2019_wood_2, 2, 30, pulled, N/A
 2019, wood, 2019_wood_3, 3, 2, N/A, N/A
