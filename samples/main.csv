@@ -1,4 +1,4 @@
-year, district, sample_ID, age_class, scale_num
+year, district, sample_ID, age_class, scale_num, status, weight
 2022, wood, 2022_wood_2, 2, 30
 2022, wood, 2022_wood_3, 3, 24
 2022, kvichak, 2022_kvichak_2, 2, 29
