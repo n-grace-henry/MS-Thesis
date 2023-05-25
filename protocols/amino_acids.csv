@@ -1,15 +1,15 @@
 AA, d15N, type
 aspartic acid, -9.93, trophic
 glutamic acid, -3.34, trophic
-glycine, 3.17
-threonine, -1.46
-norleucine, 14.93
-serine, 1.41
-valine, 0.36
-methionine, -1.58
-proline, -6.912
-alanine, -1.21
-leucine, 0.35
-tyrosine, 3.29
-isoleucine, -2.34
-phenylalanine, 2.19
+glycine, 3.17, source
+threonine, -1.46, source
+norleucine, 14.93, trophic
+serine, 1.41, source
+valine, 0.36, trophic
+methionine, -1.58, trophic
+proline, -6.912, trophic
+alanine, -1.21, trophic
+leucine, 0.35, trophic
+tyrosine, 3.29, source
+isoleucine, -2.34, trophic
+phenylalanine, 2.19, source
