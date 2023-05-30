@@ -9,3 +9,22 @@ Got the new standard powders yesterday. We ordered new alanine, glutamic acid, v
 
 Megan said the the 5 standard peaks that have been consistenly showing up in the data are the leucine groups, plus phenylalanine and valine. 
 I will keep using these 5, but I will remix phenylalanine with the new powders.
+
+## 2023-05-30
+Starting my next set of test standards with the solutions mixed from the new powders.
+
+I am doing a total of 8 standards, each has only one amino acid. 
+
+Isoleucine has 20 uL
+
+Valine has 20 uL 
+
+Alanine has 20 uL
+
+Norleucine has 20 uL
+
+Glutamic acid has both a 20 uL and a 40 uL
+
+Phenylalanine has both a 20 uL and a 40 uL
+
+Starting isopropanol esterfication, this evaporation happens on heat so I cannot leave it overnight. 
