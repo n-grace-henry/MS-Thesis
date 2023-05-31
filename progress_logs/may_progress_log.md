@@ -30,3 +30,8 @@ Phenylalanine has both a 20 uL and a 40 uL
 Starting isopropanol esterfication, this evaporation happens on heat so I cannot leave it overnight. 
 Glu-40 got a little messed up because the vial was damaged so a lot of liquid seems to have leaked out.
 Since Glu-20 looks good I think it should be fine.
+
+## 2023-05-31
+Doing derivitization by acetylation step today. 
+Everything seems normal so far. This time they get blown down not on heat so I will probably leave them alone for a long time. 
+
