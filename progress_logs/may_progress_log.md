@@ -34,4 +34,5 @@ Since Glu-20 looks good I think it should be fine.
 ## 2023-05-31
 Doing derivitization by acetylation step today. 
 Everything seems normal so far. This time they get blown down not on heat so I will probably leave them alone for a long time. 
+Didn't take that long to evaportae. 
 
