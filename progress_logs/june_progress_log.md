@@ -6,3 +6,9 @@ Some of them turned blue which has defintiely never happened before so I wonder 
 The blue samples are: ALA-20, PHE-20, and ISO-20.
 
 The blue part was in the organic fraction on top that we pipette off, so the final samples will likely also be blue...
+
+## 2023-06-05
+Running today, only doing 6 of the 8 samples that I prepped because of GC space.
+I am running both Glu, both Phe, Nor and Val.
+I realized just now that I forgot to run the oxidation sequence but since this is just to see if we get any peak I'm gonna ignore it.
+Also just realized that the IsoLink settings are wrong since I restarted the computer, so I'm canceling but I'll let it finish this first sample first. 
