@@ -16,3 +16,8 @@ Also just realized that the IsoLink settings are wrong since I restarted the com
 Changed my mind about oxidation. Since I need to stop the run after one sample anyway, I think I will do an oxidation sequence and come back later today.
 
 I will remove Val from this run because I think I might run out of liquid N with how long this prep stage will take. 
+
+## 2023-06-06
+Results from the run yesterday still look bad. Phe is still showing up as normal, Nor is still showing up as normal, but Glu still is not showing significant peaks.
+There are two peaks on the chromatograph but they are not big enough to get a signal. 
+Gonna run those last three today and see what happens.
