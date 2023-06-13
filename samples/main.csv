@@ -75,8 +75,8 @@ year, district, sample_ID, age_class, scale_num, status, weight
 1986, wood, 1986_wood_3, 3, 18, punched, N/A
 1986, egegik, 1986_egegik_2, 2, 30 , punched, N/A
 1986, egegik, 1986_egegik_3, 3, 5, N/A, N/A
-1984, wood, 1984_wood_2, 2, 19, pulled, N/A
-1984, wood, 1984_wood_3, 3, 16, pulled, N/A
+1984, wood, 1984_wood_2, 2, 19, punched, N/A
+1984, wood, 1984_wood_3, 3, 16, punched, N/A
 1983, kvichak, 1983_kvichak_2, 2, 30, pulled, N/A
 1983, kvichak, 1983_kvichak_3, 3, 3, N/A, N/A
 1980, wood, 1980_wood_2, 2, 22, pulled, N/A
