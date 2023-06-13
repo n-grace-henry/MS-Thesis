@@ -21,3 +21,11 @@ I will remove Val from this run because I think I might run out of liquid N with
 Results from the run yesterday still look bad. Phe is still showing up as normal, Nor is still showing up as normal, but Glu still is not showing significant peaks.
 There are two peaks on the chromatograph but they are not big enough to get a signal. 
 Gonna run those last three today and see what happens.
+
+## 2023-06-09
+Ran Gordon's three samples.
+They were 20 uL, 200 uL and 400 uL.
+
+## 2023-06-13
+Results are much better than previous. We are actually seeing peaks but at 400 uL there are 4 peaks and I thought there were only two amino acids in here.
+Need to check in to see what these samples should look like. 
