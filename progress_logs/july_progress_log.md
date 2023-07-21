@@ -16,3 +16,5 @@ Glu
 Nle
 
 Blowing down the tubes and adding DCM, blowing down DCM and adding 100 uL of ethyl acetate. 
+Running some of these samples today and then the other half tomorrow. 
+Column on the GC has been oxidized. 
