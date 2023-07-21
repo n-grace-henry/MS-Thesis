@@ -5,7 +5,6 @@ What we have:
 
 5 standard mixes (3 reps)
 
-
 4 single AAs (PHE had a problem)
 
 Val
@@ -16,5 +15,4 @@ Glu
 
 Nle
 
-4 single AAs (PHE had a problem)
-
+Blowing down the tubes and adding DCM, blowing down DCM and adding 100 uL of ethyl acetate. 
