@@ -5,7 +5,7 @@ What we have:
 
 5 standard mixes (3 reps)
 
-4 single AAs (PHE had a problem)
+4 single AAs (PHE had a problem so was tossed out)
 
 Val
 
