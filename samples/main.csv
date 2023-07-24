@@ -1,7 +1,7 @@
 year, district, sample_ID, age_class, scale_num, status, weight (mg)
 2022, wood, 2022_wood_2, 2, 30, punched/cut, 6.304
-2022, wood, 2022_wood_3, 3, 24, punched/cut, N/A
-2022, kvichak, 2022_kvichak_2, 2, 29, punched/cut, N/A
+2022, wood, 2022_wood_3, 3, 24, punched/cut, 10.699
+2022, kvichak, 2022_kvichak_2, 2, 29, punched/cut, 5.839
 2022, kvichak, 2022_kvichak_3, 3, 15, punched/cut, N/A
 2022, egegik, 2022_egegik_2, 2, 30, punched/cut, N/A
 2022, egegik, 2022_egegik_3, 3, 15, punched/cut, N/A
