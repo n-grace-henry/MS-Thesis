@@ -18,3 +18,7 @@ Nle
 Blowing down the tubes and adding DCM, blowing down DCM and adding 100 uL of ethyl acetate. 
 Running some of these samples today and then the other half tomorrow. 
 Column on the GC has been oxidized. 
+
+## 2023-07-24
+Making two test salmon scales before I start bulk processing the real samples. 
+The two test samples are 6.570 mg and 4.785 mg. Both are full scales with no hole punching and no dividing. 
