@@ -1,17 +1,17 @@
 year, district, sample_ID, age_class, scale_num, status, weight (mg)
 2022, wood, 2022_wood_2, 2, 30, punched/cut, 6.304
 2022, wood, 2022_wood_3, 3, 24, punched/cut, 10.699
-2022, kvichak, 2022_kvichak_2, 2, 29, punched/cut, 5.839
-2022, kvichak, 2022_kvichak_3, 3, 15, punched/cut, N/A
-2022, egegik, 2022_egegik_2, 2, 30, punched/cut, N/A
-2022, egegik, 2022_egegik_3, 3, 15, punched/cut, N/A
-2019, wood, 2019_wood_2, 2, 30, punched/cut, N/A
+2022, kvichak, 2022_kvichak_2, 2, 29, punched/cut, 5.841
+2022, kvichak, 2022_kvichak_3, 3, 15, punched/cut, 8.590
+2022, egegik, 2022_egegik_2, 2, 30, punched/cut, 8.897
+2022, egegik, 2022_egegik_3, 3, 15, punched/cut, 4.742
+2019, wood, 2019_wood_2, 2, 30, punched/cut, 4.259
 2019, wood, 2019_wood_3, 3, 2, N/A, N/A
-2019, kvichak, 2019_kvichak_2, 2, 30, punched/cut, N/A
-2019, kvichak, 2019_kvichak_3, 3, 15, punched/cut, N/A
-2019, egegik, 2019_egegik_2, 2, 30, punched/cut, N/A
+2019, kvichak, 2019_kvichak_2, 2, 30, punched/cut, 6.236
+2019, kvichak, 2019_kvichak_3, 3, 15, punched/cut, 7.726
+2019, egegik, 2019_egegik_2, 2, 30, punched/cut, 7.061
 2019, egegik, 2019_egegik_3, 2, 3, N/A, N/A
-2016, wood, 2016_wood_2, 2, 30, punched/cut, N/A
+2016, wood, 2016_wood_2, 2, 30, punched/cut, 8.801
 2016, wood, 2016_wood_3, 3, 18, punched, N/A
 2016, kvichak, 2016_kvichak_2, 2, 29, punched, N/A
 2016, kvichak, 2016_kvichak_3, 3, 10, N/A, N/A
