@@ -22,3 +22,8 @@ Column on the GC has been oxidized.
 ## 2023-07-24
 Making two test salmon scales before I start bulk processing the real samples. 
 The two test samples are 6.570 mg and 4.785 mg. Both are full scales with no hole punching and no dividing. 
+
+## 2023-07-26
+Doing the acid hydrolysis, filtration and column purification of the two test samples. 
+Everything has looked good so far with no concerns with either of these test samples. 
+
