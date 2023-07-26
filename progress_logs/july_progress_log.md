@@ -28,6 +28,7 @@ Test ran the last 3 samples on the GC.
 ## 2023-07-26
 Doing the acid hydrolysis, filtration and column purification of the two test samples. 
 Everything has looked good so far with no concerns with either of these test samples.
+The NH4OH is blowing down slowly so I will be turning off the heat and leaving it under N2 overnight. 
 
 All the GC standards and invdividual AAs are looking good and so I think those are ready to go as soon as I have samples ready.
 
