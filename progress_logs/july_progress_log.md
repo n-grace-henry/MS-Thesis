@@ -32,4 +32,9 @@ The NH4OH is blowing down slowly so I will be turning off the heat and leaving i
 
 All the GC standards and invdividual AAs are looking good and so I think those are ready to go as soon as I have samples ready.
 
+## 2023-07-27
+The samples didn't quite blow down overnight so I turned the heating block back on and they finished in 1-2 hours.
+They were super crusty looking but after I added the 1 mL of 0.01 N HCl that went away almost immediatley and now I think they look good. 
+
+
 
