@@ -35,9 +35,9 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg)
 2007, kvichak, 2007_kvichak_3, 3, 21, punched/cut, N/A
 2007, egegik, 2007_egegik_2, 2, 30, punched/cut, N/A
 2007, egegik, 2007_egegik_3, 3, 20, punched/cut, N/A
-2004, wood, 2004_wood_2, 2, 28, punched, N/A
-2004, wood, 2004_wood_3, 3, 22, punched, N/A
-2004, kvichak, 2004_kvichak_2, 2, 30, punched, N/A
+2004, wood, 2004_wood_2, 2, 28, punched/cut, N/A
+2004, wood, 2004_wood_3, 3, 22, punched/cut, N/A
+2004, kvichak, 2004_kvichak_2, 2, 30, punched/cut, N/A
 2004, kvichak, 2004_kvichak_3, 3, 18, punched, N/A
 2004, egegik, 2004_egegik_2, 2, 30, punched, N/A
 2004, egegik, 2004_egegik_3, 3, 24, punched, N/A
