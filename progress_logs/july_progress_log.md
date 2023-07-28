@@ -44,6 +44,8 @@ Did acid hydrolysis on the first 6 real samples.
 22-Egegik-2 I think has a damaged vial and so all the fluid evaporated and I think the sample burned. 
 I'm still gonna bring this through the whole process but just noting that results may look bad.
 
+Blowing down the 6 samples at 55C under N2 and will cap with N2 at that point and resume next time I am in the lab. 
+
 
 
 
