@@ -36,5 +36,14 @@ All the GC standards and invdividual AAs are looking good and so I think those a
 The samples didn't quite blow down overnight so I turned the heating block back on and they finished in 1-2 hours.
 They were super crusty looking but after I added the 1 mL of 0.01 N HCl that went away almost immediatley and now I think they look good. 
 
+## 2023-07-28
+Left test samples under N2 overnight to dry, this is what I am doing instead of freeze drying since that kept not working well.
+This is taking awhile with the larger of the two samples but the smaller one looks good
+
+Did acid hydrolysis on the first 6 real samples. 
+22-Egegik-2 I think has a damaged vial and so all the fluid evaporated and I think the sample burned. 
+I'm still gonna bring this through the whole process but just noting that results may look bad.
+
+
 
 
