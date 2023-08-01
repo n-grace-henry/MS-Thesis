@@ -9,3 +9,4 @@ I am also still working on the 6 real samples that I started the other day.
 I did the filtration and column purification and have them blowing down under N2 on heat. 
 They are seeming pretty good so far except for that one sample in the damaged vial that looked burned.
 Again, will keep going and see what happens. 
+Finished de-fatting and I will stop after this step for today. 
