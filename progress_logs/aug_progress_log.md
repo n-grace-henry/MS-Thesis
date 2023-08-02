@@ -10,3 +10,10 @@ I did the filtration and column purification and have them blowing down under N2
 They are seeming pretty good so far except for that one sample in the damaged vial that looked burned.
 Again, will keep going and see what happens. 
 Finished de-fatting and I will stop after this step for today. 
+
+## 2023-08-02
+Finished the two test samples and running today. 
+They are raised in 100 uL ethyl acetate.
+If peaks are too small I will try raising in 50 uL ethyl acetate.
+
+Doing isopropanol esterfication on the six samples and will blow down and leave at that stage until the next time that I can make it into the lab. 
