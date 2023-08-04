@@ -17,3 +17,8 @@ They are raised in 100 uL ethyl acetate.
 If peaks are too small I will try raising in 50 uL ethyl acetate.
 
 Doing isopropanol esterfication on the six samples and will blow down and leave at that stage until the next time that I can make it into the lab. 
+
+## 2023-08-04
+Doing the derivitization by acylation today of the six samples. 
+Gordon told me today that the icing of the samples is super important because the gas escapes from the samples and then we don't get peaks. 
+I'm a little worried that will happen with these but nothing ever exploded like last time. 
