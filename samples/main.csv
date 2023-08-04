@@ -1,10 +1,10 @@
 year, district, sample_ID, age_class, scale_num, status, weight (mg), volume
-2022, wood, 2022_wood_2, 2, 30, processing, 6.304, NA
-2022, wood, 2022_wood_3, 3, 24, processing, 10.699, NA
-2022, kvichak, 2022_kvichak_2, 2, 29, processing, 5.841, NA
-2022, kvichak, 2022_kvichak_3, 3, 15, processing, 8.590, NA
-2022, egegik, 2022_egegik_2, 2, 30, processing, 8.897, NA
-2022, egegik, 2022_egegik_3, 3, 15, processing, 4.742, NA
+2022, wood, 2022_wood_2, 2, 30, processing, 6.304, 50
+2022, wood, 2022_wood_3, 3, 24, processing, 10.699, 100
+2022, kvichak, 2022_kvichak_2, 2, 29, processing, 5.841, 50
+2022, kvichak, 2022_kvichak_3, 3, 15, processing, 8.590, 100
+2022, egegik, 2022_egegik_2, 2, 30, processing, 8.897, 100
+2022, egegik, 2022_egegik_3, 3, 15, processing, 4.742, 50
 2019, wood, 2019_wood_2, 2, 30, punched/cut, 4.259, NA
 2019, wood, 2019_wood_3, 3, 2, N/A, N/A, NA
 2019, kvichak, 2019_kvichak_2, 2, 30, punched/cut, 6.236, NA
