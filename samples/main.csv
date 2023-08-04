@@ -1,117 +1,117 @@
-year, district, sample_ID, age_class, scale_num, status, weight (mg)
-2022, wood, 2022_wood_2, 2, 30, punched/cut, 6.304
-2022, wood, 2022_wood_3, 3, 24, punched/cut, 10.699
-2022, kvichak, 2022_kvichak_2, 2, 29, punched/cut, 5.841
-2022, kvichak, 2022_kvichak_3, 3, 15, punched/cut, 8.590
-2022, egegik, 2022_egegik_2, 2, 30, punched/cut, 8.897
-2022, egegik, 2022_egegik_3, 3, 15, punched/cut, 4.742
-2019, wood, 2019_wood_2, 2, 30, punched/cut, 4.259
-2019, wood, 2019_wood_3, 3, 2, N/A, N/A
-2019, kvichak, 2019_kvichak_2, 2, 30, punched/cut, 6.236
-2019, kvichak, 2019_kvichak_3, 3, 15, punched/cut, 7.726
-2019, egegik, 2019_egegik_2, 2, 30, punched/cut, 7.061
-2019, egegik, 2019_egegik_3, 2, 3, N/A, N/A
-2016, wood, 2016_wood_2, 2, 30, punched/cut, 8.801
-2016, wood, 2016_wood_3, 3, 18, punched/cut, 7.954
-2016, kvichak, 2016_kvichak_2, 2, 29, punched/cut, 8.614
-2016, kvichak, 2016_kvichak_3, 3, 10, N/A, N/A
-2016, egegik, 2016_egegik_2, 2, 31, punched/cut, 8.928
-2016, egegik, 2016_egegik_3, 3, 7, N/A, N/A
-2013, wood, 2013_wood_2, 2, 29, punched/cut, 6.679
-2013, wood, 2013_wood_3, 3, 18, punched/cut, 7.383
-2013, kvichak, 2013_kvichak_2, 2, 28, punched/cut, 9.411
-2013, kvichak, 2013_kvichak_3, 3, 30, punched/cut, 15.092
-2013, egegik, 2013_egegik_2, 2, 27, punched/cut, 10.030
-2013, egegik, 2013_egegik_3, 3, 30, punched/cut, 15.410
-2010, wood, 2010_wood_2, 2, 30, punched/cut, 9.175
-2010, wood, 2010_wood_3, 3, 11, N/A, N/A
-2010, kvichak, 2010_kvichak_2, 2, 31, punched/cut, 10.451
-2010, kvichak, 2010_kvichak_3, 3, 7, N/A, N/A
-2010, egegik, 2010_egegik_2, 2, 28, punched/cut, 8.495
-2010, egegik, 2010_egegik_3, 3, 18, punched/cut, 7.689
-2007, wood, 2007_wood_2, 2, 30, punched/cut, 9.709
-2007, wood, 2007_wood_3, 3, 11, N/A, N/A
-2007, kvichak, 2007_kvichak_2, 2, 30, punched/cut, 9.772
-2007, kvichak, 2007_kvichak_3, 3, 21, punched/cut, 10.796
-2007, egegik, 2007_egegik_2, 2, 30, punched/cut, N/A
-2007, egegik, 2007_egegik_3, 3, 20, punched/cut, N/A
-2004, wood, 2004_wood_2, 2, 28, punched/cut, N/A
-2004, wood, 2004_wood_3, 3, 22, punched/cut, N/A
-2004, kvichak, 2004_kvichak_2, 2, 30, punched/cut, N/A
-2004, kvichak, 2004_kvichak_3, 3, 18, punched/cut, N/A
-2004, egegik, 2004_egegik_2, 2, 30, punched/cut, N/A
-2004, egegik, 2004_egegik_3, 3, 24, punched/cut, N/A
-2001, wood, 2001_wood_2, 2, 22, punched/cut, N/A
-2001, wood, 2001_wood_3, 3, 30, punched/cut, N/A
-2001, kvichak, 2001_kvichak_2, 2, 30, punched/cut, N/A
-2001, kvichak, 2001_kvichak_3, 3, 31, punched/cut, N/A
-2001, egegik, 2001_egegik_2, 2, 30, punched/cut, N/A
-2001, egegik, 2001_egegik_3, 3, 30, punched, N/A
-1998, wood, 1998_wood_2, 2, 26, punched, N/A
-1998, wood, 1998_wood_3, 3, 8, N/A, N/A
-1998, kvichak, 1998_kvichak_2, 2, 30, punched, N/A
-1998, kvichak, 1998_kvichak_3, 3, 6, N/A, N/A
-1998, egegik, 1998_egegik_2, 2, 30, punched, N/A
-1998, egegik, 1998_egegik_3, 3, 17, punched, N/A
-1995, wood, 1995_wood_2, 2, 29, punched, N/A
-1995, wood, 1995_wood_3, 3, 15, punched, N/A
-1995, kvichak, 1995_kvichak_2, 2, 22, punched, N/A
-1995, kvichak, 1995_kvichak_3, 3, 9, N/A, N/A
-1995, egegik, 1995_egegik_2, 2, 30, punched, N/A
-1995, egegik, 1995_egegik_3, 3, 14, punched, N/A
-1992, wood, 1992_wood_2, 2, 30, punched, N/A
-1992, wood, 1992_wood_3, 3, 15, punched, N/A
-1992, egegik, 1992_egegik_2, 2, 30, punched, N/A
-1992, egegik, 1992_egegik_3, 3, 9, N/A, N/A
-1993, kvichak, 1993_kvichak_2, 2, 30, punched, N/A
-1993, kvichak, 1993_kvichak_3, 3, 4, N/A, N/A
-1989, wood, 1989_wood_2, 2, 29, punched, N/A
-1989, wood, 1989_wood_3, 3, 16, punched, N/A
-1989, kvichak, 1989_kvichak_2, 2, 30, punched, N/A
-1989, kvichak, 1989_kvichak_3, 3, 10, N/A, N/A
-1989, egegik, 1989_egegik_2, 2, 30, punched, N/A
-1989, egegik, 1989_egegik_3, 3, 24, punched, N/A
-1986, wood, 1986_wood_2, 2, 30, punched, N/A
-1986, wood, 1986_wood_3, 3, 18, punched, N/A
-1986, egegik, 1986_egegik_2, 2, 30 , punched, N/A
-1986, egegik, 1986_egegik_3, 3, 5, N/A, N/A
-1984, wood, 1984_wood_2, 2, 19, punched, N/A
-1984, wood, 1984_wood_3, 3, 16, punched, N/A
-1983, kvichak, 1983_kvichak_2, 2, 30, punched, N/A
-1983, kvichak, 1983_kvichak_3, 3, 3, N/A, N/A
-1980, wood, 1980_wood_2, 2, 22, punched, N/A
-1980, wood, 1980_wood_3, 3, 12, N/A, N/A
-1980, kvichak, 1980_kvichak_2, 2, 30, punched, N/A
-1980, kvichak, 1980_kvichak_3, 3, 8, N/A, N/A
-1980, egegik, 1980_egegik_2, 2, 30, punched, N/A
-1980, egegik, 1980_egegik_3, 3, 5, N/A, N/A
-1977, wood, 1977_wood_2, 2, 31, punched, N/A
-1977, wood, 1977_wood_3, 3, 23, punched, N/A
-1977, kvichak, 1977_kvichak_2, 2, 30, punched, N/A
-1977, kvichak, 1977_kvichak_3, 3, 5, N/A, N/A
-1977, egegik, 1977_egegik_2, 2, 30, punched, N/A
-1977, egegik, 1977_egegik_3, 3, 17, punched, N/A
-1974, wood, 1974_wood_2, 2, 30, punched, N/A
-1974, wood, 1974_wood_3, 3, 11, N/A, N/A
-1974, kvichak, 1974_kvichak_2, 2, 31, punched, N/A
-1974, kvichak, 1974_kvichak_3, 3, 3, N/A, N/A
-1974, egegik, 1974_egegik_2, 2, 30, punched, N/A
-1974, egegik, 1974_egegik_3, 3, 9, N/A, N/A
-1971, wood, 1971_wood_2, 2, 30, punched, N/A
-1971, wood, 1971_wood_3, 3, 22, punched, N/A
-1971, kvichak, 1971_kvichak_2, 2, 30, punched, N/A
-1971, kvichak, 1971_kvichak_3, 3, 13, punched, N/A
-1971, egegik, 1971_egegik_2, 2, 29, punched, N/A
-1971, egegik, 1971_egegik_3, 3, 19, punched, N/A
-1968, wood, 1968_wood_2, 2, 32, punched, N/A
-1968, wood, 1968_wood_3, 3, 22, punched, N/A
-1968, kvichak, 1968_kvichak_2, 2, 30, punched, N/A
-1968, kvichak, 1968_kvichak_3, 3, 6, N/A, N/A
-1967, egegik, 1967_egegik_2, 2, 30, punched, N/A
-1967, egegik, 1967_egegik_3, 3, 23, punched, N/A
-1965, wood, 1965_wood_2, 2, 40, punched, N/A
-1965, wood, 1965_wood_3, 3, 8, N/A, N/A
-1965, kvichak, 1965_kvichak_2, 2, 35, punched, N/A
-1965, kvichak, 1965_kvichak_3, 3, 2, N/A, N/A
-1965, egegik, 1965_egegik_2, 2, 35, punched, N/A
-1965, egegik, 1965_egegik_3, 3, 4, N/A, N/A
+year, district, sample_ID, age_class, scale_num, status, weight (mg), volume
+2022, wood, 2022_wood_2, 2, 30, processing, 6.304, NA
+2022, wood, 2022_wood_3, 3, 24, processing, 10.699, NA
+2022, kvichak, 2022_kvichak_2, 2, 29, processing, 5.841, NA
+2022, kvichak, 2022_kvichak_3, 3, 15, processing, 8.590, NA
+2022, egegik, 2022_egegik_2, 2, 30, processing, 8.897, NA
+2022, egegik, 2022_egegik_3, 3, 15, processing, 4.742, NA
+2019, wood, 2019_wood_2, 2, 30, punched/cut, 4.259, NA
+2019, wood, 2019_wood_3, 3, 2, N/A, N/A, NA
+2019, kvichak, 2019_kvichak_2, 2, 30, punched/cut, 6.236, NA
+2019, kvichak, 2019_kvichak_3, 3, 15, punched/cut, 7.726, NA
+2019, egegik, 2019_egegik_2, 2, 30, punched/cut, 7.061, NA
+2019, egegik, 2019_egegik_3, 2, 3, N/A, N/A, NA
+2016, wood, 2016_wood_2, 2, 30, punched/cut, 8.801, NA
+2016, wood, 2016_wood_3, 3, 18, punched/cut, 7.954, NA
+2016, kvichak, 2016_kvichak_2, 2, 29, punched/cut, 8.614, NA
+2016, kvichak, 2016_kvichak_3, 3, 10, N/A, N/A, NA
+2016, egegik, 2016_egegik_2, 2, 31, punched/cut, 8.928, NA
+2016, egegik, 2016_egegik_3, 3, 7, N/A, N/A, NA
+2013, wood, 2013_wood_2, 2, 29, punched/cut, 6.679, NA
+2013, wood, 2013_wood_3, 3, 18, punched/cut, 7.383, NA
+2013, kvichak, 2013_kvichak_2, 2, 28, punched/cut, 9.411, NA
+2013, kvichak, 2013_kvichak_3, 3, 30, punched/cut, 15.092, NA
+2013, egegik, 2013_egegik_2, 2, 27, punched/cut, 10.030, NA
+2013, egegik, 2013_egegik_3, 3, 30, punched/cut, 15.410, NA
+2010, wood, 2010_wood_2, 2, 30, punched/cut, 9.175, NA
+2010, wood, 2010_wood_3, 3, 11, N/A, N/A, NA
+2010, kvichak, 2010_kvichak_2, 2, 31, punched/cut, 10.451, NA
+2010, kvichak, 2010_kvichak_3, 3, 7, N/A, N/A, NA
+2010, egegik, 2010_egegik_2, 2, 28, punched/cut, 8.495, NA
+2010, egegik, 2010_egegik_3, 3, 18, punched/cut, 7.689, NA
+2007, wood, 2007_wood_2, 2, 30, punched/cut, 9.709, NA
+2007, wood, 2007_wood_3, 3, 11, N/A, N/A, NA
+2007, kvichak, 2007_kvichak_2, 2, 30, punched/cut, 9.772, NA
+2007, kvichak, 2007_kvichak_3, 3, 21, punched/cut, 10.796, NA
+2007, egegik, 2007_egegik_2, 2, 30, punched/cut, N/A, NA
+2007, egegik, 2007_egegik_3, 3, 20, punched/cut, N/A, NA
+2004, wood, 2004_wood_2, 2, 28, punched/cut, N/A, NA
+2004, wood, 2004_wood_3, 3, 22, punched/cut, N/A, NA
+2004, kvichak, 2004_kvichak_2, 2, 30, punched/cut, N/A, NA
+2004, kvichak, 2004_kvichak_3, 3, 18, punched/cut, N/A, NA
+2004, egegik, 2004_egegik_2, 2, 30, punched/cut, N/A, NA
+2004, egegik, 2004_egegik_3, 3, 24, punched/cut, N/A, NA
+2001, wood, 2001_wood_2, 2, 22, punched/cut, N/A, NA
+2001, wood, 2001_wood_3, 3, 30, punched/cut, N/A, NA
+2001, kvichak, 2001_kvichak_2, 2, 30, punched/cut, N/A, NA
+2001, kvichak, 2001_kvichak_3, 3, 31, punched/cut, N/A, NA
+2001, egegik, 2001_egegik_2, 2, 30, punched/cut, N/A, NA
+2001, egegik, 2001_egegik_3, 3, 30, punched, N/A, NA
+1998, wood, 1998_wood_2, 2, 26, punched, N/A, NA
+1998, wood, 1998_wood_3, 3, 8, N/A, N/A, NA
+1998, kvichak, 1998_kvichak_2, 2, 30, punched, N/A, NA
+1998, kvichak, 1998_kvichak_3, 3, 6, N/A, N/A, NA
+1998, egegik, 1998_egegik_2, 2, 30, punched, N/A, NA
+1998, egegik, 1998_egegik_3, 3, 17, punched, N/A, NA
+1995, wood, 1995_wood_2, 2, 29, punched, N/A, NA
+1995, wood, 1995_wood_3, 3, 15, punched, N/A, NA
+1995, kvichak, 1995_kvichak_2, 2, 22, punched, N/A, NA
+1995, kvichak, 1995_kvichak_3, 3, 9, N/A, N/A, NA
+1995, egegik, 1995_egegik_2, 2, 30, punched, N/A, NA
+1995, egegik, 1995_egegik_3, 3, 14, punched, N/A, NA
+1992, wood, 1992_wood_2, 2, 30, punched, N/A, NA
+1992, wood, 1992_wood_3, 3, 15, punched, N/A, NA
+1992, egegik, 1992_egegik_2, 2, 30, punched, N/A, NA
+1992, egegik, 1992_egegik_3, 3, 9, N/A, N/A, NA
+1993, kvichak, 1993_kvichak_2, 2, 30, punched, N/A, NA
+1993, kvichak, 1993_kvichak_3, 3, 4, N/A, N/A, NA
+1989, wood, 1989_wood_2, 2, 29, punched, N/A, NA
+1989, wood, 1989_wood_3, 3, 16, punched, N/A, NA
+1989, kvichak, 1989_kvichak_2, 2, 30, punched, N/A, NA
+1989, kvichak, 1989_kvichak_3, 3, 10, N/A, N/A, NA
+1989, egegik, 1989_egegik_2, 2, 30, punched, N/A, NA
+1989, egegik, 1989_egegik_3, 3, 24, punched, N/A, NA
+1986, wood, 1986_wood_2, 2, 30, punched, N/A, NA
+1986, wood, 1986_wood_3, 3, 18, punched, N/A, NA
+1986, egegik, 1986_egegik_2, 2, 30 , punched, N/A, NA
+1986, egegik, 1986_egegik_3, 3, 5, N/A, N/A, NA
+1984, wood, 1984_wood_2, 2, 19, punched, N/A, NA
+1984, wood, 1984_wood_3, 3, 16, punched, N/A, NA
+1983, kvichak, 1983_kvichak_2, 2, 30, punched, N/A, NA
+1983, kvichak, 1983_kvichak_3, 3, 3, N/A, N/A, NA
+1980, wood, 1980_wood_2, 2, 22, punched, N/A, NA
+1980, wood, 1980_wood_3, 3, 12, N/A, N/A, NA
+1980, kvichak, 1980_kvichak_2, 2, 30, punched, N/A, NA
+1980, kvichak, 1980_kvichak_3, 3, 8, N/A, N/A, NA
+1980, egegik, 1980_egegik_2, 2, 30, punched, N/A, NA
+1980, egegik, 1980_egegik_3, 3, 5, N/A, N/A, NA
+1977, wood, 1977_wood_2, 2, 31, punched, N/A, NA
+1977, wood, 1977_wood_3, 3, 23, punched, N/A, NA
+1977, kvichak, 1977_kvichak_2, 2, 30, punched, N/A, NA
+1977, kvichak, 1977_kvichak_3, 3, 5, N/A, N/A, NA
+1977, egegik, 1977_egegik_2, 2, 30, punched, N/A, NA
+1977, egegik, 1977_egegik_3, 3, 17, punched, N/A, NA
+1974, wood, 1974_wood_2, 2, 30, punched, N/A, NA
+1974, wood, 1974_wood_3, 3, 11, N/A, N/A, NA
+1974, kvichak, 1974_kvichak_2, 2, 31, punched, N/A, NA
+1974, kvichak, 1974_kvichak_3, 3, 3, N/A, N/A, NA
+1974, egegik, 1974_egegik_2, 2, 30, punched, N/A, NA
+1974, egegik, 1974_egegik_3, 3, 9, N/A, N/A, NA
+1971, wood, 1971_wood_2, 2, 30, punched, N/A, NA
+1971, wood, 1971_wood_3, 3, 22, punched, N/A, NA
+1971, kvichak, 1971_kvichak_2, 2, 30, punched, N/A, NA
+1971, kvichak, 1971_kvichak_3, 3, 13, punched, N/A, NA
+1971, egegik, 1971_egegik_2, 2, 29, punched, N/A, NA
+1971, egegik, 1971_egegik_3, 3, 19, punched, N/A, NA
+1968, wood, 1968_wood_2, 2, 32, punched, N/A, NA
+1968, wood, 1968_wood_3, 3, 22, punched, N/A, NA
+1968, kvichak, 1968_kvichak_2, 2, 30, punched, N/A, NA
+1968, kvichak, 1968_kvichak_3, 3, 6, N/A, N/A, NA
+1967, egegik, 1967_egegik_2, 2, 30, punched, N/A, NA
+1967, egegik, 1967_egegik_3, 3, 23, punched, N/A, NA
+1965, wood, 1965_wood_2, 2, 40, punched, N/A, NA
+1965, wood, 1965_wood_3, 3, 8, N/A, N/A, NA
+1965, kvichak, 1965_kvichak_2, 2, 35, punched, N/A, NA
+1965, kvichak, 1965_kvichak_3, 3, 2, N/A, N/A, NA
+1965, egegik, 1965_egegik_2, 2, 35, punched, N/A, NA
+1965, egegik, 1965_egegik_3, 3, 4, N/A, N/A, NA
