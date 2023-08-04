@@ -22,5 +22,6 @@ Doing isopropanol esterfication on the six samples and will blow down and leave 
 Doing the derivitization by acylation today of the six samples. 
 Gordon told me today that the icing of the samples is super important because the gas escapes from the samples and then we don't get peaks. 
 I'm a little worried that will happen with these but nothing ever exploded like last time. 
+Some of the samples might be a little bit burned but I will reevaluate how everything is looking after redissolving. 
 
 Remixed more 3-2 hexanes-DCM. 
