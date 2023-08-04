@@ -25,3 +25,5 @@ I'm a little worried that will happen with these but nothing ever exploded like 
 Some of the samples might be a little bit burned but I will reevaluate how everything is looking after redissolving. 
 
 Remixed more 3-2 hexanes-DCM. 
+
+Did liquid-liquid extraction on the 6 samples and moved them into GC vials. 
