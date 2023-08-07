@@ -33,7 +33,10 @@ Did liquid-liquid extraction on the 6 samples and moved them into GC vials.
 ## 2023-08-07
 The run on Friday looked good so I'm proceeding with prepping more samples and these ones I will save to run until we have the columns on the GC changed. 
 Prepping 8 samples. 
-Doing acid hydrolysis, column purification/filtration and defatting on these first 8.
+Doing acid hydrolysis and column purification/filtration on these first 8.
+Don't have time to de-fat, but I am leaving these eight in the white vial rack in the hood. 
 
 Starting a second set of 8 and today I will do acid hydrolysis and pause after evaporation and finish tomorrow. 
+I am removing these from heat after evaporation and leaving them in the hood. 
+These are the samples NOT in the rack.
 
