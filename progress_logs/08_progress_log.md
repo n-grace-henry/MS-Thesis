@@ -33,4 +33,7 @@ Did liquid-liquid extraction on the 6 samples and moved them into GC vials.
 ## 2023-08-07
 The run on Friday looked good so I'm proceeding with prepping more samples and these ones I will save to run until we have the columns on the GC changed. 
 Prepping 8 samples. 
-Doing acid hydrolysis and column purification/filtration. 
+Doing acid hydrolysis, column purification/filtration and defatting on these first 8.
+
+Starting a second set of 8 and today I will do acid hydrolysis and pause after evaporation and finish tomorrow. 
+
