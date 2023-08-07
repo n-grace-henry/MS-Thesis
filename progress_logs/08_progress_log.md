@@ -29,3 +29,8 @@ The volume of ethyl acetate used is recorded on the main sample csv.
 Remixed more 3-2 hexanes-DCM. 
 
 Did liquid-liquid extraction on the 6 samples and moved them into GC vials. 
+
+## 2023-08-07
+The run on Friday looked good so I'm proceeding with prepping more samples and these ones I will save to run until we have the columns on the GC changed. 
+Prepping 8 samples. 
+Doing acid hydrolysis and column purification/filtration. 
