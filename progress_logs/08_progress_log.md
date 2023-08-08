@@ -42,9 +42,11 @@ These are the samples NOT in the rack.
 
 ## 2023-08-08
 I de-fatted the first group of eight samples from yesterday and am blowing them down overnight.
+These samples are under the long N2 blow down set up. 
 During the shaking one of the samples dropped and broke so I will be using the other half of the scales to redo this one.
 This was sample ID 16-E-2. 
 
 The second group of eight samples I did column purification/filtration and am blowing them down.
 I am not de-fatting these today because only one group of eight can blow down overnight so it will be better to store them at this stage and finish tomorrow. 
+The samples ready for de-fatting are in the white vial rack under the fume hood. 
 
