@@ -1,15 +1,15 @@
-AA, d15N, type
-aspartic acid, -9.93, trophic
-glutamic acid, -3.34, trophic
-glycine, 3.17, source
-threonine, -1.46, source
-norleucine, 14.93, trophic
-serine, 1.41, source
-valine, 0.36, trophic
-methionine, -1.58, trophic
-proline, -6.912, trophic
-alanine, -1.21, trophic
-leucine, 0.35, trophic
-tyrosine, 3.29, source
-isoleucine, -2.34, trophic
-phenylalanine, 2.19, source
+AA, d15N, type, ~peak RT, peak number in 5AA
+aspartic acid, -9.93, trophic, N/A, N/A
+glutamic acid, -3.34, trophic, 1577-1586, 7
+glycine, 3.17, source, N/A, N/A
+threonine, -1.46, source, N/A, N/A
+norleucine, 14.93, trophic, 1557-1562, 6
+serine, 1.41, source, N/A, N/A
+valine, 0.36, trophic, 1416-1440, 5
+methionine, -1.58, trophic, N/A, N/A
+proline, -6.912, trophic, N/A, N/A
+alanine, -1.21, trophic, 1286-1302, 4
+leucine, 0.35, trophic, N/A, N/A
+tyrosine, 3.29, source, N/A, N/A
+isoleucine, -2.34, trophic, N/A, N/A
+phenylalanine, 2.19, source, ?, ? 
