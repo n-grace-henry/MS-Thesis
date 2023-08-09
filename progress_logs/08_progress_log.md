@@ -56,3 +56,5 @@ I am going to do esterfication and derivitization on these today and blow down N
 
 The second set of eight I will de-fat and leave to blow down overnight. 
 
+I am also packing phenylalanine for BULK analysis on the EA so that I can figure out the true delta value because the numbers in the 5AA standard were a little strange. 
+
