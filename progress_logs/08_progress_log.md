@@ -50,3 +50,9 @@ The second group of eight samples I did column purification/filtration and am bl
 I am not de-fatting these today because only one group of eight can blow down overnight so it will be better to store them at this stage and finish tomorrow. 
 The samples ready for de-fatting are in the white vial rack under the fume hood. 
 
+## 2023-08-09
+The first set of now seven samples look good after blowing down overnight. 
+I am going to do esterfication and derivitization on these today and blow down NOT overnight. 
+
+The second set of eight I will de-fat and leave to blow down overnight. 
+
