@@ -52,7 +52,7 @@ The samples ready for de-fatting are in the white vial rack under the fume hood.
 
 ## 2023-08-09
 The first set of now seven samples look good after blowing down overnight. 
-I am going to do esterfication and derivitization on these today and blow down NOT overnight. 
+I did esterfication and blow down of these today and they are in the fume hood NOT in a rack.  
 
 The second set of eight I will de-fat and leave to blow down overnight. 
 
