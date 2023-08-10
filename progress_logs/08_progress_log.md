@@ -62,4 +62,3 @@ I am also packing phenylalanine for BULK analysis on the EA so that I can figure
 After blowing down overnight not every sample (10-K-2 is not)is fully evaporated but most of them are. I am sticking these in the freezer for now.
 Will do the next steps on these on another day. 
 
-Will derivitize the first set that I esterfied yesterday. 
