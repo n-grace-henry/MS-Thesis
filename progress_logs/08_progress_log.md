@@ -58,3 +58,8 @@ The second set of eight I will de-fat and leave to blow down overnight.
 
 I am also packing phenylalanine for BULK analysis on the EA so that I can figure out the true delta value because the numbers in the 5AA standard were a little strange. 
 
+## 2023-08-10
+After blowing down overnight not every sample (10-K-2 is not)is fully evaporated but most of them are. I am sticking these in the freezer for now.
+Will do the next steps on these on another day. 
+
+Will derivitize the first set that I esterfied yesterday. 
