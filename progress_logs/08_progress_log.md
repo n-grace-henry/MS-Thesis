@@ -62,3 +62,12 @@ I am also packing phenylalanine for BULK analysis on the EA so that I can figure
 After blowing down overnight not every sample (10-K-2 is not)is fully evaporated but most of them are. I am sticking these in the freezer for now.
 Will do the next steps on these on another day. 
 
+## 2023-08-11
+Today I finished up the first set of 7 samples. 
+The volume of ethyl acetate that I used in each is on the main sample spreadsheet. 
+I am putting them in a row of box 2.
+
+I am doing acid hydrolysis on another set of samples and will blow these down and most likely filter today.
+
+The second set of 8 I will esterfy and blow down today. 
+
