@@ -67,7 +67,9 @@ Today I finished up the first set of 7 samples.
 The volume of ethyl acetate that I used in each is on the main sample spreadsheet. 
 I am putting them in a row of box 2.
 
-I am doing acid hydrolysis on another set of samples and will blow these down and most likely filter today.
+I am doing acid hydrolysis on another set of samples and will blow these down and filter today.
+After column purification, these samples will be left in the fume hood NOT in the rack. 
 
 The second set of 8 I will esterfy and blow down today. 
+These will be left in the vial rack in the fume hood. 
 
