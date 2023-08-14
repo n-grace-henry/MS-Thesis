@@ -76,3 +76,7 @@ After esterification. These were given 15 minutes in the freezer to cool down be
 
 ## 2023-08-14
 I will derivitize the 8 samples that I finished esterfication with on Friday. 
+
+Did defatting on the other samples and leaving them overnight under N2 to blow down. 
+
+Starting acid hydrolysis with a new set of samples, will try doing 9 this time. 
