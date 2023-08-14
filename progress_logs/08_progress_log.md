@@ -74,3 +74,5 @@ The second set of 8 I will esterfy and blow down today.
 These will be left in the vial rack in the fume hood. 
 After esterification. These were given 15 minutes in the freezer to cool down before being opened and put under N2.
 
+## 2023-08-14
+I will derivitize the 8 samples that I finished esterfication with on Friday. 
