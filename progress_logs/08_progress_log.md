@@ -83,5 +83,5 @@ Doing liquid-liquid on these so these are all finished as of today.
 Did defatting on the other samples and leaving them overnight under N2 to blow down. 
 
 Starting acid hydrolysis with a new set of samples, will try doing 9 this time. These samples are updated on the main csv and labeled "acid hydrolysis".
-
+Blowing these down and then capping. 
 
