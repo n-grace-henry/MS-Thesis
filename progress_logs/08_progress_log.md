@@ -79,4 +79,6 @@ I will derivitize the 8 samples that I finished esterfication with on Friday.
 
 Did defatting on the other samples and leaving them overnight under N2 to blow down. 
 
-Starting acid hydrolysis with a new set of samples, will try doing 9 this time. 
+Starting acid hydrolysis with a new set of samples, will try doing 9 this time. These samples are updated on the main csv and labeled "acid hydrolysis".
+
+
