@@ -78,6 +78,7 @@ After esterification. These were given 15 minutes in the freezer to cool down be
 I will derivitize the 8 samples that I finished esterfication with on Friday. 
 After derivitization these all look kind of burnt. 
 These are samples 13-W-2 through 10-K-2.
+Doing liquid-liquid on these so these are all finished as of today. 
 
 Did defatting on the other samples and leaving them overnight under N2 to blow down. 
 
