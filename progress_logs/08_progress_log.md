@@ -90,3 +90,4 @@ The samples that were blown down overnight are looking really good.
 I will be doing esterfication of these today and blowing them down after, then they will be left under the fume hood, NOT in the rack. 
 
 The 9 samples I am doing column purification and filtration today and then blowing them down. 
+I am leaving these samples in the rack. 
