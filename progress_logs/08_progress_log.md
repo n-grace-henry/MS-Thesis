@@ -85,3 +85,8 @@ Did defatting on the other samples and leaving them overnight under N2 to blow d
 Starting acid hydrolysis with a new set of samples, will try doing 9 this time. These samples are updated on the main csv and labeled "acid hydrolysis".
 Blowing these down and then capping. 
 
+## 2023-08-15
+The samples that were blown down overnight are looking really good.
+I will be doing esterfication of these today and blowing them down after, then they will be left under the fume hood, NOT in the rack. 
+
+The 9 samples I am doing column purification and filtration today and then blowing them down. 
