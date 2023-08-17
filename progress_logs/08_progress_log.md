@@ -91,3 +91,9 @@ I will be doing esterfication of these today and blowing them down after, then t
 
 The 9 samples I am doing column purification and filtration today and then blowing them down. 
 I am leaving these samples in the rack. 
+
+## 2023-08-17
+Did defatting of the 9 samples and have them under N2 where I will leave them overnight. 
+
+I moved the 8 samples that are ready for derivitization into the rack in the hood. 
+Did not end up dericitizing today. 
