@@ -97,3 +97,6 @@ Did defatting of the 9 samples and have them under N2 where I will leave them ov
 
 I moved the 8 samples that are ready for derivitization into the rack in the hood. 
 Did not end up dericitizing today. 
+
+## 2023-08-18
+Changed the reaction column on the GC and started the long pre-oxidation cycle. 
