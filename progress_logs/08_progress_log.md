@@ -100,3 +100,10 @@ Did not end up dericitizing today.
 
 ## 2023-08-18
 Changed the reaction column on the GC and started the long pre-oxidation cycle. 
+
+Took the 9 samples out from under N2 and capped them. 
+
+## 2023-08-21
+Starting an oxidation cycle to test run the new GC column tomorrow. 
+
+Doing derivitization of the 8 samples in the rack.
