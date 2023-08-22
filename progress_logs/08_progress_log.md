@@ -117,3 +117,5 @@ I will not be doing this today. This just serves as a note for when I do.
 Esterfying the 9 samples today and blowing them down under N2 with heat then capping and storing overnight. 
 
 Doing liquid-liquid and finalizing the 8 samples today.
+
+Blowing down the 1st 5AA standard and raising in 200 uL ethyl acetate instead of 100 uL.
