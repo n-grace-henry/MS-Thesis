@@ -112,4 +112,5 @@ Doing derivitization of the 8 samples in the rack.
 I'm gonna rerun the 6 samples that I already ran with some different concentrations.
 22-W-3 should be raised in 50 uL.
 22-K-3 should be raised in 50 uL. 
+I will not be doing this today. This just serves as a note for when I do. 
 
