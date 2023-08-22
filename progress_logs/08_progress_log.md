@@ -107,3 +107,9 @@ Took the 9 samples out from under N2 and capped them.
 Starting an oxidation cycle to test run the new GC column tomorrow. 
 
 Doing derivitization of the 8 samples in the rack.
+
+## 2023-08-22
+I'm gonna rerun the 6 samples that I already ran with some different concentrations.
+22-W-3 should be raised in 50 uL.
+22-K-3 should be raised in 50 uL. 
+
