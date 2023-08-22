@@ -114,3 +114,6 @@ I'm gonna rerun the 6 samples that I already ran with some different concentrati
 22-K-3 should be raised in 50 uL. 
 I will not be doing this today. This just serves as a note for when I do. 
 
+Esterfying the 9 samples today and blowing them down under N2 with heat then capping and storing overnight. 
+
+Doing liquid-liquid and finalizing the 8 samples today.
