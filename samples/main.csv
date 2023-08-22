@@ -15,7 +15,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2016, wood, 2016_wood_3, 3, 18, ready for run, 7.954, 50, NA
 2016, kvichak, 2016_kvichak_2, 2, 29, ready for run, 8.614, 100, NA
 2016, kvichak, 2016_kvichak_3, 3, 10, N/A, N/A, NA, NA
-2016, egegik, 2016_egegik_2, 2, 31, redoing, 7.882, NA, NA
+2016, egegik, 2016_egegik_2, 2, 31, ready for run, 7.882, 50, NA
 2016, egegik, 2016_egegik_3, 3, 7, N/A, N/A, NA, NA
 2013, wood, 2013_wood_2, 2, 29, ready for run, 6.679, 50, NA
 2013, wood, 2013_wood_3, 3, 18, ready for run, 7.383, 50, NA
@@ -27,14 +27,14 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2010, wood, 2010_wood_3, 3, 11, N/A, N/A, NA, NA
 2010, kvichak, 2010_kvichak_2, 2, 31, ready for run, 10.451, 100, NA
 2010, kvichak, 2010_kvichak_3, 3, 7, N/A, N/A, NA, NA
-2010, egegik, 2010_egegik_2, 2, 28, esterfied, 8.495, NA, NA
-2010, egegik, 2010_egegik_3, 3, 18, esterfied, 7.689, NA, NA
-2007, wood, 2007_wood_2, 2, 30, esterfied, 9.709, NA, NA
+2010, egegik, 2010_egegik_2, 2, 28, ready for run, 8.495, 50, NA
+2010, egegik, 2010_egegik_3, 3, 18, ready for run, 7.689, 50, NA
+2007, wood, 2007_wood_2, 2, 30, ready to run, 9.709, 50, NA
 2007, wood, 2007_wood_3, 3, 11, N/A, N/A, NA, NA
-2007, kvichak, 2007_kvichak_2, 2, 30, esterfied, 9.772, NA, NA
-2007, kvichak, 2007_kvichak_3, 3, 21, esterfied, 10.796, NA, NA
-2007, egegik, 2007_egegik_2, 2, 30, esterfied, 10.246, NA, NA
-2007, egegik, 2007_egegik_3, 3, 20, esterfied, 10.234, NA, NA
+2007, kvichak, 2007_kvichak_2, 2, 30, ready to run, 9.772, 50, NA
+2007, kvichak, 2007_kvichak_3, 3, 21, ready for run, 10.796, 100, NA
+2007, egegik, 2007_egegik_2, 2, 30, ready to run, 10.246, 100, NA
+2007, egegik, 2007_egegik_3, 3, 20, ready to run, 10.234, 100, NA
 2004, wood, 2004_wood_2, 2, 28, filtered, 9.180, NA, NA
 2004, wood, 2004_wood_3, 3, 22, filtered, 8.563, NA, NA
 2004, kvichak, 2004_kvichak_2, 2, 30, filtered, 9.909, NA, NA
