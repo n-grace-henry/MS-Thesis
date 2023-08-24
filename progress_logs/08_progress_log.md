@@ -119,3 +119,8 @@ Esterfying the 9 samples today and blowing them down under N2 with heat then cap
 Doing liquid-liquid and finalizing the 8 samples today.
 
 Blowing down the 1st 5AA standard and raising in 200 uL ethyl acetate instead of 100 uL.
+
+## 2023-08-24
+Doing derivitization on the 9 samples. 
+
+Checking out the test run of the one 200 uL standard that I started on Tuesday with the new column. 
