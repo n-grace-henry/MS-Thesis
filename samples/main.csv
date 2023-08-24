@@ -1,11 +1,11 @@
 year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, run date
 2022, wood, 2022_wood_2, 2, 30, run, 6.304, 50, 08/04
-2022, wood, 2022_wood_2_R, 2, 30, prepping, 6.558, N/A, N/A
+2022, wood, 2022_wood_2_R, 2, 30, acid hydrolysis, 6.558, N/A, N/A
 2022, wood, 2022_wood_3, 3, 24, run, 10.699, 100, 08/04
 2022, kvichak, 2022_kvichak_2, 2, 29, run, 5.841, 50, 08/04
 2022, kvichak, 2022_kvichak_3, 3, 15, run, 8.590, 100, 08/04
 2022, egegik, 2022_egegik_2, 2, 30, run, 8.897, 100, 08/04
-2022, egegik, 2022_egegik_2_R, 2, 30, prepping, 7.006, N/A, N/A
+2022, egegik, 2022_egegik_2_R, 2, 30, acid hydrolysis, 7.006, N/A, N/A
 2022, egegik, 2022_egegik_3, 3, 15, ready for run, 4.742, 50, NA
 2019, wood, 2019_wood_2, 2, 30, ready for run, 4.259, 50, NA
 2019, wood, 2019_wood_3, 3, 2, N/A, N/A, NA, NA
@@ -20,7 +20,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2016, egegik, 2016_egegik_2, 2, 31, ready for run, 7.882, 50, NA
 2016, egegik, 2016_egegik_3, 3, 7, N/A, N/A, NA, NA
 2013, wood, 2013_wood_2, 2, 29, ready for run, 6.679, 50, NA
-2013, wood, 2013_wood_2_R, 2, 29, prepping, 6.558, N/A, N/A
+2013, wood, 2013_wood_2_R, 2, 29, acid hydrolysis, 6.558, N/A, N/A
 2013, wood, 2013_wood_3, 3, 18, ready for run, 7.383, 50, NA
 2013, kvichak, 2013_kvichak_2, 2, 28, ready for run, 9.411, 100, NA
 2013, kvichak, 2013_kvichak_3, 3, 30, ready for run, 15.092, 100, NA
@@ -47,12 +47,12 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2001, wood, 2001_wood_2, 2, 22, filtered, 10.299, NA, NA
 2001, wood, 2001_wood_3, 3, 30, filtered, 14.851, NA, NA
 2001, kvichak, 2001_kvichak_2, 2, 30, filtered, 14.321, NA, NA
-2001, kvichak, 2001_kvichak_3, 3, 31, punched/cut, 17.473, NA, NA
-2001, egegik, 2001_egegik_2, 2, 30, punched/cut, 13.002, NA, NA
-2001, egegik, 2001_egegik_3, 3, 30, punched/cut, 17.582, NA, NA
-1998, wood, 1998_wood_2, 2, 26, punched/cut, 8.958, NA, NA
+2001, kvichak, 2001_kvichak_3, 3, 31, acid hydrolysis, 17.473, NA, NA
+2001, egegik, 2001_egegik_2, 2, 30, acid hydrolysis, 13.002, NA, NA
+2001, egegik, 2001_egegik_3, 3, 30, acid hydrolysis, 17.582, NA, NA
+1998, wood, 1998_wood_2, 2, 26, acid hydrolysis, 8.958, NA, NA
 1998, wood, 1998_wood_3, 3, 8, N/A, N/A, NA, NA
-1998, kvichak, 1998_kvichak_2, 2, 30, punched/cut, 11.346, NA, NA
+1998, kvichak, 1998_kvichak_2, 2, 30, acid hydrolysis, 11.346, NA, NA
 1998, kvichak, 1998_kvichak_3, 3, 6, N/A, N/A, NA, NA
 1998, egegik, 1998_egegik_2, 2, 30, punched/cut, 12.126, NA, NA
 1998, egegik, 1998_egegik_3, 3, 17, punched/cut, 8.637, NA, NA
