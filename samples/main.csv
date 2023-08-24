@@ -5,6 +5,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2022, kvichak, 2022_kvichak_2, 2, 29, run, 5.841, 50, 08/04
 2022, kvichak, 2022_kvichak_3, 3, 15, run, 8.590, 100, 08/04
 2022, egegik, 2022_egegik_2, 2, 30, run, 8.897, 100, 08/04
+2022, egegik, 2022_egegik_2_R, 2, 30, prepping, 7.006, N/A, N/A
 2022, egegik, 2022_egegik_3, 3, 15, ready for run, 4.742, 50, NA
 2019, wood, 2019_wood_2, 2, 30, ready for run, 4.259, 50, NA
 2019, wood, 2019_wood_3, 3, 2, N/A, N/A, NA, NA
@@ -19,6 +20,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2016, egegik, 2016_egegik_2, 2, 31, ready for run, 7.882, 50, NA
 2016, egegik, 2016_egegik_3, 3, 7, N/A, N/A, NA, NA
 2013, wood, 2013_wood_2, 2, 29, ready for run, 6.679, 50, NA
+2013, wood, 2013_wood_2_R, 2, 29, prepping, 6.558, N/A, N/A
 2013, wood, 2013_wood_3, 3, 18, ready for run, 7.383, 50, NA
 2013, kvichak, 2013_kvichak_2, 2, 28, ready for run, 9.411, 100, NA
 2013, kvichak, 2013_kvichak_3, 3, 30, ready for run, 15.092, 100, NA
