@@ -122,5 +122,12 @@ Blowing down the 1st 5AA standard and raising in 200 uL ethyl acetate instead of
 
 ## 2023-08-24
 Doing derivitization on the 9 samples. 
+Blowing them down under N2 with no heat.
+I will be leaving these samples in the fume hood in the vial rack and doing liquid-liquid extraction tomorrow. 
 
 Checking out the test run of the one 200 uL standard that I started on Tuesday with the new column. 
+Looks good so I am starting another run of 5 more samples and a 200 uL standard following Megan's sequence format. 
+I am doing an oxidation cycle prior to this run by checking that box on the sequence sheet. 
+
+Starting acid hydrolysis on 8 samples, including three replicates.
+The replicates that I will be running are noted in the main csv file. 
