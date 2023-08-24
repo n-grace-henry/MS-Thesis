@@ -131,3 +131,4 @@ I am doing an oxidation cycle prior to this run by checking that box on the sequ
 
 Starting acid hydrolysis on 8 samples, including three replicates.
 The replicates that I will be running are noted in the main csv file. 
+I will blow these down today and then cap and leave them in the fume hood not in a rack.
