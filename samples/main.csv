@@ -1,10 +1,10 @@
 year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, run date
 2022, wood, 2022_wood_2, 2, 30, run, 6.304, 50, 08/04
 2022, wood, 2022_wood_2_R, 2, 30, acid hydrolysis, 6.558, N/A, N/A
-2022, wood, 2022_wood_3, 3, 24, run, 10.699, 100, 08/04
+2022, wood, 2022_wood_3, 3, 24, run, 10.699, 50, 08/04
 2022, kvichak, 2022_kvichak_2, 2, 29, run, 5.841, 50, 08/04
-2022, kvichak, 2022_kvichak_3, 3, 15, run, 8.590, 100, 08/04
-2022, egegik, 2022_egegik_2, 2, 30, run, 8.897, 100, 08/04
+2022, kvichak, 2022_kvichak_3, 3, 15, run, 8.590, 50, 08/04
+2022, egegik, 2022_egegik_2, 2, 30, run, 8.897, 50, 08/04
 2022, egegik, 2022_egegik_2_R, 2, 30, acid hydrolysis, 7.006, N/A, N/A
 2022, egegik, 2022_egegik_3, 3, 15, ready for run, 4.742, 50, NA
 2019, wood, 2019_wood_2, 2, 30, ready for run, 4.259, 50, NA
