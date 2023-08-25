@@ -132,3 +132,13 @@ I am doing an oxidation cycle prior to this run by checking that box on the sequ
 Starting acid hydrolysis on 8 samples, including three replicates.
 The replicates that I will be running are noted in the main csv file. 
 I will blow these down today and then cap and leave them in the fume hood not in a rack.
+
+## 2023-08-25
+Added 0.01 N HCl to the hydrolyzed samples for 30 minutes. 
+
+Doing liquid-liquid extraction with the 9 samples and finishing them.
+
+Blowing down the first 5 samples that I ran on the GC and re-raising them all in 50 uL ethyl acetate. 
+This should fix the concentration issue. 
+
+
