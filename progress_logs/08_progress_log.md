@@ -140,5 +140,7 @@ Doing liquid-liquid extraction with the 9 samples and finishing them.
 
 Blowing down the first 5 samples that I ran on the GC and re-raising them all in 50 uL ethyl acetate. 
 This should fix the concentration issue. 
+It might be a better cut off to say that samples less than 9 mg should be raised in 50 uL. 
+Above should be raised in 100 uL. 
 
 
