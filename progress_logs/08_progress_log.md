@@ -146,4 +146,9 @@ This should fix the concentration issue.
 It might be a better cut off to say that samples less than 9 mg should be raised in 50 uL. 
 Above 9 mg should be raised in 100 uL. 
 
+## 2023-08-28
+Starting acid hydrolysis on 9 new samples. 
 
+Reraising the 5AA standards in 200 uL ethyl acetate. 
+Raising all three of them hoping that I can run a few days worth of samples without needing to reraise for a bit. 
+Gonna redo a couple samples that didn't have good phe or glu peaks. 
