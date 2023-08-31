@@ -158,3 +158,9 @@ Gonna redo a couple samples that didn't have good phe or glu peaks.
 Doing column purification and filtration with the 9 samples I hydrolyzed on Tuesday.
 Sample 98-E-3 tipped over when I was adding 1 mL of 0.01 HCl so might have lost some sample, not a ton spilled but enough that it could matter.
 I'm gonna continue prepping it anyway but if I get bad peaks this is why and it might need a redo. 
+These I am drying under N2 today and will cap and put in the vial rack in the fume hood. 
+
+I did defatting on the 8 samples that had already been column purified. 
+These will be left under N2 in the hood overnight to dry fully. 
+
+
