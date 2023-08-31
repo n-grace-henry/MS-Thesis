@@ -153,3 +153,8 @@ Blowing these down under N2, capping, and leaving these under the fume hood NOT 
 Reraising the 5AA standards in 200 uL ethyl acetate. 
 Raising all three of them hoping that I can run a few days worth of samples without needing to reraise for a bit. 
 Gonna redo a couple samples that didn't have good phe or glu peaks. 
+
+## 2023-08-31
+Doing column purification and filtration with the 9 samples I hydrolyzed on Tuesday.
+Sample 98-E-3 tipped over when I was adding 1 mL of 0.01 HCl so might have lost some sample, not a ton spilled but enough that it could matter.
+I'm gonna continue prepping it anyway but if I get bad peaks this is why and it might need a redo. 
