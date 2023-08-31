@@ -13,16 +13,16 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2019, kvichak, 2019_kvichak_3, 3, 15, run, 7.726, 50, 08/24
 2019, egegik, 2019_egegik_2, 2, 30, run, 7.061, 50, 08/24
 2019, egegik, 2019_egegik_3, 2, 3, N/A, N/A, NA, NA
-2016, wood, 2016_wood_2, 2, 30, ready for run, 8.801, 100, NA
-2016, wood, 2016_wood_3, 3, 18, ready for run, 7.954, 50, NA
-2016, kvichak, 2016_kvichak_2, 2, 29, ready for run, 8.614, 100, NA
+2016, wood, 2016_wood_2, 2, 30, run, 8.801, 100, 08/29
+2016, wood, 2016_wood_3, 3, 18, run, 7.954, 50, 08/29
+2016, kvichak, 2016_kvichak_2, 2, 29, run, 8.614, 100, 08/31
 2016, kvichak, 2016_kvichak_3, 3, 10, N/A, N/A, NA, NA
-2016, egegik, 2016_egegik_2, 2, 31, ready for run, 7.882, 50, NA
+2016, egegik, 2016_egegik_2, 2, 31, run, 7.882, 50, 08/31
 2016, egegik, 2016_egegik_3, 3, 7, N/A, N/A, NA, NA
-2013, wood, 2013_wood_2, 2, 29, ready for run, 6.679, 50, NA
+2013, wood, 2013_wood_2, 2, 29, run, 6.679, 50, 08/31
 2013, wood, 2013_wood_2_R, 2, 29, acid hydrolysis, 6.558, N/A, N/A
-2013, wood, 2013_wood_3, 3, 18, ready for run, 7.383, 50, NA
-2013, kvichak, 2013_kvichak_2, 2, 28, ready for run, 9.411, 100, NA
+2013, wood, 2013_wood_3, 3, 18, run, 7.383, 50, 08/31
+2013, kvichak, 2013_kvichak_2, 2, 28, run, 9.411, 100, 08/31
 2013, kvichak, 2013_kvichak_3, 3, 30, ready for run, 15.092, 100, NA
 2013, egegik, 2013_egegik_2, 2, 27, ready for run, 10.030, 100, NA
 2013, egegik, 2013_egegik_3, 3, 30, ready for run, 15.410, 100, NA
