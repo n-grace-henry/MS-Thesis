@@ -11,3 +11,4 @@ Learned today that all my samples in my run on friday were too small.
 This leads me to believe that I should really be raising all my samples in 50 uL ethyl acetate to start with and I can go up if necessary. 
 
 I left out the samples that I was blowing down since Friday so hopefully this didn't mess anything up. 
+These are sample 98-E-2 through 92-W-3.
