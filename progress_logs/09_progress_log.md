@@ -12,3 +12,5 @@ This leads me to believe that I should really be raising all my samples in 50 uL
 
 I left out the samples that I was blowing down since Friday so hopefully this didn't mess anything up. 
 These are sample 98-E-2 through 92-W-3.
+
+Derivitizing the samples that I esterfied on Friday and blowing these down under N2 with no heat. This includes the replicates.
