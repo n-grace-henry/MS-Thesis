@@ -41,12 +41,12 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2004, wood, 2004_wood_2, 2, 28, ready to run, 9.180, 100, NA
 2004, wood, 2004_wood_3, 3, 22, ready to run, 8.563, 50, NA
 2004, kvichak, 2004_kvichak_2, 2, 30, ready to run, 9.909, 100, NA
-2004, kvichak, 2004_kvichak_3, 3, 18, ready to run, 6.795, 50, NA
+2004, kvichak, 2004_kvichak_3, 3, 18, ready to run, 6.795, 50, 09/05
 2004, egegik, 2004_egegik_2, 2, 30, ready to run, 10.835, 100, NA
-2004, egegik, 2004_egegik_3, 3, 24, ready to run, 9.724, 100, NA
-2001, wood, 2001_wood_2, 2, 22, ready to run, 10.299, 100, NA
-2001, wood, 2001_wood_3, 3, 30, ready to run, 14.851, 100, NA
-2001, kvichak, 2001_kvichak_2, 2, 30, ready to run, 14.321, 100, NA
+2004, egegik, 2004_egegik_3, 3, 24, ready to run, 9.724, 100, 09/05
+2001, wood, 2001_wood_2, 2, 22, ready to run, 10.299, 100, 09/05
+2001, wood, 2001_wood_3, 3, 30, ready to run, 14.851, 100, 09/05
+2001, kvichak, 2001_kvichak_2, 2, 30, ready to run, 14.321, 100, 09/05
 2001, kvichak, 2001_kvichak_3, 3, 31, acid hydrolysis, 17.473, NA, NA
 2001, egegik, 2001_egegik_2, 2, 30, acid hydrolysis, 13.002, NA, NA
 2001, egegik, 2001_egegik_3, 3, 30, acid hydrolysis, 17.582, NA, NA
