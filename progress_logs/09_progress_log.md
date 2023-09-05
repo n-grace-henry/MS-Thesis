@@ -5,3 +5,9 @@ These will be left in a vial rack under the fume hood.
 
 Defatting the 9 samples that I did column purification and filtration on yesterday.
 Will be leaving these blowing down in the hood overnight. 
+
+## 2023-09-05
+Learned today that all my samples in my run on friday were too small. 
+This leads me to believe that I should really be raising all my samples in 50 uL ethyl acetate to start with and I can go up if necessary. 
+
+I left out the samples that I was blowing down 
