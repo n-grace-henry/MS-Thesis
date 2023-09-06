@@ -19,3 +19,4 @@ Derivitizing the samples that I esterfied on Friday and blowing these down under
 Doing liquid-liquid extraction and finishing up the set of 8 samples that contains the replicates. 
 
 Also doing esterfication on the 9 samples that are blown down. 
+Blowing these down under N2 and on heat and then capping. 
