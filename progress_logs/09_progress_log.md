@@ -14,3 +14,8 @@ I left out the samples that I was blowing down since Friday so hopefully this di
 These are sample 98-E-2 through 92-W-3.
 
 Derivitizing the samples that I esterfied on Friday and blowing these down under N2 with no heat. This includes the replicates.
+
+## 2023-09-06
+Doing liquid-liquid extraction and finishing up the set of 8 samples that contains the replicates. 
+
+Also doing esterfication on the 9 samples that are blown down. 
