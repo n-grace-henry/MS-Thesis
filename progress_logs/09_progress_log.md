@@ -31,3 +31,7 @@ Raising these almost all in 50 again.
 Starting acid hydrolysis on 8 new samples.
 Doing samples 93-k-2 through 86-W-2.
 Adding 20 uL norleucine.
+Blowing down with heat under N2.
+
+I blew down and reraised a batch of samples that were raised in 100 uL ethyl acetate and brought them up in 50 uL. 
+
