@@ -26,3 +26,7 @@ Doing derivitization of the 9 samples.
 Blowing down with no heat.
 Will be finishing these today so that it is done before I leave for a week and nothing is sitting half done. 
 Raising these almost all in 50 again. 
+
+## 2023-09-20
+Starting acid hydrolysis on 8 new samples.
+Doing samples 93-k-2 through 86-W-2.
