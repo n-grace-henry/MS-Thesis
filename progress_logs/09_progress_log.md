@@ -38,7 +38,9 @@ I blew down and reraised a batch of samples that were raised in 100 uL ethyl ace
 ## 2023-09-21
 Added 1 mL 0.01 HCl to the samples from yesterday and let sit for 30 minutes. 
 Doing column purification and filtration on these today. 
+Blowing them down and then I will leave them under the fume hood in the rack.
 
 Starting another batch of 6 with acid hydrolysis. 
 These are samples 86-W-3 through 80-W-2.
 One of the samples fell and shatterd, will need to be redone: 84-W-3
+When these 5 have been blown down I will leave them in the fume hood NOT in a rack. 
