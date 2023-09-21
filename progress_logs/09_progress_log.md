@@ -37,4 +37,5 @@ I blew down and reraised a batch of samples that were raised in 100 uL ethyl ace
 
 ## 2023-09-21
 Added 1 mL 0.01 HCl to the samples from yesterday and let sit for 30 minutes. 
+Doing column purification and filtration on these today. 
 
