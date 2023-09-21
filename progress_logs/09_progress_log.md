@@ -41,4 +41,4 @@ Doing column purification and filtration on these today.
 
 Starting another batch of 6 with acid hydrolysis. 
 These are samples 86-W-3 through 80-W-2.
-
+One of the samples fell and shatterd, will need to be redone: 84-W-3
