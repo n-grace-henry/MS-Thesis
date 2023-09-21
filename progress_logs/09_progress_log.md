@@ -36,5 +36,5 @@ Blowing down with heat under N2.
 I blew down and reraised a batch of samples that were raised in 100 uL ethyl acetate and brought them up in 50 uL. 
 
 ## 2023-09-21
-
+Added 1 mL 0.01 HCl to the samples from yesterday and let sit for 30 minutes. 
 
