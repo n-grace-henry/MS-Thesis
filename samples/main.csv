@@ -22,11 +22,11 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2013, wood, 2013_wood_2, 2, 29, redo, 6.679, 50, 08/31
 2013, wood, 2013_wood_2_R, 2, 29, run, 6.558, 50, 09/11
 2013, wood, 2013_wood_3, 3, 18, redo, 7.383, 50, 08/31
-2013, kvichak, 2013_kvichak_2, 2, 28, needs redo/too small, 9.411, 100, 08/31
+2013, kvichak, 2013_kvichak_2, 2, 28, needs redo/too small, 9.411, 50, 08/31
 2013, kvichak, 2013_kvichak_3, 3, 30, run, 15.092, 100, 09/01
 2013, egegik, 2013_egegik_2, 2, 27, needs redo, 10.030, 100, 09/01
 2013, egegik, 2013_egegik_3, 3, 30, needs redo, 15.410, 100, 09/01
-2010, wood, 2010_wood_2, 2, 30, needs redo, 9.175, 100, 09/01
+2010, wood, 2010_wood_2, 2, 30, needs redo, 9.175, 50, 09/01
 2010, wood, 2010_wood_3, 3, 11, N/A, N/A, NA, NA
 2010, kvichak, 2010_kvichak_2, 2, 31, run, 10.451, 50, 09/22
 2010, kvichak, 2010_kvichak_3, 3, 7, N/A, N/A, NA, NA
@@ -40,7 +40,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2007, egegik, 2007_egegik_3, 3, 20, run, 10.234, 50, 09/22
 2004, wood, 2004_wood_2, 2, 28, ready to run, 9.180, 50, NA
 2004, wood, 2004_wood_3, 3, 22, run, 8.563, 50, 09/06
-2004, kvichak, 2004_kvichak_2, 2, 30, ready to run, 9.909, 100, NA
+2004, kvichak, 2004_kvichak_2, 2, 30, ready to run, 9.909, 50, NA
 2004, kvichak, 2004_kvichak_3, 3, 18, run, 6.795, 50, 09/05
 2004, egegik, 2004_egegik_2, 2, 30, run, 10.835, 50, 09/22
 2004, egegik, 2004_egegik_3, 3, 24, run, 9.724, 100, 09/05
@@ -49,7 +49,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2001, kvichak, 2001_kvichak_2, 2, 30, run, 14.321, 100, 09/05
 2001, kvichak, 2001_kvichak_3, 3, 31, ready to run, 17.473, 100, NA
 2001, egegik, 2001_egegik_2, 2, 30, ready for run, 13.002, 50, NA
-2001, egegik, 2001_egegik_3, 3, 30, ready to run, 17.582, 100, NA
+2001, egegik, 2001_egegik_3, 3, 30, ready to run, 17.582, 50, NA
 1998, wood, 1998_wood_2, 2, 26, ready to run, 8.958, 50, NA
 1998, wood, 1998_wood_3, 3, 8, N/A, N/A, NA, NA
 1998, kvichak, 1998_kvichak_2, 2, 30, ready to run, 11.346, 50, NA
