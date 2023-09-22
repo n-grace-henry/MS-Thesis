@@ -44,3 +44,7 @@ Starting another batch of 6 with acid hydrolysis.
 These are samples 86-W-3 through 80-W-2.
 One of the samples fell and shatterd, will need to be redone: 84-W-3
 When these 5 have been blown down I will leave them in the fume hood NOT in a rack. 
+
+## 2023-09-22
+Doing filtration and column purification of the 5 samples that I hydrolysed yesterday.
+
