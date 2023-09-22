@@ -47,4 +47,6 @@ When these 5 have been blown down I will leave them in the fume hood NOT in a ra
 
 ## 2023-09-22
 Doing filtration and column purification of the 5 samples that I hydrolysed yesterday.
+Blowing these down and leaving them in the vial rack in the fume hood.
 
+Did de-fatting on the samples from yesterday and blowing down overnight in the fume hood. 
