@@ -50,3 +50,8 @@ Doing filtration and column purification of the 5 samples that I hydrolysed yest
 Blowing these down and leaving them in the vial rack in the fume hood.
 
 Did de-fatting on the samples from yesterday and blowing down overnight in the fume hood. 
+
+## 2023-09-25
+Accidently left the 8 samples blowing down under N2 for the whole weekend but last time this happened it seemed to be fine. 
+
+De-fatting and blowing down the 5 samples today. 
