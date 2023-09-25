@@ -56,3 +56,4 @@ Accidently left the 8 samples blowing down under N2 for the whole weekend but la
 Doing esterfication of these samples today and will also blow down. 
 
 De-fatting and blowing down the 5 samples today. 
+Will leave overnight. 
