@@ -1,6 +1,6 @@
 year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, run date
 2022, wood, 2022_wood_2, 2, 30, run, 6.304, 50, 08/25
-2022, wood, 2022_wood_2_R, 2, 30, run, 6.558, 50, 09/11
+2022, wood, 2022_wood_2_R, 2, 30, bad(ish) peaks, 6.558, 50, 09/11
 2022, wood, 2022_wood_3, 3, 24, run, 10.699, 50, 08/29
 2022, kvichak, 2022_kvichak_2, 2, 29, run, 5.841, 50, 08/25
 2022, kvichak, 2022_kvichak_3, 3, 15, run, 8.590, 50, 08/29
