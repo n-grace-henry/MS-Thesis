@@ -53,5 +53,6 @@ Did de-fatting on the samples from yesterday and blowing down overnight in the f
 
 ## 2023-09-25
 Accidently left the 8 samples blowing down under N2 for the whole weekend but last time this happened it seemed to be fine. 
+Doing esterfication of these samples today and will also blow down. 
 
 De-fatting and blowing down the 5 samples today. 
