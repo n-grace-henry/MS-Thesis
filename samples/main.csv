@@ -62,10 +62,10 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1998, egegik, 1998_egegik_3, 3, 17, run, 8.637, 50, 09/25
 1995, wood, 1995_wood_2, 2, 29, run, 10.152, 50, 09/25
 1995, wood, 1995_wood_3, 3, 15, run, 6.545, 50, 09/25
-1995, kvichak, 1995_kvichak_2, 2, 22, ready to run, 8.380, 50, NA
+1995, kvichak, 1995_kvichak_2, 2, 22, run, 8.380, 50, 09/26
 1995, kvichak, 1995_kvichak_3, 3, 9, N/A, N/A, NA, NA
-1995, egegik, 1995_egegik_2, 2, 30, ready to run, 11.039, 50, NA
-1995, egegik, 1995_egegik_3, 3, 14, ready to run, 7.152, 50, NA
+1995, egegik, 1995_egegik_2, 2, 30, run, 11.039, 50, 09/26
+1995, egegik, 1995_egegik_3, 3, 14, run, 7.152, 50, 09/26
 1992, wood, 1992_wood_2, 2, 30, run, 8.261, 50, 09/11
 1992, wood, 1992_wood_3, 3, 15, run, 6.229, 50, 09/11
 1992, egegik, 1992_egegik_2, 2, 30, punched/cut, 8.732, NA, NA
