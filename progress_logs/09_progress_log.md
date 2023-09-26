@@ -60,5 +60,6 @@ Will leave overnight.
 
 ## 2023-09-26
 Doing derivitization today of the 8 samples that I esterfied yesterday.
+Leaving these in the vial rack after blowing them down. 
 
-Maybe will do esterfication on the 5 samples if I have time. 
+Did esterfication on the 5 samples and blowing them down. 
