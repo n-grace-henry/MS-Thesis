@@ -57,3 +57,8 @@ Doing esterfication of these samples today and will also blow down.
 
 De-fatting and blowing down the 5 samples today. 
 Will leave overnight. 
+
+## 2023-09-26
+Doing derivitization today of the 8 samples that I esterfied yesterday.
+
+Maybe will do esterfication on the 5 samples if I have time. 
