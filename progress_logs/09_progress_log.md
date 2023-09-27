@@ -63,3 +63,8 @@ Doing derivitization today of the 8 samples that I esterfied yesterday.
 Leaving these in the vial rack after blowing them down. 
 
 Did esterfication on the 5 samples and blowing them down. 
+
+## 2023-09-27
+Doing the final steps on the 8 samples today and getting them in vials. 
+They all look slightly strange, like slightly gooey, but it's probably fine? 
+
