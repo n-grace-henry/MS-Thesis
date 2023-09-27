@@ -68,3 +68,5 @@ Did esterfication on the 5 samples and blowing them down.
 Doing the final steps on the 8 samples today and getting them in vials. 
 They all look slightly strange, like slightly gooey, but it's probably fine? 
 
+Moved the 5 samples into the vial rack. 
+
