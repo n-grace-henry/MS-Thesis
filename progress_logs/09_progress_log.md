@@ -74,4 +74,9 @@ Moved the 5 samples into the vial rack.
 Doing derivitization on the 5 samples.
 
 Starting 8 new samples with acid hydrolysis, including 4 new replicates since the last replicates didn't pan out.
+The other four that I'm running are:
+80-K-2,
+80-E-2,
+77-W-2,
+77-W-3
 
