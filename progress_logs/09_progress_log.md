@@ -70,3 +70,8 @@ They all look slightly strange, like slightly gooey, but it's probably fine?
 
 Moved the 5 samples into the vial rack. 
 
+## 2023-09-28
+Doing derivitization on the 5 samples.
+
+Starting 8 new samples with acid hydrolysis, including 4 new replicates since the last replicates didn't pan out.
+
