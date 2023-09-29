@@ -80,3 +80,8 @@ The other four that I'm running are:
 77-W-2,
 77-W-3
 
+## 2023-09-29
+Doing liquid-liquid extraction of the 5 samples and finishing them up today.
+
+Doing column purification and filtration of the 8 new samples. 
+Blowing them down.
