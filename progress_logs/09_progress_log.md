@@ -86,3 +86,4 @@ Doing liquid-liquid extraction of the 5 samples and finishing them up today.
 Doing column purification and filtration of the 8 new samples. 
 Blowing them down.
 My replicate of 04-W-2 tipped over and mostly spilled. I'm gonna keep going with it but not hopeful I'll get peaks.
+After blowing down, I left these samples in the vial rack in the fume hood. 
