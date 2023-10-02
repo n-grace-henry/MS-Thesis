@@ -118,7 +118,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1967, egegik, 1967_egegik_3, 3, 23, punched/cut, N/A, NA, NA
 1965, wood, 1965_wood_2, 2, 40, punched/cut, N/A, NA, NA
 1965, wood, 1965_wood_3, 3, 8, N/A, N/A, NA, NA
-1965, kvichak, 1965_kvichak_2, 2, 35, punched, N/A, NA, NA
+1965, kvichak, 1965_kvichak_2, 2, 35, punched/cut, N/A, NA, NA
 1965, kvichak, 1965_kvichak_3, 3, 2, N/A, N/A, NA, NA
-1965, egegik, 1965_egegik_2, 2, 35, punched, N/A, NA, NA
+1965, egegik, 1965_egegik_2, 2, 35, punched/cut, N/A, NA, NA
 1965, egegik, 1965_egegik_3, 3, 4, N/A, N/A, NA, NA
