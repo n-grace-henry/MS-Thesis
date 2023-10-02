@@ -2,3 +2,4 @@
 De-fatting of the 8 samples today and then will leave them to blow down overnight. 
 
 Starting acid hydrolysis on 8 new samples today.
+These new samples are 77-K-2 through 71-W-3.
