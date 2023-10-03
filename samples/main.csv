@@ -5,7 +5,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2022, kvichak, 2022_kvichak_2, 2, 29, redo, 5.841, 50, 08/25
 2022, kvichak, 2022_kvichak_3, 3, 15, run, 8.590, 50, 08/29
 2022, kvichak, 2022_kvichak_3_R, 3, 15, punched/cut, 6.690, NA, NA
-2022, egegik, 2022_egegik_2, 2, 30, run, 8.897, 50, 08/25
+2022, egegik, 2022_egegik_2, 2, 30, redo, 8.897, 50, 08/25
 2022, egegik, 2022_egegik_2_R, 2, 30, run, 7.006, 50, 09/11
 2022, egegik, 2022_egegik_3, 3, 15, needs redo/too small, 4.742, 50, 08/29
 2019, wood, 2019_wood_2, 2, 30, run, 4.259, 50, 08/24
