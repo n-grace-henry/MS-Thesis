@@ -10,3 +10,4 @@ Doing esterfication of the 8 samples that were left to blow down overnight.
 These are the samples that are NOT in the vial rack.
 
 Doing column purification and filtration on the 8 samples that are in the rack that were de-fatted yesterday. 
+74-K-2 tipped over and will need to be redone.
