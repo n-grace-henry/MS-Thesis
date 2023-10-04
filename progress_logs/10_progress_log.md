@@ -12,3 +12,6 @@ I am leaving these samples in the vial rack.
 Doing column purification and filtration on the 8 samples that are in the rack that were de-fatted yesterday. 
 74-K-2 tipped over and will need to be redone.
 Leaving these in the fume hood NOT in the vial rack. 
+
+## 2023-10-04
+Doing derivitization of the 8 samples I esterfied yesterday. Blowing these down. 
