@@ -15,3 +15,8 @@ Leaving these in the fume hood NOT in the vial rack.
 
 ## 2023-10-04
 Doing derivitization of the 8 samples I esterfied yesterday. Blowing these down. 
+
+## 2023-10-05
+Doing liquid-liquid extraction of the 8 samples and will be finishing these off. 
+
+Will do esterfication of the now 7 samples that I column purified on the 3rd. 
