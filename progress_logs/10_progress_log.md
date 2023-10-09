@@ -22,3 +22,7 @@ Doing liquid-liquid extraction of the 8 samples and will be finishing these off.
 Will do esterfication of the now 7 samples that I column purified on the 3rd. 
 71-W-2 did something a little weird where there was a lot of suction of the samples and the cap.
 Possible some sample was lost during the esterfication?
+
+## 2023-10-09
+Doing derivitization on the 7 samples from the 5th.
+Will also be blowing these down today. 
