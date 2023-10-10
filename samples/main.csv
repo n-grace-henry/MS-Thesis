@@ -80,20 +80,20 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1989, egegik, 1989_egegik_3, 3, 24, run, 12.431, 50, 10/03
 1986, wood, 1986_wood_2, 2, 30, bad peaks, 11.955, 100, 10/03
 1986, wood, 1986_wood_3, 3, 18, ready, 8.766, 50, NA
-1986, egegik, 1986_egegik_2, 2, 30, ready, 11.317, 50, NA
+1986, egegik, 1986_egegik_2, 2, 30, run, 11.317, 50, 10/10
 1986, egegik, 1986_egegik_3, 3, 5, N/A, N/A, NA, NA
 1984, wood, 1984_wood_2, 2, 19, run, 6.239, 50, 10/04
 1984, wood, 1984_wood_3, 3, 16, punched/cut, 2.455, NA, NA
-1983, kvichak, 1983_kvichak_2, 2, 30, ready, 8.198, 50, NA
+1983, kvichak, 1983_kvichak_2, 2, 30, run, 8.198, 50, 10/10
 1983, kvichak, 1983_kvichak_3, 3, 3, N/A, N/A, NA, NA
 1980, wood, 1980_wood_2, 2, 22, run, 6.496, 50, 10/04
 1980, wood, 1980_wood_3, 3, 12, N/A, N/A, NA, NA
-1980, kvichak, 1980_kvichak_2, 2, 30, ready, 11.923, 50, NA
+1980, kvichak, 1980_kvichak_2, 2, 30, run, 11.923, 50, 10/10
 1980, kvichak, 1980_kvichak_3, 3, 8, N/A, N/A, NA, NA
 1980, egegik, 1980_egegik_2, 2, 30, ready, 10.280, 50, NA
 1980, egegik, 1980_egegik_3, 3, 5, N/A, N/A, NA, NA
-1977, wood, 1977_wood_2, 2, 31, ready, 13.742, 50, NA
-1977, wood, 1977_wood_3, 3, 23, ready, 14.945, 50, NA
+1977, wood, 1977_wood_2, 2, 31, run, 13.742, 50, 10/10
+1977, wood, 1977_wood_3, 3, 23, run, 14.945, 50, 10/10
 1977, kvichak, 1977_kvichak_2, 2, 30, punched/cut, 10.902, NA, NA
 1977, kvichak, 1977_kvichak_3, 3, 5, N/A, N/A, NA, NA
 1977, egegik, 1977_egegik_2, 2, 30, punched/cut, 14.342, NA, NA
