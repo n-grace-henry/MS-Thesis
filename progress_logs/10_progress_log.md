@@ -29,3 +29,5 @@ Will also be blowing these down today.
 
 ## 2023-10-12
 Doing liquid-liquid extraction and finishing this set of 7 samples. 
+71-W-2 dropped and broke after the first round of liquid-liquid extraction. 
+Since I still have a little bit of sample that was already in the tube I might still be able to get peaks but who knows.
