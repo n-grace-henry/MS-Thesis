@@ -26,3 +26,6 @@ Possible some sample was lost during the esterfication?
 ## 2023-10-09
 Doing derivitization on the 7 samples from the 5th.
 Will also be blowing these down today. 
+
+## 2023-10-12
+Doing liquid-liquid extraction and finishing this set of 7 samples. 
