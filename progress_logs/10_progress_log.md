@@ -31,3 +31,8 @@ Will also be blowing these down today.
 Doing liquid-liquid extraction and finishing this set of 7 samples. 
 71-W-2 dropped and broke after the first round of liquid-liquid extraction. 
 Since I still have a little bit of sample that was already in the tube I might still be able to get peaks but who knows.
+
+## 2023-10-13
+Starting acid hydrolysis on all of the remaining 14 samples.
+Breaking these into two groups of 7.
+Both of these I am doing hydrolysis and blowing down today.
