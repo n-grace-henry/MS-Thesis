@@ -38,4 +38,4 @@ Breaking these into two groups of 7.
 Both of these I am doing hydrolysis and blowing down today.
 
 ## 2023-10-23
-I did column filtration and purification for 7 of the 14 samples that I hydrolyzed. Blowing these down.
+Column furification and filtration of all 14 of the samples plus blew them all down. 
