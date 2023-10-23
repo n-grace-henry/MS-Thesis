@@ -36,3 +36,6 @@ Since I still have a little bit of sample that was already in the tube I might s
 Starting acid hydrolysis on all of the remaining 14 samples.
 Breaking these into two groups of 7.
 Both of these I am doing hydrolysis and blowing down today.
+
+## 2023-10-23
+I did column filtration and purification for 7 of the 14 samples that I hydrolyzed.
