@@ -48,3 +48,5 @@ De-fatting the batch of 7 that contains:
 74-K-2, 71-E-2, 71-E-3, 71-K-2, 71-K-3, 68-W-2, 68-W-3
 
 The other 7 I am leaving in the vial rack until later. 
+
+Remixed hexanes/DCM.
