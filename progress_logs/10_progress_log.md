@@ -40,6 +40,7 @@ Both of these I am doing hydrolysis and blowing down today.
 ## 2023-10-23
 Column furification and filtration of all 14 of the samples plus blew them all down. 
 Did in two batches of 7.
+Leaving these to blow down overnight.
 
 ## 2023-10-27
 De-fatting the batch of 7 that contains:
