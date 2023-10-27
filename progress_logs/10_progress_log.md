@@ -40,3 +40,10 @@ Both of these I am doing hydrolysis and blowing down today.
 ## 2023-10-23
 Column furification and filtration of all 14 of the samples plus blew them all down. 
 Did in two batches of 7.
+
+## 2023-10-27
+De-fatting the batch of 7 that contains:
+
+74-K-2, 71-E-2, 71-E-3, 71-K-2, 71-K-3, 68-W-2, 68-W-3
+
+The other 7 I am leaving in the vial rack until later. 
