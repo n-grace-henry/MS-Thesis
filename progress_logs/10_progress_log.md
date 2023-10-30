@@ -50,3 +50,8 @@ De-fatting the batch of 7 that contains:
 The other 7 I am leaving in the vial rack until later. 
 
 Remixed hexanes/DCM.
+
+## 2023-10-30
+De-fatting the second bath of 7.
+
+Capped the first 7 today after blowing them down over the weekend. 
