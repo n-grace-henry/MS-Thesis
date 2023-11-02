@@ -12,6 +12,11 @@ I am slightly concerned I mixed these up but if the peaks on all 14 look good th
 Doing liquid-liquid extraction of these samples and then finishing them and getting them in GC vials. 
 When redissolving in hexanes/DCM, there were some chunks in the sample that wouldn't dissolve which isn't super typical. 
 
-
 Doing esterfication of the other 7.
 Blowing these down. 
+
+Acid hydrolysis on four new duplicate samples, these are: 
+
+01-E-3-R, 89-W-2-R, 89-K-2-R, 74-W-2-R.
+
+Blowing these down under N2
