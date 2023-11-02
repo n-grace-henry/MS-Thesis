@@ -11,8 +11,10 @@ This is the batch that contains:
 
 I am slightly concerned I mixed these up but if the peaks on all 14 look good then I know I was fine. 
 
+
 Doing liquid-liquid extraction of these samples and then finishing them and getting them in GC vials. 
 When redissolving in hexanes/DCM, there were some chunks in the sample that wouldn't dissolve which isn't super typical. 
+
 
 Doing esterfication of the other 7.
 Blowing these down. 
