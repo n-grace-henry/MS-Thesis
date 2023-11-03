@@ -29,3 +29,5 @@ Blowing these down under N2
 Derivitizing the 7 samples, these are: 
 
 84-W-3, 65-K-2, 67-E-3, 65-W-2, 65-E-2, 68-K-2, 67-E-2
+
+Column purification and filtration on the 4 replicates.
