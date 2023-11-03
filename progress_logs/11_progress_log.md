@@ -30,4 +30,4 @@ Derivitizing the 7 samples, these are:
 
 Blowing these down and leaving at this step for today. 
 
-Column purification and filtration on the 4 replicates.
+Column purification and filtration on the 4 replicates. Blowing these down and leaving this here. 
