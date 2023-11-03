@@ -24,3 +24,8 @@ Acid hydrolysis on four new duplicate samples, these are:
 01-E-3-R, 89-W-2-R, 89-K-2-R, 74-W-2-R.
 
 Blowing these down under N2
+
+## 2023-11-03
+Derivitizing the 7 samples, these are: 
+
+84-W-3, 65-K-2, 67-E-3, 65-W-2, 65-E-2, 68-K-2, 67-E-2
