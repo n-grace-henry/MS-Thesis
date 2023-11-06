@@ -34,3 +34,5 @@ Column purification and filtration on the 4 replicates. Blowing these down and l
 
 ## 2023-11-06
 Doing liquid-liquid extraction and finishing up the 7 samples that I derivitized on friday. 
+
+De-fatting the 4 replicates. 
