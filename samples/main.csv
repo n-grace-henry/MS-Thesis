@@ -86,7 +86,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1986, egegik, 1986_egegik_2, 2, 30, run, 11.317, 50, 10/10
 1986, egegik, 1986_egegik_3, 3, 5, N/A, N/A, NA, NA
 1984, wood, 1984_wood_2, 2, 19, run, 6.239, 50, 10/04
-1984, wood, 1984_wood_3, 3, 16, punched/cut, 2.455, NA, NA
+1984, wood, 1984_wood_3, 3, 16, ready, 2.455, 50, NA
 1983, kvichak, 1983_kvichak_2, 2, 30, run, 8.198, 50, 10/10
 1983, kvichak, 1983_kvichak_3, 3, 3, N/A, N/A, NA, NA
 1980, wood, 1980_wood_2, 2, 22, bad(ish) peaks, 6.496, 50, 10/04
@@ -116,13 +116,13 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1971, egegik, 1971_egegik_3, 3, 19, ready, 9.919, 50, NA
 1968, wood, 1968_wood_2, 2, 32, ready, 11.081, 50, NA
 1968, wood, 1968_wood_3, 3, 22, ready, 12.369, 50, NA
-1968, kvichak, 1968_kvichak_2, 2, 30, punched/cut, 9.656, NA, NA
+1968, kvichak, 1968_kvichak_2, 2, 30, ready, 9.656, 50, NA
 1968, kvichak, 1968_kvichak_3, 3, 6, N/A, N/A, NA, NA
-1967, egegik, 1967_egegik_2, 2, 30, punched/cut, 11.392, NA, NA
-1967, egegik, 1967_egegik_3, 3, 23, punched/cut, 11.645, NA, NA
-1965, wood, 1965_wood_2, 2, 40, punched/cut, 14.270, NA, NA
+1967, egegik, 1967_egegik_2, 2, 30, ready, 11.392, 50, NA
+1967, egegik, 1967_egegik_3, 3, 23, ready, 11.645, 50, NA
+1965, wood, 1965_wood_2, 2, 40, readt, 14.270, 50, NA
 1965, wood, 1965_wood_3, 3, 8, N/A, N/A, NA, NA
-1965, kvichak, 1965_kvichak_2, 2, 35, punched/cut, 10.003, NA, NA
+1965, kvichak, 1965_kvichak_2, 2, 35, ready, 10.003, 50, NA
 1965, kvichak, 1965_kvichak_3, 3, 2, N/A, N/A, NA, NA
-1965, egegik, 1965_egegik_2, 2, 35, punched/cut, 10.491, NA, NA
+1965, egegik, 1965_egegik_2, 2, 35, ready, 10.491, 50, NA
 1965, egegik, 1965_egegik_3, 3, 4, N/A, N/A, NA, NA
