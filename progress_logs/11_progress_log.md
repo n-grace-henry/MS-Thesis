@@ -31,3 +31,6 @@ Derivitizing the 7 samples, these are:
 Blowing these down and leaving at this step for today. 
 
 Column purification and filtration on the 4 replicates. Blowing these down and leaving this here. 
+
+## 2023-11-06
+Doing liquid-liquid extraction and finishing up the 7 samples that I derivitized on friday. 
