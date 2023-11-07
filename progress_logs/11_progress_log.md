@@ -36,3 +36,6 @@ Column purification and filtration on the 4 replicates. Blowing these down and l
 Doing liquid-liquid extraction and finishing up the 7 samples that I derivitized on friday. 
 
 De-fatting the 4 replicates and leaving them to blow down over night. 
+
+## 2023-11-07
+Esterfying the 4 replicates. Blowing them down under N2 and on heat. 
