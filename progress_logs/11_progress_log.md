@@ -42,3 +42,5 @@ Esterfying the 4 replicates. Blowing them down under N2 and on heat.
 
 ## 2023-11-08
 Derivitizing the 4 replicates. Blowing them down under N2 with no heat. 
+
+Mixed a new acid bath. 
