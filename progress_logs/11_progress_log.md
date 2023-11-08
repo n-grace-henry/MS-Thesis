@@ -39,3 +39,6 @@ De-fatting the 4 replicates and leaving them to blow down over night.
 
 ## 2023-11-07
 Esterfying the 4 replicates. Blowing them down under N2 and on heat. 
+
+## 2023-11-08
+Derivitizing the 4 replicates. Blowing them down under N2 with no heat. 
