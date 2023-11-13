@@ -2,27 +2,27 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2022, wood, 2022_wood_2, 2, 30, run, 6.304, 50, 08/25
 2022, wood, 2022_wood_2_R, 2, 30, bad(ish) peaks, 6.558, 50, 09/11
 2022, wood, 2022_wood_3, 3, 24, run, 10.699, 50, 08/29
-2022, kvichak, 2022_kvichak_2, 2, 29, redo, 5.841, 50, 08/25
+2022, kvichak, 2022_kvichak_2, 2, 29, ready, 5.841, 50, NA
 2022, kvichak, 2022_kvichak_3, 3, 15, run, 8.590, 50, 08/29
 2022, kvichak, 2022_kvichak_3_R, 3, 15, run, 6.690, 50, 10/12
-2022, egegik, 2022_egegik_2, 2, 30, redo, 8.897, 50, 08/25
+2022, egegik, 2022_egegik_2, 2, 30, ready, 8.897, 50, NA
 2022, egegik, 2022_egegik_2_R, 2, 30, run, 7.006, 50, 09/11
-2022, egegik, 2022_egegik_3, 3, 15, needs redo/too small, 4.742, 50, 08/29
+2022, egegik, 2022_egegik_3, 3, 15, ready, 4.742, 50, NA
 2019, wood, 2019_wood_2, 2, 30, run, 4.259, 50, 08/24
 2019, wood, 2019_wood_3, 3, 2, N/A, N/A, NA, NA
 2019, kvichak, 2019_kvichak_2, 2, 30, run, 6.236, 50, 08/24
 2019, kvichak, 2019_kvichak_3, 3, 15, run, 7.726, 50, 08/24
 2019, egegik, 2019_egegik_2, 2, 30, run, 7.061, 50, 08/24
 2019, egegik, 2019_egegik_3, 2, 3, N/A, N/A, NA, NA
-2016, wood, 2016_wood_2, 2, 30, redo, 8.801, 100, 08/29
-2016, wood, 2016_wood_3, 3, 18, redo, 7.954, 50, 08/29
+2016, wood, 2016_wood_2, 2, 30, ready, 8.801, 50, NA
+2016, wood, 2016_wood_3, 3, 18, ready, 7.954, 50, NA
 2016, kvichak, 2016_kvichak_2, 2, 29, run, 8.614, 100, 08/31
 2016, kvichak, 2016_kvichak_3, 3, 10, N/A, N/A, NA, NA
-2016, egegik, 2016_egegik_2, 2, 31, needs redo/too small, 7.882, 50, 08/31
+2016, egegik, 2016_egegik_2, 2, 31, ready, 7.882, 50, NA
 2016, egegik, 2016_egegik_3, 3, 7, N/A, N/A, NA, NA
-2013, wood, 2013_wood_2, 2, 29, redo, 6.679, 50, 08/31
+2013, wood, 2013_wood_2, 2, 29, ready, 6.679, 50, NA
 2013, wood, 2013_wood_2_R, 2, 29, bad(ish) peaks, 6.558, 50, 09/11
-2013, wood, 2013_wood_3, 3, 18, redo, 7.383, 50, 08/31
+2013, wood, 2013_wood_3, 3, 18, ready, 7.383, 50, NA
 2013, kvichak, 2013_kvichak_2, 2, 28, run, 9.411, 50, 09/24
 2013, kvichak, 2013_kvichak_3, 3, 30, run, 15.092, 100, 09/01
 2013, egegik, 2013_egegik_2, 2, 27, run, 10.030, 50, 09/25
@@ -34,12 +34,12 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2010, kvichak, 2010_kvichak_3, 3, 7, N/A, N/A, NA, NA
 2010, egegik, 2010_egegik_2, 2, 28, run, 8.495, 50, 09/06
 2010, egegik, 2010_egegik_3, 3, 18, run, 7.689, 50, 09/06
-2007, wood, 2007_wood_2, 2, 30, bad peaks, 9.709, 50, 09/06
+2007, wood, 2007_wood_2, 2, 30, ready, 9.709, 50, NA
 2007, wood, 2007_wood_3, 3, 11, N/A, N/A, NA, NA
 2007, kvichak, 2007_kvichak_2, 2, 30, run, 9.772, 50, 09/06
-2007, kvichak, 2007_kvichak_3, 3, 21, bad peaks, 10.796, 50, 09/22
+2007, kvichak, 2007_kvichak_3, 3, 21, ready, 10.796, 50, NA
 2007, egegik, 2007_egegik_2, 2, 30, run, 10.246, 50, 09/22
-2007, egegik, 2007_egegik_3, 3, 20, bad peaks, 10.234, 50, 09/22
+2007, egegik, 2007_egegik_3, 3, 20, ready, 10.234, 50, NA
 2004, wood, 2004_wood_2, 2, 28, run, 9.180, 50, 09/23
 2004, wood, 2004_wood_2_R, 2, 28, bad peaks, 7.575, 50, 10/12
 2004, wood, 2004_wood_3, 3, 22, run, 8.563, 50, 09/06
@@ -49,7 +49,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2004, egegik, 2004_egegik_2_R, 2, 30, run, 10.316, 50, 10/12
 2004, egegik, 2004_egegik_3, 3, 24, run, 9.724, 100, 09/05
 2001, wood, 2001_wood_2, 2, 22, needs redo, 10.299, 100, 09/05
-2001, wood, 2001_wood_3, 3, 30, run, 14.851, 100, 09/05
+2001, wood, 2001_wood_3, 3, 30, ready, 14.851, 50, NA
 2001, kvichak, 2001_kvichak_2, 2, 30, run, 14.321, 100, 09/05
 2001, kvichak, 2001_kvichak_3, 3, 31, run, 17.473, 100, 09/23
 2001, egegik, 2001_egegik_2, 2, 30, run, 13.002, 50, 09/23
@@ -60,9 +60,9 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1998, kvichak, 1998_kvichak_2, 2, 30, run, 11.346, 50, 09/23
 1998, kvichak, 1998_kvichak_3, 3, 6, N/A, N/A, NA, NA
 1998, egegik, 1998_egegik_2, 2, 30, run, 12.126, 50, 09/24
-1998, egegik, 1998_egegik_3, 3, 17, bad peaks, 8.637, 50, 09/25
-1995, wood, 1995_wood_2, 2, 29, bad peaks, 10.152, 50, 09/25
-1995, wood, 1995_wood_3, 3, 15, bad peaks, 6.545, 50, 09/25
+1998, egegik, 1998_egegik_3, 3, 17, ready, 8.637, 50, NA
+1995, wood, 1995_wood_2, 2, 29, ready, 10.152, 50, NA
+1995, wood, 1995_wood_3, 3, 15, ready, 6.545, 50, NA
 1995, kvichak, 1995_kvichak_2, 2, 22, run, 8.380, 50, 09/26
 1995, kvichak, 1995_kvichak_3, 3, 9, N/A, N/A, NA, NA
 1995, egegik, 1995_egegik_2, 2, 30, run, 11.039, 50, 09/26
@@ -81,7 +81,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1989, kvichak, 1989_kvichak_3, 3, 10, N/A, N/A, NA, NA
 1989, egegik, 1989_egegik_2, 2, 30, run, 11.142, 50, 10/03
 1989, egegik, 1989_egegik_3, 3, 24, run, 12.431, 50, 10/03
-1986, wood, 1986_wood_2, 2, 30, bad peaks, 11.955, 100, 10/03
+1986, wood, 1986_wood_2, 2, 30, ready, 11.955, 50, NA
 1986, wood, 1986_wood_3, 3, 18, run, 8.766, 50, 10/12
 1986, egegik, 1986_egegik_2, 2, 30, run, 11.317, 50, 10/10
 1986, egegik, 1986_egegik_3, 3, 5, N/A, N/A, NA, NA
@@ -89,7 +89,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1984, wood, 1984_wood_3, 3, 16, ready, 2.455, 50, NA
 1983, kvichak, 1983_kvichak_2, 2, 30, run, 8.198, 50, 10/10
 1983, kvichak, 1983_kvichak_3, 3, 3, N/A, N/A, NA, NA
-1980, wood, 1980_wood_2, 2, 22, bad(ish) peaks, 6.496, 50, 10/04
+1980, wood, 1980_wood_2, 2, 22, ready, 6.496, 50, NA
 1980, wood, 1980_wood_3, 3, 12, N/A, N/A, NA, NA
 1980, kvichak, 1980_kvichak_2, 2, 30, run, 11.923, 50, 10/10
 1980, kvichak, 1980_kvichak_3, 3, 8, N/A, N/A, NA, NA
