@@ -110,11 +110,11 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1974, egegik, 1974_egegik_3, 3, 9, N/A, N/A, NA, NA
 1971, wood, 1971_wood_2, 2, 30, run, 13.420, 50, 10/13
 1971, wood, 1971_wood_3, 3, 22, run, 12.716, 50, 10/13
-1971, kvichak, 1971_kvichak_2, 2, 30, ready, 12.620, 50, NA
-1971, kvichak, 1971_kvichak_3, 3, 13, ready, 6.438, 50, NA
-1971, egegik, 1971_egegik_2, 2, 29, ready, 13.191, 50, NA
-1971, egegik, 1971_egegik_3, 3, 19, ready, 9.919, 50, NA
-1968, wood, 1968_wood_2, 2, 32, ready, 11.081, 50, NA
+1971, kvichak, 1971_kvichak_2, 2, 30, run, 12.620, 50, 11/15
+1971, kvichak, 1971_kvichak_3, 3, 13, run, 6.438, 50, 11/15
+1971, egegik, 1971_egegik_2, 2, 29, run, 13.191, 50, 11/15
+1971, egegik, 1971_egegik_3, 3, 19, run, 9.919, 50, 11/15
+1968, wood, 1968_wood_2, 2, 32, run, 11.081, 50, 11/15
 1968, wood, 1968_wood_3, 3, 22, ready, 12.369, 50, NA
 1968, kvichak, 1968_kvichak_2, 2, 30, ready, 9.656, 50, NA
 1968, kvichak, 1968_kvichak_3, 3, 6, N/A, N/A, NA, NA
