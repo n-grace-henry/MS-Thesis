@@ -44,3 +44,9 @@ Esterfying the 4 replicates. Blowing them down under N2 and on heat.
 Derivitizing the 4 replicates. Blowing them down under N2 with no heat. 
 
 Mixed a new acid bath. 
+
+## 2023-11-16
+I am going to finish up 3 of the 4 replicates. I only have enough inserts for 3 so that's why I'm not doing all of them.
+The one I am not doing today is 89-W-2-R.
+
+I am doing liquid-liquid extraction on these 3 samples, blowing them down, and getting them into the GC vials. 
