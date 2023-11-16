@@ -8,9 +8,18 @@ library(ggplot2)
 data <- read.csv(file="main.data")
 
 #average points that have replicates
+a <- subset(data, Sample.ID == "22_K_3")
+b <- a[,6:15]
+mean(b[,1])
 
+K322 <- vector(mode="numeric", length=10)
+for(i in 1:10){
+  K322[i] <- mean(b[,i])
+}
+c <- append(c(1, "22_K_3", "2022", "Kvichak", "3"), K322)
 
-
+norep <- data[!data$Sample.ID=="22_K_3",]
+data <- rbind(norep, c)
 
 #scatter plot of year vs isotope signature
 ggplot(data = data, aes(Year, PHE.mean, color = System)) +
