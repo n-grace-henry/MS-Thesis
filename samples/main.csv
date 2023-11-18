@@ -54,15 +54,15 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2001, kvichak, 2001_kvichak_3, 3, 31, run, 17.473, 100, 09/23
 2001, egegik, 2001_egegik_2, 2, 30, run, 13.002, 50, 09/23
 2001, egegik, 2001_egegik_3, 3, 30, run, 17.582, 50, 09/24
-2001, egegik, 2001_egegik_3_R, 3, 30, ready, 15.839, 50, NA
+2001, egegik, 2001_egegik_3_R, 3, 30, run, 15.839, 50, 11/18
 1998, wood, 1998_wood_2, 2, 26, run, 8.958, 50, 09/23
 1998, wood, 1998_wood_3, 3, 8, N/A, N/A, NA, NA
 1998, kvichak, 1998_kvichak_2, 2, 30, run, 11.346, 50, 09/23
 1998, kvichak, 1998_kvichak_3, 3, 6, N/A, N/A, NA, NA
 1998, egegik, 1998_egegik_2, 2, 30, run, 12.126, 50, 09/24
 1998, egegik, 1998_egegik_3, 3, 17, ready, 8.637, 50, NA
-1995, wood, 1995_wood_2, 2, 29, ready, 10.152, 50, NA
-1995, wood, 1995_wood_3, 3, 15, ready, 6.545, 50, NA
+1995, wood, 1995_wood_2, 2, 29, run, 10.152, 50, 11/18
+1995, wood, 1995_wood_3, 3, 15, run, 6.545, 50, 11/18
 1995, kvichak, 1995_kvichak_2, 2, 22, run, 8.380, 50, 09/26
 1995, kvichak, 1995_kvichak_3, 3, 9, N/A, N/A, NA, NA
 1995, egegik, 1995_egegik_2, 2, 30, run, 11.039, 50, 09/26
@@ -77,7 +77,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1989, wood, 1989_wood_2_R, 2, 29, punched/cut, 9.215, NA, NA
 1989, wood, 1989_wood_3, 3, 16, run, 8.553, 50, 10/04
 1989, kvichak, 1989_kvichak_2, 2, 30, run, 10.143, 50, 10/03
-1989, kvichak, 1989_kvichak_2_R, 2, 30, ready, 9.337, 50, NA
+1989, kvichak, 1989_kvichak_2_R, 2, 30, run, 9.337, 50, 11/18
 1989, kvichak, 1989_kvichak_3, 3, 10, N/A, N/A, NA, NA
 1989, egegik, 1989_egegik_2, 2, 30, run, 11.142, 50, 10/03
 1989, egegik, 1989_egegik_3, 3, 24, run, 12.431, 50, 10/03
@@ -102,7 +102,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1977, egegik, 1977_egegik_2, 2, 30, run, 14.342, 50, 10/18
 1977, egegik, 1977_egegik_3, 3, 17, run, 7.815, 50, 10/13
 1974, wood, 1974_wood_2, 2, 30, run, 11.905, 50, 10/18
-1974, wood, 1974_wood_2_R, 2, 30, ready, 10.318, 50, NA
+1974, wood, 1974_wood_2_R, 2, 30, run, 10.318, 50, 11/18
 1974, wood, 1974_wood_3, 3, 11, N/A, N/A, NA, NA
 1974, kvichak, 1974_kvichak_2, 2, 31, ready, 10.626, 50, NA
 1974, kvichak, 1974_kvichak_3, 3, 3, N/A, N/A, NA, NA
