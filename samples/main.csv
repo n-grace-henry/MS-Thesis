@@ -81,7 +81,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1989, kvichak, 1989_kvichak_3, 3, 10, N/A, N/A, NA, NA
 1989, egegik, 1989_egegik_2, 2, 30, run, 11.142, 50, 10/03
 1989, egegik, 1989_egegik_3, 3, 24, run, 12.431, 50, 10/03
-1986, wood, 1986_wood_2, 2, 30, run, 11.955, 50, 11/17
+1986, wood, 1986_wood_2, 2, 30, redo needed, 11.955, 50, 11/17
 1986, wood, 1986_wood_3, 3, 18, run, 8.766, 50, 10/12
 1986, egegik, 1986_egegik_2, 2, 30, run, 11.317, 50, 10/10
 1986, egegik, 1986_egegik_3, 3, 5, N/A, N/A, NA, NA
