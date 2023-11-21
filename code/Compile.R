@@ -1,3 +1,4 @@
+#script to compile all post processed csv files into one csv file
 setwd("~/Documents/Grad School /CSIA/code/processed")
 
 library(dplyr)
