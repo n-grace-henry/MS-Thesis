@@ -1,6 +1,3 @@
-rm(list = ls())
-setwd("~/Documents/Grad School /CSIA/code/processed")
-
 oct12 <- read.csv(file = "20231012_corrected.csv")
 aug29 <- read.csv(file= "20230829_corrected.csv")
 sep24 <- read.csv(file= "20230924_corrected.csv")
@@ -24,6 +21,8 @@ sep24[3, "GLU.mean"]
 oct12[3, "GLU.mean"]
 aug29[1, "GLU.mean"]
 
+#code to average all the duplicate samples and add the new average to the main
+#data file. This starts with a csv file produced by the Compile.R script. 
 setwd("~/Documents/Grad School /CSIA/code")
 
 library(dplyr)
