@@ -52,8 +52,15 @@ rm_duplicates <- function(df, ID, Year, System, Age){
 data <- rm_duplicates(df = data, ID = "22_K_3", Year = "2022", System = "Kvichak", Age = "3")
 data <- rm_duplicates(df = data, ID = "22_W_3", Year = "2022", System = "Wood", Age = "3")
 
+main.data <- data
 #check to see if there are any duplicate samples left 
 anyDuplicated(data$Sample.ID)
+
+#place holder so I can look at this data before I figure out these reps
+file.name <- "~/Documents/Grad School /CSIA/code/main.data"
+write.csv(main.data, file = file.name)
+
+#from calculator, mean difference right now equal 1.876
 
 #get rid of duplicates before dealing with replicate samples
 #start by removing sample ID _R which identifies replicates
