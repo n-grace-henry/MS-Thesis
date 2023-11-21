@@ -39,41 +39,18 @@ rm_duplicates <- function(df, ID, Year, System, Age){
   vec <- vector(mode="numeric", length=10)
   
   for(i in 1:10){
-    vec[i] <- mean(b[,i])
+    vec[i] <- mean(as.numeric(b[,i]))
   }
   
   c <- append(c(1, ID, Year, System, Age), vec)
   norep <- df[!df$Sample.ID==ID,]
-  df <- rbind(norep, c)
+  new.df <- rbind(norep, c)
+  
+  print(new.df)
 }
 
-rm_duplicates(df = data, ID = "22_K_3", Year = "2022", System = "Kvichak", Age = "3")
-
-a <- subset(data, Sample.ID == "22_K_3")
-b <- a[,6:15]
-mean(b[,1])
-
-K322 <- vector(mode="numeric", length=10)
-for(i in 1:10){
-  K322[i] <- mean(b[,i])
-}
-c <- append(c(1, "22_K_3", "2022", "Kvichak", "3"), K322)
-
-norep <- data[!data$Sample.ID=="22_K_3",]
-data <- rbind(norep, c)
-
-a <- subset(data, Sample.ID == "22_W_3")
-b <- a[,6:15]
-mean(b[,1])
-
-W322 <- vector(mode="numeric", length=10)
-for(i in 1:10){
-  K322[i] <- mean(b[,i])
-}
-c <- append(c(1, "22_K_3", "2022", "Kvichak", "3"), K322)
-
-norep <- data[!data$Sample.ID=="22_K_3",]
-data <- rbind(norep, c)
+data <- rm_duplicates(df = data, ID = "22_K_3", Year = "2022", System = "Kvichak", Age = "3")
+data <- rm_duplicates(df = data, ID = "22_W_3", Year = "2022", System = "Wood", Age = "3")
 
 duplicated(data$Sample.ID)
 
