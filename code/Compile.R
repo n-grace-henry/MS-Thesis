@@ -1,4 +1,5 @@
 #script to compile all post processed csv files into one csv file
+#use this after the DriftCorrection.R script
 setwd("~/Documents/Grad School /CSIA/code/processed")
 
 library(dplyr)

@@ -53,6 +53,7 @@ data <- rm_duplicates(df = data, ID = "22_K_3", Year = "2022", System = "Kvichak
 data <- rm_duplicates(df = data, ID = "22_W_3", Year = "2022", System = "Wood", Age = "3")
 
 main.data <- data
+
 #check to see if there are any duplicate samples left 
 anyDuplicated(data$Sample.ID)
 
