@@ -51,11 +51,13 @@ rm_duplicates <- function(df, ID, Year, System, Age){
 
 data <- rm_duplicates(df = data, ID = "22_K_3", Year = "2022", System = "Kvichak", Age = "3")
 data <- rm_duplicates(df = data, ID = "22_W_3", Year = "2022", System = "Wood", Age = "3")
+data <- rm_duplicates(df = data, ID = "13_W_2", Year = "2013", System = "Wood", Age = "2")
+data <- rm_duplicates(df = data, ID = "13_W_3", Year = "2013", System = "Wood", Age = "3")
 
 main.data <- data
 
 #check to see if there are any duplicate samples left 
-anyDuplicated(data$Sample.ID)
+anyDuplicated(main.data$Sample.ID)
 
 #place holder so I can look at this data before I figure out these reps
 file.name <- "~/Documents/Grad School /CSIA/code/main.data"
