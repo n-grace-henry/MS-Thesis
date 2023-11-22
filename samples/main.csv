@@ -39,7 +39,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2007, kvichak, 2007_kvichak_2, 2, 30, run, 9.772, 50, 09/06
 2007, kvichak, 2007_kvichak_3, 3, 21, run, 10.796, 50, 11/21
 2007, egegik, 2007_egegik_2, 2, 30, run, 10.246, 50, 09/22
-2007, egegik, 2007_egegik_3, 3, 20, ready, 10.234, 50, NA
+2007, egegik, 2007_egegik_3, 3, 20, run, 10.234, 50, 11/22
 2004, wood, 2004_wood_2, 2, 28, run, 9.180, 50, 09/23
 2004, wood, 2004_wood_2_R, 2, 28, bad peaks, 7.575, 50, 10/12
 2004, wood, 2004_wood_3, 3, 22, run, 8.563, 50, 09/06
@@ -48,7 +48,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2004, egegik, 2004_egegik_2, 2, 30, run, 10.835, 50, 09/22
 2004, egegik, 2004_egegik_2_R, 2, 30, run, 10.316, 50, 10/12
 2004, egegik, 2004_egegik_3, 3, 24, run, 9.724, 100, 09/05
-2001, wood, 2001_wood_2, 2, 22, needs redo, 10.299, 100, 09/05
+2001, wood, 2001_wood_2, 2, 22, run, 10.299, 100, 11/22
 2001, wood, 2001_wood_3, 3, 30, ready, 14.851, 50, NA
 2001, kvichak, 2001_kvichak_2, 2, 30, run, 14.321, 100, 09/05
 2001, kvichak, 2001_kvichak_3, 3, 31, run, 17.473, 100, 09/23
@@ -60,7 +60,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1998, kvichak, 1998_kvichak_2, 2, 30, run, 11.346, 50, 09/23
 1998, kvichak, 1998_kvichak_3, 3, 6, N/A, N/A, NA, NA
 1998, egegik, 1998_egegik_2, 2, 30, run, 12.126, 50, 09/24
-1998, egegik, 1998_egegik_3, 3, 17, ready, 8.637, 50, NA
+1998, egegik, 1998_egegik_3, 3, 17, run, 8.637, 50, 11/22
 1995, wood, 1995_wood_2, 2, 29, run, 10.152, 50, 11/18
 1995, wood, 1995_wood_3, 3, 15, run, 6.545, 50, 11/18
 1995, kvichak, 1995_kvichak_2, 2, 22, run, 8.380, 50, 09/26
@@ -81,7 +81,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1989, kvichak, 1989_kvichak_3, 3, 10, N/A, N/A, NA, NA
 1989, egegik, 1989_egegik_2, 2, 30, run, 11.142, 50, 10/03
 1989, egegik, 1989_egegik_3, 3, 24, run, 12.431, 50, 10/03
-1986, wood, 1986_wood_2, 2, 30, redo needed, 11.955, 50, 11/17
+1986, wood, 1986_wood_2, 2, 30, run, 11.955, 50, 11/22
 1986, wood, 1986_wood_3, 3, 18, run, 8.766, 50, 10/12
 1986, egegik, 1986_egegik_2, 2, 30, run, 11.317, 50, 10/10
 1986, egegik, 1986_egegik_3, 3, 5, N/A, N/A, NA, NA
