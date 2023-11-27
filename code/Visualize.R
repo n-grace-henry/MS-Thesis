@@ -33,3 +33,5 @@ ggplot(data = Kvichak, aes(Year, PHE.mean, color = as.character(Age))) +
 
 ggplot(data = Egegik, aes(Year, PHE.mean, color = as.character(Age))) +
   geom_point(size = 3, alpha = 0.7) 
+
+#make a graph showing total number of samples/system/year 
