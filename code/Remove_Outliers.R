@@ -9,3 +9,6 @@ library(readr)
 all.df <- list.files(path="~/Documents/GitHub/CSIA_lab_work/data/DriftCorrected_noMean") %>% 
   lapply(read_csv) %>% 
   bind_rows 
+
+#remove all 5AA sample IDs from the data frame
+all.df <- subset(all.df, !Sample.ID == "5AA")

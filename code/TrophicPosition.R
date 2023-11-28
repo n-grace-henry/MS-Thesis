@@ -17,7 +17,7 @@ tp <-setNames(tp, c("Sample.ID","Trophic.Position"))
 
 #for loop to calculate trophic position and fill data frame
 for(i in 1:length(data$Sample.ID)){
-  tp[i,2] <-((data$GLU.mean[i]-data$PHE.mean[i]-beta)/TDF)
+  tp[i,2] <- 1+ ((data$GLU.mean[i]-data$PHE.mean[i]-beta)/TDF)
   tp[i,1] <- data$Sample.ID[i]
 }
 
