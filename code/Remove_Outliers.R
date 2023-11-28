@@ -26,8 +26,27 @@ PHE <- subset(all.data, AAID == "PHE")
 #for samples that have duplicates, I will only be looking at the triplicates from the same run
 #for example, if 10_W_2 was run on two different days, I will treat each set of three as there own and not compare differences over the 6 injections
 
+min(abs(PHE$adj[1]-PHE$adj[2]),
+    abs(PHE$adj[2]-PHE$adj[3]),
+    abs(PHE$adj[1]-PHE$adj[3])) * 3 <= max(abs(PHE$adj[1]-PHE$adj[2]),
+                                           abs(PHE$adj[2]-PHE$adj[3]),
+                                           abs(PHE$adj[1]-PHE$adj[3]))
 
+for(i in 1:(length(PHE$adj)/3)){
+  min(abs(PHE$adj[i]-PHE$adj[i+1]),
+      abs(PHE$adj[i+1]-PHE$adj[i+2]),
+      abs(PHE$adj[i]-PHE$adj[i+2])) * 3 <= max(abs(PHE$adj[i]-PHE$adj[i+1]),
+                                               abs(PHE$adj[i+1]-PHE$adj[i+2]),
+                                               abs(PHE$adj[i]-PHE$adj[i+2]))
+  
+}
 
+unique(PHE$ID1)
+a <-PHE[PHE$ID1 == "22_W_2","adj"]
 
+i=1
+i=4
+i=7
+i=10
 
 
