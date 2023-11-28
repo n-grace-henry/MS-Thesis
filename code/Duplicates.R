@@ -60,7 +60,7 @@ main.data <- data
 anyDuplicated(main.data$Sample.ID)
 
 #place holder so I can look at this data before I figure out these reps
-file.name <- "~/Documents/Grad School /CSIA/code/main.data"
+file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/main.data"
 write.csv(main.data, file = file.name)
 
 #from calculator, mean difference right now equal 1.876
