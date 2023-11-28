@@ -11,4 +11,13 @@ all.df <- list.files(path="~/Documents/GitHub/CSIA_lab_work/data/DriftCorrected_
   bind_rows 
 
 #remove all 5AA sample IDs from the data frame
-all.df <- subset(all.df, !Sample.ID == "5AA")
+all.data <- subset(all.df, !ID1 == "5AA")
+
+#split this large data frame into 5 data frames sorted by amino acid
+
+
+#look through data and remove outliers visually
+#find the differences between the three injections 
+#
+
+
