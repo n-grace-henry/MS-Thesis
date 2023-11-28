@@ -14,10 +14,20 @@ all.df <- list.files(path="~/Documents/GitHub/CSIA_lab_work/data/DriftCorrected_
 all.data <- subset(all.df, !ID1 == "5AA")
 
 #split this large data frame into 5 data frames sorted by amino acid
-
+ALA <- subset(all.data, AAID == "ALA")
+VAL <- subset(all.data, AAID == "VAL")
+NOR <- subset(all.data, AAID == "NOR")
+GLU <- subset(all.data, AAID == "GLU")
+PHE <- subset(all.data, AAID == "PHE")
 
 #look through data and remove outliers visually
-#find the differences between the three injections 
-#
+#find the differences between the three injections (triplicates)
+#if any value is 3 or more times higher than the other differences then it counts as an outlier
+#for samples that have duplicates, I will only be looking at the triplicates from the same run
+#for example, if 10_W_2 was run on two different days, I will treat each set of three as there own and not compare differences over the 6 injections
+
+
+
+
 
 
