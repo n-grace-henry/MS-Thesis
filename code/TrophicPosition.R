@@ -16,8 +16,10 @@ tp <- data.frame(matrix(nrow = length(data$Sample.ID), ncol = 2))
 tp <-setNames(tp, c("Sample.ID","Trophic.Position"))
 
 #for loop to calculate trophic position and fill data frame
-for(i in length(data$Sample.ID)){
-  (data$GLU.mean[i]-data$PHE.mean[i]-beta)/TDF)
+for(i in 1:length(data$Sample.ID)){
+  tp[i,2] <-((data$GLU.mean[i]-data$PHE.mean[i]-beta)/TDF)
+  tp[i,1] <- data$Sample.ID[i]
 }
 
-data$PHE.mean[1]
+#add year to tp data frame 
+
