@@ -53,6 +53,17 @@ for(i in 0:78){
   wide.format[4,i+1] <- PHE$adj[(i*3)+3]
 }
 
+#identify which samples have outlier values 
+for(i in 1:(length(PHE$adj)/3)){
+  min(abs(PHE$adj[i]-PHE$adj[i+1]),
+      abs(PHE$adj[i+1]-PHE$adj[i+2]),
+      abs(PHE$adj[i]-PHE$adj[i+2])) * 3 <= max(abs(PHE$adj[i]-PHE$adj[i+1]),
+                                               abs(PHE$adj[i+1]-PHE$adj[i+2]),
+                                               abs(PHE$adj[i]-PHE$adj[i+2]))
+  
+}
+
+
 
 
 
