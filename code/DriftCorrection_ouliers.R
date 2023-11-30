@@ -21,9 +21,9 @@ PHE <- -5.004
 GLU <- -3.336
 
 #Reading in the .csv of the NACHO data file and setting the file name for your output file
-data.1 <- SL.1 <- read.csv("code/cleaned/20231003_GHenry_CSIA.csv") #modify with name of your data file
+data.1 <- SL.1 <- read.csv("code/cleaned/20230825_GHenry_CSIA.csv") #modify with name of your data file
 colnames(data.1)<-name
-file.name <- "code/processed/20231003_corrected.csv" #file name for output file including relative file path
+file.name <- "~/Documents/GitHub/CSIA_lab_work/data/outliers_removed/20230825_outliersRem.csv" #file name for output file including relative file path
 
 ###### Linear Model for Drift Correction #####
 #Fit a linear model to your external standards with "Analysis" (injection number) as the dependent variable and 
@@ -87,7 +87,7 @@ data <- subset(data, !ID1 == "5AA")
 #####Add Year column ####
 a <- substr(data$ID1, 1, 2)
 
-year <- vector(mode="character", length=49)
+year <- vector(mode="character")
 for(i in 1:length(a)){
   if(a[i] <= 22){
     year[i] <- paste0(20, a[i])
@@ -121,13 +121,24 @@ data$Age <- substr(data$ID1, 6, 6)
 data <- data %>% relocate(Age, .before = RT)
 
 #####Removing Outliers####
-library(outliers)
+#only removing outliers of GLU and PHE values
 
 sample.ID <- unique(data$ID1)
-values <- data[data$AAID == "PHE" & data$ID1 == sample.ID[2], "adj"]
+values <- data[data$AAID == "PHE" & data$ID1 == sample.ID[4], "adj"]
 values #look at values and determine if there are outliers 
 
+#remove the outlier row, only run this line of code when there is an outlier to remove
+data <- data[!data$adj == values[1],] 
 
-data <- data[data$AAID == "PHE" & data$ID1 == sample.ID[2], "adj" 
 
+#do the sample process with GLU
+values <- data[data$AAID == "GLU" & data$ID1 == sample.ID[4], "adj"]
+values #look at values and determine if there are outliers 
+
+#remove the outlier row, only run this line of code when there is an outlier to remove
+data <- data[!data$adj == values[1],] 
+
+
+#generate .csv file of this data with no outliers
+write.csv(data, file = file.name)
 
