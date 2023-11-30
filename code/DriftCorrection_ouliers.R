@@ -121,5 +121,13 @@ data$Age <- substr(data$ID1, 6, 6)
 data <- data %>% relocate(Age, .before = RT)
 
 #####Removing Outliers####
+library(outliers)
+
+sample.ID <- unique(data$ID1)
+values <- data[data$AAID == "PHE" & data$ID1 == sample.ID[2], "adj"]
+values #look at values and determine if there are outliers 
+
+
+data <- data[data$AAID == "PHE" & data$ID1 == sample.ID[2], "adj" 
 
 
