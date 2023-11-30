@@ -21,9 +21,9 @@ PHE <- -5.004
 GLU <- -3.336
 
 #Reading in the .csv of the NACHO data file and setting the file name for your output file
-data.1 <- SL.1 <- read.csv("code/cleaned/20230925_GHenry_CSIA.csv") #modify with name of your data file
+data.1 <- SL.1 <- read.csv("code/cleaned/20231004_GHenry_CSIA.csv") #modify with name of your data file
 colnames(data.1)<-name
-file.name <- "~/Documents/GitHub/CSIA_lab_work/data/outliers_removed/20230925_outliersRem.csv" #file name for output file including relative file path
+file.name <- "~/Documents/GitHub/CSIA_lab_work/data/outliers_removed/20231004_outliersRem.csv" #file name for output file including relative file path
 
 ###### Linear Model for Drift Correction #####
 #Fit a linear model to your external standards with "Analysis" (injection number) as the dependent variable and 
@@ -125,7 +125,7 @@ data <- data %>% relocate(Age, .before = RT)
 
 sample.ID <- unique(data$ID1)
 sample.ID
-values <- data[data$AAID == "PHE" & data$ID1 == sample.ID[2], "adj"]
+values <- data[data$AAID == "PHE" & data$ID1 == sample.ID[5], "adj"]
 values #look at values and determine if there are outliers 
 
 #remove the outlier row, only run this line of code when there is an outlier to remove
@@ -133,7 +133,7 @@ values #look at values and determine if there are outliers
 
 
 #do the sample process with GLU
-values <- data[data$AAID == "GLU" & data$ID1 == sample.ID[2], "adj"]
+values <- data[data$AAID == "GLU" & data$ID1 == sample.ID[5], "adj"]
 values #look at values and determine if there are outliers 
 
 #remove the outlier row, only run this line of code when there is an outlier to remove
