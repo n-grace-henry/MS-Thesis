@@ -2,6 +2,13 @@ setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 
 cleaned <- read.csv(file = "all.data.csv")
 
+library(dplyr)
+library(readr)
+
+#compile all the csv files to make one dataframe of all data
+df <- list.files(path="~/Documents/Grad School /CSIA/code/processed") %>% 
+  lapply(read_csv) %>% 
+  bind_rows 
 
 #####Consolidating Triplicates#####
 #samples should be run in triplicate, the mean and SD of the triplicate should be taken. Output data will include mean and SD for each sample,
