@@ -81,4 +81,45 @@ difference <- actual-(data.1$Analysis*slope+intercept) #Applying both a drift an
 adj <- data.1$d15N + difference
 data <- cbind(data.1, adj)
 
-test test
+#####Remove all 5AA samples from dataset####
+data <- subset(data, !ID1 == "5AA")
+
+#####Add Year column ####
+a <- substr(data$ID1, 1, 2)
+
+year <- vector(mode="character", length=49)
+for(i in 1:length(a)){
+  if(a[i] <= 22){
+    year[i] <- paste0(20, a[i])
+  } else{
+    year[i] <- paste0(19, a[i])
+  }
+}
+
+data$Year <- year
+data <- data %>% relocate(Year, .before = RT)
+
+#####Add System column####
+b <- substr(data$ID1, 4, 4)
+
+system <- vector(mode="character", length=49)
+for(i in 1:length(b)){
+  if(b[i] == "W"){
+    system[i] <- "Wood"
+  } else if(b[i] == "K"){
+    system[i] <- "Kvichak"
+  }  else{
+    system[i] <- "Egegik"
+  }
+}
+
+data$System <- system
+data <- data %>% relocate(System, .before = RT)
+
+#####Add Age column####
+data$Age <- substr(data$ID1, 6, 6)
+data <- data %>% relocate(Age, .before = RT)
+
+#####Removing Outliers####
+
+
