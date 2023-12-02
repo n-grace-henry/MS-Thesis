@@ -7,6 +7,10 @@ library(readr)
 
 data <- read.csv(file="main.clean.csv")
 
+#make a new column with only the first chunk of the sample ID so replicates and duplicates are the same 
+data$new.ID <- substr(data$Sample.ID, 1, 6)
+
+
 #function to average duplicates and replace in data file with new averages
 #this function works only when samples are not replicates (difference is 
 #that these samples were the same sample, injected more than once)
