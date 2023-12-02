@@ -1,4 +1,4 @@
-setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
+setwd("~/Documents/GitHub/CSIA_lab_work/data/outliers_removed")
 
 cleaned <- read.csv(file = "all.data.csv")
 
