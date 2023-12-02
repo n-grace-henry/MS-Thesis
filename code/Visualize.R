@@ -39,3 +39,18 @@ trophic.data <- read.csv(file = "trophic.position")
 
 ggplot(data = trophic.data, aes(Year, Trophic.Position, color = System)) +
   geom_point(size = 3, alpha = 0.7) 
+
+
+#difference between PHE and GLU
+diff <- data$GLU.mean-data$PHE.mean
+data$difference <- diff
+
+ggplot(data = data, aes(Year, difference, color = System)) +
+  geom_point(size = 3, alpha = 0.7) 
+
+
+#separating by age class
+data.age2 <- data[data$Age == "2",]
+data.age3 <- data[data$Age == "3",]
+
+
