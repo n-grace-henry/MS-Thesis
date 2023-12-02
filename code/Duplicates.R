@@ -15,7 +15,7 @@ data$new.ID <- substr(data$Sample.ID, 1, 6)
 #this function works only when samples are not replicates (difference is 
 #that these samples were the same sample, injected more than once)
 rm_duplicates <- function(df, ID, Year, System, Age){
-  a <- subset(df, Sample.ID == ID)
+  a <- subset(data, new.ID == ID)
   b <- a[,6:15]
   vec <- vector(mode="numeric", length=10)
   
@@ -24,11 +24,14 @@ rm_duplicates <- function(df, ID, Year, System, Age){
   }
   
   c <- append(c(1, ID, Year, System, Age), vec)
-  norep <- df[!df$Sample.ID==ID,]
-  new.df <- rbind(norep, c)
+  norep <- data[!data$new.ID==ID,]
+  new.data <- rbind(norep, c)
   
-  print(new.df)
+  print(new.data)
 }
+
+data <- rm_duplicates(df = data, ID = "01_E_3", Year = "2001", System = "Egegik", Age = "3")
+
 
 data <- rm_duplicates(df = data, ID = "22_K_3", Year = "2022", System = "Kvichak", Age = "3")
 data <- rm_duplicates(df = data, ID = "22_W_3", Year = "2022", System = "Wood", Age = "3")
@@ -46,11 +49,12 @@ write.csv(main.data, file = file.name)
 
 #from calculator, mean difference right now equal 1.876
 
-#get rid of duplicates before dealing with replicate samples
-#start by removing sample ID _R which identifies replicates
-rep <- substr(data$Sample.ID, 1, 6)
-data$rep <- substr(data$Sample.ID, 1, 6)
-which(duplicated(rep))
+#take a look at all replicate values
+#make and save a new data frame of the replicates before averaging them
+rep <- substr(data$Sample.ID, 8, 8)
+data$rep <- substr(data$Sample.ID, 8, 8)
+
+which(data$rep == "R")
 
 rep[42]
 E042 <- subset(data, rep == "04_E_2")
@@ -69,7 +73,6 @@ K223 <- subset(data, rep == "22_K_3")
 
 df <- rbind(E042, W102, E013, K892, K223)
 
-#average duplicate and replicate samples 
-Corrected$Age <- substr(Corrected$Sample.ID, 6, 6)
+
 
 
