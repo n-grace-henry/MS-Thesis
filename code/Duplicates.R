@@ -56,8 +56,8 @@ data$rep <- substr(data$Sample.ID, 8, 8)
 
 which(data$rep == "R")
 
-rep[42]
-E042 <- subset(data, rep == "04_E_2")
+data[3,]
+E042 <- subset(data, new.ID == "01_E_3")
 
 rep[43]
 W102<- subset(data, rep == "10_W_2")
