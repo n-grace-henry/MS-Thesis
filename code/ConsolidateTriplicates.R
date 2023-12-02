@@ -1,14 +1,14 @@
-setwd("~/Documents/GitHub/CSIA_lab_work/data/outliers_removed")
-
-cleaned <- read.csv(file = "all.data.csv")
+setwd("~/Documents/GitHub/CSIA_lab_work/data")
 
 library(dplyr)
 library(readr)
 
 #compile all the csv files to make one dataframe of all data
-df <- list.files(path="~/Documents/Grad School /CSIA/code/processed") %>% 
+df <- list.files(path="~/Documents/GitHub/CSIA_lab_work/data/outliers_removed") %>% 
   lapply(read_csv) %>% 
   bind_rows 
+
+df <- df[!df$AAID == "REF",] 
 
 #####Consolidating Triplicates#####
 #samples should be run in triplicate, the mean and SD of the triplicate should be taken. Output data will include mean and SD for each sample,
@@ -17,9 +17,9 @@ df <- list.files(path="~/Documents/Grad School /CSIA/code/processed") %>%
 #otherwise conditioning introduces extra variability into the data. See "CalculatingStandardPrecision.R" for a file that calculates this while 
 #omitting the conditioning injections
 
-AA<- unique(unlist(cleaned$AAID)) #make a list of the AAs in the data
+AA<- unique(unlist(df$AAID)) #make a list of the AAs in the data
 
-mean <- aggregate(cleaned['adj'], by = list(cleaned$ID1, cleaned$AAID), mean)
+mean <- aggregate(df['adj'], by = list(df$ID1, df$AAID), mean)
 mean_names <- c("Sample.ID",paste0(AA,".mean"))
 
 meanfull<-data.frame(matrix(0, nrow = length(unique(mean$Group.1)), ncol = length(AA)+1)) #initiate a dataframe for the intercepts of the linear model
@@ -34,7 +34,7 @@ for(i in 1:length(AA)){
 
 meanfull #ALWAYS check to make sure everything looks right! small errors can break the code
 
-sd<- aggregate(cleaned['adj'], by = list(cleaned$ID1, cleaned$AAID), sd)
+sd<- aggregate(df['adj'], by = list(df$ID1, df$AAID), sd)
 sd_names <- c("Sample.ID",paste0(AA,".sd"))
 
 sdfull<-data.frame(matrix(0, nrow = length(unique(sd$Group.1)), ncol = length(AA)+1)) 
@@ -51,6 +51,43 @@ sdfull
 Corrected <- merge(meanfull,sdfull, by="Sample.ID") #this merges the columns in both the SD and mean dataframes
 Corrected
 
-file.name <- "outliers_removed.csv"
+#####Add Year column ####
+a <- substr(data$ID1, 1, 2)
+
+year <- vector(mode="character")
+for(i in 1:length(a)){
+  if(a[i] <= 22){
+    year[i] <- paste0(20, a[i])
+  } else{
+    year[i] <- paste0(19, a[i])
+  }
+}
+
+data$Year <- year
+data <- data %>% relocate(Year, .before = RT)
+
+#####Add System column####
+b <- substr(data$ID1, 4, 4)
+
+system <- vector(mode="character")
+for(i in 1:length(b)){
+  if(b[i] == "W"){
+    system[i] <- "Wood"
+  } else if(b[i] == "K"){
+    system[i] <- "Kvichak"
+  }  else{
+    system[i] <- "Egegik"
+  }
+}
+
+data$System <- system
+data <- data %>% relocate(System, .before = RT)
+
+#####Add Age column####
+data$Age <- substr(data$ID1, 6, 6)
+data <- data %>% relocate(Age, .before = RT)
+
+
+file.name <- "final/main.clean.csv"
 write.csv(Corrected, file = file.name)
 
