@@ -52,42 +52,43 @@ Corrected <- merge(meanfull,sdfull, by="Sample.ID") #this merges the columns in 
 Corrected
 
 #####Add Year column ####
-a <- substr(data$ID1, 1, 2)
+year.2digit <- substr(Corrected$Sample.ID, 1, 2)
 
 year <- vector(mode="character")
-for(i in 1:length(a)){
-  if(a[i] <= 22){
-    year[i] <- paste0(20, a[i])
+for(i in 1:length(year.2digit)){
+  if(year.2digit[i] <= 22){
+    year[i] <- paste0(20, year.2digit[i])
   } else{
-    year[i] <- paste0(19, a[i])
+    year[i] <- paste0(19, year.2digit[i])
   }
 }
 
-data$Year <- year
-data <- data %>% relocate(Year, .before = RT)
+Corrected$Year <- year
+Corrected <- Corrected %>% relocate(Year, .before = ALA.mean)
 
 #####Add System column####
-b <- substr(data$ID1, 4, 4)
+sys <- substr(Corrected$Sample.ID, 4, 4)
 
 system <- vector(mode="character")
-for(i in 1:length(b)){
-  if(b[i] == "W"){
+for(i in 1:length(sys)){
+  if(sys[i] == "W"){
     system[i] <- "Wood"
-  } else if(b[i] == "K"){
+  } else if(sys[i] == "K"){
     system[i] <- "Kvichak"
   }  else{
     system[i] <- "Egegik"
   }
 }
 
-data$System <- system
-data <- data %>% relocate(System, .before = RT)
+Corrected$System <- system
+Corrected <- Corrected %>% relocate(System, .before = ALA.mean)
 
 #####Add Age column####
-data$Age <- substr(data$ID1, 6, 6)
-data <- data %>% relocate(Age, .before = RT)
+Corrected$Age <- substr(Corrected$Sample.ID, 6, 6)
+Corrected <- Corrected %>% relocate(Age, .before = ALA.mean)
 
 
+#####Write new .csv file that has this clean data with no outliers####
 file.name <- "final/main.clean.csv"
 write.csv(Corrected, file = file.name)
 
