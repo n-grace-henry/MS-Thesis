@@ -17,9 +17,6 @@ ggplot(data = data, aes(Year, PHE.mean, color = System)) +
 
 #+geom_smooth(method = "lm")
 
-ggplot(data = data, aes(Year, PHE.mean, color = System)) +
-  geom_line(size = 1, alpha = 0.7) 
-
 Wood <- data[data$System =="Wood",]
 Kvichak <- data[data$System =="Kvichak",]
 Egegik <- data[data$System =="Egegik",]
@@ -37,7 +34,6 @@ ggplot(data = Egegik, aes(Year, PHE.mean, color = as.character(Age))) +
 #make a graph showing total number of samples/system/year 
 
 #trophic position graphs
-setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 
 trophic.data <- read.csv(file = "trophic.position")
 
