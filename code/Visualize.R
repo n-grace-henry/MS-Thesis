@@ -2,14 +2,14 @@
 #at this point the data should be drift corrected, compiled, and had all
 #duplicates and replicates removed and averaged
 
-setwd("~/Documents/Grad School /CSIA/code")
+setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 
 library(dplyr)
 library(readr)
 library(ggplot2)
 
 #read in the main data file
-data <- read.csv(file="main.data")
+data <- read.csv(file="main.clean.csv")
 
 #scatter plot of year vs isotope signature
 ggplot(data = data, aes(Year, PHE.mean, color = System)) +
