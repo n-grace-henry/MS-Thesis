@@ -1,11 +1,11 @@
 #code to average all the duplicate samples and add the new average to the main
 #data file. This starts with a csv file produced by the Compile.R script. 
-setwd("~/Documents/Grad School /CSIA/code")
+setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 
 library(dplyr)
 library(readr)
 
-data <- read.csv(file="main.data")
+data <- read.csv(file="main.clean.csv")
 
 #function to average duplicates and replace in data file with new averages
 #this function works only when samples are not replicates (difference is 
@@ -64,4 +64,8 @@ rep[63]
 K223 <- subset(data, rep == "22_K_3")
 
 df <- rbind(E042, W102, E013, K892, K223)
+
+#average duplicate and replicate samples 
+Corrected$Age <- substr(Corrected$Sample.ID, 6, 6)
+
 

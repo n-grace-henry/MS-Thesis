@@ -53,4 +53,13 @@ ggplot(data = data, aes(Year, difference, color = System)) +
 data.age2 <- data[data$Age == "2",]
 data.age3 <- data[data$Age == "3",]
 
+ggplot(data = data.age2, aes(Year, difference, color = System)) +
+  geom_point(size = 3, alpha = 0.7) 
+
+ggplot(data = data.age3, aes(Year, difference, color = System)) +
+  geom_point(size = 3, alpha = 0.7) 
+
+ggplot(data = data, aes(Year, GLU.mean, color = System)) +
+  geom_point(size = 3, alpha = 0.7) 
+
 
