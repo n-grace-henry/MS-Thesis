@@ -31,7 +31,10 @@ ggplot(data = Egegik, aes(Year, PHE.mean, color = as.character(Age))) +
   geom_point(size = 3, alpha = 0.7) 
 
 #make a graph showing total number of samples/system/year 
+test.data <- data[,2:4]
 
+ggplot(test.data, aes(x = Year, fill = System)) +
+  geom_histogram()
 
 #trophic position graphs
 ggplot(data = data, aes(Year, Trophic.Position, color = System)) +
