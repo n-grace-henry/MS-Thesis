@@ -22,11 +22,10 @@ for(i in 1:length(data$Sample.ID)){
   tp[i,1] <- data$Sample.ID[i]
 }
 
-#add year, system and age to tp data frame 
-tp$Year <- data$Year
-tp$System <- data$System
-tp$Age <- data$Age
+#combine new data frame with original 
+main.trophic <- cbind(data, tp)
+main.trophic <- main.trophic[, 3:18]
 
 #create .csv file of trophic position data frame 
-file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/trophic.position"
-write.csv(tp, file = file.name)
+file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/main.trophic.csv"
+write.csv(main.trophic, file = file.name)
