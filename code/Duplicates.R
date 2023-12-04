@@ -7,9 +7,43 @@ library(readr)
 
 data <- read.csv(file="main.clean.csv")
 
+#take a look at all replicate values
 #make a new column with only the first chunk of the sample ID so replicates and duplicates are the same 
 data$new.ID <- substr(data$Sample.ID, 1, 6)
 
+rep <- substr(data$Sample.ID, 8, 8)
+data$rep <- substr(data$Sample.ID, 8, 8)
+
+which(data$rep == "R")
+
+data[3,]
+E013 <- subset(data, new.ID == "01_E_3")
+
+data[9,]
+W042<- subset(data, new.ID == "04_E_2")
+
+data[22,]
+E102 <- subset(data, new.ID == "10_W_2")
+
+data[35,]
+K222 <- subset(data, new.ID == "22_E_2")
+
+data[40,]
+K223 <- subset(data, new.ID == "22_K_3")
+
+data[58,]
+K742 <- subset(data, new.ID == "74_W_2")
+
+data[66,]
+K892 <- subset(data, new.ID == "89_K_2")
+
+df <- rbind(E013,W042,E102,K222,K223,K742,K892)
+
+#write a new .csv file for the replicates to look at later if needed
+file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/replicates.csv"
+write.csv(df, file = file.name)
+
+#find mean difference of replicates
 
 #function to average duplicates and replace in data file with new averages
 #this function works only when samples are not replicates (difference is 
@@ -29,6 +63,19 @@ rm_duplicates <- function(df, ID, Year, System, Age){
   
   print(new.data)
 }
+a <- subset(data, new.ID == "01_E_3")
+b <- a[,6:15]
+vec <- vector(mode="numeric", length=10)
+
+for(i in 1:10){
+  vec[i] <- mean(as.numeric(b[,i]))
+}
+
+c <- append(c(1, ID, Year, System, Age), vec)
+norep <- data[!data$new.ID==ID,]
+new.data <- rbind(norep, c)
+
+print(new.data)
 
 data <- rm_duplicates(df = data, ID = "01_E_3", Year = "2001", System = "Egegik", Age = "3")
 
@@ -49,29 +96,6 @@ write.csv(main.data, file = file.name)
 
 #from calculator, mean difference right now equal 1.876
 
-#take a look at all replicate values
-#make and save a new data frame of the replicates before averaging them
-rep <- substr(data$Sample.ID, 8, 8)
-data$rep <- substr(data$Sample.ID, 8, 8)
-
-which(data$rep == "R")
-
-data[3,]
-E042 <- subset(data, new.ID == "01_E_3")
-
-rep[43]
-W102<- subset(data, rep == "10_W_2")
-
-rep[58]
-E013 <- subset(data, rep == "01_E_3")
-
-rep[60]
-K892 <- subset(data, rep == "89_K_2")
-
-rep[63]
-K223 <- subset(data, rep == "22_K_3")
-
-df <- rbind(E042, W102, E013, K892, K223)
 
 
 
