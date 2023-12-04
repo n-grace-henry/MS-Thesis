@@ -1,3 +1,4 @@
+#use this script after cleaning the data and removing outliers + duplicates
 #calculating trophic position 
 setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 
@@ -5,7 +6,7 @@ library(dplyr)
 library(readr)
 
 #read in the main data file
-data <- read.csv(file="main.clean.csv")
+data <- read.csv(file="main.csv")
 
 #define beta and TDF values, this can be changed later if necessary 
 beta <- 3.4 #commonly used constant

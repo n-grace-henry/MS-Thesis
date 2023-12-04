@@ -6,7 +6,7 @@ setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 library(dplyr)
 library(readr)
 
-data <- read.csv(file="main.clean.csv")
+data <- read.csv(file="main.data.csv")
 
 #take a look at all replicate values
 #make a new column with only the first chunk of the sample ID
