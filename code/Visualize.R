@@ -78,17 +78,26 @@ ggplot(data = data, aes(Year, PHE.mean, color = System)) +
        x = "Year",
        y = "PHE d15N") +
   theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16)) 
+
+ggplot(data = data, aes(Year, PHE.mean)) +
+  geom_point(size = 3, alpha = 0.7) +
+  labs(title = "Phenylalanine Shifts Through Time",
+       x = "Year",
+       y = "PHE d15N") +
+  theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16)) + 
   geom_smooth()
 
 
-ggplot(data = data, aes(Year, GLU.mean, color = System)) +
+ggplot(data = data, aes(Year, GLU.mean)) +
   geom_point(size = 3, alpha = 0.7) +
   labs(title = "Glutamic Acid Shifts Through Time",
        x = "Year",
        y = "GLU d15N") +
   theme(axis.title = element_text(size = 15),
-        plot.title = element_text(size=16))
+        plot.title = element_text(size=16)) +
+    geom_smooth()
 
 ggplot(data = data, aes(Year, Trophic.Position)) +
   geom_point(size = 3, alpha = 0.7) +
