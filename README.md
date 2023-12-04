@@ -11,4 +11,6 @@ main.clean.csv -> this is all my drift corrected and triplicate combined data. T
 
 main.data.csv -> this is the step after main.clean.csv where I have taken that file and combined all the replicate and duplicate samples and saved into this file. 
 
+replicates.csv -> this file is all the replicate data before I average it with the cooresponding sample and delete the replicates from the data file. 
+
 ## progress_logs
