@@ -34,7 +34,10 @@ ggplot(data = Egegik, aes(Year, PHE.mean, color = as.character(Age))) +
 test.data <- data[,2:4]
 
 ggplot(test.data, aes(x = Year, fill = System)) +
-  geom_histogram()
+  geom_histogram() + 
+  labs(title = "Sample Distribution",
+       x = "Year",
+       y = "Number of Samples")
 
 #trophic position graphs
 ggplot(data = data, aes(Year, Trophic.Position, color = System)) +
@@ -65,8 +68,29 @@ ggplot(data = data, aes(Year, difference, color = System)) +
 data.age2 <- data[data$Age == "2",]
 data.age3 <- data[data$Age == "3",]
 
-ggplot(data = data.age2, aes(Year, difference, color = System)) +
-  geom_point(size = 3, alpha = 0.7) 
+ggplot(data = data, aes(Year, PHE.mean, color = System)) +
+  geom_point(size = 3, alpha = 0.7) +
+  labs(title = "Phenylalanine Shifts Through Time",
+       x = "Year",
+       y = "PHE d15N") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16))
+
+ggplot(data = data, aes(Year, GLU.mean, color = System)) +
+  geom_point(size = 3, alpha = 0.7) +
+  labs(title = "Glutamic Acid Shifts Through Time",
+       x = "Year",
+       y = "GLU d15N") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16))
+
+ggplot(data = data, aes(Year, Trophic.Position, color = System)) +
+  geom_point(size = 3, alpha = 0.7) +
+  labs(title = "Trophic Position Shifts Through Time",
+       x = "Year",
+       y = "Trophic Position") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16))
 
 ggplot(data = data.age3, aes(Year, difference, color = System)) +
   geom_point(size = 3, alpha = 0.7) 

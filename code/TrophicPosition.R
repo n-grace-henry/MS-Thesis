@@ -6,7 +6,7 @@ library(dplyr)
 library(readr)
 
 #read in the main data file
-data <- read.csv(file="main.csv")
+data <- read.csv(file="main.data.csv")
 
 #define beta and TDF values, this can be changed later if necessary 
 beta <- 3.4 #commonly used constant
