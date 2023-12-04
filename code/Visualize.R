@@ -9,13 +9,12 @@ library(readr)
 library(ggplot2)
 
 #read in the main data file
-data <- read.csv(file="main.clean.csv")
+data <- read.csv(file="main.trophic.csv")
 
 #scatter plot of year vs isotope signature
 ggplot(data = data, aes(Year, PHE.mean, color = System)) +
        geom_point(size = 3, alpha = 0.7) 
 
-#+geom_smooth(method = "lm")
 
 Wood <- data[data$System =="Wood",]
 Kvichak <- data[data$System =="Kvichak",]
@@ -33,11 +32,21 @@ ggplot(data = Egegik, aes(Year, PHE.mean, color = as.character(Age))) +
 
 #make a graph showing total number of samples/system/year 
 
+
 #trophic position graphs
+ggplot(data = data, aes(Year, Trophic.Position, color = System)) +
+  geom_point(size = 3, alpha = 0.7) +
+  labs(title = "Trophic Position Through Time", 
+       x = "Year",
+       y = "Trophic Position")
 
-trophic.data <- read.csv(file = "trophic.position")
+ggplot(data = Wood, aes(Year, Trophic.Position, color = Age)) +
+  geom_point(size = 3, alpha = 0.7) 
 
-ggplot(data = trophic.data, aes(Year, Trophic.Position, color = System)) +
+ggplot(data = Kvichak, aes(Year, Trophic.Position, color = Age)) +
+  geom_point(size = 3, alpha = 0.7) 
+
+ggplot(data = Egegik, aes(Year, Trophic.Position, color = Age)) +
   geom_point(size = 3, alpha = 0.7) 
 
 
@@ -60,6 +69,6 @@ ggplot(data = data.age3, aes(Year, difference, color = System)) +
   geom_point(size = 3, alpha = 0.7) 
 
 ggplot(data = data, aes(Year, GLU.mean, color = System)) +
-  geom_point(size = 3, alpha = 0.7) 
+  geom_point(size = 3, alpha = 0.7)
 
 
