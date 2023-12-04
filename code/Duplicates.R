@@ -8,7 +8,8 @@ library(readr)
 data <- read.csv(file="main.clean.csv")
 
 #take a look at all replicate values
-#make a new column with only the first chunk of the sample ID so replicates and duplicates are the same 
+#make a new column with only the first chunk of the sample ID
+#after this they can be removed 
 data$new.ID <- substr(data$Sample.ID, 1, 6)
 
 rep <- substr(data$Sample.ID, 8, 8)
@@ -43,13 +44,12 @@ df <- rbind(E013,W042,E102,K222,K223,K742,K892)
 file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/replicates.csv"
 write.csv(df, file = file.name)
 
-#find mean difference of replicates
+#find mean difference of replicates later using this saved .csv file
 
-#function to average duplicates and replace in data file with new averages
-#this function works only when samples are not replicates (difference is 
-#that these samples were the same sample, injected more than once)
+#function to average duplicate/replicates and replace in data file with new averages
+#run this function as many times as replicates there are
 rm_duplicates <- function(df, ID, Year, System, Age){
-  a <- subset(data, new.ID == ID)
+  a <- subset(df, new.ID == ID)
   b <- a[,6:15]
   vec <- vector(mode="numeric", length=10)
   
@@ -57,25 +57,12 @@ rm_duplicates <- function(df, ID, Year, System, Age){
     vec[i] <- mean(as.numeric(b[,i]))
   }
   
-  c <- append(c(1, ID, Year, System, Age), vec)
-  norep <- data[!data$new.ID==ID,]
+  c <- append(c(1, ID, Year, System, Age),c(vec, ID, 0))
+  norep <- df[!df$new.ID==ID,]
   new.data <- rbind(norep, c)
   
   print(new.data)
 }
-a <- subset(data, new.ID == "01_E_3")
-b <- a[,6:15]
-vec <- vector(mode="numeric", length=10)
-
-for(i in 1:10){
-  vec[i] <- mean(as.numeric(b[,i]))
-}
-
-c <- append(c(1, ID, Year, System, Age), vec)
-norep <- data[!data$new.ID==ID,]
-new.data <- rbind(norep, c)
-
-print(new.data)
 
 data <- rm_duplicates(df = data, ID = "01_E_3", Year = "2001", System = "Egegik", Age = "3")
 
