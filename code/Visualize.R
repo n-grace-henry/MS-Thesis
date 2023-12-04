@@ -20,6 +20,10 @@ Wood <- data[data$System =="Wood",]
 Kvichak <- data[data$System =="Kvichak",]
 Egegik <- data[data$System =="Egegik",]
 
+#standard deviations through time 
+ggplot(data = data, aes(Year, GLU.sd, color = System)) +
+  geom_line(size = 3, alpha = 0.7) 
+
 #plots of age vs isotope sig in the different river systems 
 ggplot(data = Wood, aes(Year, PHE.mean, color = as.character(Age))) +
   geom_point(size = 3, alpha = 0.7) 
@@ -74,7 +78,9 @@ ggplot(data = data, aes(Year, PHE.mean, color = System)) +
        x = "Year",
        y = "PHE d15N") +
   theme(axis.title = element_text(size = 15),
-        plot.title = element_text(size=16))
+        plot.title = element_text(size=16)) + 
+  geom_smooth()
+
 
 ggplot(data = data, aes(Year, GLU.mean, color = System)) +
   geom_point(size = 3, alpha = 0.7) +
@@ -84,13 +90,15 @@ ggplot(data = data, aes(Year, GLU.mean, color = System)) +
   theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16))
 
-ggplot(data = data, aes(Year, Trophic.Position, color = System)) +
+ggplot(data = data, aes(Year, Trophic.Position)) +
   geom_point(size = 3, alpha = 0.7) +
   labs(title = "Trophic Position Shifts Through Time",
        x = "Year",
        y = "Trophic Position") +
   theme(axis.title = element_text(size = 15),
-        plot.title = element_text(size=16))
+        plot.title = element_text(size=16)) +
+  geom_smooth()
+
 
 ggplot(data = data.age3, aes(Year, difference, color = System)) +
   geom_point(size = 3, alpha = 0.7) 
