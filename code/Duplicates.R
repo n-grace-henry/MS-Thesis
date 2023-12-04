@@ -70,11 +70,11 @@ data <- rm_duplicates(df = data, ID = "22_K_3", Year = "2022", System = "Kvichak
 data <- rm_duplicates(df = data, ID = "22_W_3", Year = "2022", System = "Wood", Age = "3")
 data <- rm_duplicates(df = data, ID = "13_W_2", Year = "2013", System = "Wood", Age = "2")
 data <- rm_duplicates(df = data, ID = "13_W_3", Year = "2013", System = "Wood", Age = "3")
-data <- rm_duplicates(df = data, ID = "04_E_2", Year = "2013", System = "Wood", Age = "3")
-data <- rm_duplicates(df = data, ID = "10_W_2", Year = "2013", System = "Wood", Age = "3")
-data <- rm_duplicates(df = data, ID = "22_E_2", Year = "2013", System = "Wood", Age = "3")
-data <- rm_duplicates(df = data, ID = "74_W_2", Year = "2013", System = "Wood", Age = "3")
-data <- rm_duplicates(df = data, ID = "89_K_2", Year = "2013", System = "Wood", Age = "3")
+data <- rm_duplicates(df = data, ID = "04_E_2", Year = "2004", System = "Egegik", Age = "2")
+data <- rm_duplicates(df = data, ID = "10_W_2", Year = "2010", System = "Wood", Age = "2")
+data <- rm_duplicates(df = data, ID = "22_E_2", Year = "2022", System = "Egegik", Age = "2")
+data <- rm_duplicates(df = data, ID = "74_W_2", Year = "1974", System = "Wood", Age = "2")
+data <- rm_duplicates(df = data, ID = "89_K_2", Year = "1989", System = "Kvichak", Age = "2")
 
 
 #check to see if there are any duplicate samples left 
