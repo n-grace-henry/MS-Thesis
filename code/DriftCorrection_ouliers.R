@@ -21,9 +21,9 @@ PHE <- -5.004
 GLU <- -3.336
 
 #Reading in the .csv of the NACHO data file and setting the file name for your output file
-data.1 <- SL.1 <- read.csv("code/cleaned/20230901_GHenry_CSIA.csv") #modify with name of your data file
+data.1 <- SL.1 <- read.csv("code/cleaned/20230824_GHenry_CSIA.csv") #modify with name of your data file
 colnames(data.1)<-name
-file.name <- "~/Documents/GitHub/CSIA_lab_work/data/outliers_removed/20230901_outliersRem.csv" #file name for output file including relative file path
+file.name <- "~/Documents/GitHub/CSIA_lab_work/data/outliers_removed/20230824_outliersRem.csv" #file name for output file including relative file path
 
 ###### Linear Model for Drift Correction #####
 #Fit a linear model to your external standards with "Analysis" (injection number) as the dependent variable and 
