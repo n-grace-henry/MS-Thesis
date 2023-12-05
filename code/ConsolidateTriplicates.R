@@ -89,7 +89,6 @@ Corrected <- Corrected %>% relocate(System, .before = ALA.mean)
 Corrected$Age <- substr(Corrected$Sample.ID, 6, 6)
 Corrected <- Corrected %>% relocate(Age, .before = ALA.mean)
 
-
 #####Write new .csv file that has this clean data with no outliers####
 setwd("~/Documents/GitHub/CSIA_lab_work/data")
 file.name <- "final/main.clean.csv"
