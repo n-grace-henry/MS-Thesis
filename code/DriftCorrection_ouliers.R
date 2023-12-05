@@ -89,7 +89,7 @@ data <- subset(data, !ID1 == "5AA")
 
 sample.ID <- unique(data$ID1)
 sample.ID
-values <- data[data$AAID == "PHE" & data$ID1 == sample.ID[1], "adj"]
+values <- data[data$AAID == "PHE" & data$ID1 == sample.ID[4], "adj"]
 values #look at values and determine if there are outliers 
 
 #remove the outlier row, only run this line of code when there is an outlier to remove
@@ -97,7 +97,7 @@ values #look at values and determine if there are outliers
 
 
 #do the sample process with GLU
-values <- data[data$AAID == "GLU" & data$ID1 == sample.ID[1], "adj"]
+values <- data[data$AAID == "GLU" & data$ID1 == sample.ID[4], "adj"]
 values #look at values and determine if there are outliers 
 
 #remove the outlier row, only run this line of code when there is an outlier to remove
