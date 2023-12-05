@@ -79,7 +79,7 @@ PHE.E <- ggplot(data = Egegik, aes(x = Year, y = PHE.mean)) +
 
 ggarrange(PHE.all, PHE.W, PHE.K, PHE.E)
 
-ggplot(data = data, aes(x = Year, y = GLU.mean, color = System)) +
+GLU.all <- ggplot(data = data, aes(x = Year, y = GLU.mean, color = System)) +
   geom_point(size = 3, alpha = 0.7) +
   labs(title = "Glutamic Acid Shifts Through Time",
        x = "Year",
@@ -89,6 +89,41 @@ ggplot(data = data, aes(x = Year, y = GLU.mean, color = System)) +
   geom_vline(xintercept=1977, linetype ="dashed") +
   geom_vline(xintercept=2005, linetype ="dashed") +
   geom_smooth(aes(group=1))
+
+GLU.W <- ggplot(data = Wood, aes(x = Year, y = GLU.mean)) +
+  geom_point(size = 3, alpha = 0.7, color = "#619CFF") +
+  labs(title = "Wood",
+       x = "Year",
+       y = "GLU d15N") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16)) +
+  geom_vline(xintercept=1977, linetype ="dashed") +
+  geom_vline(xintercept=1998, linetype ="dashed") +
+  geom_smooth(aes(group=1)) 
+
+GLU.K <- ggplot(data = Kvichak, aes(x = Year, y = GLU.mean)) +
+  geom_point(size = 3, alpha = 0.7, color = "#00BA38") +
+  labs(title = "Kvichak",
+       x = "Year",
+       y = "GLU d15N") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16)) +
+  geom_vline(xintercept=1977, linetype ="dashed") +
+  geom_vline(xintercept=1998, linetype ="dashed") +
+  geom_smooth(aes(group=1)) 
+
+GLU.E <- ggplot(data = Egegik, aes(x = Year, y = GLU.mean)) +
+  geom_point(size = 3, alpha = 0.7, color = "#F8766D") +
+  labs(title = "Egegik",
+       x = "Year",
+       y = "GLU d15N") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16)) +
+  geom_vline(xintercept=1977, linetype ="dashed") +
+  geom_vline(xintercept=1998, linetype ="dashed") +
+  geom_smooth(aes(group=1)) 
+
+ggarrange(GLU.all, GLU.W, GLU.K, GLU.E)
 
 ggplot(data = data, aes(x = Year, y = Trophic.Position, color = System)) +
   geom_point(size = 3, alpha = 0.7) +
