@@ -37,7 +37,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2007, wood, 2007_wood_2, 2, 30, run, 9.709, 50, 11/21
 2007, wood, 2007_wood_3, 3, 11, N/A, N/A, NA, NA
 2007, kvichak, 2007_kvichak_2, 2, 30, redo, 9.772, 50, 09/06
-2007, kvichak, 2007_kvichak_3, 3, 21, run, 10.796, 50, 11/27
+2007, kvichak, 2007_kvichak_3, 3, 21, redo, 10.796, 50, 11/27
 2007, egegik, 2007_egegik_2, 2, 30, run, 10.246, 50, 09/22
 2007, egegik, 2007_egegik_3, 3, 20, run, 10.234, 50, 11/22
 2004, wood, 2004_wood_2, 2, 28, run, 9.180, 50, 09/23
