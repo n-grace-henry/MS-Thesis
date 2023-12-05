@@ -109,7 +109,10 @@ ggplot(data = data, aes(Year, Trophic.Position)) +
   geom_smooth()
 
 
-ggplot(data = data.age3, aes(Year, difference, color = System)) +
+ggplot(data = data.age3, aes(Year, PHE.mean, color = System)) +
+  geom_point(size = 3, alpha = 0.7) 
+
+ggplot(data = data.age2, aes(Year, PHE.mean, color = System)) +
   geom_point(size = 3, alpha = 0.7) 
 
 ggplot(data = data, aes(Year, GLU.mean, color = System)) +
