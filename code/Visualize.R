@@ -7,6 +7,7 @@ setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 library(dplyr)
 library(readr)
 library(ggplot2)
+library(ggpubr)
 
 #read in the main data file
 data <- read.csv(file="main.trophic.csv")
@@ -32,7 +33,7 @@ ggplot(data = Egegik, aes(Year, PHE.mean, color = as.character(Age))) +
 
 
 #main graphs with trend line
-ggplot(data = data, aes(x = Year, y = PHE.mean, color = System)) +
+PHE.all <- ggplot(data = data, aes(x = Year, y = PHE.mean, color = System)) +
   geom_point(size = 3, alpha = 0.7) +
   labs(title = "Phenylalanine Shifts Through Time",
        x = "Year",
@@ -40,8 +41,43 @@ ggplot(data = data, aes(x = Year, y = PHE.mean, color = System)) +
   theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16)) +
   geom_vline(xintercept=1977, linetype ="dashed") +
-  geom_vline(xintercept=2005, linetype ="dashed") +
-  geom_smooth(aes(group=1))
+  geom_vline(xintercept=1998, linetype ="dashed") +
+  geom_smooth(aes(group=1)) 
+
+PHE.W <- ggplot(data = Wood, aes(x = Year, y = PHE.mean)) +
+  geom_point(size = 3, alpha = 0.7, color = "#619CFF") +
+  labs(title = "Wood",
+       x = "Year",
+       y = "PHE d15N") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16)) +
+  geom_vline(xintercept=1977, linetype ="dashed") +
+  geom_vline(xintercept=1998, linetype ="dashed") +
+  geom_smooth(aes(group=1)) 
+
+PHE.K <- ggplot(data = Kvichak, aes(x = Year, y = PHE.mean)) +
+  geom_point(size = 3, alpha = 0.7, color = "#00BA38") +
+  labs(title = "Phenylalanine Shifts Through Time",
+       x = "Year",
+       y = "PHE d15N") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16)) +
+  geom_vline(xintercept=1977, linetype ="dashed") +
+  geom_vline(xintercept=1998, linetype ="dashed") +
+  geom_smooth(aes(group=1)) 
+
+PHE.E <- ggplot(data = Egegik, aes(x = Year, y = PHE.mean)) +
+  geom_point(size = 3, alpha = 0.7, color = "#F8766D") +
+  labs(title = "Phenylalanine Shifts Through Time",
+       x = "Year",
+       y = "PHE d15N") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16)) +
+  geom_vline(xintercept=1977, linetype ="dashed") +
+  geom_vline(xintercept=1998, linetype ="dashed") +
+  geom_smooth(aes(group=1)) 
+
+ggarrange(PHE.all, PHE.W, PHE.K, PHE.E)
 
 ggplot(data = data, aes(x = Year, y = GLU.mean, color = System)) +
   geom_point(size = 3, alpha = 0.7) +
