@@ -125,7 +125,7 @@ GLU.E <- ggplot(data = Egegik, aes(x = Year, y = GLU.mean)) +
 
 ggarrange(GLU.all, GLU.W, GLU.K, GLU.E)
 
-ggplot(data = data, aes(x = Year, y = Trophic.Position, color = System)) +
+trophic.all <- ggplot(data = data, aes(x = Year, y = Trophic.Position, color = System)) +
   geom_point(size = 3, alpha = 0.7) +
   labs(title = "Trophic Position Shifts Through Time",
        x = "Year",
@@ -133,19 +133,43 @@ ggplot(data = data, aes(x = Year, y = Trophic.Position, color = System)) +
   theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16)) +
   geom_vline(xintercept=1977, linetype ="dashed") +
-  geom_vline(xintercept=2005, linetype ="dashed") +
+  geom_vline(xintercept=1998, linetype ="dashed") +
   geom_smooth(aes(group=1))
 
+trophic.W <- ggplot(data = Wood, aes(x = Year, y = Trophic.Position)) +
+  geom_point(size = 3, alpha = 0.7, color = "#619CFF") +
+  labs(title = "Wood",
+       x = "Year",
+       y = "GLU d15N") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16)) +
+  geom_vline(xintercept=1977, linetype ="dashed") +
+  geom_vline(xintercept=1998, linetype ="dashed") +
+  geom_smooth(aes(group=1))
 
-ggplot(data = data.age3, aes(Year, PHE.mean, color = System)) +
-  geom_point(size = 3, alpha = 0.7) 
+trophic.K <- ggplot(data = Kvichak, aes(x = Year, y = Trophic.Position)) +
+  geom_point(size = 3, alpha = 0.7, color = "#00BA38") +
+  labs(title = "Kvichak",
+       x = "Year",
+       y = "GLU d15N") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16)) +
+  geom_vline(xintercept=1977, linetype ="dashed") +
+  geom_vline(xintercept=1998, linetype ="dashed") +
+  geom_smooth(aes(group=1))
 
-ggplot(data = data.age2, aes(Year, PHE.mean, color = System)) +
-  geom_point(size = 3, alpha = 0.7) 
+trophic.E <- ggplot(data = Egegik, aes(x = Year, y = Trophic.Position)) +
+  geom_point(size = 3, alpha = 0.7, color = "#F8766D") +
+  labs(title = "Egegik",
+       x = "Year",
+       y = "GLU d15N") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16)) +
+  geom_vline(xintercept=1977, linetype ="dashed") +
+  geom_vline(xintercept=1998, linetype ="dashed") +
+  geom_smooth(aes(group=1))
 
-ggplot(data = data, aes(Year, GLU.mean, color = System)) +
-  geom_point(size = 3, alpha = 0.7)
-
+ggarrange(trophic.all, trophic.W, trophic.K, trophic.E)
 
 #age class histogram
 ggplot(data=data, aes(x = Trophic.Position, color = as.factor(Age))) +
