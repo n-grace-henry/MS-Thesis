@@ -99,7 +99,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1977, wood, 1977_wood_3, 3, 23, run, 14.945, 50, 10/10
 1977, kvichak, 1977_kvichak_2, 2, 30, run, 10.902, 50, 10/13
 1977, kvichak, 1977_kvichak_3, 3, 5, N/A, N/A, NA, NA
-1977, egegik, 1977_egegik_2, 2, 30, run, 14.342, 50, 10/18
+1977, egegik, 1977_egegik_2, 2, 30, redo, 14.342, 50, 10/18
 1977, egegik, 1977_egegik_3, 3, 17, run, 7.815, 50, 10/13
 1974, wood, 1974_wood_2, 2, 30, run, 11.905, 50, 11/27
 1974, wood, 1974_wood_2_R, 2, 30, run, 10.318, 50, 11/18
