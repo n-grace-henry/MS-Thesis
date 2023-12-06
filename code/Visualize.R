@@ -129,7 +129,7 @@ trophic.all <- ggplot(data = data, aes(x = Year, y = Trophic.Position, color = S
   geom_point(size = 3, alpha = 0.7) +
   labs(title = "Trophic Position Shifts Through Time",
        x = "Year",
-       y = "GLU d15N") +
+       y = "Trophic Position") +
   theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16)) +
   geom_vline(xintercept=1977, linetype ="dashed") +
@@ -140,7 +140,7 @@ trophic.W <- ggplot(data = Wood, aes(x = Year, y = Trophic.Position)) +
   geom_point(size = 3, alpha = 0.7, color = "#619CFF") +
   labs(title = "Wood",
        x = "Year",
-       y = "GLU d15N") +
+       y = "Trophic Position") +
   theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16)) +
   geom_vline(xintercept=1977, linetype ="dashed") +
@@ -151,7 +151,7 @@ trophic.K <- ggplot(data = Kvichak, aes(x = Year, y = Trophic.Position)) +
   geom_point(size = 3, alpha = 0.7, color = "#00BA38") +
   labs(title = "Kvichak",
        x = "Year",
-       y = "GLU d15N") +
+       y = "Trophic Position") +
   theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16)) +
   geom_vline(xintercept=1977, linetype ="dashed") +
@@ -162,7 +162,7 @@ trophic.E <- ggplot(data = Egegik, aes(x = Year, y = Trophic.Position)) +
   geom_point(size = 3, alpha = 0.7, color = "#F8766D") +
   labs(title = "Egegik",
        x = "Year",
-       y = "GLU d15N") +
+       y = "Trophic Position") +
   theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16)) +
   geom_vline(xintercept=1977, linetype ="dashed") +
