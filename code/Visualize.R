@@ -57,7 +57,7 @@ PHE.W <- ggplot(data = Wood, aes(x = Year, y = PHE.mean)) +
 
 PHE.K <- ggplot(data = Kvichak, aes(x = Year, y = PHE.mean)) +
   geom_point(size = 3, alpha = 0.7, color = "#00BA38") +
-  labs(title = "Phenylalanine Shifts Through Time",
+  labs(title = "Kvichak",
        x = "Year",
        y = "PHE d15N") +
   theme(axis.title = element_text(size = 15),
@@ -68,7 +68,7 @@ PHE.K <- ggplot(data = Kvichak, aes(x = Year, y = PHE.mean)) +
 
 PHE.E <- ggplot(data = Egegik, aes(x = Year, y = PHE.mean)) +
   geom_point(size = 3, alpha = 0.7, color = "#F8766D") +
-  labs(title = "Phenylalanine Shifts Through Time",
+  labs(title = "Egegik",
        x = "Year",
        y = "PHE d15N") +
   theme(axis.title = element_text(size = 15),
@@ -172,8 +172,21 @@ trophic.E <- ggplot(data = Egegik, aes(x = Year, y = Trophic.Position)) +
 ggarrange(trophic.all, trophic.W, trophic.K, trophic.E)
 
 #age class histogram
-ggplot(data=data, aes(x = Trophic.Position, color = as.factor(Age))) +
-  geom_histogram(aes(y=..density..), colour="black", fill="white")+
-  geom_density(alpha=.2, fill="red") 
+ggplot(data=data, aes(x = Trophic.Position, fill = as.factor(Age), color = as.factor(Age))) +
+  geom_histogram(bins = 60, position = "identity") +
+  labs(title = "Trophic Position at Ocean Age Class",
+       x = "Trophic Position",
+       y = "Frequency",
+       fill = "Ocean Age") +
+  guides(color = FALSE)
+
+#trophic position across systems histogram
+ggplot(data=data, aes(x = Trophic.Position, fill = System, color = System)) +
+  geom_histogram(bins = 60, alpha = 0.5, position = "identity") +
+  labs(title = "Trophic Position across system",
+       x = "Trophic Position",
+       y = "Frequency",
+       fill = "System") +
+  guides(color = FALSE)
                  
                  
