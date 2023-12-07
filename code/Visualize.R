@@ -174,6 +174,8 @@ ggarrange(trophic.all, trophic.W, trophic.K, trophic.E)
 #age class histogram
 ggplot(data=data, aes(x = Trophic.Position, fill = as.factor(Age), color = as.factor(Age))) +
   geom_histogram(bins = 60, position = "identity") +
+  geom_density(aes(fill = as.factor(Age), color = as.factor(Age)), alpha = 0.5) +
+  scale_alpha_manual(values = c(0.2, 0.5)) +
   labs(title = "Trophic Position at Ocean Age Class",
        x = "Trophic Position",
        y = "Frequency",
