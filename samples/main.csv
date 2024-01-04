@@ -36,8 +36,8 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 2010, egegik, 2010_egegik_3, 3, 18, run, 7.689, 50, 09/06
 2007, wood, 2007_wood_2, 2, 30, run, 9.709, 50, 11/21
 2007, wood, 2007_wood_3, 3, 11, N/A, N/A, NA, NA
-2007, kvichak, 2007_kvichak_2, 2, 30, redo, 9.772, 50, 09/06
-2007, kvichak, 2007_kvichak_3, 3, 21, redo, 10.796, 50, 11/27
+2007, kvichak, 2007_kvichak_2, 2, 30, prepping, 9.595, 50, NA
+2007, kvichak, 2007_kvichak_3, 3, 21, prepping, 10.187, 50, NA
 2007, egegik, 2007_egegik_2, 2, 30, run, 10.246, 50, 09/22
 2007, egegik, 2007_egegik_3, 3, 20, run, 10.234, 50, 11/22
 2004, wood, 2004_wood_2, 2, 28, run, 9.180, 50, 09/23
@@ -68,7 +68,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1995, egegik, 1995_egegik_2, 2, 30, run, 11.039, 50, 09/26
 1995, egegik, 1995_egegik_3, 3, 14, run, 7.152, 50, 09/26
 1992, wood, 1992_wood_2, 2, 30, run, 8.261, 50, 09/11
-1992, wood, 1992_wood_3, 3, 15, redo, 6.229, 50, 09/11
+1992, wood, 1992_wood_3, 3, 15, prepping, 5.360, 50, NA
 1992, egegik, 1992_egegik_2, 2, 30, run, 8.732, 50, 10/04
 1992, egegik, 1992_egegik_3, 3, 9, N/A, N/A, NA, NA
 1993, kvichak, 1993_kvichak_2, 2, 30, run, 12.732, 50, 10/04
@@ -89,7 +89,7 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1984, wood, 1984_wood_3, 3, 16, bad peaks, 2.455, 50, 11/27
 1983, kvichak, 1983_kvichak_2, 2, 30, run, 8.198, 50, 10/10
 1983, kvichak, 1983_kvichak_3, 3, 3, N/A, N/A, NA, NA
-1980, wood, 1980_wood_2, 2, 22, redo, 6.496, 50, 11/17
+1980, wood, 1980_wood_2, 2, 22, prepping, 4.772, 50, NA
 1980, wood, 1980_wood_3, 3, 12, N/A, N/A, NA, NA
 1980, kvichak, 1980_kvichak_2, 2, 30, run, 11.923, 50, 10/10
 1980, kvichak, 1980_kvichak_3, 3, 8, N/A, N/A, NA, NA
@@ -99,14 +99,14 @@ year, district, sample_ID, age_class, scale_num, status, weight (mg), volume, ru
 1977, wood, 1977_wood_3, 3, 23, run, 14.945, 50, 10/10
 1977, kvichak, 1977_kvichak_2, 2, 30, run, 10.902, 50, 10/13
 1977, kvichak, 1977_kvichak_3, 3, 5, N/A, N/A, NA, NA
-1977, egegik, 1977_egegik_2, 2, 30, redo, 14.342, 50, 10/18
+1977, egegik, 1977_egegik_2, 2, 30, prepping, 11.816, 50, NA
 1977, egegik, 1977_egegik_3, 3, 17, run, 7.815, 50, 10/13
 1974, wood, 1974_wood_2, 2, 30, run, 11.905, 50, 11/27
 1974, wood, 1974_wood_2_R, 2, 30, run, 10.318, 50, 11/18
 1974, wood, 1974_wood_3, 3, 11, N/A, N/A, NA, NA
 1974, kvichak, 1974_kvichak_2, 2, 31, run, 10.626, 50, 11/27
 1974, kvichak, 1974_kvichak_3, 3, 3, N/A, N/A, NA, NA
-1974, egegik, 1974_egegik_2, 2, 30, ready, 10.611, 50, NA
+1974, egegik, 1974_egegik_2, 2, 30, prepping, , 50, NA
 1974, egegik, 1974_egegik_3, 3, 9, N/A, N/A, NA, NA
 1971, wood, 1971_wood_2, 2, 30, run, 13.420, 50, 10/13
 1971, wood, 1971_wood_3, 3, 22, run, 12.716, 50, 10/13
