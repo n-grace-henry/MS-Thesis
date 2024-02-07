@@ -8,5 +8,8 @@ I am adding 20 uL norleucine to all of these prior to hydrolysis.
 Doing column purification and filtration on the 6 samples from yesterday.
 Blowing down under N2 on heat.
 
-## 2023-01-08
-Doing de-fatting on the 6 samples. 
+## 2024-01-08
+Doing de-fatting on the 6 samples. Blowing them down overnight under N2 until dryness. 
+
+## 2024-01-10
+Doing esterfication of the 6 samples and blowing them down under N2 and on heat. 
