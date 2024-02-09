@@ -12,9 +12,10 @@ setwd("~/Documents/GitHub/CSIA_lab_work/data/SIA results")
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/SIA results/230914_Jameson_10B-AqPlants.csv")
 
 #True values referenced to VPDB
-GA1 <- 
-GA2 <- 
-PCH <- 
+GA1 <- -4.6
+GA2 <- -5.5
+PCH <- 1.98
+SAL <- 11.3
 
 #Grab all GA1 data
 GA1 <- data[data$Identifier.1 %in% c("GA1_QTY_2", 
