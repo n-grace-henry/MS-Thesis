@@ -115,22 +115,24 @@ lm.2 <- lm(offset.2 ~ measured.2)
 summary(lm.2)
 
 
-####### Data Set Two #######
+####### Data Set Three #######
 #Load in data
-data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/SIA results/231001_Jameson_20A-Snails.csv")
+data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/SIA results/231109_DoranEtOH4.csv")
 
 #Grab all GA1 data
-GA1 <- data[data$Identifier.1 %in% c("GA1_QTY_2", 
+GA1 <- data[data$Identifier.1 %in% c("GA1_QTY_", 
                                      "GA1_STD_01", 
                                      "GA1_STD_02", 
                                      "GA1_STD_03", 
                                      "GA1_STD_04") &
               data$Is.Ref._ == "0" &
               data$Gasconfiguration == "N2", "d.15N.14N"]
-GA1.avg <- mean(GA1)
+
+#"d.15N.14N"
+GA1.avg <- mean(GA1[1:6])
 
 #Grab all the GA2 data
-GA2 <- data[data$Identifier.1 %in% c("GA2_QTY_02", 
+GA2 <- data[data$Identifier.1 %in% c("GA2_QTY_", 
                                      "GA2_STD_01", 
                                      "GA2_STD_02", 
                                      "GA2_STD_03", 
@@ -156,12 +158,12 @@ GA2.off <- GA2.avg - GA2.ref
 SAL.off <- SAL.avg - SAL.ref
 
 #Plot 
-offset.2 <- c(GA1.off, GA2.off, SAL.off)
-measured.2 <- c(GA1.avg, GA2.avg, SAL.avg)
+offset.3 <- c(GA1.off, GA2.off, SAL.off)
+measured.3 <- c(GA1.avg, GA2.avg, SAL.avg)
 
-plot(x = measured.2, y = offset.2)
+plot(x = measured.3, y = offset.3)
 
 #Linear regression
-lm.2 <- lm(offset.2 ~ measured.2)
-summary(lm.2)
+lm.3 <- lm(offset.3 ~ measured.3)
+summary(lm.3)
 
