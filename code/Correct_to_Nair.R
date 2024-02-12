@@ -100,7 +100,7 @@ SAL <- data[data$Identifier.1 %in% c("SAL_STD_01",
 SAL.avg <- mean(SAL)
 
 #Find offset values
-GA1.off <- GA1.avg- GA1.ref
+GA1.off <- GA1.avg - GA1.ref
 GA2.off <- GA2.avg - GA2.ref
 SAL.off <- SAL.avg - SAL.ref
 
