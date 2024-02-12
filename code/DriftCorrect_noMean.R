@@ -27,9 +27,14 @@ file.name <- "cleaned/20240207_GHenry_CSIA.csv" #file name for output file inclu
 
 
 #### Correct to international standard of N air ####
-data.1$d15N.correct <- data.1$d15N + 
+#Calculations of offset values were done in R script "Correct_to_Nair.R"
+#Three EA runs were looked at, the second was chosen as the most representative to base corrections off
+#No linear relationship was found between offset and measured value so one average value
+#will be applied to raw data
+#The offset values were calculated as EA measured d15N - reference 
+offset <- mean(c(0.40160, 0.47160, 0.41725))
 
-
+data.1$d15N.correct <- data.1$d15N - offset
 
 ###### Linear Model for Drift Correction #####
 #Fit a linear model to your external standards with "Analysis" (injection number) as the dependent variable and 
@@ -41,7 +46,7 @@ AA <- unique(unlist(data.1STD$AAID)) #make a list of the AAs in the data
 Intercept<-data.frame(Intercept=rep(NA,length(AA))) #initiate a dataframe for the intercepts of the linear model
 for(i in 1:length(AA)){
   data <- subset(data.1STD, AAID==AA[i])
-  Intercept[i,1]<- coef(summary(lm(as.numeric(d15N)~as.numeric(Analysis), data=data)))[1,1]
+  Intercept[i,1]<- coef(summary(lm(as.numeric(d15N.correct)~as.numeric(Analysis), data=data)))[1,1]
 }
 Intercept #intercept values looped by aa
 
