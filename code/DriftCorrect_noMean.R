@@ -53,7 +53,7 @@ Intercept #intercept values looped by aa
 Slope<-data.frame(Slope=rep(NA,length(AA))) #initiate a dataframe for the slopes of the linear model
 for(i in 1:length(AA)){
   data <- subset(data.1STD, AAID==AA[i])
-  Slope[i,1]<- coef(summary(lm(as.numeric(d15N)~as.numeric(Analysis), data=data)))[2,1]
+  Slope[i,1]<- coef(summary(lm(as.numeric(d15N.correct)~as.numeric(Analysis), data=data)))[2,1]
 }
 Slope #slope values looped by aa
 
