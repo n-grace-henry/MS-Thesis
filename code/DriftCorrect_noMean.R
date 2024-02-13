@@ -85,7 +85,7 @@ intercept <-   ifelse(data.1$AAID=="NOR", filter(Coef, AA=="NOR")[1,2],
 
 #####Applying Drift Correction####
 difference <- actual-(data.1$Analysis*slope+intercept) #Applying both a drift and step correction in on estep from linear model data
-adj <- data.1$d15N + difference
+adj <- data.1$d15N.correct + difference
 data <- cbind(data.1, adj)
 
 data
