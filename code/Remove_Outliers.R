@@ -1,6 +1,7 @@
 #script to compile all post processed csv files into one csv file
-#use this after the DriftCorrection.R script
+#use this after the DriftCorrect_noMean.R script
 setwd("~/Documents/GitHub/CSIA_lab_work/data/DriftCorrected_noMean")
+rm(list)
 
 library(dplyr)
 library(readr)

@@ -23,7 +23,7 @@ GLU <- -3.336
 #Reading in the .csv of the NACHO data file and setting the file name for your output file
 data.1 <- SL.1 <- read.csv("cleaned/20240207_GHenry_CSIA.csv") #modify with name of your data file
 colnames(data.1)<- name
-file.name <- "cleaned/20240207_GHenry_CSIA.csv" #file name for output file including relative file path
+file.name <- "DriftCorrected_noMean/20240207_drift_noMean.csv" #file name for output file including relative file path
 
 
 #### Correct to international standard of N air ####
