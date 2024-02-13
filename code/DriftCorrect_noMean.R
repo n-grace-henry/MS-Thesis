@@ -13,7 +13,7 @@ name <- c("Analysis", "ID1", "RT", "AreaAll", "d29N", "d15N", "AAID")
 
 #This is the stable isotope ratios of the internal and external standards. 
 # MAKE SURE THIS IS UP TO DATE BASED ON HEEL STANDARDS!!! These values are as of 01/23/2020. 
-#If your samples were esterfied after 01/23/2020 these values should be verfied with the standard file on the HEEL drive
+#If your samples were esterfied after 01/23/2020 these values should be verified with the standard file on the HEEL drive
 ALA <- -1.21
 VAL <- 0.361
 NOR <- 14.163
