@@ -47,6 +47,8 @@ file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/replicates.csv"
 write.csv(df, file = file.name)
 
 #find mean difference of replicates later using this saved .csv file
+#from calculator, mean difference right now equals 1.876 (not updated as of 02/14)
+
 
 #function to average duplicate/replicates and replace in data file with new averages
 #run this function as many times as replicates there are
@@ -76,6 +78,7 @@ data <- rm_duplicates(df = data, ID = "10_W_2", Year = "2010", System = "Wood", 
 data <- rm_duplicates(df = data, ID = "22_E_2", Year = "2022", System = "Egegik", Age = "2")
 data <- rm_duplicates(df = data, ID = "74_W_2", Year = "1974", System = "Wood", Age = "2")
 data <- rm_duplicates(df = data, ID = "89_K_2", Year = "1989", System = "Kvichak", Age = "2")
+data <- rm_duplicates(df = data, ID = "89_W_2", Year = "1989", System = "WWood", Age = "2")
 
 
 #check to see if there are any duplicate samples left 
