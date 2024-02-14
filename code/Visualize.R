@@ -1,7 +1,7 @@
 #this is an r script to do some basic data visualization of the cleaned data
 #at this point the data should be drift corrected, compiled, and had all
 #duplicates and replicates removed and averaged 
-
+rm(list =ls())
 setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 
 library(dplyr)
