@@ -10,6 +10,7 @@ The next step is to move to the R script called ConsolidateTriplicates.R. This s
 
 After consilidating with the above script, the next script to run is Duplicates.R. This script goes through the file "main.clean.csv" and averages all samples that were run twice or where replicates were run and averages the sample runs. The first part of this script makes a csv file called "replicates.csv" that has all replicate samples. This file can later be used to find the average difference between samples. Next thing this script does is remove all the duplicates and replicates by averaging them into one data point. Before saving as a new csv, check to make sure there are no more duplicates. The last step is to save as a file csv file that all future calculations and visualization will be produced from. This final sheet is called "main.data.csv".
 
+The next step is calculating trophic position. This script still needs to be tweaked to represent accurate TDF and beta values. As of 2/14 it is a work in progress. The produced csv file "main.trophic.csv" is the same as "main.data.csv" but there is an added column for trophic position. 
 
 
 ### final folder
