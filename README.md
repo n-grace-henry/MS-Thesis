@@ -8,7 +8,7 @@ Scripts should be run in a certain order to produce the finalized data. First th
 
 The next step is to move to the R script called ConsolidateTriplicates.R. This script take all the injections of single samples, either two or three injections, and averages to get a single data point. Before running this script, all data should be in the folder outliers_removed, because this script will compile all this data. After running this script, there is one csv file produced called "main.clean.csv" and this has system, age and year columns along with the average signature for each amino acid. 
 
-After consilidating with the above script, the next script to run is Duplicates.R. This script goes through the file "main.clean.csv" and averages all samples that were run twice or where replicates were run and averages the sample runs. 
+After consilidating with the above script, the next script to run is Duplicates.R. This script goes through the file "main.clean.csv" and averages all samples that were run twice or where replicates were run and averages the sample runs. The first part of this script makes a csv file called "replicates.csv" that has all replicate samples. This file can later be used to find the average difference between samples. Next thing this script does is remove all the duplicates and replicates by averaging them into one data point. Before saving as a new csv, check to make sure there are no more duplicates. The last step is to save as a file csv file that all future calculations and visualization will be produced from. This final sheet is called "main.data.csv".
 
 
 
