@@ -1,6 +1,7 @@
 #code to average all the duplicate samples and add the new average to the main
 #data file. This starts with a csv file produced by the 
 #ConsolidateTriplicates.R script. 
+rm(list = ls())
 setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 
 library(dplyr)
