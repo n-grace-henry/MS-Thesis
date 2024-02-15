@@ -21,9 +21,9 @@ PHE <- -5.004
 GLU <- -3.336
 
 #Reading in the .csv of the NACHO data file and setting the file name for your output file
-data.1 <- SL.1 <- read.csv("cleaned/20240207_GHenry_CSIA.csv") #modify with name of your data file
+data.1 <- SL.1 <- read.csv("cleaned/20230925_GHenry_CSIA.csv") #modify with name of your data file
 colnames(data.1)<-name
-file.name <- "outliers_removed/20240207_outliersRem.csv" #file name for output file including relative file path
+file.name <- "outliers_removed/20230925_outliersRem.csv" #file name for output file including relative file path
 
 #### Correct to international standard of N air ####
 #Calculations of offset values were done in R script "Correct_to_Nair.R"
@@ -97,18 +97,18 @@ data <- subset(data, !ID1 == "5AA")
 
 sample.ID <- unique(data$ID1)
 sample.ID
-values <- data[data$AAID == "PHE" & data$ID1 == sample.ID[5], "adj"]
+values <- data[data$AAID == "PHE" & data$ID1 == sample.ID[3], "adj"]
 values #look at values and determine if there are outliers 
 
 #remove the outlier row, only run this line of code when there is an outlier to remove
 #data <- data[!data$adj == values[3],] 
 
 #do the sample process with GLU
-values <- data[data$AAID == "GLU" & data$ID1 == sample.ID[5], "adj"]
+values <- data[data$AAID == "GLU" & data$ID1 == sample.ID[2], "adj"]
 values #look at values and determine if there are outliers 
 
 #remove the outlier row, only run this line of code when there is an outlier to remove
-#data <- data[!data$adj == values[2],] 
+#data <- data[!data$adj == values[3],] 
 
 
 #generate .csv file of this data with no outliers
