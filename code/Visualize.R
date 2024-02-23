@@ -35,7 +35,7 @@ ggplot(data = Egegik, aes(Year, PHE.mean, color = as.character(Age))) +
 #main graphs with trend line
 PHE.all <- ggplot(data = data, aes(x = Year, y = PHE.mean, color = System)) +
   geom_point(size = 3, alpha = 0.7) +
-  labs(title = "Phenylalanine Shifts Through Time",
+  labs(title = "Phenylalanine (source) Signature Through Time",
        x = "Year",
        y = "PHE d15N") +
   theme(axis.title = element_text(size = 15),
@@ -81,7 +81,7 @@ ggarrange(PHE.all, PHE.W, PHE.K, PHE.E)
 
 GLU.all <- ggplot(data = data, aes(x = Year, y = GLU.mean, color = System)) +
   geom_point(size = 3, alpha = 0.7) +
-  labs(title = "Glutamic Acid Shifts Through Time",
+  labs(title = "Glutamic Acid (trophic) Signature Through Time",
        x = "Year",
        y = "GLU d15N") +
   theme(axis.title = element_text(size = 15),
@@ -127,7 +127,7 @@ ggarrange(GLU.all, GLU.W, GLU.K, GLU.E)
 
 trophic.all <- ggplot(data = data, aes(x = Year, y = Trophic.Position, color = System)) +
   geom_point(size = 3, alpha = 0.7) +
-  labs(title = "Trophic Position Shifts Through Time",
+  labs(title = "Trophic Position",
        x = "Year",
        y = "Trophic Position") +
   theme(axis.title = element_text(size = 15),
