@@ -23,9 +23,9 @@ PHE <- -5.004
 GLU <- -3.336
 
 #Reading in the .csv of the NACHO data file and setting the file name for your output file
-data.1 <- SL.1 <- read.csv("cleaned/20231010_GHenry_CSIA.csv") #modify with name of your data file
+data.1 <- SL.1 <- read.csv("cleaned/20231117_GHenry_CSIA.csv") #modify with name of your data file
 colnames(data.1)<-name
-file.name <- "outliers_removed/20231010_outliersRem.csv" #file name for output file including relative file path
+file.name <- "with_outliers/20231010.csv" #file name for output file including relative file path
 
 #### Correct to international standard of N air ####
 #Calculations of offset values were done in R script "Correct_to_Nair.R"
@@ -91,5 +91,41 @@ data <- cbind(data.1, adj)
 
 data
 
-#####Remove all 5AA samples from dataset####
-data <- subset(data, !ID1 == "5AA")
+#####Consolidating Triplicates####
+
+AA<- unique(unlist(data$AAID)) #make a list of the AAs in the data
+
+mean <- aggregate(data['adj'], by = list(data$ID1, data$AAID), mean)
+mean_names <- c("Sample.ID",paste0(AA,".mean"))
+
+meanfull<-data.frame(matrix(0, nrow = length(unique(mean$Group.1)), ncol = length(AA)+1)) #initiate a dataframe for the intercepts of the linear model
+colnames(meanfull) <- mean_names
+
+meanfull[1:length(unique(mean$Group.1)),1]<- unique(mean$Group.1)
+for(i in 1:length(AA)){
+  meanfull[1:length(unique(mean$Group.1)),i+1]<- mean%>%
+    filter(Group.2  == AA[i])%>%
+    select(adj)
+}
+
+meanfull #ALWAYS check to make sure everything looks right! small errors can break the code
+
+sd<- aggregate(data['adj'], by = list(data$ID1, data$AAID), sd)
+sd_names <- c("Sample.ID",paste0(AA,".sd"))
+
+sdfull<-data.frame(matrix(0, nrow = length(unique(sd$Group.1)), ncol = length(AA)+1)) 
+colnames(sdfull)<- sd_names
+
+sdfull[1:length(unique(sd$Group.1)),1]<- unique(sd$Group.1)
+for(i in 1:length(AA)){
+  sdfull[1:length(unique(sd$Group.1)),i+1]<- sd%>%
+    filter(Group.2  == AA[i])%>%
+    select(adj)
+}
+sdfull
+
+Corrected <- merge(meanfull,sdfull, by="Sample.ID") #this merges the columns in both the SD and mean dataframes
+Corrected
+
+##### Write new .csv file ####
+write.csv(Corrected, file = file.name)
