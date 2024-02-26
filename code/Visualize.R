@@ -42,7 +42,8 @@ PHE.all <- ggplot(data = data, aes(x = Year, y = PHE.mean, color = System)) +
         plot.title = element_text(size=16)) +
   geom_vline(xintercept=1977, linetype ="dashed") +
   geom_vline(xintercept=1998, linetype ="dashed") +
-  geom_smooth(aes(group=1)) 
+  geom_smooth(aes(group=1)) +
+  facet_grid(. ~ Age, labeller = labeller(Age = c("2" = "Age 2", "3" = "Age 3")))
 
 PHE.W <- ggplot(data = Wood, aes(x = Year, y = PHE.mean)) +
   geom_point(size = 3, alpha = 0.7, color = "#619CFF") +
@@ -88,7 +89,8 @@ GLU.all <- ggplot(data = data, aes(x = Year, y = GLU.mean, color = System)) +
         plot.title = element_text(size=16)) +
   geom_vline(xintercept=1977, linetype ="dashed") +
   geom_vline(xintercept=2005, linetype ="dashed") +
-  geom_smooth(aes(group=1))
+  geom_smooth(aes(group=1)) +
+  facet_grid(. ~ Age, labeller = labeller(Age = c("2" = "Age 2", "3" = "Age 3")))
 
 GLU.W <- ggplot(data = Wood, aes(x = Year, y = GLU.mean)) +
   geom_point(size = 3, alpha = 0.7, color = "#619CFF") +
@@ -134,7 +136,8 @@ trophic.all <- ggplot(data = data, aes(x = Year, y = Trophic.Position, color = S
         plot.title = element_text(size=16)) +
   geom_vline(xintercept=1977, linetype ="dashed") +
   geom_vline(xintercept=1998, linetype ="dashed") +
-  geom_smooth(aes(group=1))
+  geom_smooth(aes(group=1))+ 
+  facet_grid(. ~ Age, labeller = labeller(Age = c("2" = "Age 2", "3" = "Age 3")))
 
 trophic.W <- ggplot(data = Wood, aes(x = Year, y = Trophic.Position)) +
   geom_point(size = 3, alpha = 0.7, color = "#619CFF") +
