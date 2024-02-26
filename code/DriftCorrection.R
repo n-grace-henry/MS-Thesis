@@ -23,9 +23,9 @@ PHE <- -5.004
 GLU <- -3.336
 
 #Reading in the .csv of the NACHO data file and setting the file name for your output file
-data.1 <- SL.1 <- read.csv("cleaned/20231116_GHenry_CSIA.csv") #modify with name of your data file
+data.1 <- SL.1 <- read.csv("cleaned/20231118_GHenry_CSIA.csv") #modify with name of your data file
 colnames(data.1)<-name
-file.name <- "with_outliers/20231116.csv" #file name for output file including relative file path
+file.name <- "with_outliers/20231118.csv" #file name for output file including relative file path
 
 #### Correct to international standard of N air ####
 #Calculations of offset values were done in R script "Correct_to_Nair.R"
