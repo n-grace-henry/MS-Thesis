@@ -59,14 +59,14 @@ df <- df %>% relocate(Age, .before = VAL.mean)
 ####Add column of replicates####
 df$new.ID <- substr(df$Sample.ID, 1, 6) #new.ID gets rid of R in sample.ID
 
-rep <- substr(data$Sample.ID, 8, 8)
-data$rep <- substr(data$Sample.ID, 8, 8)
+rep <- substr(df$Sample.ID, 8, 8)
+df$rep <- substr(df$Sample.ID, 8, 8)
 
 #function to average duplicate/replicates and replace in data file with new averages
 #run this function as many times as replicates there are
 rm_duplicates <- function(df, ID, Year, System, Age){
   a <- subset(df, new.ID == ID)
-  b <- a[,6:15]
+  b <- as.data.frame(a[,6:15])
   vec <- vector(mode="numeric", length=10)
   
   for(i in 1:10){
@@ -80,17 +80,17 @@ rm_duplicates <- function(df, ID, Year, System, Age){
   print(new.data)
 }
 
-data <- rm_duplicates(df = df, ID = "01_E_3", Year = "2001", System = "Egegik", Age = "3")
-data <- rm_duplicates(df = df, ID = "22_K_3", Year = "2022", System = "Kvichak", Age = "3")
-data <- rm_duplicates(df = df, ID = "22_W_3", Year = "2022", System = "Wood", Age = "3")
-data <- rm_duplicates(df = df, ID = "13_W_2", Year = "2013", System = "Wood", Age = "2")
-data <- rm_duplicates(df = df, ID = "13_W_3", Year = "2013", System = "Wood", Age = "3")
-data <- rm_duplicates(df = df, ID = "04_E_2", Year = "2004", System = "Egegik", Age = "2")
-data <- rm_duplicates(df = df, ID = "10_W_2", Year = "2010", System = "Wood", Age = "2")
-data <- rm_duplicates(df = df, ID = "22_E_2", Year = "2022", System = "Egegik", Age = "2")
-data <- rm_duplicates(df = df, ID = "74_W_2", Year = "1974", System = "Wood", Age = "2")
-data <- rm_duplicates(df = df, ID = "89_K_2", Year = "1989", System = "Kvichak", Age = "2")
-data <- rm_duplicates(df = df, ID = "89_W_2", Year = "1989", System = "Wood", Age = "2")
+df <- rm_duplicates(df = df, ID = "01_E_3", Year = "2001", System = "Egegik", Age = "3")
+df <- rm_duplicates(df = df, ID = "22_K_3", Year = "2022", System = "Kvichak", Age = "3")
+df <- rm_duplicates(df = df, ID = "22_W_3", Year = "2022", System = "Wood", Age = "3")
+df <- rm_duplicates(df = df, ID = "13_W_2", Year = "2013", System = "Wood", Age = "2")
+df <- rm_duplicates(df = df, ID = "13_W_3", Year = "2013", System = "Wood", Age = "3")
+df <- rm_duplicates(df = df, ID = "04_E_2", Year = "2004", System = "Egegik", Age = "2")
+df <- rm_duplicates(df = df, ID = "10_W_2", Year = "2010", System = "Wood", Age = "2")
+df <- rm_duplicates(df = df, ID = "22_E_2", Year = "2022", System = "Egegik", Age = "2")
+df <- rm_duplicates(df = df, ID = "74_W_2", Year = "1974", System = "Wood", Age = "2")
+df <- rm_duplicates(df = df, ID = "89_K_2", Year = "1989", System = "Kvichak", Age = "2")
+df <- rm_duplicates(df = df, ID = "89_W_2", Year = "1989", System = "Wood", Age = "2")
 
 
 #check to see if there are any duplicate samples left 
