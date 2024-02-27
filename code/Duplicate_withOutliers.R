@@ -127,7 +127,12 @@ data <- cbind(data, tp)
 data <- data[, 3:17]
 
 
-#place holder so I can look at this data before I figure out these reps
+#write new file
 file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/all.data.csv"
 write.csv(data, file.name)
 
+install.packages("openxlsx")
+library(openxlsx)
+
+main <- read.csv("~/Documents/GitHub/CSIA_lab_work/data/final/all.data.csv")
+write.xlsx(main, "~/Documents/GitHub/CSIA_lab_work/data/final/all.data.xlsx")
