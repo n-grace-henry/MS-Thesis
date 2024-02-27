@@ -21,7 +21,7 @@ df <- df[!df$Sample.ID == "5AA",]
 df <- df[,1:12]
 
 #####Add Year column ####
-year.2digit <- substr(Corrected$Sample.ID, 1, 2)
+year.2digit <- substr(df$Sample.ID, 1, 2)
 
 year <- vector(mode="character")
 for(i in 1:length(year.2digit)){
@@ -32,11 +32,11 @@ for(i in 1:length(year.2digit)){
   }
 }
 
-Corrected$Year <- year
-Corrected <- Corrected %>% relocate(Year, .before = ALA.mean)
+df$Year <- year
+df <- df %>% relocate(Year, .before = VAL.mean)
 
 #####Add System column####
-sys <- substr(Corrected$Sample.ID, 4, 4)
+sys <- substr(df$Sample.ID, 4, 4)
 
 system <- vector(mode="character")
 for(i in 1:length(sys)){
@@ -49,13 +49,12 @@ for(i in 1:length(sys)){
   }
 }
 
-Corrected$System <- system
-Corrected <- Corrected %>% relocate(System, .before = ALA.mean)
-
+df$System <- system
+df <- df %>% relocate(System, .before = VAL.mean)
 
 #####Add Age column####
-Corrected$Age <- substr(Corrected$Sample.ID, 6, 6)
-Corrected <- Corrected %>% relocate(Age, .before = ALA.mean)
+df$Age <- substr(df$Sample.ID, 6, 6)
+df <- df %>% relocate(Age, .before = VAL.mean)
 
 
 #function to average duplicate/replicates and replace in data file with new averages
