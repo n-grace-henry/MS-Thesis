@@ -16,7 +16,7 @@ df <- list.files(path=setwd("~/Documents/GitHub/CSIA_lab_work/data/with_outliers
   lapply(read_csv) %>% 
   bind_rows 
 
-#Remove 5AA and REF columbs
+#Remove 5AA and REF columns
 df <- df[!df$Sample.ID == "5AA",]
 df <- df[,1:12]
 
