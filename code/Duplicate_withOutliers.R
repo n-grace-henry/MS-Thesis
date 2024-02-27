@@ -56,6 +56,11 @@ df <- df %>% relocate(System, .before = VAL.mean)
 df$Age <- substr(df$Sample.ID, 6, 6)
 df <- df %>% relocate(Age, .before = VAL.mean)
 
+####Add column of replicates####
+df$new.ID <- substr(df$Sample.ID, 1, 6) #new.ID gets rid of R in sample.ID
+
+rep <- substr(data$Sample.ID, 8, 8)
+data$rep <- substr(data$Sample.ID, 8, 8)
 
 #function to average duplicate/replicates and replace in data file with new averages
 #run this function as many times as replicates there are
