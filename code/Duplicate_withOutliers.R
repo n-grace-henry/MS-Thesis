@@ -102,18 +102,11 @@ df <- rm_duplicates(df = df, ID = "74_E_2", Year = "1974", System = "Egegik", Ag
 anyDuplicated(df$new.ID)
 
 #remove the last two columns
-main.data <- df
-main.data <- main.data[,1:15]
+data <- df
+data <- as.data.frame(data[,1:15])
 
 
 #### Trophic Position Calculations ####
-setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
-
-library(dplyr)
-library(readr)
-
-#read in the main data file
-data <- read.csv(file="main.data.csv")
 
 #define beta and TDF values, this can be changed later if necessary 
 beta <- 3.4 #commonly used constant
@@ -125,16 +118,16 @@ tp <-setNames(tp, c("Sample.ID","Trophic.Position"))
 
 #for loop to calculate trophic position and fill data frame
 for(i in 1:length(data$Sample.ID)){
-  tp[i,2] <- 1+ ((data$GLU.mean[i]-data$PHE.mean[i]-beta)/TDF)
+  tp[i,2] <- 1 + ((as.numeric(data$GLU.mean[i])-as.numeric(data$PHE.mean[i])-beta)/TDF)
   tp[i,1] <- data$Sample.ID[i]
 }
 
 #combine new data frame with original 
-main.trophic <- cbind(data, tp)
-main.trophic <- main.trophic[, 3:18]
+data <- cbind(data, tp)
+data <- data[, 3:17]
 
 
 #place holder so I can look at this data before I figure out these reps
 file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/all.data.csv"
-write.csv(main.data, file.name)
+write.csv(data, file.name)
 
