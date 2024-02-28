@@ -131,8 +131,3 @@ data <- data[, 3:17]
 file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/all.data.csv"
 write.csv(data, file.name)
 
-install.packages("openxlsx")
-library(openxlsx)
-
-main <- read.csv("~/Documents/GitHub/CSIA_lab_work/data/final/all.data.csv")
-write.xlsx(main, "~/Documents/GitHub/CSIA_lab_work/data/final/all.data.xlsx")
