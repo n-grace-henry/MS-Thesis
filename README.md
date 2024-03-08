@@ -22,4 +22,6 @@ main.data.csv -> this is the step after main.clean.csv where I have taken that f
 
 replicates.csv -> this file is all the replicate data before I average it with the cooresponding sample and delete the replicates from the data file. 
 
+all.data.csv -> all corrected data including the points that did not end up getting data. Full time series data including the NA points. 
+
 ## progress_logs
