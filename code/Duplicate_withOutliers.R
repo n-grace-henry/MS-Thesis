@@ -123,8 +123,10 @@ for(i in 1:length(data$Sample.ID)){
 data <- cbind(data, tp)
 data <- data[, 3:17]
 
-
 #write new file
 file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/data.csv"
 write.csv(data, file.name)
+
+
+
 
