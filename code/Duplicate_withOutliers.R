@@ -93,9 +93,6 @@ df <- rm_duplicates(df = df, ID = "10_W_2", Year = "2010", System = "Wood", Age 
 df <- rm_duplicates(df = df, ID = "22_E_2", Year = "2022", System = "Egegik", Age = "2")
 df <- rm_duplicates(df = df, ID = "74_W_2", Year = "1974", System = "Wood", Age = "2")
 df <- rm_duplicates(df = df, ID = "89_K_2", Year = "1989", System = "Kvichak", Age = "2")
-df <- rm_duplicates(df = df, ID = "89_W_2", Year = "1989", System = "Wood", Age = "2")
-df <- rm_duplicates(df = df, ID = "07_K_2", Year = "2007", System = "Kvichak", Age = "2")
-df <- rm_duplicates(df = df, ID = "74_E_2", Year = "1974", System = "Egegik", Age = "2")
 
 
 #check to see if there are any duplicate samples left 
