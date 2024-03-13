@@ -24,4 +24,5 @@ replicates.csv -> this file is all the replicate data before I average it with t
 
 all.data.csv -> all corrected data including the points that did not end up getting data. Full time series data including the NA points. 
 
-## progress_logs
+data.csv -> same as the all.data.csv file except I removed the run on 2/7/24 that I think was wrong. This run looked pretty bad and I believe it was because the source blew and there might have also been a leak in the system. It gave some crazy high values and I think it is safer to remove this run entirely. 
+
