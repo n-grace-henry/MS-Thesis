@@ -128,6 +128,6 @@ data <- data[, 3:17]
 
 
 #write new file
-file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/all.data.csv"
+file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/data.csv"
 write.csv(data, file.name)
 
