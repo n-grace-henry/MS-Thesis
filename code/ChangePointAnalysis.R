@@ -25,22 +25,70 @@ Wood <- data_wide[, c("Wood", "Year",
 
 
 # Get rid of years from other systems
-Eg <- Eg[!is.na(Eg$Egegik), ]
-Kvi <- Kvi[!is.na(Kvi$Kvichak), ]
-Wood <- Wood[!is.na(Wood$Wood), ]
+Eg <- as.data.frame(Eg[!is.na(Eg$Egegik), ])
+Kvi <- as.data.frame(Kvi[!is.na(Kvi$Kvichak), ])
+Wood <- as.data.frame(Wood[!is.na(Wood$Wood), ])
 
 # Add NAs where they are missing
-newrow <- c(NA, "2019", NA, "3")
-insertRow <- 
-
-existingDF <- as.data.frame(matrix(seq(20),nrow=5,ncol=4))
-r <- 3
-newrow <- seq(4)
+# This function inserts a new row at row "r" while shifting the rest of the data frame down
 insertRow <- function(existingDF, newrow, r) {
   existingDF[seq(r+1,nrow(existingDF)+1),] <- existingDF[seq(r,nrow(existingDF)),]
   existingDF[r,] <- newrow
   existingDF
 }
+
+# Running function for all missing rows
+newrow <- c(NA, "2019", NA, "3") #insert for Egegik 
+Eg <- insertRow(Eg, newrow, r = 3)
+newrow <- c(NA, "2016", NA, "3")
+Eg <- insertRow(Eg, newrow, r = 5)
+newrow <- c(NA, "1992", NA, "3")
+Eg <- insertRow(Eg, newrow, r = 21)
+newrow <- c(NA, "1986", NA, "3")
+Eg <- insertRow(Eg, newrow, r = 25)
+newrow <- c(NA, "1983", NA, "2")
+Eg <- insertRow(Eg, newrow, r = 27)
+newrow <- c(NA, "1983", NA, "3")
+Eg <- insertRow(Eg, newrow, r = 27)
+newrow <- c(NA, "1980", NA, "2")
+Eg <- insertRow(Eg, newrow, r = 29)
+newrow <- c(NA, "1980", NA, "3")
+Eg <- insertRow(Eg, newrow, r = 30)
+newrow <- c(NA, "1974", NA, "3")
+Eg <- insertRow(Eg, newrow, r = 33)
+newrow <- c(NA, "1965", NA, "3")
+Eg <- insertRow(Eg, newrow, r = 39)
+
+newrow <- c(NA, "2016", NA, "3") #repeat for Kvichak
+Kvi <- insertRow(Kvi, newrow, r = 5)
+newrow <- c(NA, "2010", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 9)
+newrow <- c(NA, "2007", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 11)
+newrow <- c(NA, "1998", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 17)
+newrow <- c(NA, "1995", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 19)
+newrow <- c(NA, "1993", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 21)
+newrow <- c(NA, "1989", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 23)
+newrow <- c(NA, "1986", NA, "2") 
+Kvi <- insertRow(Kvi, newrow, r = 25)
+newrow <- c(NA, "1986", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 25)
+newrow <- c(NA, "1983", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 27)
+newrow <- c(NA, "1980", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 29)
+newrow <- c(NA, "1977", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 31)
+newrow <- c(NA, "1974", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 33)
+newrow <- c(NA, "1968", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 37)
+newrow <- c(NA, "1965", NA, "3") 
+Kvi <- insertRow(Kvi, newrow, r = 39)
 
 # Separate by Age class
 Eg_2 <- Eg[Eg$Age == "2",]
