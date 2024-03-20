@@ -37,8 +37,8 @@ insertRow <- function(existingDF, newrow, r) {
   existingDF
 }
 
-# Running function for all missing rows
-newrow <- c(NA, "2019", NA, "3") #insert for Egegik 
+#### Running function for all missing rows for Egegik ####
+newrow <- c(NA, "2019", NA, "3") 
 Eg <- insertRow(Eg, newrow, r = 3)
 newrow <- c(NA, "2016", NA, "3")
 Eg <- insertRow(Eg, newrow, r = 5)
@@ -59,7 +59,8 @@ Eg <- insertRow(Eg, newrow, r = 33)
 newrow <- c(NA, "1965", NA, "3")
 Eg <- insertRow(Eg, newrow, r = 39)
 
-newrow <- c(NA, "2016", NA, "3") #repeat for Kvichak
+#### Running function for all missing rows for Kvichak ####
+newrow <- c(NA, "2016", NA, "3") 
 Kvi <- insertRow(Kvi, newrow, r = 5)
 newrow <- c(NA, "2010", NA, "3") 
 Kvi <- insertRow(Kvi, newrow, r = 9)
@@ -89,6 +90,28 @@ newrow <- c(NA, "1968", NA, "3")
 Kvi <- insertRow(Kvi, newrow, r = 37)
 newrow <- c(NA, "1965", NA, "3") 
 Kvi <- insertRow(Kvi, newrow, r = 39)
+
+#### Running function for all missing rows for Wood ####
+newrow <- c(NA, "2019", NA, "3") 
+Wood <- insertRow(Wood, newrow, r = 3)
+newrow <- c(NA, "2010", NA, "3")
+Wood <- insertRow(Wood, newrow, r = 9)
+newrow <- c(NA, "2007", NA, "3")
+Wood <- insertRow(Wood, newrow, r = 11)
+newrow <- c(NA, "1998", NA, "3")
+Wood <- insertRow(Wood, newrow, r = 17)
+newrow <- c(NA, "1984", NA, "3")
+Wood <- insertRow(Wood, newrow, r = 27)
+newrow <- c(NA, "1980", NA, "3")
+Wood <- insertRow(Wood, newrow, r = 29)
+newrow <- c(NA, "1974", NA, "3")
+Wood <- insertRow(Wood, newrow, r = 33)
+newrow <- c(NA, "1965", NA, "3")
+Wood <- insertRow(Wood, newrow, r = 39)
+
+
+#### Create Time Series Objects ####
+
 
 # Separate by Age class
 Eg_2 <- Eg[Eg$Age == "2",]
