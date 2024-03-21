@@ -140,9 +140,12 @@ Eg_3 <- Eg[Eg$Age == "3",]
 #### Analysis Using Full Data Set ####
 
 # Make a column of average PHE across all ages and systems (should have one data point per year)
+library(dplyr)
+avg_data <- data %>%
+  group_by(Year) %>%
+  summarise(avg_PHE = mean(PHE.mean, na.rm = TRUE))
 
-# Remove rows with NAs
-data <- na.omit(data)
+print(avg_data)
 
 # Reverse the order of rows in the data frame so that the oldest year is at the top
 data <- data[order(data$Year, decreasing = TRUE), ]
