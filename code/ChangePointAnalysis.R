@@ -141,6 +141,8 @@ Eg_3 <- Eg[Eg$Age == "3",]
 
 # Average PHE across all ages and systems (should have one data point per year)
 data[c(113,114), 2] = "1968" #changing the two 1967s to 1968s to have consistent spacing of years 
+data[c(79,80), 2] = "1983"
+data[c(61,62), 2] = "1992"
 
 library(dplyr)
 avg_data_all <- data %>%
@@ -150,13 +152,10 @@ avg_data_all <- data %>%
 print(avg_data_all)
 plot(avg_data_all)
 
-# Average PHE across all systems with only age 2
-age.2 <- data[data$Age == "2",]
-
 # Convert data to a time series object
-ts_data <- ts(avg_data$avg_PHE, 
-              start = avg_data$Year[1],
-              end = avg_data$Year[length(avg_data$Year)], 
+ts_data <- ts(avg_data_all$avg_PHE, 
+              start = avg_data_all$Year[1],
+              end = avg_data_all$Year[length(avg_data_all$Year)], 
               frequency = 1)
 
 # Perform change point analysis using the 'cpt.mean' function
@@ -166,3 +165,11 @@ cpt_result <- cpt.mean(ts_data)
 plot(cpt_result, cpt.col = "blue")
 
 summary(cpt_result)
+
+
+# Average PHE across all systems with only age 2
+age.2 <- data[data$Age == "2",]
+
+
+
+
