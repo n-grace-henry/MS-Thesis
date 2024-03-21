@@ -132,10 +132,6 @@ cpt_result <- cpt.mean(as.numeric(ts_Eg))
 
 plot(cpt_result, cpt.col = "blue")
 
-# Separate by Age class
-Eg_2 <- Eg[Eg$Age == "2",]
-Eg_3 <- Eg[Eg$Age == "3",]
-
 
 #### Analysis Using Full Data Set ####
 
@@ -163,13 +159,27 @@ cpt_result <- cpt.mean(ts_data)
 
 # Plot the change point analysis results
 plot(cpt_result, cpt.col = "blue")
-
 summary(cpt_result)
 
 
 # Average PHE across all systems with only age 2
 age.2 <- data[data$Age == "2",]
 
+library(dplyr)
+avg_data_2 <- age.2 %>%
+  group_by(Year) %>%
+  summarise(avg_PHE = mean(PHE.mean, na.rm = TRUE))
 
+# Convert data to a time series object
+ts_data_2 <- ts(avg_data_2$avg_PHE, 
+              start = avg_data_2$Year[1],
+              end = avg_data_2$Year[length(avg_data_2$Year)], 
+              frequency = 1)
 
+# Perform change point analysis using the 'cpt.mean' function
+cpt_result_2 <- cpt.mean(ts_data_2)
+
+# Plot the change point analysis results
+plot(cpt_result_2, cpt.col = "blue")
+summary(cpt_result)
 
