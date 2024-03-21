@@ -1,6 +1,9 @@
 setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 data <- read.csv(file = "data.csv")
 
+#load packages
+library(changepoint)
+
 #visualize
 library(ggplot2)
 ggplot(data, aes(x = Year,
@@ -111,35 +114,32 @@ Wood <- insertRow(Wood, newrow, r = 39)
 
 
 #### Create Time Series Objects ####
+ts_Wood <- ts(as.numeric(Wood[Wood$Age == "2", "Wood"]),
+              start = Wood$Year[40],
+              end = Wood$Year[1],
+              frequency = 1)
 
+cpt_result <- cpt.mean(as.numeric(ts_Wood))
+
+# Reverse the order of rows in the data frame so that the oldest year is at the top
+Eg <- Eg[order(Eg$Year, decreasing = TRUE), ]
+ts_Eg <- ts(Eg$Egegik, 
+            start = Eg$Year[40], 
+            end = Eg$Year[1],
+            frequency = 1)
+
+cpt_result <- cpt.mean(as.numeric(ts_Eg))
+
+plot(cpt_result, cpt.col = "blue")
 
 # Separate by Age class
 Eg_2 <- Eg[Eg$Age == "2",]
 Eg_3 <- Eg[Eg$Age == "3",]
 
-# Create separate time series objects for each river and age combination
-ts_river1_age2 <- ts(data_wide$Egegik[data_wide$Age == 2], 
-                     start = 2022, frequency = 1)
-ts_river1_age3 <- ts(data_wide$River1[data_wide$age == 3], 
-                     start = 2022, frequency = 1)
-ts_river2_age2 <- ts(data_wide$River2[data_wide$age == 2], 
-                     start = 2022, frequency = 1)
-ts_river2_age3 <- ts(data_wide$River2[data_wide$age == 3], 
-                     start = 2022, frequency = 1)
-ts_river3_age2 <- ts(data_wide$River3[data_wide$age == 2], 
-                     start = 2022, frequency = 1)
-ts_river3_age3 <- ts(data_wide$River3[data_wide$age == 3], 
-                     start = 2022, frequency = 1)
 
+#### Analysis Using Full Data Set ####
 
-
-
-
-
-
-
-#load packages
-library(changepoint)
+# Make a column of average PHE across all ages and systems (should have one data point per year)
 
 # Remove rows with NAs
 data <- na.omit(data)
@@ -148,7 +148,10 @@ data <- na.omit(data)
 data <- data[order(data$Year, decreasing = TRUE), ]
 
 # Convert data to a time series object
-ts_data <- ts(data$PHE.mean, start = data$Year[length(data$Year)], end = data$Year[1])
+ts_data <- ts(data$PHE.mean, 
+              start = data$Year[length(data$Year)], 
+              end = data$Year[1], 
+              frequency = 6)
 
 # Perform change point analysis using the 'cpt.mean' function
 cpt_result <- cpt.mean(ts_data)
