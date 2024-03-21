@@ -140,6 +140,8 @@ Eg_3 <- Eg[Eg$Age == "3",]
 #### Analysis Using Full Data Set ####
 
 # Average PHE across all ages and systems (should have one data point per year)
+data[c(113,114), 2] = "1968" #changing the two 1967s to 1968s to have consistent spacing of years 
+
 library(dplyr)
 avg_data_all <- data %>%
   group_by(Year) %>%
@@ -148,7 +150,8 @@ avg_data_all <- data %>%
 print(avg_data_all)
 plot(avg_data_all)
 
-# Average PHE across all systems 
+# Average PHE across all systems with only age 2
+age.2 <- data[data$Age == "2",]
 
 # Convert data to a time series object
 ts_data <- ts(avg_data$avg_PHE, 
