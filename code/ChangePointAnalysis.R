@@ -139,22 +139,22 @@ Eg_3 <- Eg[Eg$Age == "3",]
 
 #### Analysis Using Full Data Set ####
 
-# Make a column of average PHE across all ages and systems (should have one data point per year)
+# Average PHE across all ages and systems (should have one data point per year)
 library(dplyr)
-avg_data <- data %>%
+avg_data_all <- data %>%
   group_by(Year) %>%
   summarise(avg_PHE = mean(PHE.mean, na.rm = TRUE))
 
-print(avg_data)
+print(avg_data_all)
+plot(avg_data_all)
 
-# Reverse the order of rows in the data frame so that the oldest year is at the top
-data <- data[order(data$Year, decreasing = TRUE), ]
+# Average PHE across all systems 
 
 # Convert data to a time series object
-ts_data <- ts(data$PHE.mean, 
-              start = data$Year[length(data$Year)], 
-              end = data$Year[1], 
-              frequency = 6)
+ts_data <- ts(avg_data$avg_PHE, 
+              start = avg_data$Year[1],
+              end = avg_data$Year[length(avg_data$Year)], 
+              frequency = 1)
 
 # Perform change point analysis using the 'cpt.mean' function
 cpt_result <- cpt.mean(ts_data)
