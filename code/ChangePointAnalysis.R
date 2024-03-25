@@ -184,3 +184,24 @@ cpt_result_2 <- cpt.mean(ts_data_2)
 plot(cpt_result_2, cpt.col = "blue")
 summary(cpt_result)
 
+
+# Average PHE for Wood with both age classes
+library(dplyr)
+Wood.all <- Wood %>%
+  group_by(Year) %>%
+  summarise(PHE = mean(Wood, na.rm = TRUE))
+
+# Convert data to a time series object
+ts_data_2 <- ts(avg_data_2$PHE.mean, 
+                start = avg_data_2$Year[1],
+                end = avg_data_2$Year[length(avg_data_2$Year)], 
+                frequency = 1)
+plot(ts_data_2)
+
+# Perform change point analysis using the 'cpt.mean' function
+cpt_result_2 <- cpt.mean(ts_data_2)
+
+# Plot the change point analysis results
+plot(cpt_result_2, cpt.col = "blue")
+summary(cpt_result)
+
