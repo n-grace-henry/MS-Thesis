@@ -155,6 +155,11 @@ ts_data <- ts(avg_data_all$avg_PHE,
               frequency = 1)
 plot(ts_data)
 
+# Scale the data so the variance is 1 and mean is 0
+ts_1_scale <- cpt.mean(as.vector(scale(ts_data)))
+cpts(ts_1_scale)
+
+
 # Perform change point analysis using the 'cpt.mean' function
 cpt_result <- cpt.mean(ts_data)
 
@@ -176,6 +181,16 @@ ts_data_2 <- ts(avg_data_2$PHE.mean,
               end = avg_data_2$Year[length(avg_data_2$Year)], 
               frequency = 1)
 plot(ts_data_2)
+
+# Scale the data so the variance is 1 and mean is 0
+set.seed(1)
+m1 <- c(rnorm(100,0,1), rnorm(100,5,1))
+m1.amoc <- cpt.mean(m1)
+cpts(m1.amoc)
+
+
+ts_2_scale <- cpt.mean(as.vector(scale(ts_data_2)))
+cpts(ts_2_scale)
 
 # Perform change point analysis using the 'cpt.mean' function
 cpt_result_2 <- cpt.mean(ts_data_2)
