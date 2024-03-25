@@ -123,24 +123,25 @@ cpt.Egegik <- cpt.mean(as.vector(scale(ts_Egegik)))
 
 # Plot the change point analysis results
 plot(cpt.Kvichak, cpt.col = "blue")
-summary(cpt_result)
+summary(cpt.Egegik)
 
-# Average PHE for Kvi with both age classes
-Kvichak <- Kvi.all %>%
+
+# Average PHE for Egegik with both age classes
+Egegik <- Eg.all %>%
   group_by(Year) %>%
   summarise(PHE = mean(PHE.mean, na.rm = TRUE))
 
 # Convert data to a time series object
-ts_Kvichak <- ts(Kvichak$PHE, 
-                 start = Kvichak$Year[1],
-                 end = Kvichak$Year[length(Kvichak$Year)], 
+ts_Egegik <- ts(Egegik$PHE, 
+                 start = Egegik$Year[1],
+                 end = Egegik$Year[length(Egegik$Year)], 
                  frequency = 1)
-plot(ts_Kvichak)
+plot(ts_Egegik)
 
 # Perform change point analysis using the 'cpt.mean' function
-cpt.Kvicak <- cpt.mean(as.vector(scale(ts_Kvichak)))
+cpt.Egegik <- cpt.mean(as.vector(scale(ts_Egegik)))
 
 # Plot the change point analysis results
-plot(cpt.Kvichak, cpt.col = "blue")
-summary(cpt_result)
+plot(cpt.Egegik, cpt.col = "blue")
+summary(cpt.Egegik)
 
