@@ -14,139 +14,39 @@ ggplot(data, aes(x = Year,
 # Convert the "Year" column to a factor to ensure correct ordering
 data$Year <- factor(data$Year, levels = rev(unique(data$Year)))
 
-# Pivot the data to wide format to create separate columns for each river and age combination
-library(tidyr)
-data_wide <- pivot_wider(data, names_from = System, values_from = PHE.mean)
+# Change the years that were missing so that the data frame years are consistent
+data[c(61,62), 2] = "1992" 
+data[c(79,80), 2] = "1983"
+data[c(113,114), 2] = "1968" 
 
-# Create data frames for each of the river systems 
-Eg <- data_wide[, c("Egegik", "Year",
-                "Trophic.Position", "Age")]
-Kvi <- data_wide[, c("Kvichak", "Year",
-                    "Trophic.Position", "Age")]
-Wood <- data_wide[, c("Wood", "Year",
-                      "Trophic.Position", "Age")]
+# Make new data frames for each system 
+Wood.all <- data[data$System == "Wood",]
+Kvi.all <- data[data$System == "Kvichak",]
+Eg.all <- data[data$System == "Egegik",]
 
+# Plotting
+plot(x = as.numeric(Wood.all[Wood.all$Age == "2", "Year"]),
+     y = Wood.all[Wood.all$Age == "2", "PHE.mean"],
+     type = "l")
 
-# Get rid of years from other systems
-Eg <- as.data.frame(Eg[!is.na(Eg$Egegik), ])
-Kvi <- as.data.frame(Kvi[!is.na(Kvi$Kvichak), ])
-Wood <- as.data.frame(Wood[!is.na(Wood$Wood), ])
+plot(x = as.numeric(Kvi.all[Kvi.all$Age == "2", "Year"]),
+     y = Kvi.all[Kvi.all$Age == "2", "PHE.mean"],
+     type = "l")
 
-# Add NAs where they are missing
-# This function inserts a new row at row "r" while shifting the rest of the data frame down
-insertRow <- function(existingDF, newrow, r) {
-  existingDF[seq(r+1,nrow(existingDF)+1),] <- existingDF[seq(r,nrow(existingDF)),]
-  existingDF[r,] <- newrow
-  existingDF
-}
-
-#### Running function for all missing rows for Egegik ####
-newrow <- c(NA, "2019", NA, "3") 
-Eg <- insertRow(Eg, newrow, r = 3)
-newrow <- c(NA, "2016", NA, "3")
-Eg <- insertRow(Eg, newrow, r = 5)
-newrow <- c(NA, "1992", NA, "3")
-Eg <- insertRow(Eg, newrow, r = 21)
-newrow <- c(NA, "1986", NA, "3")
-Eg <- insertRow(Eg, newrow, r = 25)
-newrow <- c(NA, "1983", NA, "2")
-Eg <- insertRow(Eg, newrow, r = 27)
-newrow <- c(NA, "1983", NA, "3")
-Eg <- insertRow(Eg, newrow, r = 27)
-newrow <- c(NA, "1980", NA, "2")
-Eg <- insertRow(Eg, newrow, r = 29)
-newrow <- c(NA, "1980", NA, "3")
-Eg <- insertRow(Eg, newrow, r = 30)
-newrow <- c(NA, "1974", NA, "3")
-Eg <- insertRow(Eg, newrow, r = 33)
-newrow <- c(NA, "1965", NA, "3")
-Eg <- insertRow(Eg, newrow, r = 39)
-
-#### Running function for all missing rows for Kvichak ####
-newrow <- c(NA, "2016", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 5)
-newrow <- c(NA, "2010", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 9)
-newrow <- c(NA, "2007", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 11)
-newrow <- c(NA, "1998", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 17)
-newrow <- c(NA, "1995", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 19)
-newrow <- c(NA, "1993", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 21)
-newrow <- c(NA, "1989", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 23)
-newrow <- c(NA, "1986", NA, "2") 
-Kvi <- insertRow(Kvi, newrow, r = 25)
-newrow <- c(NA, "1986", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 25)
-newrow <- c(NA, "1983", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 27)
-newrow <- c(NA, "1980", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 29)
-newrow <- c(NA, "1977", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 31)
-newrow <- c(NA, "1974", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 33)
-newrow <- c(NA, "1968", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 37)
-newrow <- c(NA, "1965", NA, "3") 
-Kvi <- insertRow(Kvi, newrow, r = 39)
-
-#### Running function for all missing rows for Wood ####
-newrow <- c(NA, "2019", NA, "3") 
-Wood <- insertRow(Wood, newrow, r = 3)
-newrow <- c(NA, "2010", NA, "3")
-Wood <- insertRow(Wood, newrow, r = 9)
-newrow <- c(NA, "2007", NA, "3")
-Wood <- insertRow(Wood, newrow, r = 11)
-newrow <- c(NA, "1998", NA, "3")
-Wood <- insertRow(Wood, newrow, r = 17)
-newrow <- c(NA, "1984", NA, "3")
-Wood <- insertRow(Wood, newrow, r = 27)
-newrow <- c(NA, "1980", NA, "3")
-Wood <- insertRow(Wood, newrow, r = 29)
-newrow <- c(NA, "1974", NA, "3")
-Wood <- insertRow(Wood, newrow, r = 33)
-newrow <- c(NA, "1965", NA, "3")
-Wood <- insertRow(Wood, newrow, r = 39)
-
-
-#### Create Time Series Objects ####
-ts_Wood <- ts(as.numeric(Wood[Wood$Age == "2", "Wood"]),
-              start = Wood$Year[40],
-              end = Wood$Year[1],
-              frequency = 1)
-
-cpt_result <- cpt.mean(as.numeric(ts_Wood))
-
-# Reverse the order of rows in the data frame so that the oldest year is at the top
-Eg <- Eg[order(Eg$Year, decreasing = TRUE), ]
-ts_Eg <- ts(Eg$Egegik, 
-            start = Eg$Year[40], 
-            end = Eg$Year[1],
-            frequency = 1)
-
-cpt_result <- cpt.mean(as.numeric(ts_Eg))
-
-plot(cpt_result, cpt.col = "blue")
-
+plot(x = as.numeric(Eg.all[Eg.all$Age == "2", "Year"]),
+     y = Eg.all[Eg.all$Age == "2", "PHE.mean"],
+     type = "l")
 
 #### Analysis Using Full Data Set ####
 
 # Average PHE across all ages and systems (should have one data point per year)
-data[c(113,114), 2] = "1968" #changing the two 1967s to 1968s to have consistent spacing of years 
-data[c(79,80), 2] = "1983"
-data[c(61,62), 2] = "1992"
-
 library(dplyr)
 avg_data_all <- data %>%
   group_by(Year) %>%
   summarise(avg_PHE = mean(PHE.mean, na.rm = TRUE))
 
 print(avg_data_all)
-plot(avg_data_all, pch = 1)
+plot(avg_data_all)
 
 # Convert data to a time series object
 ts_data <- ts(avg_data_all$avg_PHE, 
@@ -156,8 +56,7 @@ ts_data <- ts(avg_data_all$avg_PHE,
 plot(ts_data)
 
 # Scale the data so the variance is 1 and mean is 0 and do CP analysis
-ts_1_scale <- cpt.mean(as.vector(scale(ts_data)))
-
+ts_1_scale <- cpt.mean(as.vector(scale(ts_data)), method = "PELT")
 
 # Plot the change point analysis results
 plot(ts_1_scale, cpt.col = "blue")
@@ -185,23 +84,63 @@ ts_2_scale <- cpt.mean(as.vector(scale(ts_data_2)))
 plot(ts_2_scale, cpt.col = "blue")
 summary(ts_2_scale)
 
+
 # Average PHE for Wood with both age classes
 library(dplyr)
-Wood.all <- Wood %>%
+Wood <- Wood.all %>%
   group_by(Year) %>%
-  summarise(PHE = mean(Wood, na.rm = TRUE))
+  summarise(PHE = mean(PHE.mean, na.rm = TRUE))
 
 # Convert data to a time series object
-ts_data_2 <- ts(avg_data_2$PHE.mean, 
-                start = avg_data_2$Year[1],
-                end = avg_data_2$Year[length(avg_data_2$Year)], 
+ts_Wood <- ts(Wood$PHE, 
+                start = Wood$Year[1],
+                end = Wood$Year[length(Wood$Year)], 
                 frequency = 1)
-plot(ts_data_2)
+plot(ts_Wood)
 
 # Perform change point analysis using the 'cpt.mean' function
-cpt_result_2 <- cpt.mean(ts_data_2)
+cpt.Wood <- cpt.mean(as.vector(scale(ts_Wood)))
 
 # Plot the change point analysis results
-plot(cpt_result_2, cpt.col = "blue")
+plot(cpt.Wood, cpt.col = "blue")
+summary(cpt_result)
+
+
+# Average PHE for Kvi with both age classes
+Kvichak <- Kvi.all %>%
+  group_by(Year) %>%
+  summarise(PHE = mean(PHE.mean, na.rm = TRUE))
+
+# Convert data to a time series object
+ts_Kvichak <- ts(Kvichak$PHE, 
+              start = Kvichak$Year[1],
+              end = Kvichak$Year[length(Kvichak$Year)], 
+              frequency = 1)
+plot(ts_Kvichak)
+
+# Perform change point analysis using the 'cpt.mean' function
+cpt.Egegik <- cpt.mean(as.vector(scale(ts_Egegik)))
+
+# Plot the change point analysis results
+plot(cpt.Kvichak, cpt.col = "blue")
+summary(cpt_result)
+
+# Average PHE for Kvi with both age classes
+Kvichak <- Kvi.all %>%
+  group_by(Year) %>%
+  summarise(PHE = mean(PHE.mean, na.rm = TRUE))
+
+# Convert data to a time series object
+ts_Kvichak <- ts(Kvichak$PHE, 
+                 start = Kvichak$Year[1],
+                 end = Kvichak$Year[length(Kvichak$Year)], 
+                 frequency = 1)
+plot(ts_Kvichak)
+
+# Perform change point analysis using the 'cpt.mean' function
+cpt.Kvicak <- cpt.mean(as.vector(scale(ts_Kvichak)))
+
+# Plot the change point analysis results
+plot(cpt.Kvichak, cpt.col = "blue")
 summary(cpt_result)
 
