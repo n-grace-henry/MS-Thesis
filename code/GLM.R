@@ -29,11 +29,12 @@ summary(cpt)
 #NPGO average per year
 NPGO_annual <- NPGO %>%
   group_by(Year) %>%
-  summarise(avg = )
-  
-  
- # avg_data_all <- data %>%
-  #group_by(Year) %>%
- # summarise(avg_PHE = mean(PHE.mean, na.rm = TRUE))
-
+  summarise(avg = mean(NPGO))
+plot(NPGO_annual, type = "l")
+ts.NPGO <- ts(NPGO_annual[,2],
+              start = NPGO_annual[1,1],
+              end = NPGO_annual[72,1],
+              frequency = 1)
+cpt.N <- cpt.mean(as.vector(scale(ts.NPGO)), method = "PELT")
+plot(cpt.N, cpt.col ="blue")
 
