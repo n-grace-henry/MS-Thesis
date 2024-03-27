@@ -38,3 +38,32 @@ ts.NPGO <- ts(NPGO_annual[,2],
 cpt.N <- cpt.mean(as.vector(scale(ts.NPGO)), method = "PELT")
 plot(cpt.N, cpt.col ="blue")
 
+#GLM
+
+
+
+#Steps given by Chat GPT, read through and adjust as necessary 
+# Step 1: Load Data
+# Assuming your dataset is loaded into a dataframe called 'data'
+# Replace 'data.csv' with your actual file path if you're loading from a CSV file
+data <- read.csv("data.csv")
+
+# Step 2: Explore Data
+summary(data)
+str(data)
+# Visualize relationships using plots, e.g., scatterplot between isotope signature and PDO
+
+# Step 3: Fit GLM
+# Assuming 'isotope_signature' is your response variable and 'PDO' is your predictor variable
+glm_model <- glm(isotope_signature ~ PDO, data = data, family = gaussian)
+
+# Step 4: Assess Model Fit
+summary(glm_model)
+# Check residuals, residual plots, goodness-of-fit measures, etc.
+
+# Step 5: Interpret Results
+# Extract coefficients
+coefficients(glm_model)
+# Interpret coefficients and assess significance
+
+
