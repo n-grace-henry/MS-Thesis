@@ -9,10 +9,7 @@ data <- read.csv(file = "final/data.csv")
 PDO <- read.csv(file = "Environmental/PDO.csv")
 NPGO <- read.csv(file = "Environmental/NPGO.csv")
 
-#Get per year average of both data frames 
-library(dplyr)
-
-#PDO
+#PDO average per year
 PDO_annual <- matrix(nrow = length(PDO$Year), ncol = 2)
 for(i in 1:length(PDO$Year)){
   PDO_annual[i,1] <- PDO$Year[i]
@@ -29,7 +26,7 @@ cpt <- cpt.mean(as.vector(scale(ts.PDO)), method = "PELT")
 plot(cpt, cpt.col = "blue")
 summary(cpt)
 
+#NPGO average per year
 
-#NPGO
 
 
