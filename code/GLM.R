@@ -27,6 +27,13 @@ plot(cpt, cpt.col = "blue")
 summary(cpt)
 
 #NPGO average per year
-
+NPGO_annual <- NPGO %>%
+  group_by(Year) %>%
+  summarise(avg = )
+  
+  
+ # avg_data_all <- data %>%
+  #group_by(Year) %>%
+ # summarise(avg_PHE = mean(PHE.mean, na.rm = TRUE))
 
 
