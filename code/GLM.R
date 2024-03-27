@@ -11,6 +11,13 @@ NPGO <- read.csv(file = "Environmental/NPGO.csv")
 
 #Get per year average of both data frames 
 library(dplyr)
+
+#PDO
+PDO_annual <- matrix(nrow = 2, ncol = 2)
+for(i in 1:length(PDO$Year))
+  
+  
+
 PDO_annual <- PDO %>%
   group_by(Year) %>%
-  summarise(avg_PHE = mean(PHE.mean, na.rm = TRUE))
+  summarise(avg = mean(PHE.mean, na.rm = TRUE))
