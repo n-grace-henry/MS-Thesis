@@ -103,8 +103,7 @@ cpt.Wood <- cpt.mean(as.vector(scale(ts_Wood)))
 
 # Plot the change point analysis results
 plot(cpt.Wood, cpt.col = "blue")
-summary(cpt_result)
-
+summary(cpt.Wood)
 
 # Average PHE for Kvi with both age classes
 Kvichak <- Kvi.all %>%
