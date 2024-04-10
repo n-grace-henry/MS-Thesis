@@ -1,13 +1,27 @@
 #processing the bulk data using the HEEL package
-
 devtools::install_github("gholtgrieve/HEEL")
 rm(list=ls())
 library(HEEL)
-HEEL::EA.NACHO("~/Documents/GitHub/CSIA_lab_work/data/EA results/cleaned/240329_GHenry_20240329.csv")
+
+#run this code for all csv files in the "cleaned" folder
+HEEL::EA.NACHO("~/Documents/GitHub/CSIA_lab_work/data/EA results/cleaned/240325_GHenry_20240325.csv")
 both
 
+#extract data from all csv files 
+setwd("~/Documents/GitHub/CSIA_lab_work/data/EA results/processed")
+apr08 <- read.csv(file = "04:08:2024/sample_CN.csv")
+apr03 <- read.csv(file = "04:03:2024/sample_CN.csv")
+mar29 <- read.csv(file = "03:29:2024/sample_CN.csv")
+mar28 <- read.csv(file = "03:28:2024/sample_CN.csv")
+mar27 <- read.csv(file = "03:27:2024/sample_CN.csv")
+mar26 <- read.csv(file = "03:26:2024/sample_CN.csv")
+mar25 <- read.csv(file = "03:25:2024/sample_CN.csv")
 
+#combine into one sheet
+library(dplyr)
+combined_df <- bind_rows(apr03, apr08, mar25, mar26, mar27, mar28, mar29)
 
-
+# View the combined data frame
+View(combined_df)
 
 
