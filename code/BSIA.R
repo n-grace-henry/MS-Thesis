@@ -21,7 +21,9 @@ mar25 <- read.csv(file = "03:25:2024/sample_CN.csv")
 library(dplyr)
 combined_df <- bind_rows(apr03, apr08, mar25, mar26, mar27, mar28, mar29)
 
-# View the combined data frame
-View(combined_df)
+#group samples 
+grouped_df <- combined_df %>%
+  group_by(group_id = substr(Identifier.1, 1, 7)) %>%
+  summarize_all(mean, na.rm = TRUE)
 
 
