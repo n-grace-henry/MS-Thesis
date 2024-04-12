@@ -26,4 +26,13 @@ grouped_df <- combined_df %>%
   group_by(group_id = substr(Identifier.1, 1, 7)) %>%
   summarize_all(mean, na.rm = TRUE)
 
+#get rid of extra columns
+grouped_df <- grouped_df[,-c(2:7)]
+
+#plot
+library(ggplot2)
+plot(grouped_df$d.13C.12C.VPDB)
+
+
+
 
