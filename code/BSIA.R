@@ -4,11 +4,12 @@ rm(list=ls())
 library(HEEL)
 
 #run this code for all csv files in the "cleaned" folder
-HEEL::EA.NACHO("~/Documents/GitHub/CSIA_lab_work/data/EA results/cleaned/240325_GHenry_20240325.csv")
+HEEL::EA.NACHO("~/Documents/GitHub/CSIA_lab_work/data/EA results/cleaned/240410_GHenry_20240410.csv")
 both
 
 #extract data from all csv files 
 setwd("~/Documents/GitHub/CSIA_lab_work/data/EA results/processed")
+apr10
 apr08 <- read.csv(file = "04:08:2024/sample_CN.csv")
 apr03 <- read.csv(file = "04:03:2024/sample_CN.csv")
 mar29 <- read.csv(file = "03:29:2024/sample_CN.csv")
