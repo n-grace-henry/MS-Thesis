@@ -9,7 +9,7 @@ both
 
 #extract data from all csv files 
 setwd("~/Documents/GitHub/CSIA_lab_work/data/EA results/processed")
-apr10
+apr10 <- read.csv(file = "04:10:2024/sample_CN.csv")
 apr08 <- read.csv(file = "04:08:2024/sample_CN.csv")
 apr03 <- read.csv(file = "04:03:2024/sample_CN.csv")
 mar29 <- read.csv(file = "03:29:2024/sample_CN.csv")
@@ -29,6 +29,9 @@ grouped_df <- combined_df %>%
 
 #get rid of extra columns
 grouped_df <- grouped_df[,-c(2:7)]
+
+#remove AA standards and make own sheet 
+AA_STDS <- 
 
 #plot
 library(ggplot2)
