@@ -7,7 +7,7 @@ library(dplyr)
 library(readr)
 
 #compile all the csv files to make one dataframe of all data
-df <- list.files(path=setwd("~/Documents/GitHub/CSIA_lab_work/data/outliers_removed")) %>% 
+df <- list.files(path=setwd("~/Documents/GitHub/CSIA_lab_work/data/with_outliers")) %>% 
   lapply(read_csv) %>% 
   bind_rows 
 
