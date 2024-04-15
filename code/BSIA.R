@@ -33,6 +33,11 @@ grouped_df <- grouped_df[,-c(2:7)]
 #remove AA standards and make own sheet 
 AA_STDS <- grouped_df[22:71,]
 
+grouped_AAs <- AA_STDS %>%
+  group_by(ID = substr(group_id, 1, 3)) %>%
+  summarize_all(mean, na.rm = TRUE)
+
+
 #make sheet of no AAs
 sample_df <- grouped_df[1:21,]
 
