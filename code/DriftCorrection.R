@@ -14,13 +14,12 @@ library(dplyr)
 name <- c("Analysis", "ID1", "RT", "AreaAll", "d29N", "d15N", "AAID") 
 
 #This is the stable isotpe ratios of the internal and external standards. 
-# MAKE SURE THIS IS UP TO DATE BASED ON HEEL STANDARDS!!! These values are as of 01/23/2020. 
-#If your samples were esterified after 01/23/2020 these values should be verfied with the standard file on the HEEL drive
-ALA <- -1.21
-VAL <- 0.361
-NOR <- 14.163
+# MAKE SURE THIS IS UP TO DATE BASED ON HEEL STANDARDS!!! Values for ALA/VAL/GLU/NOR verified on 04/15/2024
+ALA <- -1.61 
+VAL <- -0.67 
+NOR <- 14.485 
 PHE <- -5.004
-GLU <- -3.336
+GLU <- -3.042
 
 #Reading in the .csv of the NACHO data file and setting the file name for your output file
 data.1 <- SL.1 <- read.csv("cleaned/20231013_GHenry_CSIA.csv") #modify with name of your data file
