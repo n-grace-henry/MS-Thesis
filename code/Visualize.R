@@ -10,7 +10,7 @@ library(ggplot2)
 library(ggpubr)
 
 #read in the main data file
-data <- read.csv(file="all.data.csv")
+data <- read.csv(file="data.csv")
 
 #scatter plot of year vs isotope signature
 PHE.all <- ggplot(data = data, aes(Year, PHE.mean, color = System)) +
