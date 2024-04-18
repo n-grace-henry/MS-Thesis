@@ -10,7 +10,8 @@ PDO <- read.csv(file = "Environmental/PDO.csv")
 NPGO <- read.csv(file = "Environmental/NPGO.csv")
 
 #PDO average per year
-PDO_annual <- matrix(nrow = length(PDO$Year), ncol = 2)
+PDO_annual <- data.frame(nrow = length(PDO$Year), ncol = 2)
+names(PDO_annual) <- c("Year","PDO")
 for(i in 1:length(PDO$Year)){
   PDO_annual[i,1] <- PDO$Year[i]
   PDO_annual[i,2] <- mean(as.numeric(PDO[i, 2:13]))
@@ -22,9 +23,6 @@ ts.PDO <- ts(PDO_annual[,2],
              end = PDO_annual[169,1],
              frequency = 1)
 plot(x = ts.PDO)
-cpt <- cpt.mean(as.vector(scale(ts.PDO)), method = "PELT")
-plot(cpt, cpt.col = "blue")
-summary(cpt)
 
 #NPGO average per year
 NPGO_annual <- NPGO %>%
@@ -35,35 +33,59 @@ ts.NPGO <- ts(NPGO_annual[,2],
               start = NPGO_annual[1,1],
               end = NPGO_annual[72,1],
               frequency = 1)
-cpt.N <- cpt.mean(as.vector(scale(ts.NPGO)), method = "PELT")
-plot(cpt.N, cpt.col ="blue")
 
-#GLM
+#Average PHE
+avg_phe <- data %>% 
+  group_by(Year) %>% 
+  summarise(PHE = mean(PHE.mean, na.rm = TRUE))
+
+#### Linear Model with no lagging of covariates ####
+
+#Merge data based on year
+merged_df <- merge(avg_phe, PDO_annual, by = "Year", all = TRUE) %>%
+  merge(NPGO_annual, by = "Year", all = TRUE)
+
+#Rename columns
+names(merged_df) <- c("Year", "PHE", "PDO", "NPGO")
+
+#Handle missing values if any
+merged_df <- na.omit(merged_df)
+
+#Average PHE vs annual PDO + NPGO model
+model <- lm(PHE ~ PDO + NPGO, data = merged_df)
+summary(model)
+model.2 <- lm(PHE ~ PDO, data = merged_df)
+summary(model.2)
+plot(model.2)
+plot(x = merged_df$PDO,
+     y = merged_df$PHE)
 
 
+#### Linear Model with lagged covariates ####
 
-#Steps given by Chat GPT, read through and adjust as necessary 
-# Step 1: Load Data
-# Assuming your dataset is loaded into a dataframe called 'data'
-# Replace 'data.csv' with your actual file path if you're loading from a CSV file
-data <- read.csv("data.csv")
+#Create data frames with different lags/representative time periods of PDO
+#Based on return month of salmon
+#Each time frame ends in July 
 
-# Step 2: Explore Data
-summary(data)
-str(data)
-# Visualize relationships using plots, e.g., scatterplot between isotope signature and PDO
+#Six months before return 
 
-# Step 3: Fit GLM
-# Assuming 'isotope_signature' is your response variable and 'PDO' is your predictor variable
-glm_model <- glm(isotope_signature ~ PDO, data = data, family = gaussian)
+#One year July - July 
 
-# Step 4: Assess Model Fit
-summary(glm_model)
-# Check residuals, residual plots, goodness-of-fit measures, etc.
+#18 months before return 
 
-# Step 5: Interpret Results
-# Extract coefficients
-coefficients(glm_model)
-# Interpret coefficients and assess significance
+#2 years before return
+
+
+#Guess incorporation time ~4 months? End time frames in February 
+
+#six months so  August - February 
+
+#one year February - February 
+
+#18 months 
+
+#2 years 
+
+
 
 
