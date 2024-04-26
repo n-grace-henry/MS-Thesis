@@ -39,7 +39,7 @@ avg_phe <- data %>%
   group_by(Year) %>% 
   summarise(PHE = mean(PHE.mean, na.rm = TRUE))
 
-#### Linear Model with no lagging of covariates ####
+#### Linear Model with no lagging of covariates one year before return####
 
 #Merge data based on year
 merged_df <- merge(avg_phe, PDO_annual, by = "Year", all = TRUE) %>%
@@ -67,7 +67,36 @@ plot(x = merged_df$PDO,
 #Based on return month of salmon
 #Each time frame ends in July 
 
-#Six months before return 
+
+#### Linear Model for 6 months before return ####
+#January - July of return year
+#Biologically this model doesn't make a lot of sense 
+PDO_six_month <- data.frame(nrow = length(PDO$Year), ncol = 2)
+names(PDO_six_month) <- c("Year","PDO")
+for(i in 1:length(PDO$Year)){
+  PDO_six_month[i,1] <- PDO$Year[i]
+  PDO_six_month[i,2] <- mean(as.numeric(PDO[i,c(2:7)]))
+} 
+
+#Linear model 
+merged <- merge(avg_phe, PDO_six_month, by = "Year", all = TRUE)
+names(merged) <- c("Year", "PHE", "PDO")
+merged <- na.omit(merged)
+
+model2 <- lm(PHE ~ PDO, data = merged)
+summary(model2)
+plot(x = merged$PDO,
+     y = merged$PHE)
+
+#### LM 3: One year before return July - July ####
+PDO_1yr_ret <- data.frame(nrow = length(PDO$Year), ncol = 2)
+names(PDO_1yr_ret) <- c("Year","PDO")
+for(i in 1:length(PDO$Year)){
+  PDO_six_month[i,1] <- PDO$Year[i]
+  PDO_six_month[i,2] <- mean(as.numeric(PDO[i,c(2:7)]))
+} 
+
+
 
 #One year July - July 
 
@@ -85,6 +114,9 @@ plot(x = merged_df$PDO,
 #18 months 
 
 #2 years 
+
+
+
 
 
 
