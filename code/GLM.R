@@ -109,8 +109,40 @@ plot(x = merged$PDO,
      y = merged$PHE)
 
 #### LM 4: 18 months average before return ####
+#January of previous yr - July, labeled as return yr
+PDO_18mo_ret <- as.data.frame(matrix(nrow = length(PDO$Year), ncol = 2))
+names(PDO_18mo_ret) <- c("Year","PDO")
+for(i in 1:length(PDO$Year)){
+  PDO_18mo_ret[i,1] <- PDO$Year[i+1]
+  PDO_18mo_ret[i,2] <- mean(as.numeric(PDO[i, c(8:13)])) +
+    mean(as.numeric(PDO[i+1, c(2:7)]))
+} 
 
 
+#function 
+
+#turn wide data into tidy data
+library(tidyr)
+
+?gather()
+PDO_long <- gather(PDO, Month, Value, -Year)
+
+#sort by year
+PDO_long <- arrange(PDO_long, Year)
+
+library(lubridate)
+
+
+
+#Linear Model
+merged <- merge(avg_phe, PDO_1yr_ret, by = "Year", all = TRUE)
+names(merged) <- c("Year", "PHE", "PDO")
+merged <- na.omit(merged)
+
+model3 <- lm(PHE ~ PDO, data = merged)
+summary(model3)
+plot(x = merged$PDO,
+     y = merged$PHE)
 
 
 
