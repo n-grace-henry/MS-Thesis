@@ -132,6 +132,9 @@ PDO_long <- arrange(PDO_long, Year)
 
 library(lubridate)
 
+#convert month to date
+PDO_long2 <- PDO_long %>% 
+  mutate(month_number = match(Month, month.abb))
 
 
 #Linear Model
