@@ -23,7 +23,7 @@ PDO_long <- PDO_long %>%
 #### Function ####
 
 #must have PDO and PDO_long loaded in global environment
-PDO_lag <- function(ret_mo, lag, months, yrs, name){
+PDO_lag <- function(ret_mo, lag, yrs){
   #create empty data frame to fill with values
   PDO_new <- as.data.frame(matrix(nrow = length(PDO$Year), ncol = 2))
   names(PDO_new) <- c("Year","PDO")
@@ -36,15 +36,38 @@ PDO_lag <- function(ret_mo, lag, months, yrs, name){
                                        PDO_long$Year == PDO$Year[i+yrs] & PDO_long$month_number <= ret_mo), "Value"])
     
   }
-  name <- PDO_new
-  return(name)
+  return(PDO_lag)
 }
+
+#test
+PDO_new <- as.data.frame(matrix(nrow = length(PDO$Year), ncol = 2))
+names(PDO_new) <- c("Year","PDO")
+
+#loop to get applicable values for each year
+for(i in 1:length(PDO$Year)){
+  PDO_new[i,1] <- PDO$Year[i+1]
+  PDO_new[i,2] <- mean(PDO_long[PDO_long$Year %in% c(PDO$Year[i], PDO$Year[i+yrs]) & 
+                                  (PDO_long$Year == PDO$Year[i] & PDO_long$month_number >= ret_mo |
+                                     PDO_long$Year == PDO$Year[i+yrs] & PDO_long$month_number <= ret_mo), "Value"])
+
+
+PDO_new[1,1] <- PDO$Year[1+1]
+PDO_new[1,2] <- mean(PDO_long[PDO_long$Year %in% c(PDO$Year[1], PDO$Year[1+yrs]) & 
+                                (PDO_long$Year == PDO$Year[1] & PDO_long$month_number >= ret_mo |
+                                   PDO_long$Year == PDO$Year[1+yrs] & PDO_long$month_number <= ret_mo), "Value"])
+
 
 ret_mo <- 7
 lag <- 0
-months <- 12
 yrs <- 1
-name <- "test"
+
+PDO_lag <- PDO_lag(ret_mo, lag, yrs)
+
+plot(PDO_lag,
+     type = "l")
+
+
+
 
 
 

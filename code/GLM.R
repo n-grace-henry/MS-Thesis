@@ -3,11 +3,29 @@ setwd("~/Documents/GitHub/CSIA_lab_work/data")
 #Load Packages
 library(dplyr)
 library(ggplot2)
+library(tidyr)
+library(lubridate)
 
 #Load Data
 data <- read.csv(file = "final/data.csv")
 PDO <- read.csv(file = "Environmental/PDO.csv")
 NPGO <- read.csv(file = "Environmental/NPGO.csv")
+
+
+#### Convert PDO to tidy format ####
+PDO_long <- gather(PDO, Month, Value, -Year)
+
+#sort by year
+PDO_long <- arrange(PDO_long, Year)
+
+#convert month to date
+PDO_long <- PDO_long %>% 
+  mutate(month_number = match(Month, month.abb))
+
+
+
+
+
 
 #PDO average per year
 PDO_annual <- data.frame(nrow = length(PDO$Year), ncol = 2)
