@@ -22,15 +22,8 @@ PDO_long <- PDO_long %>%
 
 #### Function ####
 
-
-
-ret_yr <- 1960
-ret_mo <- 7
-lag <- 0
-months <- 12
-
 #must have PDO and PDO_long loaded in global environment
-PDO_lag <- function(ret_yr, ret_mo, lag, months, yrs, name){
+PDO_lag <- function(ret_mo, lag, months, yrs, name){
   #create empty data frame to fill with values
   PDO_new <- as.data.frame(matrix(nrow = length(PDO$Year), ncol = 2))
   names(PDO_new) <- c("Year","PDO")
@@ -46,6 +39,15 @@ PDO_lag <- function(ret_yr, ret_mo, lag, months, yrs, name){
   name <- PDO_new
   return(name)
 }
+
+ret_mo <- 7
+lag <- 0
+months <- 12
+yrs <- 1
+name <- "test"
+
+
+
 
 #everything between two points
 PDO_long_subset <- PDO_long[PDO_long$Year >= 1952 & 
@@ -63,6 +65,20 @@ for(i in 1:length(PDO$Year)){
                                      PDO_long$Year == PDO$Year[i+1] & PDO_long$month_number <= 7), "Value"])
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #NPGO for reference
