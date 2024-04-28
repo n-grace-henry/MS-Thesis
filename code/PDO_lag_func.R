@@ -29,6 +29,23 @@ ret_mo <- 7
 lag <- 0
 months <- 12
 
+
+PDO_lag <- function(ret_yr, ret_mo, lag, months){
+  #create empty data frame to fill with values
+  PDO_new <- as.data.frame(matrix(nrow = length(PDO$Year), ncol = 2))
+  names(PDO_new) <- c("Year","PDO")
+  
+  #loop to get applicable values for each year
+  for(i in 1:length(PDO$Year)){
+    PDO_new[i,1] <- PDO$Year[i+1]
+    PDO_new[i,2] <- mean(PDO_long[PDO_long$Year %in% c(PDO$Year[i], PDO$Year[i+1]) & 
+                                    (PDO_long$Year == PDO$Year[i] & PDO_long$month_number >= 7 |
+                                       PDO_long$Year == PDO$Year[i+1] & PDO_long$month_number <= 7), "Value"])
+    
+  }
+  
+}
+
 #one year of data from July-July
 #if return year is 1914, and we want one yr from return, then we go back to july 1913
 PDO_new <- as.data.frame(matrix(nrow = length(PDO$Year), ncol = 2))
@@ -40,18 +57,6 @@ for(i in 1:length(PDO$Year)){
                                      PDO_long$Year == PDO$Year[i+1] & PDO_long$month_number <= 7), "Value"])
   
 }
-
-
-
-
-
-PDO_new <- data.frame(nrow = length(PDO$Year), ncol = 2)
-names(PDO_new) <- c("Year","PDO")
-for(i in 1:length(PDO$Year)){
-  PDO_six_month[i,1] <- PDO$Year[i]
-  PDO_six_month[i,2] <- mean(as.numeric(PDO[i,c(2:7)]))
-} 
-
 
 
 #NPGO for reference
