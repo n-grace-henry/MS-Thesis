@@ -22,10 +22,26 @@ PDO_long <- PDO_long %>%
 
 #### Function ####
 
+
+
 ret_yr <- 1960
 ret_mo <- 7
 lag <- 0
-months <- 18
+months <- 12
+
+#one year of data from July-July
+#if return year is 1914, and we want one yr from return, then we go back to july 1913
+PDO_new <- as.data.frame(matrix(nrow = length(PDO$Year), ncol = 2))
+names(PDO_new) <- c("Year","PDO")
+for(i in 1:length(PDO$Year)){
+  PDO_new[i,1] <- PDO$Year[i]
+  PDO_new[i,2] <- 
+  
+}
+
+PDO$Year[1]
+a <- PDO_long[PDO_long$Year %in% c(1855,1854),]
+
 
 PDO_new <- data.frame(nrow = length(PDO$Year), ncol = 2)
 names(PDO_new) <- c("Year","PDO")
