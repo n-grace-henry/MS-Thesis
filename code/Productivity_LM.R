@@ -28,4 +28,11 @@ plot(x = phe_ret$PHE,
 abline(phe_ret_mod, col = "red")
 
 
+#### Trophic Position vs Returns ####
+tp_ret <- merge(data, returns, by = "Year", all = TRUE)
+tp_ret <- na.omit(tp_ret)
+
+tp_ret_mod <- lm(TOTAL ~ Trophic.Position, data = tp_ret)
+summary(tp_ret_mod)
+plot(tp_ret_mod)
 
