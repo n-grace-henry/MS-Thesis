@@ -66,6 +66,7 @@ model3 <- lm(PHE ~ PDO, data = merged)
 summary(model3)
 plot(x = merged$PDO,
      y = merged$PHE)
+abline(model3, col = "red")
 
 
 #### LM 4: 18 months average before return ####
@@ -183,12 +184,12 @@ ggplot(data = merged, aes(x = PDO, y = PHE)) +
 
 #### Trophic Position ####
 tp <- subset(data, select = c(Year, Trophic.Position))
+avg_tp <- tp %>% 
+  group_by(Year) %>% 
+  summarise(Trophic.Position = mean(Trophic.Position, na.rm = TRUE))
 
 #### LM 9: Trophic Position 2 year with lag #### 
-
-
-#I need to averge trophic position per year so I have only one observation per year like with PHE
-merged <- merge(tp, PDO_2yr_lag, by = "Year", all = TRUE)
+merged <- merge(avg_tp, PDO_2yr_lag, by = "Year", all = TRUE)
 names(merged) <- c("Year", "Trophic.Position", "PDO")
 merged <- na.omit(merged)
 
@@ -203,6 +204,22 @@ ggplot(data = merged, aes(x = PDO, y = PHE)) +
   geom_point() +
   geom_smooth(method = "gam")
   
-  
+
+#### LM 10: Trophic Position 3 year with lag #### 
+merged <- merge(avg_tp, PDO_3yr_lag, by = "Year", all = TRUE)
+names(merged) <- c("Year", "Trophic.Position", "PDO")
+merged <- na.omit(merged)
+
+model10 <- lm(Trophic.Position ~ PDO, data = merged)
+summary(model10)
+plot(model10)
+
+plot(x = merged$PDO,
+     y = merged$Trophic.Position)
+abline(model10, col = "red")
+
+ggplot(data = merged, aes(x = PDO, y = PHE)) +
+  geom_point() +
+  geom_smooth(method = "gam")
   
   
