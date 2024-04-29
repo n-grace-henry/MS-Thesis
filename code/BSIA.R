@@ -41,7 +41,7 @@ grouped_AAs <- AA_STDS %>%
 sample_df <- grouped_df[1:21,]
 
 ##### Add Year Column ####
-year.2digit <- substr(df$Sample.ID, 1, 2) #none of this is updated, only copy pasted
+year.2digit <- substr(sample_df$group_id, 1, 2) #none of this is updated, only copy pasted
 
 year <- vector(mode="character")
 for(i in 1:length(year.2digit)){
@@ -52,14 +52,14 @@ for(i in 1:length(year.2digit)){
   }
 }
 
-df$Year <- year
-df <- df %>% relocate(Year, .before = VAL.mean)
+sample_df$Year <- year
+sample_df <- sample_df %>% relocate(Year, .before = group_id)
 
 ##### Add Age Column ####
-df$Age <- substr(df$Sample.ID, 6, 6)
-df <- df %>% relocate(Age, .before = VAL.mean)
+sample_df$Age <- substr(sample_df$group_id, 7, 7)
+sample_df <- sample_df %>% relocate(Age, .before = group_id)
 
-
+?substr
 #plot
 library(ggplot2)
 plot(x = sample_df$d.13C.12C.VPDB,
