@@ -40,8 +40,24 @@ grouped_AAs <- AA_STDS %>%
 #make sheet of no AAs
 sample_df <- grouped_df[1:21,]
 
-#format sample sheet with year/system/age
+##### Add Year Column ####
+year.2digit <- substr(df$Sample.ID, 1, 2) #none of this is updated, only copy pasted
 
+year <- vector(mode="character")
+for(i in 1:length(year.2digit)){
+  if(year.2digit[i] <= 22){
+    year[i] <- paste0(20, year.2digit[i])
+  } else{
+    year[i] <- paste0(19, year.2digit[i])
+  }
+}
+
+df$Year <- year
+df <- df %>% relocate(Year, .before = VAL.mean)
+
+##### Add Age Column ####
+df$Age <- substr(df$Sample.ID, 6, 6)
+df <- df %>% relocate(Age, .before = VAL.mean)
 
 
 #plot
