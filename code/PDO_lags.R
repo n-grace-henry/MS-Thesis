@@ -20,7 +20,6 @@ PDO_long <- arrange(PDO_long, Year)
 PDO_long <- PDO_long %>% 
   mutate(month_number = match(Month, month.abb))
 
-
 #### Average PHE ###
 avg_phe <- data %>% 
   group_by(Year) %>% 
@@ -97,34 +96,83 @@ ggplot(data = merged, aes(x = PDO, y = PHE)) +
   geom_smooth(method = "gam")
 
 
-#2 years before return
+#2 years before return LM 5
 
-#### LM 5: 18 months before return with 6 month lag ####
+#### LM 6: 18 months before return with 6 month lag ####
 PDO_18mo_lag <- as.data.frame(matrix(nrow = length(PDO$Year), ncol = 2))
-names(PDO_18mo_ret) <- c("Year","PDO")
+names(PDO_18mo_lag) <- c("Year","PDO")
 
 for(i in 1:length(PDO$Year)){
-  PDO_18mo_ret[i,1] <- PDO$Year[i+1]
-  PDO_18mo_ret[i,2] <- mean(PDO_long[PDO_long$Year %in% c(PDO$Year[i], PDO$Year[i+1]) & 
-                                       (PDO_long$Year == PDO$Year[i] & PDO_long$month_number >= 1 |
-                                          PDO_long$Year == PDO$Year[i+1] & PDO_long$month_number <= 7), "Value"])
+  PDO_18mo_lag[i,1] <- PDO$Year[i+2]
+  PDO_18mo_lag[i,2] <- mean(PDO_long[PDO_long$Year %in% c(PDO$Year[i], PDO$Year[i+1], PDO$Year[i+2]) & 
+                                       (PDO_long$Year == PDO$Year[i] & PDO_long$month_number >= 7 |
+                                          PDO_long$Year == PDO$Year[i+1] & PDO_long$month_number <= 12 |
+                                          PDO_long$Year == PDO$Year[i+2]& PDO_long$month_number <= 1), "Value"])
+} 
+#Linear Model 6
+merged <- merge(avg_phe, PDO_18mo_lag, by = "Year", all = TRUE)
+names(merged) <- c("Year", "PHE", "PDO")
+merged <- na.omit(merged)
+
+model6 <- lm(PHE ~ PDO, data = merged)
+summary(model6)
+plot(model6)
+
+plot(x = merged$PDO,
+     y = merged$PHE)
+
+ggplot(data = merged, aes(x = PDO, y = PHE)) +
+  geom_point() +
+  geom_smooth(method = "gam")
+
+
+#### LM 7: 2 years before return with 6 month lag ####
+PDO_2yr_lag <- as.data.frame(matrix(nrow = length(PDO$Year), ncol = 2))
+names(PDO_2yr_lag) <- c("Year","PDO")
+
+for(i in 1:length(PDO$Year)){
+  PDO_2yr_lag[i,1] <- PDO$Year[i+2]
+  PDO_2yr_lag[i,2] <- mean(PDO_long[PDO_long$Year %in% c(PDO$Year[i], PDO$Year[i+1], PDO$Year[i+2]) & 
+                                       (PDO_long$Year == PDO$Year[i] & PDO_long$month_number >= 2 |
+                                          PDO_long$Year == PDO$Year[i+1] & PDO_long$month_number <= 12 |
+                                          PDO_long$Year == PDO$Year[i+2]& PDO_long$month_number <= 1), "Value"])
+} 
+#Linear Model 7
+merged <- merge(avg_phe, PDO_2yr_lag, by = "Year", all = TRUE)
+names(merged) <- c("Year", "PHE", "PDO")
+merged <- na.omit(merged)
+
+model7 <- lm(PHE ~ PDO, data = merged)
+summary(model7)
+plot(model7)
+
+plot(x = merged$PDO,
+     y = merged$PHE)
+
+ggplot(data = merged, aes(x = PDO, y = PHE)) +
+  geom_point() +
+  geom_smooth(method = "gam")
+
+
+#### LM 8: 3 years before return 6 month lag ####
+PDO_3yr_lag <- as.data.frame(matrix(nrow = length(PDO$Year), ncol = 2))
+names(PDO_3yr_lag) <- c("Year","PDO")
+
+for(i in 1:length(PDO$Year)){
+  PDO_3yr_lag[i,1] <- PDO$Year[i+2]
+  PDO_3yr_lag[i,2] <- mean(PDO_long[PDO_long$Year %in% c(PDO$Year[i], PDO$Year[i+1], PDO$Year[i+2]) & 
+                                      (PDO_long$Year == PDO$Year[i] & PDO_long$month_number >= 2 |
+                                         PDO_long$Year == PDO$Year[i+1] & PDO_long$month_number <= 12 |
+                                         PDO_long$Year == PDO$Year[i+2]& PDO_long$month_number <= 1), "Value"])
 } 
 
 
-
-
-
-
-
-#one year February - February 
-
-#18 months 
-
-#2 years 
-
-
-
-
-
+i <- 1
+PDO$Year[i+3]
+a <- PDO_long[PDO_long$Year %in% c(PDO$Year[i], PDO$Year[i+1], PDO$Year[i+2],PDO$Year[i+3]) & 
+                                    (PDO_long$Year == PDO$Year[i] & PDO_long$month_number >= 1 |
+                                       PDO_long$Year == PDO$Year[i+1] & PDO_long$month_number <= 12 |
+                                       PDO_long$Year == PDO$Year[i+2]& PDO_long$month_number <= 12|
+                                       PDO_long$Year == PDO$Year[i+3]& PDO_long$month_number <= 1), ]
 
 
