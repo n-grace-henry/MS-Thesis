@@ -59,7 +59,6 @@ sample_df <- sample_df %>% relocate(Year, .before = group_id)
 sample_df$Age <- substr(sample_df$group_id, 7, 7)
 sample_df <- sample_df %>% relocate(Age, .before = group_id)
 
-?substr
 #plot
 library(ggplot2)
 plot(x = sample_df$d.13C.12C.VPDB,
