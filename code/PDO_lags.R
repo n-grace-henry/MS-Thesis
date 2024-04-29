@@ -160,19 +160,49 @@ names(PDO_3yr_lag) <- c("Year","PDO")
 
 for(i in 1:length(PDO$Year)){
   PDO_3yr_lag[i,1] <- PDO$Year[i+2]
-  PDO_3yr_lag[i,2] <- mean(PDO_long[PDO_long$Year %in% c(PDO$Year[i], PDO$Year[i+1], PDO$Year[i+2]) & 
-                                      (PDO_long$Year == PDO$Year[i] & PDO_long$month_number >= 2 |
+  PDO_3yr_lag[i,2] <- mean(PDO_long[PDO_long$Year %in% c(PDO$Year[i], PDO$Year[i+1], PDO$Year[i+2],PDO$Year[i+3]) & 
+                                      (PDO_long$Year == PDO$Year[i] & PDO_long$month_number >= 1 |
                                          PDO_long$Year == PDO$Year[i+1] & PDO_long$month_number <= 12 |
-                                         PDO_long$Year == PDO$Year[i+2]& PDO_long$month_number <= 1), "Value"])
+                                         PDO_long$Year == PDO$Year[i+2]& PDO_long$month_number <= 12|
+                                         PDO_long$Year == PDO$Year[i+3]& PDO_long$month_number <= 1), "Value"])
 } 
+#Linear Model 8
+merged <- merge(avg_phe, PDO_3yr_lag, by = "Year", all = TRUE)
+names(merged) <- c("Year", "PHE", "PDO")
+merged <- na.omit(merged)
+
+model8 <- lm(PHE ~ PDO, data = merged)
+summary(model8)
+plot(model8)
+plot(x = merged$PDO,
+     y = merged$PHE)
+ggplot(data = merged, aes(x = PDO, y = PHE)) +
+  geom_point() +
+  geom_smooth(method = "gam")
 
 
-i <- 1
-PDO$Year[i+3]
-a <- PDO_long[PDO_long$Year %in% c(PDO$Year[i], PDO$Year[i+1], PDO$Year[i+2],PDO$Year[i+3]) & 
-                                    (PDO_long$Year == PDO$Year[i] & PDO_long$month_number >= 1 |
-                                       PDO_long$Year == PDO$Year[i+1] & PDO_long$month_number <= 12 |
-                                       PDO_long$Year == PDO$Year[i+2]& PDO_long$month_number <= 12|
-                                       PDO_long$Year == PDO$Year[i+3]& PDO_long$month_number <= 1), ]
+#### Trophic Position ####
+tp <- subset(data, select = c(Year, Trophic.Position))
+
+#### LM 9: Trophic Position 2 year with lag #### 
 
 
+#I need to averge trophic position per year so I have only one observation per year like with PHE
+merged <- merge(tp, PDO_2yr_lag, by = "Year", all = TRUE)
+names(merged) <- c("Year", "Trophic.Position", "PDO")
+merged <- na.omit(merged)
+
+model9 <- lm(Trophic.Position ~ PDO, data = merged)
+summary(model9)
+plot(model9)
+
+plot(x = merged$PDO,
+     y = merged$Trophic.Position)
+
+ggplot(data = merged, aes(x = PDO, y = PHE)) +
+  geom_point() +
+  geom_smooth(method = "gam")
+  
+  
+  
+  
