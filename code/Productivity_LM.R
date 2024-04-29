@@ -17,18 +17,15 @@ avg_phe <- data %>%
 
 #### PHE vs Returns ####
 phe_ret <- merge(avg_phe, returns, by = "Year", all = TRUE)
+phe_ret <- na.omit(phe_ret)
 
+phe_ret_mod <- lm(TOTAL ~ PHE, data = phe_ret)
+summary(phe_ret_mod)
+plot(phe_ret_mod)
 
-
-merged <- merge(avg_phe, PDO_1yr_ret, by = "Year", all = TRUE)
-names(merged) <- c("Year", "PHE", "PDO")
-merged <- na.omit(merged)
-
-model3 <- lm(PHE ~ PDO, data = merged)
-summary(model3)
-plot(x = merged$PDO,
-     y = merged$PHE)
-abline(model3, col = "red")
+plot(x = phe_ret$PHE,
+     y = phe_ret$TOTAL)
+abline(phe_ret_mod, col = "red")
 
 
 
