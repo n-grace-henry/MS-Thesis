@@ -121,6 +121,7 @@ plot(model6)
 
 plot(x = merged$PDO,
      y = merged$PHE)
+abline(model6, col = "red")
 
 ggplot(data = merged, aes(x = PDO, y = PHE)) +
   geom_point() +
@@ -149,6 +150,7 @@ plot(model7)
 
 plot(x = merged$PDO,
      y = merged$PHE)
+abline(model7, col = "red")
 
 ggplot(data = merged, aes(x = PDO, y = PHE)) +
   geom_point() +
@@ -177,6 +179,8 @@ summary(model8)
 plot(model8)
 plot(x = merged$PDO,
      y = merged$PHE)
+abline(model8, col = "red")
+
 ggplot(data = merged, aes(x = PDO, y = PHE)) +
   geom_point() +
   geom_smooth(method = "gam")

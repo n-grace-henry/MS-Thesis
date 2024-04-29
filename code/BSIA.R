@@ -37,7 +37,6 @@ grouped_AAs <- AA_STDS %>%
   group_by(ID = substr(group_id, 1, 3)) %>%
   summarize_all(mean, na.rm = TRUE)
 
-
 #make sheet of no AAs
 sample_df <- grouped_df[1:21,]
 
@@ -47,7 +46,11 @@ sample_df <- grouped_df[1:21,]
 
 #plot
 library(ggplot2)
-plot(grouped_df$d.13C.12C.VPDB)
+plot(x = sample_df$d.13C.12C.VPDB,
+     y = sample_df$d.15N.14N.air,
+     xlab = "d13C",
+     ylab = "d15N",
+     main = "d13C vs d15N")
 
 
 
