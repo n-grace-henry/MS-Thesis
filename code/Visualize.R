@@ -4,6 +4,7 @@
 rm(list =ls())
 setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 
+#load packages
 library(dplyr)
 library(readr)
 library(ggplot2)
