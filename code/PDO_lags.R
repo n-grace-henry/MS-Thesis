@@ -191,6 +191,8 @@ tp <- subset(data, select = c(Year, Trophic.Position))
 avg_tp <- tp %>% 
   group_by(Year) %>% 
   summarise(Trophic.Position = mean(Trophic.Position, na.rm = TRUE))
+plot(x = avg_tp$Year,
+     y = avg_tp$Trophic.Position)
 
 #### LM 9: Trophic Position 2 year with lag #### 
 merged <- merge(avg_tp, PDO_2yr_lag, by = "Year", all = TRUE)
