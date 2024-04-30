@@ -20,10 +20,23 @@ PDO_long <- arrange(PDO_long, Year)
 PDO_long <- PDO_long %>% 
   mutate(month_number = match(Month, month.abb))
 
+#plot PDO from 1965-2022
+plot(x = PDO_long$Year,
+     y = PDO_long$Value)
+
+PDO_subset <- subset(PDO_long, Year >= 1965 & Year <= 2022)
+
+# Plot PDO
+plot(PDO_subset$year + (pdo_data_subset$month - 1) / 12, pdo_data_subset$value, type = "l",
+     xlab = "Year", ylab = "PDO Value", main = "PDO from 1965 to 2022")
+
 #### Average PHE ###
 avg_phe <- data %>% 
   group_by(Year) %>% 
   summarise(PHE = mean(PHE.mean, na.rm = TRUE))
+
+plot(x = avg_phe$Year,
+     y = avg_phe$PHE)
 
 #### Linear Model with no lagging of covariates one year before return ####
 
