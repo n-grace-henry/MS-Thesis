@@ -2,8 +2,9 @@ setwd("~/Documents/GitHub/CSIA_lab_work/data")
 
 # Load Packages
 library(dplyr)
+library(readr)
 
-# Drift correct and do not consolidate
+#### Drift correct and do not consolidate ####
 name <- c("Analysis", "ID1", "RT", "AreaAll", "d29N", "d15N", "AAID") 
 
 # STD values
@@ -14,11 +15,11 @@ PHE <- -5.004
 GLU <- -3.042
 
 # Read in NACHO csv and set output file name
-data.1 <- SL.1 <- read.csv("cleaned/20231013_GHenry_CSIA.csv")
+data.1 <- SL.1 <- read.csv("cleaned/20231117_GHenry_CSIA.csv")
 colnames(data.1)<- name
-file.name <- "processed/20231013.csv" #file name for output file including relative file path
+file.name <- "processed/20231117.csv" #file name for output file including relative file path
 
-#### Correct to international standard of N air ####
+# Correct to international standard of N air
 #Calculations of offset values were done in R script "Correct_to_Nair.R"
 #Three EA runs were looked at, the second was chosen as the most representative to base corrections off
 #No linear relationship was found between offset and measured value so one average value
@@ -28,7 +29,7 @@ offset <- mean(c(0.40160, 0.47160, 0.41725))
 
 data.1$d15N.correct <- data.1$d15N - offset
 
-###### Linear Model for Drift Correction #####
+# Linear Model for Drift Correction
 #Fit a linear model to your external standards with "Analysis" (injection number) as the dependent variable and 
 #d15N as the response variable
 
@@ -51,7 +52,7 @@ Slope #slope values looped by aa
 
 Coef<- data.frame(AA, Intercept, Slope) #creating a dataframe of the slope and intercepts values for each AA
 
-##### Adding Coefs and Standard Values to the dataset####
+# Adding Coefs and Standard Values to the dataset
 
 actual <- ifelse(data.1$AAID=="NOR", NOR, 
                  ifelse(data.1$AAID=="ALA", ALA,
@@ -75,13 +76,21 @@ intercept <-   ifelse(data.1$AAID=="NOR", filter(Coef, AA=="NOR")[1,2],
                                     ifelse(data.1$AAID=="GLU", filter(Coef, AA=="GLU")[1,2],
                                            ifelse(data.1$AAID=="PHE", filter(Coef, AA=="PHE")[1,2], 0)))))
 
-##### Applying Drift Correction ####
+# Applying Drift Correction 
 difference <- actual-(data.1$Analysis*slope+intercept) #Applying both a drift and step correction in on estep from linear model data
 adj <- data.1$d15N.correct + difference
 data <- cbind(data.1, adj)
 
-#### Write csv file ####
+# Write csv file 
 write.csv(data, file = file.name)
 
 
+#### Mass vs d15N ####
 
+# compile processed folder into one sheet 
+df <- list.files(path=setwd("~/Documents/GitHub/CSIA_lab_work/data/processed")) %>% 
+  lapply(read_csv) %>% 
+  bind_rows 
+
+# write csv of new data 
+write.csv(df, file = "final/data_full.csv")
