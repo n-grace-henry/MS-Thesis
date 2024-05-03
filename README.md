@@ -12,9 +12,7 @@ After consilidating with the above script, the next script to run is Duplicates.
 
 The next step is calculating trophic position. This script still needs to be tweaked to represent accurate TDF and beta values. As of 2/14 it is a work in progress. The produced csv file "main.trophic.csv" is the same as "main.data.csv" but there is an added column for trophic position. 
 
-
-
-Mass_Effects.R -> This script is to determine if there is a relationship between area under the curve and isotope signature. It first drift corrects the cleaned data, but does not consolidate and saves each run in a folder called "processed". Then it compacts this csv into one sheet, called "data_full.csv" and saves this in the final folder. 
+Mass_Effects.R -> This script is to determine if there is a relationship between area under the curve and isotope signature. It first drift corrects the cleaned data, but does not consolidate and saves each run in a folder called "processed". Then it compacts this csv into one sheet, called "data_full.csv" and saves this in the final folder. This script identified 4 outlier points that are likely the result of too large a mass, impacting d15N value. These 4 values are going to be removed and then the values in this sheet will be consolidated into a csv file called "mass_effect_correct".
 
 
 ### final folder
