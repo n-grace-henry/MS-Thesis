@@ -14,7 +14,7 @@ The next step is calculating trophic position. This script still needs to be twe
 
 
 
-Mass_Effects.R -> This script is to determine if there is a relationship between area under the curve and isotope signature. It first drift corrects the cleaned data, but does not consolidate and saves this in a folder called "data_full.csv". Then it compacts this csv into one sheet and linear models the relationship between area and d15N. 
+Mass_Effects.R -> This script is to determine if there is a relationship between area under the curve and isotope signature. It first drift corrects the cleaned data, but does not consolidate and saves each run in a folder called "processed". Then it compacts this csv into one sheet, called "data_full.csv" and saves this in the final folder. 
 
 
 ### final folder
@@ -39,6 +39,8 @@ Contains data folders at different levels of processing.
 cleaned -> raw data that has been cleaned in the original excel file and converted to a csv file. This is in the correct format for imputting into the drift correction scripts. 
 
 raw -> straight from the GC. This has been formatted prior to being changed to a csv. Peaks have been IDed. 
+
+processed -> this is data that has been drift corrected but has not been consolidated. This also still has the area and other info beyond just delta values. 
 
 
 
