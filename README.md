@@ -13,6 +13,10 @@ After consilidating with the above script, the next script to run is Duplicates.
 The next step is calculating trophic position. This script still needs to be tweaked to represent accurate TDF and beta values. As of 2/14 it is a work in progress. The produced csv file "main.trophic.csv" is the same as "main.data.csv" but there is an added column for trophic position. 
 
 
+
+Mass_Effects.R -> This script is to determine if there is a relationship between area under the curve and isotope signature. It first drift corrects the cleaned data, but does not consolidate and saves this in a folder called "data_full.csv". Then it compacts this csv into one sheet and linear models the relationship between area and d15N. 
+
+
 ### final folder
 This folder holds my final .csv finals that I use in analysis. 
 
@@ -25,6 +29,8 @@ replicates.csv -> this file is all the replicate data before I average it with t
 all.data.csv -> all corrected data including the points that did not end up getting data. Full time series data including the NA points. 
 
 data.csv -> same as the all.data.csv file except I removed the run on 2/7/24 that I think was wrong. This run looked pretty bad and I believe it was because the source blew and there might have also been a leak in the system. It gave some crazy high values and I think it is safer to remove this run entirely. 
+
+data_full.csv -> raw data has been drift corrected but not consolidated. All data in this sheet including AAs and duplicates and replicates. 
 
 
 ### data folder
