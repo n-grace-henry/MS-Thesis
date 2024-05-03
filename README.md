@@ -26,3 +26,13 @@ all.data.csv -> all corrected data including the points that did not end up gett
 
 data.csv -> same as the all.data.csv file except I removed the run on 2/7/24 that I think was wrong. This run looked pretty bad and I believe it was because the source blew and there might have also been a leak in the system. It gave some crazy high values and I think it is safer to remove this run entirely. 
 
+
+### data folder
+Contains data folders at different levels of processing. 
+
+cleaned -> raw data that has been cleaned in the original excel file and converted to a csv file. This is in the correct format for imputting into the drift correction scripts. 
+
+raw -> straight from the GC. This has been formatted prior to being changed to a csv. Peaks have been IDed. 
+
+
+
