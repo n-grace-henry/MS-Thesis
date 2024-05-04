@@ -94,3 +94,88 @@ df <- list.files(path=setwd("~/Documents/GitHub/CSIA_lab_work/data/processed")) 
 
 # write csv of new data 
 write.csv(df, file = "final/data_full.csv")
+
+# read in new data file 
+data <- read.csv(file = "final/data_full.csv")
+
+# plot areas vs d15N for PHE only, removing STDs
+x <- data[data$AAID == "PHE" &
+            !data$ID1 == "5AA",]
+
+lm <- lm(adj ~ AreaAll, data = x)
+summary(lm)
+plot(x = x$AreaAll,
+     y = x$adj,
+     xlab = "Area",
+     ylab = "d15N",
+     main = "PHE"
+)
+abline(lm)
+
+# Only PHE STDs
+z <- data[data$AAID == "PHE" &
+            data$ID1 == "5AA",]
+
+lm <- lm(adj ~ AreaAll, data = z)
+summary(lm)
+plot(x = z$AreaAll,
+     y = z$adj,
+     xlab = "Area",
+     ylab = "d15N",
+     main = "PHE - Standards"
+)
+abline(lm)
+
+# Remove what appear to be the outliers
+x_no_out <- x[x$adj < 10,]
+
+lm_no_out <- lm(AreaAll ~ adj, data = x_no_out)
+summary(lm_no_out)
+
+plot(x = x_no_out$adj,
+     y = x_no_out$AreaAll,
+     xlab = "d15N",
+     ylab = "Area",
+)
+abline(lm_no_out)
+
+# Look at outlier values 
+outliers <- x[x$adj > 10,]
+
+# Look at GLU and repeat above 
+y <- data[data$AAID == "GLU" &
+            !data$ID1 == "5AA",]
+
+lm <- lm(adj ~ AreaAll, data = y)
+summary(lm)
+plot(x = y$AreaAll,
+     y = y$adj,
+     xlab = "Area",
+     ylab = "d15N",
+     main = "GLU"
+)
+abline(lm)
+
+# Look at GLU only STDs
+w <- data[data$AAID == "GLU" &
+            data$ID1 == "5AA",]
+
+lm <- lm(adj ~ AreaAll, data = w)
+summary(lm)
+plot(x = w$AreaAll,
+     y = w$adj,
+     xlab = "Area",
+     ylab = "d15N",
+     main = "GLU - Standards"
+)
+abline(lm)
+
+# Remove PHE outliers from main data sheet
+data <- data[!(data$AAID == "PHE" & data$adj > 10), ]
+
+
+# Write new csv with no mass outliers 
+write.csv(x_no_out, file = "final/mass_effect_correct.csv")
+
+
+

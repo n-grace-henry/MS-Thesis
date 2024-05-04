@@ -6,11 +6,15 @@ rm(list = ls())
 library(dplyr)
 library(readr)
 
-#compile all the csv files to make one dataframe of all data
+# Compile all the csv files to make one dataframe of all data
 df <- list.files(path=setwd("~/Documents/GitHub/CSIA_lab_work/data/with_outliers")) %>% 
   lapply(read_csv) %>% 
   bind_rows 
 
+# Read in data if not already in one sheet
+df <- read.csv(file = "final/mass_effect_correct.csv")
+
+# Remove reference values if present 
 df <- df[!df$AAID == "REF",] 
 
 #####Consolidating Triplicates#####
