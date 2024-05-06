@@ -22,6 +22,35 @@ mar25 <- read.csv(file = "03:25:2024/sample_CN.csv")
 library(dplyr)
 combined_df <- bind_rows(apr03, apr08, mar25, mar26, mar27, mar28, mar29)
 
+#get rid of standards 
+STD <- c("NOR", "ALA", "VAL", "PHE", "GLU")
+combined_df <- combined_df[]
+
+which(substr(combined_df$Identifier.1, 1, 3) == "NOR" | 
+         substr(combined_df$Identifier.1, 1, 3) == "ALA" | 
+         substr(combined_df$Identifier.1, 1, 3) == "VAL" | 
+         substr(combined_df$Identifier.1, 1, 3) == "PHE" | 
+         substr(combined_df$Identifier.1, 1, 3) == "GLU")
+
+#main sample column
+year.2digit <- substr(combined_df$Identifier.1, 1, 2)
+
+year <- vector(mode="character")
+for(i in 1:length(year.2digit)){
+  if(year.2digit[i] <= 22){
+    year[i] <- paste0(20, year.2digit[i])
+  } else{
+    year[i] <- paste0(19, year.2digit[i])
+  }
+}
+
+combined_df$Year <- year
+combined_df <- Corrected %>% relocate(Year, .before = ALA.mean)
+
+#add age column
+
+#add system column
+
 #group samples 
 grouped_df <- combined_df %>%
   group_by(group_id = substr(Identifier.1, 1, 7)) %>%
