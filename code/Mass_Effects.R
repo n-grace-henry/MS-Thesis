@@ -156,6 +156,12 @@ plot(x = y$AreaAll,
 )
 abline(lm)
 
+# Look to see if low area points are random across the time series 
+lowArea <- data[data$AAID == "GLU" &
+                  !data$ID1 == "5AA" &
+                  data$AreaAll <= 7,]
+
+
 # Look at GLU only STDs
 w <- data[data$AAID == "GLU" &
             data$ID1 == "5AA",]

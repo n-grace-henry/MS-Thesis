@@ -13,6 +13,8 @@ library(ggpubr)
 #read in the main data file
 data <- read.csv(file="data.csv")
 
+# remove 07_K_2 because of mass effects 
+
 #scatter plot of year vs isotope signature
 PHE.all <- ggplot(data = data, aes(Year, PHE.mean, color = System)) +
        geom_point(size = 3, alpha = 0.7)
@@ -45,6 +47,18 @@ PHE.all <- ggplot(data = data, aes(x = Year, y = PHE.mean, color = System)) +
   geom_vline(xintercept=1998, linetype ="dashed") +
   geom_smooth(aes(group=1)) 
 #+facet_grid(. ~ Age, labeller = labeller(Age = c("2" = "Age 2", "3" = "Age 3")))
+
+PHE.all <- ggplot(data = data, aes(x = Year, y = PHE.mean, color = System)) +
+  geom_point(size = 3, alpha = 0.7) +
+  labs(title = "Phenylalanine (source) Signature Through Time",
+       x = "Year",
+       y = "PHE d15N") +
+  theme(axis.title = element_text(size = 15),
+        plot.title = element_text(size=16)) +
+  geom_vline(xintercept=1977, linetype ="dashed") +
+  geom_vline(xintercept=1998, linetype ="dashed") +
+  geom_smooth(aes(group = System), method = "loess", se = FALSE)
+
 
 PHE.W <- ggplot(data = Wood, aes(x = Year, y = PHE.mean)) +
   geom_point(size = 3, alpha = 0.7, color = "#619CFF") +
