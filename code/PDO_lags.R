@@ -63,6 +63,27 @@ ggplot(data = data, aes(x = Year, y = PHE.mean)) +
   theme_minimal()
 
 
+# subset three year time periods (based visually where the breaks seem to be)
+period1.b <- data[data$Year >= 1965 & data$Year <= 1982,]
+period2.b <- data[data$Year >= 1983 & data$Year <= 2005,]
+period3.b <- data[data$Year >= 2006 & data$Year <= 2022,]
+
+# average PHE for each period
+avg_phe1.b <- period1$PHE.mean %>% mean(na.rm = TRUE)
+avg_phe2.b <- period2$PHE.mean %>% mean(na.rm = TRUE)
+avg_phe3.b <- period3$PHE.mean %>% mean(na.rm = TRUE)
+
+ggplot(data = data, aes(x = Year, y = PHE.mean)) +
+  geom_point(size = 3, alpha = 0.7) +
+  geom_segment(x = 1965, xend = 1982, y = avg_phe1.b, yend = avg_phe1.b, color = "red") +
+  geom_segment(x = 1983, xend = 2005, y = avg_phe2.b, yend = avg_phe2.b, color = "blue") +
+  geom_segment(x = 2006, xend = 2022, y = avg_phe3.b, yend = avg_phe3.b, color = "green") +
+  labs(title = "Average Phenylalanine (PHE) Across Time Periods",
+       x = "Year",
+       y = "Average PHE") +
+  theme_minimal()
+
+
 #### Average GLU ###
 avg_glu <- data %>% 
   group_by(Year) %>% 

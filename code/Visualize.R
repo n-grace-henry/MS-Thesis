@@ -44,8 +44,8 @@ PHE.all <- ggplot(data = data, aes(x = Year, y = PHE.mean, color = System)) +
        y = "PHE d15N") +
   theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16)) +
-  geom_vline(xintercept=1977, linetype ="dashed") +
-  geom_vline(xintercept=1998, linetype ="dashed") +
+ # geom_vline(xintercept=1977, linetype ="dashed") +
+  #geom_vline(xintercept=1998, linetype ="dashed") +
   geom_smooth(aes(group=1)) 
 #+facet_grid(. ~ Age, labeller = labeller(Age = c("2" = "Age 2", "3" = "Age 3")))
 
@@ -56,8 +56,8 @@ PHE.all <- ggplot(data = data, aes(x = Year, y = PHE.mean, color = System)) +
        y = "PHE d15N") +
   theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16)) +
-  geom_vline(xintercept=1977, linetype ="dashed") +
-  geom_vline(xintercept=1998, linetype ="dashed") +
+ # geom_vline(xintercept=1977, linetype ="dashed") +
+  #geom_vline(xintercept=1998, linetype ="dashed") +
   geom_smooth(aes(group = System), method = "loess", se = FALSE)
 
 
@@ -103,8 +103,8 @@ GLU.all <- ggplot(data = data, aes(x = Year, y = GLU.mean, color = System)) +
        y = "GLU d15N") +
   theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16)) +
-  geom_vline(xintercept=1977, linetype ="dashed") +
-  geom_vline(xintercept=1998, linetype ="dashed") +
+  #geom_vline(xintercept=1977, linetype ="dashed") +
+  #geom_vline(xintercept=1998, linetype ="dashed") +
   geom_smooth(aes(group=1)) 
 #+facet_grid(. ~ Age, labeller = labeller(Age = c("2" = "Age 2", "3" = "Age 3")))
 
@@ -115,8 +115,8 @@ GLU.all <- ggplot(data = data, aes(x = Year, y = GLU.mean, color = System)) +
        y = "GLU d15N") +
   theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16)) +
-  geom_vline(xintercept=1977, linetype ="dashed") +
-  geom_vline(xintercept=1998, linetype ="dashed") +
+  #geom_vline(xintercept=1977, linetype ="dashed") +
+  #geom_vline(xintercept=1998, linetype ="dashed") +
   geom_smooth(aes(group = System), method = "loess", se = FALSE)
 
 
@@ -162,9 +162,9 @@ trophic.all <- ggplot(data = data, aes(x = Year, y = Trophic.Position, color = S
        y = "Trophic Position") +
   theme(axis.title = element_text(size = 15),
         plot.title = element_text(size=16)) +
-  geom_vline(xintercept=1977, linetype ="dashed") +
-  geom_vline(xintercept=1998, linetype ="dashed") +
-  geom_smooth(aes(group=1)) 
+  #geom_vline(xintercept=1977, linetype ="dashed") +
+  #geom_vline(xintercept=1998, linetype ="dashed") +
+  geom_smooth(aes(group = System), method = "loess", se = FALSE)
 #+ facet_grid(. ~ Age, labeller = labeller(Age = c("2" = "Age 2", "3" = "Age 3")))
 
 trophic.W <- ggplot(data = Wood, aes(x = Year, y = Trophic.Position)) +
