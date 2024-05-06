@@ -3,6 +3,7 @@ setwd("~/Documents/GitHub/CSIA_lab_work/data")
 # Load Packages
 library(dplyr)
 library(readr)
+library(ggplot2)
 
 #### Drift correct and do not consolidate ####
 name <- c("Analysis", "ID1", "RT", "AreaAll", "d29N", "d15N", "AAID") 
@@ -159,7 +160,30 @@ abline(lm)
 # Look to see if low area points are random across the time series 
 lowArea <- data[data$AAID == "GLU" &
                   !data$ID1 == "5AA" &
-                  data$AreaAll <= 7,]
+                  data$AreaAll <= 6,]
+# Add year column
+year.2digit <- substr(lowArea$ID1, 1, 2)
+year <- vector(mode="character")
+for(i in 1:length(year.2digit)){
+  if(year.2digit[i] <= 22){
+    year[i] <- paste0(20, year.2digit[i])
+  } else{
+    year[i] <- paste0(19, year.2digit[i])
+  }
+}
+lowArea$Year <- year
+
+plot(x = lowArea$Year,
+     y = lowArea$AreaAll,
+     xlab = "Year",
+     ylab = "Area",)
+
+# Correction to bump up values with low Area
+ggplot(data = y, 
+       aes(x = AreaAll,
+           y = adj)) +
+  geom_point(size = 3, alpha = 0.7) +
+  geom_smooth(method = "nls", formula = y ~ a * x^b, se = FALSE)
 
 
 # Look at GLU only STDs
