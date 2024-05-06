@@ -24,16 +24,17 @@ combined_df <- bind_rows(apr03, apr08, mar25, mar26, mar27, mar28, mar29)
 
 #get rid of standards 
 STD <- c("NOR", "ALA", "VAL", "PHE", "GLU")
-combined_df <- combined_df[]
 
-which(substr(combined_df$Identifier.1, 1, 3) == "NOR" | 
+index <- which(substr(combined_df$Identifier.1, 1, 3) == "NOR" | 
          substr(combined_df$Identifier.1, 1, 3) == "ALA" | 
          substr(combined_df$Identifier.1, 1, 3) == "VAL" | 
          substr(combined_df$Identifier.1, 1, 3) == "PHE" | 
          substr(combined_df$Identifier.1, 1, 3) == "GLU")
 
-#main sample column
-year.2digit <- substr(combined_df$Identifier.1, 1, 2)
+no_std <- combined_df[-index,]
+
+#add year column
+year.2digit <- substr(no_std$Identifier.1, 1, 2)
 
 year <- vector(mode="character")
 for(i in 1:length(year.2digit)){
@@ -44,12 +45,17 @@ for(i in 1:length(year.2digit)){
   }
 }
 
-combined_df$Year <- year
-combined_df <- Corrected %>% relocate(Year, .before = ALA.mean)
+no_std$Year <- year
+no_std <- no_std %>% relocate(Year, .before = Row)
 
 #add age column
+no_std$Age <- substr(no_std$Identifier.1, 7, 7)
+no_std <- no_std %>% relocate(Age, .before = Row)
 
-#add system column
+#plot
+ggplot(data = no_std,
+       aes(x = Year, y = d.15N.14N.air, color = Age)) +
+  geom_point(size = 3, alpha = 0.7) 
 
 #group samples 
 grouped_df <- combined_df %>%
