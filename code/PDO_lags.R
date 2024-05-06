@@ -42,6 +42,38 @@ plot(x = avg_phe$Year,
      xlab = "Year",
      ylab = "PHE signature")
 
+# subset three year time periods (based on PDO)
+period1 <- data[data$Year >= 1965 & data$Year <= 1976,]
+period2 <- data[data$Year >= 1977 & data$Year <= 2000,]
+period3 <- data[data$Year >= 1999 & data$Year <= 2022,]
+
+# average PHE for each period
+avg_phe1 <- period1$PHE.mean %>% mean(na.rm = TRUE)
+avg_phe2 <- period2$PHE.mean %>% mean(na.rm = TRUE)
+avg_phe3 <- period3$PHE.mean %>% mean(na.rm = TRUE)
+
+ggplot(data = data, aes(x = Year, y = PHE.mean)) +
+  geom_point(size = 3, alpha = 0.7) +
+  geom_segment(x = 1965, xend = 1976, y = avg_phe1, yend = avg_phe1, color = "red") +
+  geom_segment(x = 1977, xend = 2000, y = avg_phe2, yend = avg_phe2, color = "blue") +
+  geom_segment(x = 1999, xend = 2022, y = avg_phe3, yend = avg_phe3, color = "green") +
+  labs(title = "Average Phenylalanine (PHE) Across Time Periods",
+       x = "Year",
+       y = "Average PHE") +
+  theme_minimal()
+
+
+#### Average GLU ###
+avg_glu <- data %>% 
+  group_by(Year) %>% 
+  summarise(GLU = mean(GLU.mean, na.rm = TRUE))
+
+plot(x = avg_glu$Year,
+     y = avg_glu$GLU,
+     xlab = "Year",
+     ylab = "GLU signature",
+     type = "l")
+
 #### Linear Model with no lagging of covariates one year before return ####
 
 #### Linear Model for 6 months before return ####
@@ -209,7 +241,8 @@ avg_tp <- tp %>%
   group_by(Year) %>% 
   summarise(Trophic.Position = mean(Trophic.Position, na.rm = TRUE))
 plot(x = avg_tp$Year,
-     y = avg_tp$Trophic.Position)
+     y = avg_tp$Trophic.Position,
+     type ="l")
 
 #### LM 9: Trophic Position 2 year with lag #### 
 merged <- merge(avg_tp, PDO_2yr_lag, by = "Year", all = TRUE)
