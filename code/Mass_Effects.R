@@ -212,23 +212,19 @@ pred.diff <- b - predicted
 # Corrected
 correct <- y$adj + pred.diff
 
-  
-# Correction to bump up values with low Area
-  ggplot(data = y, 
-         aes(x = AreaAll,
-             y = adj)) +
-  geom_point(size = 3, alpha = 0.7) +
-  #geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE) 
-  geom_smooth(method = "nls", formula = y ~ -a * x + b, se = FALSE)
+# Plot 
+plot(x = y$AreaAll,
+     y = correct,
+     xlab = "Area",
+     ylab = "d15N",
+     main = "GLU - Corrected"
+)
 
-
-  
-# Remove PHE outliers from main data sheet
-data <- data[!(data$AAID == "PHE" & data$adj > 10), ]
-
+# Add correction to csv and save as new data file 
+y$adj <- correct
+final.masscorrected <- rbind(x_no_out, y)
 
 # Write new csv with no mass outliers 
-write.csv(x_no_out, file = "final/mass_effect_correct.csv")
-
+write.csv(final.masscorrected, file = "final/mass_correct.csv")
 
 
