@@ -183,8 +183,11 @@ ggplot(data = y,
        aes(x = AreaAll,
            y = adj)) +
   geom_point(size = 3, alpha = 0.7) +
-  #geom_smooth(method = "nls", formula = y ~ a * x^b, se = FALSE) #power function 
-  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE) #2nd order polynomial
+  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE) 
+
+# Polynomial model 
+model.poly <- lm(adj ~ poly(AreaAll, 2), data = y)
+summary(model.poly)
 
 
 # Look at GLU only STDs
