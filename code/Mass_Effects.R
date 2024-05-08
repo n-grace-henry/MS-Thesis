@@ -184,17 +184,6 @@ plot(x = lowArea$Year,
      xlab = "Year",
      ylab = "Area",)
 
-# Correction to bump up values with low Area
-ggplot(data = y, 
-       aes(x = AreaAll,
-           y = adj)) +
-  geom_point(size = 3, alpha = 0.7) +
-  #geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE) 
-  geom_smooth(method = "nls", formula = y ~ -a * x + b, se = FALSE)
-
-# Polynomial model 
-
-
 # Look at GLU only STDs
 w <- data[data$AAID == "GLU" &
             data$ID1 == "5AA",]
@@ -214,7 +203,26 @@ a <- 5.980428588 # best fit values found from excel calculations
 N <- -0.753450356896991
 b <- 23.79092157
 
+# Fit model to data 
+predicted <- -a * y$AreaAll^N + b
 
+# Difference from predicted
+pred.diff <- b - predicted
+
+# Corrected
+correct <- y$adj + pred.diff
+
+  
+# Correction to bump up values with low Area
+  ggplot(data = y, 
+         aes(x = AreaAll,
+             y = adj)) +
+  geom_point(size = 3, alpha = 0.7) +
+  #geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE) 
+  geom_smooth(method = "nls", formula = y ~ -a * x + b, se = FALSE)
+
+
+  
 # Remove PHE outliers from main data sheet
 data <- data[!(data$AAID == "PHE" & data$adj > 10), ]
 
