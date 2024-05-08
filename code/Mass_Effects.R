@@ -127,7 +127,7 @@ plot(x = z$AreaAll,
 )
 abline(lm)
 
-# Remove what appear to be the outliers
+# Remove the outliers
 x_no_out <- x[x$adj < 10,]
 
 lm_no_out <- lm(AreaAll ~ adj, data = x_no_out)
@@ -183,7 +183,8 @@ ggplot(data = y,
        aes(x = AreaAll,
            y = adj)) +
   geom_point(size = 3, alpha = 0.7) +
-  geom_smooth(method = "nls", formula = y ~ a * x^b, se = FALSE)
+  #geom_smooth(method = "nls", formula = y ~ a * x^b, se = FALSE) #power function 
+  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE) #2nd order polynomial
 
 
 # Look at GLU only STDs
