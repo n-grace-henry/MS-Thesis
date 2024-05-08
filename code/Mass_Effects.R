@@ -99,6 +99,12 @@ write.csv(df, file = "final/data_full.csv")
 # read in new data file 
 data <- read.csv(file = "final/data_full.csv")
 
+
+library(openxlsx)
+excel_file <- "output_file.xlsx"
+write.xlsx(y, file = excel_file)
+
+
 # plot areas vs d15N for PHE only, removing STDs
 x <- data[data$AAID == "PHE" &
             !data$ID1 == "5AA",]
@@ -183,11 +189,10 @@ ggplot(data = y,
        aes(x = AreaAll,
            y = adj)) +
   geom_point(size = 3, alpha = 0.7) +
-  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE) 
+  #geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE) 
+  geom_smooth(method = "nls", formula = y ~ -a * x + b, se = FALSE)
 
 # Polynomial model 
-model.poly <- lm(adj ~ poly(AreaAll, 2), data = y)
-summary(model.poly)
 
 
 # Look at GLU only STDs
@@ -203,6 +208,12 @@ plot(x = w$AreaAll,
      main = "GLU - Standards"
 )
 abline(lm)
+
+# Mass correct GLU data
+a <- 5.980428588 # best fit values found from excel calculations
+N <- -0.753450356896991
+b <- 23.79092157
+
 
 # Remove PHE outliers from main data sheet
 data <- data[!(data$AAID == "PHE" & data$adj > 10), ]
