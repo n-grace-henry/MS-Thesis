@@ -16,14 +16,6 @@ Duplicates.R -> Takes a full data file that has been drift corrected and consoli
 
 Duplicate_withOutliers.R -> 
 
-Scripts should be run in a certain order to produce the finalized data. First the script DriftCorrection_outliers.R should be run. This script takes cleaned data (cleaned as above), first corrects d15N to the international standard reference value of air, then corrects for any drifting that may have occurred over the course of the individual run, and lastly removes outliers in this particular run. This outputs data into a folder called outliers_removed. 
-
-The next step is to move to the R script called ConsolidateTriplicates.R. This script take all the injections of single samples, either two or three injections, and averages to get a single data point. Before running this script, all data should be in the folder outliers_removed, because this script will compile all this data. After running this script, there is one csv file produced called "main.clean.csv" and this has system, age and year columns along with the average signature for each amino acid. 
-
-After consilidating with the above script, the next script to run is Duplicates.R. This script goes through the file "main.clean.csv" and averages all samples that were run twice or where replicates were run and averages the sample runs. The first part of this script makes a csv file called "replicates.csv" that has all replicate samples. This file can later be used to find the average difference between samples. Next thing this script does is remove all the duplicates and replicates by averaging them into one data point. Before saving as a new csv, check to make sure there are no more duplicates. The last step is to save as a file csv file that all future calculations and visualization will be produced from. This final sheet is called "main.data.csv".
-
-The next step is calculating trophic position. This script still needs to be tweaked to represent accurate TDF and beta values. As of 2/14 it is a work in progress. The produced csv file "main.trophic.csv" is the same as "main.data.csv" but there is an added column for trophic position. 
-
 Mass_Effects.R -> This script is to determine if there is a relationship between area under the curve and isotope signature. It first drift corrects the cleaned data, but does not consolidate and saves each run in a folder called "processed". Then it compacts this csv into one sheet, called "data_full.csv" and saves this in the final folder. This script identified 4 outlier points that are likely the result of too large a mass, impacting d15N value. These 4 values are going to be removed and then the values in this sheet will be consolidated into a csv file called "mass_effect_correct".
 
 ### data folder
