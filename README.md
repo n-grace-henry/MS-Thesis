@@ -6,7 +6,11 @@ All code used to clean, correct and analyze raw data. Raw data files must have s
 
 Below are descriptions of the included scripts along with their products. 
 
-DriftCorrection.R -> 
+DriftCorrection.R -> Takes raw data csv files (formatted as outlined above) and both drift corrects and consolidates triplicates, after which it puts the corrected data in the "with_outliers" folder, naming each file by it's run date. 
+
+DriftCorrection_ouliers -> 
+
+
 
 Scripts should be run in a certain order to produce the finalized data. First the script DriftCorrection_outliers.R should be run. This script takes cleaned data (cleaned as above), first corrects d15N to the international standard reference value of air, then corrects for any drifting that may have occurred over the course of the individual run, and lastly removes outliers in this particular run. This outputs data into a folder called outliers_removed. 
 
