@@ -1,5 +1,4 @@
-#this script should be run after drift correcting and removing outliers
-#from each individual run using the DriftCorrection_outliers.R script
+#this script should be run after drift correcting 
 setwd("~/Documents/GitHub/CSIA_lab_work/data")
 rm(list = ls())
 
