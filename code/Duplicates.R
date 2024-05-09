@@ -1,6 +1,5 @@
 #code to average all the duplicate samples and add the new average to the main
-#data file. This starts with a csv file produced by the 
-#ConsolidateTriplicates.R script. 
+#data file
 rm(list = ls())
 setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 
@@ -49,7 +48,6 @@ write.csv(df, file = file.name)
 #find mean difference of replicates later using this saved .csv file
 #from calculator, mean difference right now equals 1.876 (not updated as of 02/14)
 
-
 #function to average duplicate/replicates and replace in data file with new averages
 #run this function as many times as replicates there are
 rm_duplicates <- function(df, ID, Year, System, Age){
@@ -91,8 +89,6 @@ main.data <- main.data[,1:15]
 #place holder so I can look at this data before I figure out these reps
 file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/main.data.csv"
 write.csv(main.data, file = file.name)
-
-#from calculator, mean difference right now equals 1.876
 
 
 
