@@ -45,3 +45,5 @@ data_full.csv -> raw data has been drift corrected but not consolidated. All dat
 
 mass_correct_full.csv -> mass corrected data (only has GLU and PHE signatures). Has been consolidated from triplicate but duplicates and replicates have not been removed. 
 
+all_correct_final.csv -> data that has undergone all corrections including mass correction, drift correction and correction to Nair. 
+
