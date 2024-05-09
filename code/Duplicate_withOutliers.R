@@ -14,16 +14,16 @@ rm(list = ls())
 library(dplyr)
 library(readr)
 
-#compile all the csv files to make one dataframe of all data
+# compile all the csv files to make one dataframe of all data
 df <- list.files(path=setwd("~/Documents/GitHub/CSIA_lab_work/data/with_outliers")) %>% 
   lapply(read_csv) %>% 
   bind_rows 
 
-#Remove 5AA and REF columns
+# Remove 5AA and REF columns
 df <- df[!df$Sample.ID == "5AA",]
 df <- df[,1:12]
 
-#####Add Year column ####
+##### Add Year column ####
 year.2digit <- substr(df$Sample.ID, 1, 2)
 
 year <- vector(mode="character")
@@ -38,7 +38,7 @@ for(i in 1:length(year.2digit)){
 df$Year <- year
 df <- df %>% relocate(Year, .before = VAL.mean)
 
-#####Add System column####
+##### Add System column ####
 sys <- substr(df$Sample.ID, 4, 4)
 
 system <- vector(mode="character")
@@ -55,9 +55,12 @@ for(i in 1:length(sys)){
 df$System <- system
 df <- df %>% relocate(System, .before = VAL.mean)
 
-#####Add Age column####
+##### Add Age column ####
 df$Age <- substr(df$Sample.ID, 6, 6)
 df <- df %>% relocate(Age, .before = VAL.mean)
+
+#### START HERE if data already compiled ####
+df <- read.csv(file = "final/mass_correct_full.csv")
 
 ####Add column of replicates####
 df$new.ID <- substr(df$Sample.ID, 1, 6) #new.ID gets rid of R in sample.ID
@@ -69,14 +72,14 @@ df$rep <- substr(df$Sample.ID, 8, 8)
 #run this function as many times as replicates there are
 rm_duplicates <- function(df, ID, Year, System, Age){
   a <- subset(df, new.ID == ID)
-  b <- as.data.frame(a[,6:15])
-  vec <- vector(mode="numeric", length=10)
+  b <- as.data.frame(a[,6:9])
   
-  for(i in 1:10){
+  vec <- vector(mode="numeric", length=4)
+  for(i in 1:4){
     vec[i] <- mean(as.numeric(b[,i]))
   }
   
-  c <- append(c(1, ID, Year, System, Age),c(vec, ID, 0))
+  c <- append(c(1, Year, System, Age, ID),c(vec, ID, 0))
   norep <- df[!df$new.ID==ID,]
   new.data <- rbind(norep, c)
   
@@ -93,6 +96,7 @@ df <- rm_duplicates(df = df, ID = "10_W_2", Year = "2010", System = "Wood", Age 
 df <- rm_duplicates(df = df, ID = "22_E_2", Year = "2022", System = "Egegik", Age = "2")
 df <- rm_duplicates(df = df, ID = "74_W_2", Year = "1974", System = "Wood", Age = "2")
 df <- rm_duplicates(df = df, ID = "89_K_2", Year = "1989", System = "Kvichak", Age = "2")
+df <- rm_duplicates(df = df, ID = "89_W_2", Year = "1989", System = "Wood", Age = "2")
 
 
 #check to see if there are any duplicate samples left 
@@ -100,8 +104,7 @@ anyDuplicated(df$new.ID)
 
 #remove the last two columns
 data <- df
-data <- as.data.frame(data[,1:15])
-
+data <- as.data.frame(data[,1:9])
 
 #### Trophic Position Calculations ####
 
@@ -121,10 +124,10 @@ for(i in 1:length(data$Sample.ID)){
 
 #combine new data frame with original 
 data <- cbind(data, tp)
-data <- data[, 3:17]
+data <- data[, 3:11]
 
 #write new file
-file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/data.csv"
+file.name <- "final/all_correct_final.csv"
 write.csv(data, file.name)
 
 

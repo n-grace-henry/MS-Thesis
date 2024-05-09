@@ -203,16 +203,16 @@ N <- -0.753450356896991
 b <- 23.79092157
 
 # Fit model to data 
-predicted <- -a * y$AreaAll^N + b
+predicted <- -a * glu.no.std$AreaAll^N + b
 
 # Difference from predicted
 pred.diff <- b - predicted
 
 # Corrected
-correct <- y$adj + pred.diff
+correct <- glu.no.std$adj + pred.diff
 
 # Plot 
-plot(x = y$AreaAll,
+plot(x = glu.no.std$AreaAll,
      y = correct,
      xlab = "Area",
      ylab = "d15N",
@@ -220,8 +220,8 @@ plot(x = y$AreaAll,
 )
 
 # Add correction to csv and save as new data file 
-y$adj <- correct
-final.masscorrected <- rbind(x_no_out, y)
+glu.no.std$adj <- correct
+final.masscorrected <- rbind(phe_no_out, glu.no.std)
 
 # Write new csv with no mass outliers 
 write.csv(final.masscorrected, file = "final/mass_correct.csv")

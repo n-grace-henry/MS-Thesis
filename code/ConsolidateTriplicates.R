@@ -16,6 +16,9 @@ df <- read.csv(file = "final/mass_effect_correct.csv")
 # Remove reference values if present 
 df <- df[!df$AAID == "REF",] 
 
+# If working with data that has already been compiled START here
+df <- read.csv(file = "final/mass_correct.csv")
+
 #####Consolidating Triplicates#####
 #samples should be run in triplicate, the mean and SD of the triplicate should be taken. Output data will include mean and SD for each sample,
 #the standards, with a column for every Amino Acid
@@ -70,7 +73,7 @@ for(i in 1:length(year.2digit)){
 }
 
 Corrected$Year <- year
-Corrected <- Corrected %>% relocate(Year, .before = ALA.mean)
+Corrected <- Corrected %>% relocate(Year, .before = Sample.ID)
 
 #####Add System column####
 sys <- substr(Corrected$Sample.ID, 4, 4)
@@ -87,14 +90,14 @@ for(i in 1:length(sys)){
 }
 
 Corrected$System <- system
-Corrected <- Corrected %>% relocate(System, .before = ALA.mean)
+Corrected <- Corrected %>% relocate(System, .before = Sample.ID)
 
 #####Add Age column####
 Corrected$Age <- substr(Corrected$Sample.ID, 6, 6)
-Corrected <- Corrected %>% relocate(Age, .before = ALA.mean)
+Corrected <- Corrected %>% relocate(Age, .before = Sample.ID)
 
 #####Write new .csv file that has this clean data with no outliers####
 setwd("~/Documents/GitHub/CSIA_lab_work/data")
-file.name <- "final/main.clean.csv"
+file.name <- "final/mass_correct_full.csv"
 write.csv(Corrected, file = file.name)
 
