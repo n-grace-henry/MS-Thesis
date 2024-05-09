@@ -99,69 +99,68 @@ write.csv(df, file = "final/data_full.csv")
 # read in new data file 
 data <- read.csv(file = "final/data_full.csv")
 
-
-library(openxlsx)
-excel_file <- "output_file.xlsx"
-write.xlsx(y, file = excel_file)
-
-
 # plot areas vs d15N for PHE only, removing STDs
-x <- data[data$AAID == "PHE" &
+phe.no.std <- data[data$AAID == "PHE" &
             !data$ID1 == "5AA",]
 
-lm <- lm(adj ~ AreaAll, data = x)
+lm <- lm(adj ~ AreaAll, data = phe.no.std)
 summary(lm)
-plot(x = x$AreaAll,
-     y = x$adj,
+plot(x = phe.no.std$AreaAll,
+     y = phe.no.std$adj,
      xlab = "Area",
      ylab = "d15N",
      main = "PHE"
 )
 abline(lm)
 
-# Only PHE STDs
-z <- data[data$AAID == "PHE" &
+# plot only phe standards 
+phe.std <- data[data$AAID == "PHE" &
             data$ID1 == "5AA",]
 
-lm <- lm(adj ~ AreaAll, data = z)
+lm <- lm(adj ~ AreaAll, data = phe.std)
 summary(lm)
-plot(x = z$AreaAll,
-     y = z$adj,
+plot(x = phe.std$AreaAll,
+     y = phe.std$adj,
      xlab = "Area",
      ylab = "d15N",
      main = "PHE - Standards"
 )
 abline(lm)
 
-# Remove the outliers
-x_no_out <- x[x$adj < 10,]
+# Remove the outliers from the phe data set 
+phe_no_out <- phe.no.std[phe.no.std$adj < 10,]
 
-lm_no_out <- lm(AreaAll ~ adj, data = x_no_out)
+lm_no_out <- lm(AreaAll ~ adj, data = phe_no_out)
 summary(lm_no_out)
-
-plot(x = x_no_out$adj,
-     y = x_no_out$AreaAll,
+plot(x = phe_no_out$adj,
+     y = phe_no_out$AreaAll,
      xlab = "d15N",
      ylab = "Area",
 )
 abline(lm_no_out)
 
-# Look at outlier values 
-outliers <- x[x$adj > 10,]
+# Look at phe outlier values 
+outliers <- phe.no.std[phe.no.std$adj > 10,]
+(outliers)
 
-# Look at GLU and repeat above 
-y <- data[data$AAID == "GLU" &
+# plot area vs glu, removing standards
+glu.no.std <- data[data$AAID == "GLU" &
             !data$ID1 == "5AA",]
 
-lm <- lm(adj ~ AreaAll, data = y)
+lm <- lm(adj ~ AreaAll, data = glu.no.std)
 summary(lm)
-plot(x = y$AreaAll,
-     y = y$adj,
+plot(x = glu.no.std$AreaAll,
+     y = glu.no.std$adj,
      xlab = "Area",
      ylab = "d15N",
      main = "GLU"
 )
 abline(lm)
+
+# save excel file to find constants for polynomial fit
+library(openxlsx)
+excel_file <- "output_file.xlsx"
+write.xlsx(glu.no.std, file = excel_file)
 
 # Look to see if low area points are random across the time series 
 lowArea <- data[data$AAID == "GLU" &
@@ -184,14 +183,14 @@ plot(x = lowArea$Year,
      xlab = "Year",
      ylab = "Area",)
 
-# Look at GLU only STDs
-w <- data[data$AAID == "GLU" &
+# plot area vs glu, standards only
+glu.std <- data[data$AAID == "GLU" &
             data$ID1 == "5AA",]
 
-lm <- lm(adj ~ AreaAll, data = w)
+lm <- lm(adj ~ AreaAll, data = glu.std)
 summary(lm)
-plot(x = w$AreaAll,
-     y = w$adj,
+plot(x = glu.std$AreaAll,
+     y = glu.std$adj,
      xlab = "Area",
      ylab = "d15N",
      main = "GLU - Standards"
