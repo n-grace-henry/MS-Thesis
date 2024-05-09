@@ -16,7 +16,7 @@ Duplicates.R -> Takes a full data file that has been drift corrected and consoli
 
 Duplicate_withOutliers.R -> 
 
-Mass_Effects.R -> This script is to determine if there is a relationship between area under the curve and isotope signature. It first drift corrects the cleaned data, but does not consolidate and saves each run in a folder called "processed". Then it compacts this csv into one sheet, called "data_full.csv" and saves this in the final folder. This script identified 4 outlier points that are likely the result of too large a mass, impacting d15N value. These 4 values are going to be removed and then the values in this sheet will be consolidated into a csv file called "mass_effect_correct".
+Mass_Effects.R -> Corrects for area effects on d15N signature. First drift corrects the raw data but does not consolidate, and saves each run in a folder called "processed". Compiles these files into one csv called "data_full.csv" and saves this in the final folder. Identifies outlier points in the PHE data that get removed from the final produced file. Corrects for the apparent low area - low d15N pattern of GLU by fitting a second order polynomial to the data. Saves data frame in the final folder as "mass_correct.csv".
 
 ### data folder
 Contains data folders at different levels of processing. 
