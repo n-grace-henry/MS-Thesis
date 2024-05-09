@@ -4,6 +4,10 @@ Repository for all data, code and analysis of AK salmon scales for Grace Henry's
 ## code folder
 All code used to clean, correct and analyze raw data. Raw data files must have seven columns as follows: Analysis, Identifier 1, Rt, Area All, 29N2/28N2, 15N/14N, and Peak_ID and be in csv format. All reference peaks and unidentified peaks should be removed prior to reading into any of these scripts. The analysis run in this repo accounts for only with 5 amino acids: 5 amino acids: alanine, valine, norleucine, glutamic acid and phenylalanine. 
 
+Below are descriptions of the included scripts along with their products. 
+
+DriftCorrection.R -> 
+
 Scripts should be run in a certain order to produce the finalized data. First the script DriftCorrection_outliers.R should be run. This script takes cleaned data (cleaned as above), first corrects d15N to the international standard reference value of air, then corrects for any drifting that may have occurred over the course of the individual run, and lastly removes outliers in this particular run. This outputs data into a folder called outliers_removed. 
 
 The next step is to move to the R script called ConsolidateTriplicates.R. This script take all the injections of single samples, either two or three injections, and averages to get a single data point. Before running this script, all data should be in the folder outliers_removed, because this script will compile all this data. After running this script, there is one csv file produced called "main.clean.csv" and this has system, age and year columns along with the average signature for each amino acid. 
