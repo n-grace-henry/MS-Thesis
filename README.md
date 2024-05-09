@@ -10,7 +10,7 @@ DriftCorrection.R -> Takes raw data files (formatted as outlined above) and both
 
 DriftCorrection_ouliers -> Takes raw data files (formatted as outlined above) and applies a drift correction with NO CONSOLIDATION of triplicates. Requires manual inspection of each triplicate set to determine what is characterized as an outlier. Saves data, unconsolidated, in the "outliers_removed" folder, naming each file by it's run date. 
 
-ConsolidateTriplicates -> Compiles all individual drift corrected files in a folder (outliers_removed or other) and consolidates triplicates. Adds a year, system and age class column to the data frame and writes new csv. Currently writes a csv called "main.clean.csv". (As of May 9th)
+ConsolidateTriplicates -> Compiles all individual drift corrected files in a folder (outliers_removed or other) and consolidates triplicates. Adds a year, system and age class column to the data frame and writes new csv. 
 
 Duplicates.R -> Takes a full data file that has been drift corrected and consolidated already. Creates a function to average the values of all replicate samples and duplicate and replace with only one value in the data sheet. Replicates are defined as the second half of scales that were run because of issues with the first set or simply for the sake of rerunning. Duplicates are defined as samples run more than once from the same sample bottle. 
 
@@ -42,4 +42,6 @@ all.data.csv -> all corrected data including the points that did not end up gett
 data.csv -> same as the all.data.csv file except I removed the run on 2/7/24 that I think was wrong. This run looked pretty bad and I believe it was because the source blew and there might have also been a leak in the system. It gave some crazy high values and I think it is safer to remove this run entirely. 
 
 data_full.csv -> raw data has been drift corrected but not consolidated. All data in this sheet including AAs and duplicates and replicates. 
+
+mass_correct_full.csv -> mass corrected data (only has GLU and PHE signatures). Has been consolidated from triplicate but duplicates and replicates have not been removed. 
 
