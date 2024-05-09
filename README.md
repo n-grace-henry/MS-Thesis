@@ -6,9 +6,9 @@ All code used to clean, correct and analyze raw data. Raw data files must have s
 
 Below are descriptions of the included scripts along with their products. 
 
-DriftCorrection.R -> Takes raw data csv files (formatted as outlined above) and both drift corrects and consolidates triplicates, after which it puts the corrected data in the "with_outliers" folder, naming each file by it's run date. 
+DriftCorrection.R -> Takes raw data files (formatted as outlined above) and both drift corrects and consolidates triplicates, after which it puts the corrected data in the "with_outliers" folder, naming each file by it's run date. 
 
-DriftCorrection_ouliers -> 
+DriftCorrection_ouliers -> Takes raw data files (formatted as outlined above) and applies a drift correction with NO CONSOLIDATION of triplicates. Requires manual inspection of each triplicate set to determine what is characterized as an outlier. Saves data, unconsolidated, in the "outliers_removed" folder, naming each file by it's run date. 
 
 
 
