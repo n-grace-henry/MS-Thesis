@@ -10,19 +10,13 @@ DriftCorrection.R -> Takes raw data files (formatted as outlined above) and both
 
 DriftCorrection_ouliers -> Takes raw data files (formatted as outlined above) and applies a drift correction with NO CONSOLIDATION of triplicates. Requires manual inspection of each triplicate set to determine what is characterized as an outlier. Saves data, unconsolidated, in the "outliers_removed" folder, naming each file by it's run date. 
 
-ConsolidateTriplicates -> Compiles all individual drift corrected files in a folder (outliers_removed or other) and consolidates triplicates. Adds a year, system and age class column to the data frame and writes new csv. Currently writes a csv called "main.clean.csv". (As of May 9th)
+ConsolidateTriplicates -> Compiles all individual drift corrected files in a folder (outliers_removed or other) and consolidates triplicates. Adds a year, system and age class column to the data frame and writes new csv. 
 
-Duplicates.R -> 
+Duplicates.R -> Takes a full data file that has been drift corrected and consolidated already. Creates a function to average the values of all replicate samples and duplicate and replace with only one value in the data sheet. Replicates are defined as the second half of scales that were run because of issues with the first set or simply for the sake of rerunning. Duplicates are defined as samples run more than once from the same sample bottle. 
 
-Scripts should be run in a certain order to produce the finalized data. First the script DriftCorrection_outliers.R should be run. This script takes cleaned data (cleaned as above), first corrects d15N to the international standard reference value of air, then corrects for any drifting that may have occurred over the course of the individual run, and lastly removes outliers in this particular run. This outputs data into a folder called outliers_removed. 
+Duplicate_withOutliers.R -> 
 
-The next step is to move to the R script called ConsolidateTriplicates.R. This script take all the injections of single samples, either two or three injections, and averages to get a single data point. Before running this script, all data should be in the folder outliers_removed, because this script will compile all this data. After running this script, there is one csv file produced called "main.clean.csv" and this has system, age and year columns along with the average signature for each amino acid. 
-
-After consilidating with the above script, the next script to run is Duplicates.R. This script goes through the file "main.clean.csv" and averages all samples that were run twice or where replicates were run and averages the sample runs. The first part of this script makes a csv file called "replicates.csv" that has all replicate samples. This file can later be used to find the average difference between samples. Next thing this script does is remove all the duplicates and replicates by averaging them into one data point. Before saving as a new csv, check to make sure there are no more duplicates. The last step is to save as a file csv file that all future calculations and visualization will be produced from. This final sheet is called "main.data.csv".
-
-The next step is calculating trophic position. This script still needs to be tweaked to represent accurate TDF and beta values. As of 2/14 it is a work in progress. The produced csv file "main.trophic.csv" is the same as "main.data.csv" but there is an added column for trophic position. 
-
-Mass_Effects.R -> This script is to determine if there is a relationship between area under the curve and isotope signature. It first drift corrects the cleaned data, but does not consolidate and saves each run in a folder called "processed". Then it compacts this csv into one sheet, called "data_full.csv" and saves this in the final folder. This script identified 4 outlier points that are likely the result of too large a mass, impacting d15N value. These 4 values are going to be removed and then the values in this sheet will be consolidated into a csv file called "mass_effect_correct".
+Mass_Effects.R -> Corrects for area effects on d15N signature. First drift corrects the raw data but does not consolidate, and saves each run in a folder called "processed". Compiles these files into one csv called "data_full.csv" and saves this in the final folder. Identifies outlier points in the PHE data that get removed from the final produced file. Corrects for the apparent low area - low d15N pattern of GLU by fitting a second order polynomial to the data. Saves data frame in the final folder as "mass_correct.csv".
 
 ### data folder
 Contains data folders at different levels of processing. 
@@ -48,4 +42,8 @@ all.data.csv -> all corrected data including the points that did not end up gett
 data.csv -> same as the all.data.csv file except I removed the run on 2/7/24 that I think was wrong. This run looked pretty bad and I believe it was because the source blew and there might have also been a leak in the system. It gave some crazy high values and I think it is safer to remove this run entirely. 
 
 data_full.csv -> raw data has been drift corrected but not consolidated. All data in this sheet including AAs and duplicates and replicates. 
+
+mass_correct_full.csv -> mass corrected data (only has GLU and PHE signatures). Has been consolidated from triplicate but duplicates and replicates have not been removed. 
+
+all_correct_final.csv -> data that has undergone all corrections including mass correction, drift correction and correction to Nair. 
 
