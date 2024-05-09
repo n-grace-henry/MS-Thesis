@@ -98,7 +98,6 @@ df <- rm_duplicates(df = df, ID = "74_W_2", Year = "1974", System = "Wood", Age 
 df <- rm_duplicates(df = df, ID = "89_K_2", Year = "1989", System = "Kvichak", Age = "2")
 df <- rm_duplicates(df = df, ID = "89_W_2", Year = "1989", System = "Wood", Age = "2")
 
-
 #check to see if there are any duplicate samples left 
 anyDuplicated(df$new.ID)
 
@@ -124,12 +123,11 @@ for(i in 1:length(data$Sample.ID)){
 
 #combine new data frame with original 
 data <- cbind(data, tp)
-data <- data[, 3:11]
+data <- data[, 2:11]
+data <- data[,-9]
 
 #write new file
 file.name <- "final/all_correct_final.csv"
 write.csv(data, file.name)
-
-
 
 
