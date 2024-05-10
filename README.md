@@ -14,8 +14,6 @@ ConsolidateTriplicates -> Compiles all individual drift corrected files in a fol
 
 Duplicates.R -> Takes a full data file that has been drift corrected and consolidated already. Creates a function to average the values of all replicate samples and duplicate and replace with only one value in the data sheet. Replicates are defined as the second half of scales that were run because of issues with the first set or simply for the sake of rerunning. Duplicates are defined as samples run more than once from the same sample bottle. 
 
-Duplicate_withOutliers.R -> 
-
 Mass_Effects.R -> Corrects for area effects on d15N signature. First drift corrects the raw data but does not consolidate, and saves each run in a folder called "processed". Compiles these files into one csv called "data_full.csv" and saves this in the final folder. Identifies outlier points in the PHE data that get removed from the final produced file. Corrects for the apparent low area - low d15N pattern of GLU by fitting a second order polynomial to the data. Saves data frame in the final folder as "mass_correct.csv".
 
 ### data folder
