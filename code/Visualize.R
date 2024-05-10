@@ -13,9 +13,6 @@ library(ggpubr)
 #read in the main data file
 data <- read.csv(file="all_correct_final.csv")
 
-# remove 07_K_2 because of mass effects 
-data <- data[data$Sample.ID != "07_K_2",]
-
 #scatter plot of year vs isotope signature
 PHE.all <- ggplot(data = data, aes(Year, PHE.mean, color = System)) +
        geom_point(size = 3, alpha = 0.7)
