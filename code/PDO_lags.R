@@ -138,6 +138,9 @@ plot(x = merged$PDO,
      y = merged$PHE)
 abline(model3, col = "red")
 
+mod_test <- gls(PHE ~ PDO, data = merged) #if we found auto correction: correlation = corCAR1() goes into gls()
+plot(ACF(mod_test, resType = "normalized"), alpha = 0.05)
+
 
 #### LM 4: 18 months average before return ####
 #January of previous yr - July, labeled as return yr
