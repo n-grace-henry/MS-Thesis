@@ -15,3 +15,8 @@ plot(x = data$Year,
      y = data$Trophic.Position)
 
 
+
+
+# Notes from online lecture 
+
+
