@@ -36,5 +36,16 @@ ggplot(data, aes(x = Year, y = PHE.mean)) +
   geom_smooth(method = "gam", formula = y ~ s(x), col = "red") +
   theme_minimal()
 
+# Fit GAM of Glutamic Acid d15N
+gam_model_glu <- gam(GLU.mean ~ s(Year), data = data)
+summary(gam_model_glu)
 
+# Plot GAM of Glutamic Acid d15N
+plot(gam_model_glu)
+plot(x = data$Year,
+     y = data$GLU.mean)
 
+ggplot(data, aes(x = Year, y = GLU.mean)) +
+  geom_point() +
+  geom_smooth(method = "gam", formula = y ~ s(x), col = "red") +
+  theme_minimal()
