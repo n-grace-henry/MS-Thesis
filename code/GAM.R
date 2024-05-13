@@ -13,16 +13,28 @@ summary(gam_model_trophic) #shows that this used about 3.034 degrees of freedom
 # this GAM explains 19.7% of the deviance in the data
 
 # Plot GAM
-plot(gam_model)
+plot(gam_model_trophic)
 plot(x = data$Year,
      y = data$Trophic.Position)
 
-# Plot GAM of Phenylalanine d15N 
+ggplot(data, aes(x = Year, y = Trophic.Position)) +
+  geom_point() +
+  geom_smooth(method = "gam", formula = y ~ s(x), col = "red") +
+  theme_minimal()
+  
+# Fit GAM of Phenylalanine d15N 
 gam_model_phe <- gam(PHE.mean ~ s(Year), data = data)
 summary(gam_model_phe)
 
-# Notes from online lecture 
-# Generalized Additive Models (GAMs) 
-# 
+# Plot GAM of Phenylalanine d15N
+plot(gam_model_phe)
+plot(x = data$Year,
+     y = data$PHE.mean)
+
+ggplot(data, aes(x = Year, y = PHE.mean)) +
+  geom_point() +
+  geom_smooth(method = "gam", formula = y ~ s(x), col = "red") +
+  theme_minimal()
+
 
 
