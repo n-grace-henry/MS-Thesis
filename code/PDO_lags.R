@@ -7,7 +7,7 @@ library(tidyr)
 library(lubridate)
 
 #Load Data
-data <- read.csv(file = "final/data.csv")
+data <- read.csv(file = "final/all_correct_final.csv")
 PDO <- read.csv(file = "Environmental/PDO.csv")
 
 #### Convert PDO to tidy format ####

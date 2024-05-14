@@ -17,7 +17,7 @@ plot(gam_model_trophic)
 plot(x = data$Year,
      y = data$Trophic.Position)
 
-ggplot(data, aes(x = Year, y = Trophic.Position)) +
+ggplot(data, aes(x = Year, y = Trophic.Position, col = System)) +
   geom_point() +
   geom_smooth(method = "gam", formula = y ~ s(x), col = "red") +
   theme_minimal()
@@ -31,7 +31,7 @@ plot(gam_model_phe)
 plot(x = data$Year,
      y = data$PHE.mean)
 
-ggplot(data, aes(x = Year, y = PHE.mean)) +
+ggplot(data, aes(x = Year, y = PHE.mean, col = System)) +
   geom_point() +
   geom_smooth(method = "gam", formula = y ~ s(x), col = "red") +
   theme_minimal()
@@ -45,7 +45,7 @@ plot(gam_model_glu)
 plot(x = data$Year,
      y = data$GLU.mean)
 
-ggplot(data, aes(x = Year, y = GLU.mean)) +
+ggplot(data, aes(x = Year, y = GLU.mean, col = System)) +
   geom_point() +
   geom_smooth(method = "gam", formula = y ~ s(x), col = "red") +
   theme_minimal()
