@@ -23,7 +23,7 @@ ggplot(data, aes(x = Year, y = Trophic.Position, col = System)) +
   theme_minimal()
   
 # Fit GAM of Phenylalanine d15N 
-gam_model_phe <- gam(PHE.mean ~ s(Year), data = data)
+gam_model_phe <- gam(PHE.mean ~ s(Year), data = data) #year,system
 summary(gam_model_phe)
 
 # Plot GAM of Phenylalanine d15N
@@ -49,3 +49,6 @@ ggplot(data, aes(x = Year, y = GLU.mean, col = System)) +
   geom_point() +
   geom_smooth(method = "gam", formula = y ~ s(x), col = "red") +
   theme_minimal()
+
+#Factor effect of system, is it significant 
+# outside smooth term is one trend through time 

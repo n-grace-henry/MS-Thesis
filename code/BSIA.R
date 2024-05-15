@@ -101,7 +101,7 @@ plot(x = sample_df$d.13C.12C.VPDB,
      xlab = "d13C",
      ylab = "d15N",
      main = "d13C vs d15N")
-
+# year vs d13C and see if I get a trend
 
 
 
