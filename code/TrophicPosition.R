@@ -6,11 +6,13 @@ library(dplyr)
 library(readr)
 
 #read in the main data file
-data <- read.csv(file="main.data.csv")
+data <- read.csv(file="all_correct_final.csv")
 
 #define beta and TDF values, this can be changed later if necessary 
 beta <- 3.4 #commonly used constant
 TDF <- 7.06 #from Lerner et al 2020
+
+### Calculating trophic position: method 1 ####
 
 #make an empty data frame to fill with Sample.ID and trophic position 
 tp <- data.frame(matrix(nrow = length(data$Sample.ID), ncol = 2))
@@ -31,6 +33,16 @@ file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/main.trophic.csv"
 write.csv(main.trophic, file = file.name)
 
 
+#### Calculating trophic position: method 2 ####
+# Average PHE for three time periods
 
-# Calculating trophic position: method 2
+
+# Average GLU for three time periods 
+
+
+# Calculating TP from averaged PHE
+
+
+
+
 
