@@ -44,11 +44,10 @@ avg_phe1 <- period1$PHE.mean %>% mean(na.rm = TRUE)
 avg_phe2 <- period2$PHE.mean %>% mean(na.rm = TRUE)
 avg_phe3 <- period3$PHE.mean %>% mean(na.rm = TRUE)
 
-
-# Average GLU for three time periods 
-
-
 # Calculating TP from averaged PHE
+p1.GLU <- data[data$Year <= 1982, "GLU.mean"] 
+p2.GLU <- data[data$Year >= 1983 & data$Year <= 2005, "GLU.mean"]
+p3.GLU <- data[data$Year >= 2006, "GLU.mean"]
 
 
 # Calculating TP from GAM modeled PHE 
