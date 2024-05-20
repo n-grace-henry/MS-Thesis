@@ -29,3 +29,8 @@ main.trophic <- main.trophic[, 3:18]
 #create .csv file of trophic position data frame 
 file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/main.trophic.csv"
 write.csv(main.trophic, file = file.name)
+
+
+
+# Calculating trophic position: method 2
+

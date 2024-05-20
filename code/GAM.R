@@ -65,5 +65,8 @@ summary(sys_gam_factor) #assumes the effect of system is constant over time, dif
 sys_gam_by <- gam(Trophic.Position ~ s(Year, by = System) + System, data = data)
 summary(sys_gam_by)
 
+sys_gam_test <- gam(Trophic.Position ~ s(Year, by = System), data = data)
+summary(sys_gam_test)
+
 # AIC to compare models
 AIC(sys_gam_factor, sys_gam_by, gam_model_trophic)
