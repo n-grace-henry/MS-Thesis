@@ -34,13 +34,24 @@ write.csv(main.trophic, file = file.name)
 
 
 #### Calculating trophic position: method 2 ####
-# Average PHE for three time periods
+# Average PHE for three time periods (periods based on plot)
+period1 <- data[data$Year >= 1965 & data$Year <= 1982,]
+period2 <- data[data$Year >= 1983 & data$Year <= 2005,]
+period3 <- data[data$Year >= 2006 & data$Year <= 2022,]
+
+# average PHE for each period
+avg_phe1 <- period1$PHE.mean %>% mean(na.rm = TRUE)
+avg_phe2 <- period2$PHE.mean %>% mean(na.rm = TRUE)
+avg_phe3 <- period3$PHE.mean %>% mean(na.rm = TRUE)
 
 
 # Average GLU for three time periods 
 
 
 # Calculating TP from averaged PHE
+
+
+# Calculating TP from GAM modeled PHE 
 
 
 
