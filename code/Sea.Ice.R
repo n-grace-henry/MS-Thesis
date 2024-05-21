@@ -28,15 +28,28 @@ plot(x = aug$year,
 # Load data 
 sea_ice <- read_csv("~/Documents/GitHub/CSIA_lab_work/data/Environmental/sibt_areas_v2.csv")
 
-# Create year column
-year.2digit <- substr(sample_df$group_id, 1, 2) #none of this is updated, only copy pasted
+# Only keep areas columns of interest
+sea_ice <- sea_ice[-c(1,2), c(1, 2, 14)]
 
-year <- vector(mode="character")
-for(i in 1:length(year.2digit)){
-  if(year.2digit[i] <= 22){
-    year[i] <- paste0(20, year.2digit[i])
-  } else{
-    year[i] <- paste0(19, year.2digit[i])
-  }
-}
+# Create year column
+names(sea_ice) <- c("date", "N_hem", "Bering_Sea")
+year <- substr(sea_ice$date, 1, 4) 
+
+sea_ice$year <- year
+
+# Only keep years 1965 and above
+sea_ice <- sea_ice[sea_ice$year >= 1965, ]
+
+# Create month column 
+month <- rep(seq(1, 12), length.out = nrow(sea_ice))
+
+sea_ice$month <- month
+
+# Plot Bering Sea ice extent for July 
+september <- sea_ice[sea_ice$month == 9, ]
+
+plot(x = september$year,
+     y = september$Bering_Sea)
+
+
 
