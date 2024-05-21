@@ -49,6 +49,20 @@ p1.GLU <- data[data$Year <= 1982, "GLU.mean"]
 p2.GLU <- data[data$Year >= 1983 & data$Year <= 2005, "GLU.mean"]
 p3.GLU <- data[data$Year >= 2006, "GLU.mean"]
 
+tp.1 <- 1 + ((p1.GLU-avg_phe1-beta)/TDF)
+tp.2 <- 1 + ((p2.GLU-avg_phe2-beta)/TDF)
+tp.3 <- 1 + ((p3.GLU-avg_phe3-beta)/TDF)
+
+# Combine into one vector 
+tp.avg.met <- c(tp.1, tp.2, tp.3)
+
+# Add to data frame 
+data$TP.Average.Method <- tp.avg.met
+
+# Plot
+ggplot(data, aes(x = Year, y = TP.Average.Method)) + 
+  geom_point() +
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), se = FALSE)
 
 # Calculating TP from GAM modeled PHE 
 
