@@ -25,7 +25,7 @@ ggplot(data, aes(x = Year, y = Trophic.Position, col = System)) +
   theme_minimal()
   
 # Fit GAM of Phenylalanine d15N 
-gam_model_phe <- gam(PHE.mean ~ s(Year), data = data) #year,system
+gam_model_phe <- gam(PHE.mean ~ s(Year), data = data) 
 summary(gam_model_phe)
 
 # Plot GAM of Phenylalanine d15N

@@ -65,8 +65,22 @@ ggplot(data, aes(x = Year, y = TP.Average.Method)) +
   geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), se = FALSE)
 
 # Calculating TP from GAM modeled PHE 
+gam_model_phe <- gam(PHE.mean ~ s(Year), data = data) #model
 
+newdata <- data.frame(Year = data$Year) #predict PHE from GAM 
+newdata$PHE.predicted <- predict(gam_model_phe, newdata = newdata)
 
+TP.gam.met <- 1 + ((data$GLU.mean - newdata$PHE.predicted - beta)/TDF)
 
+# Add to data frame 
+data$TP.GAM.Method <- TP.gam.met
 
+# Plot
+ggplot(data, aes(x = Year, y = TP.GAM.Method)) + 
+  geom_point() +
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), se = FALSE)
+
+# Save data frame 
+file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/trophic_position.csv"
+write.csv(data, file = file.name)
 
