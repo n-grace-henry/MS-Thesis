@@ -20,6 +20,9 @@ aug <- df[df$mo == 7, ]
 plot(x = aug$year,
      y = aug$area)
 
+# Write new csv from df
+file.name <- "~/Documents/GitHub/CSIA_lab_work/data/Environmental/sea_ice.csv"
+write.csv(df, file = file.name)
 
 # Data source: Walsh, J. E., W. L. Chapman, F. Fetterer, and J. S. Stewart. (2019). 
 #Gridded Monthly Sea Ice Extent and Concentration, 1850 Onward, Version 2 [Data Set]. 

@@ -19,7 +19,7 @@ plot(gam_model_trophic)
 plot(x = data$Year,
      y = data$Trophic.Position)
 
-ggplot(data, aes(x = Year, y = Trophic.Position, col = System)) +
+ggplot(data, aes(x = Year, y = Trophic.Position, color = System)) +
   geom_point() +
   geom_smooth(method = "gam", formula = y ~ s(x), col = "red") +
   theme_minimal()
