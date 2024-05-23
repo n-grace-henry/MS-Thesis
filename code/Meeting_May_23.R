@@ -21,7 +21,6 @@ ggplot(data, aes(x = Year, y = PHE.mean, col = System)) +
 # Run GAM on PHE through time 
 gam_model_phe <- gam(PHE.mean ~ s(Year), data = data) 
 summary(gam_model_phe)
-
 # Plot of TP with smooth GAM as PHE baseline
 ggplot(data, aes(x = Year, y = TP.GAM.Method)) + 
   geom_point() +
@@ -104,6 +103,16 @@ ggplot(data, aes(Year, TP.MOD.Method)) +
   theme_minimal() + 
   labs(title = "TP Modeled Method", x = "Year", y = "Trophic Position")
 
+
+# Code from Emma
+#SW1 growth with associated year
+ggplot(MeansdfSW1, aes(x = SW1year, y = meanSW1)) + 
+  geom_point() + 
+  geom_errorbar(aes(ymin = meanSW1 - seSW1, ymax = meanSW1 + seSW1)) + 
+  geom_smooth(method = "gam", se = TRUE) + 
+  xlab("Associated Year") + 
+  ylab("Mean SW1 Growth (mm)") + 
+  ggtitle("Mean SW1 Growth vs Associated Year")
 
 
 
