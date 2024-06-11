@@ -52,13 +52,21 @@ plot(x = data[data$AAID == "GLU", "Year"],
 
 # PHE data frame 
 PHE <- data[data$AAID == "PHE", "d15N.correct"]
+phe.year <- as.integer(data[data$AAID == "PHE", "Year"]) #not sure this will work
+phe.sys <- data[data$AAID == "PHE", "System"]
+phe.age <- data[data$AAID == "PHE", "Age"]
+PHE.df <- data.frame(PHE, phe.year, phe.sys, phe.age)
+str(PHE.df)
 
 # GLU data frame
 GLU <- data[data$AAID == "GLU", "d15N.correct"]
+glu.year <- data[data$AAID == "GLU", "Year"]
+glu.sys <- data[data$AAID == "GLU", "System"]
+glu.age <- data[data$AAID == "GLU", "Age"]
+GLU.df <- data.frame(GLU, glu.year, glu.sys, glu.age)
 
-# GAM
-PHE.df <- 
-gam_phe <- gam(data[data$AAID == "PHE", "d15N.correct"] ~ s(data[data$AAID == "PHE", "Year"]), data = data, method = "REML")
-
+# PHE GAM
+gam_phe <- gam(PHE ~ s(phe.year), data = PHE.df, method = "REML")
+summary(gam_phe)
 
 
