@@ -97,6 +97,7 @@ df <- list.files(path=setwd("~/Documents/GitHub/CSIA_lab_work/data/processed")) 
 write.csv(df, file = "final/data_full.csv")
 
 # read in new data file 
+setwd("~/Documents/GitHub/CSIA_lab_work/data")
 data <- read.csv(file = "final/data_full.csv")
 
 # plot areas vs d15N for PHE only, removing STDs
