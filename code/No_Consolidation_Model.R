@@ -5,8 +5,4 @@ library(dplyr)
 
 # Load data
 setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
-data <- read.csv("data_full.csv")
-
-# Mass correct 
-
-a <- read.csv("mass_correct_full.csv")
+data <- read.csv("mass_correct.csv")
