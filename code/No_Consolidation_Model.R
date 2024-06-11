@@ -25,9 +25,21 @@ for(i in 1:length(year.2digit)){
 data$Year <- year
 
 # Add system column 
-
+sys <- substr(data$ID1, 4, 4)
+system <- vector(mode="character")
+for(i in 1:length(sys)){
+  if(sys[i] == "W"){
+    system[i] <- "Wood"
+  } else if(sys[i] == "K"){
+    system[i] <- "Kvichak"
+  }  else{
+    system[i] <- "Egegik"
+  }
+}
+data$System <- system
 
 # Add age class column 
+data$Age <- substr(data$ID1, 6, 6)
 
 # Plot data
 ggplot(data, aes(x = ))
