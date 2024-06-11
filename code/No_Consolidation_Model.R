@@ -41,5 +41,17 @@ data$System <- system
 # Add age class column 
 data$Age <- substr(data$ID1, 6, 6)
 
-# Plot data
-ggplot(data, aes(x = ))
+# Plot data - PHE
+plot(x = data[data$AAID == "PHE", "Year"],
+     y = data[data$AAID == "PHE", "d15N.correct"])
+
+# Plot data = GLU
+plot(x = data[data$AAID == "GLU", "Year"],
+     y = data[data$AAID == "GLU", "d15N.correct"])
+
+
+# GAM
+
+
+
+
