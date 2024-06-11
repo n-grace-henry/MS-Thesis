@@ -43,6 +43,8 @@ data_full.csv -> raw data has been drift corrected but not consolidated. All dat
 
 mass_correct_full.csv -> mass corrected data (only has GLU and PHE signatures). Has been consolidated from triplicate but duplicates and replicates have not been removed. 
 
+mass_correct.csv -> data that has been drift correct, corrected to Nair, and mass corrected, but has not yet been consolidated.
+
 all_correct_final.csv -> data that has undergone all corrections including mass correction, drift correction and correction to Nair. 
 
 trophic_position.csv -> file with trophic position calculated from three different methods; from raw data, from time period specified baseline, from modeled baseline. Calculations done in the R script "Trophic.Position.R".
