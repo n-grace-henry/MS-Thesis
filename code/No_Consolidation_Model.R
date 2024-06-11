@@ -4,6 +4,7 @@
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(mgcv)
 
 # Load data
 setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
@@ -49,9 +50,15 @@ plot(x = data[data$AAID == "PHE", "Year"],
 plot(x = data[data$AAID == "GLU", "Year"],
      y = data[data$AAID == "GLU", "d15N.correct"])
 
+# PHE data frame 
+PHE <- data[data$AAID == "PHE", "d15N.correct"]
+
+# GLU data frame
+GLU <- data[data$AAID == "GLU", "d15N.correct"]
 
 # GAM
-
+PHE.df <- 
+gam_phe <- gam(data[data$AAID == "PHE", "d15N.correct"] ~ s(data[data$AAID == "PHE", "Year"]), data = data, method = "REML")
 
 
 
