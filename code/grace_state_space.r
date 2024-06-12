@@ -2,7 +2,7 @@ library(RTMB)
 library(gtools)
 library(tidyverse)
 library(ggplot2)
-#set.seed(1345)
+set.seed(1345)
 
 yrs <- 100
 log_total_resid_sd <- log(10)
@@ -106,7 +106,6 @@ rep <- obj$report()
 print(opt$par)
 print(rep)
 #sdreport(obj)
-
 
 
 library(MARSS)
