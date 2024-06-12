@@ -3,6 +3,30 @@ library(stats)
 library(MARSS)
 library(forecast)
 library(datasets)
+library(ggplot2)
+library(colorspace) 
+hcl_palette_52 <- colorspace::sequential_hcl(52)
+hcl_oalette_100 <- colorspace::sequential_hcl(100)
+
+# Univariate class example
+
+# Model Nile data with 
+# x_t = x_{t-1} + u + w_t, w_t ~ N(0, q)
+# y_t = x_t + v_t, v_t ~ N(0, r)
+
+mod.list <- list(
+  U = matrix("u"),
+  x0 = matrix("x0"),
+  B = matrix(1),
+  Q = matrix("q"),
+  Z = matrix(1),
+  A = matrix(0),
+  R = matrix("r"), 
+  tinitx = 0
+)
+fit <- MARSS(Nile, model = mod.list)
+plot(Nile)
+head(Nile)
 
 
 # Notes 
