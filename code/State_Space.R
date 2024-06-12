@@ -10,9 +10,9 @@ library(datasets)
 # measures hidden process
 
 
-##### Thomas code with notes
+#### Thomas code with notes ####
 
-# Load necessary libraries
+# Load libraries
 library(RTMB)  # For Template Model Builder with R interface
 library(gtools)  # General tools for data manipulation
 library(tidyverse)  # Data manipulation and visualization
