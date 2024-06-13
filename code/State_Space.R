@@ -78,11 +78,8 @@ mod.list <- list(
   R = matrix("r"), 
   tinitx = 0
 )
-
-# Notes 
-# We take observations of some underlying stochastic process and data imperfectly 
-# measures hidden process
-
+fit <- MARSS(Nile, model = mod.list)
+autoplot(forecast(fit, h = 10))
 
 #### Thomas code with notes ####
 
