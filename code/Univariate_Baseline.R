@@ -87,6 +87,18 @@ Kvichak3_ts <- ts(Kvichak3.data, start = 1965, frequency = 1)
 # Plot the time series object
 plot(Wood2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
+#### Average Age 2 and Age 3 per River System ####
+Wood2.data
+Wood3.data
+
+Wood <- cbind(Wood2.data, Wood3.data)
+Wood.data <- apply(Wood, 1, mean, na.rm = TRUE)
+
+
+
+
+# Calculate averages of corresponding elements
+averages <- apply(mat, 1, mean, na.rm = TRUE)
 
 #### Model Univariate State-Space Baseline ####
 
@@ -104,13 +116,4 @@ mod.list <- list(
 fit <- MARSS(Wood.2_ts, model = mod.list)
 plot(Wood.2_ts)
 lines(1965:2022, fit$states[1,], col = "red")
-
-ts.plot(Wood2_ts)
-
-# Create the time series object
-ts_object <- ts(ts_data, start = 1965, end = 2022, frequency = 1)
-
-# Plot the time series object
-plot(Wood2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
-
 
