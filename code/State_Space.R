@@ -26,8 +26,58 @@ mod.list <- list(
 )
 fit <- MARSS(Nile, model = mod.list)
 plot(Nile)
+lines(1871:1970, fit$states[1,], col = "red")
 head(Nile)
 
+# Run this model to generate a forecast
+autoplot(forecast(fit, h = 10))
+
+# Question 1
+# Change the x (state) model to x_t = x_{t-1} + u 
+# No error part, not a stochastic process
+mod.list <- list(
+  U = matrix("u"),
+  x0 = matrix("x0"),
+  B = matrix(1),
+  Q = matrix(0),
+  Z = matrix(1),
+  A = matrix(0),
+  R = matrix("r"), 
+  tinitx = 0
+)
+fit <- MARSS(Nile, model = mod.list)
+autoplot(forecast(fit, h = 10))
+
+# Question 2
+# Change the x (state) model to x_t = x_{t-1} + w_t
+# Got rid of u, so u = 0
+# Expected value of forecast is flat
+mod.list <- list(
+  U = matrix(0),
+  x0 = matrix("x0"),
+  B = matrix(1),
+  Q = matrix("q"),
+  Z = matrix(1),
+  A = matrix(0),
+  R = matrix("r"), 
+  tinitx = 0
+)
+fit <- MARSS(Nile, model = mod.list)
+autoplot(forecast(fit, h = 10))
+
+# Question 3
+# Change the x (state) model to x_t = u + w_t
+# No longer a random walk, flat level with some error around it
+mod.list <- list(
+  U = matrix("u"),
+  x0 = matrix(0),
+  B = matrix(0),
+  Q = matrix("q"),
+  Z = matrix(1),
+  A = matrix(0),
+  R = matrix("r"), 
+  tinitx = 0
+)
 
 # Notes 
 # We take observations of some underlying stochastic process and data imperfectly 
