@@ -130,33 +130,42 @@ plot(Wood.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", m
 lines(1965:2022, fit.W$states[1,], col = "red")
 
 # Kvichak 
-mod.list <- list(
-  U = matrix("u"),
-  x0 = matrix("x0"),
-  B = matrix(1),
-  Q = matrix("q"),
-  Z = matrix(1),
-  A = matrix(0),
-  R = matrix("r"), 
-  tinitx = 0
-)
 fit.K <- MARSS(Kvichak.data_ts, model = mod.list)
 plot(Kvichak.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(1965:2022, fit.K$states[1,], col = "red")
 
 # Egegik 
-mod.list <- list(
-  U = matrix("u"),
-  x0 = matrix("x0"),
-  B = matrix(1),
-  Q = matrix("q"),
-  Z = matrix(1),
-  A = matrix(0),
-  R = matrix("r"), 
-  tinitx = 0
-)
 fit.E <- MARSS(Egegik.data_ts, model = mod.list)
 plot(Egegik.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(1965:2022, fit.E$states[1,], col = "red")
 
+# Average between all systems 
+all_data <- cbind(Wood.data, Egegik.data, Kvichak.data)
+all_data_ts <- ts(apply(all_data, 1, mean, na.rm = TRUE), start = 1965, frequency = 1)
+
+fit.all <- MARSS(all_data_ts, model = mod.list)
+plot(all_data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+lines(1965:2022, fit.all$states[1,], col = "red")
+
+# Using all data to model baseline  
+
+# ChatGPT code 
+
+merged_df <- merged_df[order(merged_df$Year, merged_df$System, merged_df$Age), ]
+
+test <- merged_df$PHE.mean
+
+all_data_ts <- ts(merged_df$PHE.mean, start = c(1965,1), frequency = 6)
+
+
+# Define the model list (example)
+
+# Fit the MARSS model
+fit.all <- MARSS(all_data_ts, model = mod.list)
+
+# Plot the data and fitted values
+plot(all_data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+lines(1965 + (0:((length(fit.all$states[1,]) - 1) / 6)), fit.all$states[1,], col = "red")
+
+str(all_data_ts)
 
