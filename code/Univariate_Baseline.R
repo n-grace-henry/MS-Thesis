@@ -114,7 +114,7 @@ plot(Kvichak.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean"
 
 #### Model Univariate State-Space Baseline ####
 
-# Wood age 2
+# Wood
 mod.list <- list(
   U = matrix("u"),
   x0 = matrix("x0"),
@@ -125,7 +125,38 @@ mod.list <- list(
   R = matrix("r"), 
   tinitx = 0
 )
-fit <- MARSS(Wood.2_ts, model = mod.list)
-plot(Wood.2_ts)
-lines(1965:2022, fit$states[1,], col = "red")
+fit.W <- MARSS(Wood.data_ts, model = mod.list)
+plot(Wood.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+lines(1965:2022, fit.W$states[1,], col = "red")
+
+# Kvichak 
+mod.list <- list(
+  U = matrix("u"),
+  x0 = matrix("x0"),
+  B = matrix(1),
+  Q = matrix("q"),
+  Z = matrix(1),
+  A = matrix(0),
+  R = matrix("r"), 
+  tinitx = 0
+)
+fit.K <- MARSS(Kvichak.data_ts, model = mod.list)
+plot(Kvichak.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+lines(1965:2022, fit.K$states[1,], col = "red")
+
+# Egegik 
+mod.list <- list(
+  U = matrix("u"),
+  x0 = matrix("x0"),
+  B = matrix(1),
+  Q = matrix("q"),
+  Z = matrix(1),
+  A = matrix(0),
+  R = matrix("r"), 
+  tinitx = 0
+)
+fit.E <- MARSS(Egegik.data_ts, model = mod.list)
+plot(Egegik.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+lines(1965:2022, fit.E$states[1,], col = "red")
+
 
