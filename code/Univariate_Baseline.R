@@ -152,12 +152,10 @@ lines(1965:2022, fit.all$states[1,], col = "red")
 # ChatGPT code 
 
 merged_df <- merged_df[order(merged_df$Year, merged_df$System, merged_df$Age), ]
-
-test <- merged_df$PHE.mean
-
-all_data_ts <- ts(merged_df$PHE.mean, start = c(1965,1), frequency = 6)
-
-
+values <- merged_df$PHE.mean
+all_data_ts <- ts(values, start = 1965, frequency = 6)
+plot(values)
+length(all_data_ts)
 # Define the model list (example)
 
 # Fit the MARSS model
