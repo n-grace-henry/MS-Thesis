@@ -74,31 +74,43 @@ Kvichak2.data <- c(4.249013, NA, NA, 1.855945, NA, NA, 3.255309, NA, NA,
                     5.237393, NA, NA, 4.866149)
 Kvichak2_ts <- ts(Kvichak2.data, start = 1965, frequency = 1)
 
-Kvichak3.data <- c(NA, NA, NA, NA, NA, NA, 2.855826, NA, NA,
-                    NA, NA, NA, NA, NA, NA, NA, NA, NA,
-                    NA, NA, NA, NA, NA, NA, NA, NA, NA,
-                    NA, NA, NA, NA, NA, NA, NA, NA, NA,
-                    6.289370, NA, NA, 3.579844, NA, NA,
-                    NA, NA, NA, NA, NA, NA, NA, 1.136779,
-                    NA, NA, NA, NA, NA, 4.523967, NA, NA,
-                    3.672443) 
+Kvichak3.data <- c(NA, NA, NA, NA, NA, NA, 2.855826, NA, NA, 
+                   NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+                   NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+                   NA, NA, NA, NA, NA, NA, NA, 6.289370, NA, 
+                   NA, 3.579844, NA, NA, NA, NA, NA, NA, 
+                   NA, NA, 1.136779, NA, NA, NA, NA, NA, 
+                   4.523967, NA, NA, 3.672443)
+
+ 
 Kvichak3_ts <- ts(Kvichak3.data, start = 1965, frequency = 1)
 
 # Plot the time series object
 plot(Wood2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
 #### Average Age 2 and Age 3 per River System ####
-Wood2.data
-Wood3.data
 
+# Wood averages
 Wood <- cbind(Wood2.data, Wood3.data)
 Wood.data <- apply(Wood, 1, mean, na.rm = TRUE)
+Wood.data_ts <- ts(Wood.data, start = 1965, frequency = 1)
 
+plot(Wood.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
+# Egegik averages
+Egegik <- cbind(Egegik2.data, Egegik3.data)
+Egegik.data <- apply(Egegik, 1, mean, na.rm = TRUE)
+Egegik.data_ts <- ts(Egegik.data, start = 1965, frequency = 1)
 
+plot(Egegik.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
-# Calculate averages of corresponding elements
-averages <- apply(mat, 1, mean, na.rm = TRUE)
+# Kvichak averages 
+Kvichak <- cbind(Kvichak2.data, Kvichak3.data)
+Kvichak.data <- apply(Kvichak, 1, mean, na.rm = TRUE)
+Kvichak.data_ts <- ts(Kvichak.data, start = 1965, frequency = 1)
+
+plot(Kvichak.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+
 
 #### Model Univariate State-Space Baseline ####
 
