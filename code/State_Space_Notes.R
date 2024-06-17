@@ -92,6 +92,8 @@ library(ggplot2)  # Data visualization
 # Set a random seed for reproducibility
 set.seed(1345)
 
+# How do parameters relate to data?
+
 # Define parameters for the simulation
 yrs <- 100  # Number of years (time steps)
 log_total_resid_sd <- log(10)  # Log of total residual standard deviation
@@ -120,9 +122,15 @@ x2 <- rep(NA, yrs)  # Initialize the second time series
 x2[1] <- x1_2  # Set the first value
 x2[2:yrs] <- x1_2 + cumsum(zets2) * sigma_proc  # Generate the random walk
 
+plot(x2)
+
+# The two pieces of data in this example are x and x2 (these I will substitute with my real data)
+
 # Create a combined state variable as the sum of the two time series
 x3 <- x + x2  # Combined state variable
 y3 <- rnorm(yrs, x3, sigma_obs)  # Observations for the combined state variable
+
+plot(x3)
 
 # Define the negative log-likelihood function
 f <- function(parameters) {
@@ -192,6 +200,8 @@ parameters <- list(
   logit_p_proc_var = 0
 )
 
+# What is RTMB? 
+
 # Set up the model with RTMB and compile the function
 obj <- RTMB::MakeADFun(f, parameters, random = c("zets", "zets2"))
 # Optimize the parameters to minimize the negative log-likelihood
@@ -227,7 +237,14 @@ x0 <- matrix(c(X1 = 5, X2 = 5, X3 = 10), nrow = 3)  # Initial states
 V0 <- diag(3)  # Initial state covariance
 
 # Create the MARSS model list
-mod_list <- list(Z = Z, B = B, U = U, Q = Q, R = R, x0 = x0, V0 = V0, tinitx = 1)
+mod_list <- list(Z = Z, 
+                 B = B, 
+                 U = U,
+                 Q = Q, 
+                 R = R, 
+                 x0 = x0, 
+                 V0 = V0, 
+                 tinitx = 1)
 
 # Fit the MARSS model to the data
 fit <- MARSS(dat, model = mod_list)
