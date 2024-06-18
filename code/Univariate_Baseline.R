@@ -86,7 +86,7 @@ Kvichak3.data <- c(NA, NA, NA, NA, NA, NA, 2.855826, NA, NA,
 Kvichak3_ts <- ts(Kvichak3.data, start = 1965, frequency = 1)
 
 # Plot the time series object
-plot(Wood2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+plot(Wood3_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
 #### Average Age 2 and Age 3 per River System ####
 
@@ -110,6 +110,11 @@ Kvichak.data <- apply(Kvichak, 1, mean, na.rm = TRUE)
 Kvichak.data_ts <- ts(Kvichak.data, start = 1965, frequency = 1)
 
 plot(Kvichak.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+
+
+### Overall system trends combined not averaged ####
+
+# Wood
 
 
 #### Model Univariate State-Space Baseline ####
@@ -151,11 +156,11 @@ lines(1965:2022, fit.all$states[1,], col = "red")
 
 # ChatGPT code 
 
-merged_df <- merged_df[order(merged_df$Year, merged_df$System, merged_df$Age), ]
+merged_df <- merged_df[order(merged_df$Year, merged_df$Age, merged_df$System), ]
 values <- merged_df$PHE.mean
 all_data_ts <- ts(values, start = 1965, frequency = 6)
-plot(values)
-length(all_data_ts)
+plot(all_data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+
 # Define the model list (example)
 
 # Fit the MARSS model

@@ -107,28 +107,29 @@ sigma_obs <- sqrt((1 - p_proc_var) * total_resid_sd^2)  # Observation noise stan
 
 # Simulate the first time series using a random walk
 x1 <- 10  # Initial value for the first time series
-zets <- rnorm(yrs - 1, 0, sigma_proc)  # Process noise for the first time series
+zets <- rnorm(yrs - 1, 0, 1)  # Normalized process error 
 x <- rep(NA, yrs)  # Initialize the time series
 x[1] <- x1  # Set the first value
 x[2:yrs] <- x1 + cumsum(zets) * sigma_proc  # Generate the random walk
+#True value of PHE through time 
 
 # Simulate observations for the first time series
-y <- rnorm(yrs, x, sigma_obs)  # Observations with added observation noise
+y <- rnorm(yrs, x, sigma_obs)  # True obs of PHE
 
 # Simulate the second time series independently using another random walk
-x1_2 <- 10  # Initial value for the second time series
-zets2 <- rnorm(yrs - 1, 0, sigma_proc)  # Process noise for the second time series
+x1_2 <- 10  # First value of the second state 
+zets2 <- rnorm(yrs - 1, 0, 1)  # Process noise for the second time series
 x2 <- rep(NA, yrs)  # Initialize the second time series
 x2[1] <- x1_2  # Set the first value
 x2[2:yrs] <- x1_2 + cumsum(zets2) * sigma_proc  # Generate the random walk
 
 plot(x2)
-
-# The two pieces of data in this example are x and x2 (these I will substitute with my real data)
+# True TP through time 
 
 # Create a combined state variable as the sum of the two time series
-x3 <- x + x2  # Combined state variable
+x3 <- x + x2  # Combined state variable, true GLU signature 
 y3 <- rnorm(yrs, x3, sigma_obs)  # Observations for the combined state variable
+# no covar, assume equal obs error between x and x3
 
 plot(x3)
 
@@ -169,7 +170,7 @@ f <- function(parameters) {
   
   # Random Effects Likelihood: add the log-probabilities of process noise
   for (i in 1:(yrs - 1)) {
-    nll <- nll - dnorm(zets[i], 0, 1, log = TRUE)
+    nll <- nll - dnorm(zets[i], 0, 1, log = TRUE) # log probability 
     nll <- nll - dnorm(zets2[i], 0, 1, log = TRUE)
   }
   
@@ -190,7 +191,8 @@ f <- function(parameters) {
 }
 
 # Prepare the simulated data and initial parameter guesses
-simdat <- list(y = y)
+simdat <- list(y = y,
+              y3 = y3)
 parameters <- list(
   x1 = 5,
   x1_2 = 5,
@@ -200,7 +202,6 @@ parameters <- list(
   logit_p_proc_var = 0
 )
 
-# What is RTMB? 
 
 # Set up the model with RTMB and compile the function
 obj <- RTMB::MakeADFun(f, parameters, random = c("zets", "zets2"))
@@ -217,23 +218,22 @@ print(rep)
 library(MARSS)
 
 # Define state variables and observations for MARSS
-X1 <- x
-X2 <- x2
-X3 <- x3
 Y1 <- y
 Y3 <- y3
 dat <- rbind(Y1, Y3)  # Combine the observations into a data matrix
 
 # Define the MARSS model matrices
-Z <- matrix(c(1, 0, 0,  # Observation matrix
+Z <- matrix(c(1, 0, 0,  # Observation matrix, we have three states but only two observations
               0, 0, 1), nrow = 2, byrow = TRUE)
-B <- matrix(c(1, 0, 0,  # State transition matrix
+B <- matrix(c(1, 0, 0,  # State 1 is time series variable 
               0, 1, 0,
               1, 1, 0), nrow = 3, byrow = TRUE)
-U <- matrix(0, nrow = 3, ncol = 1)  # Control matrix
-Q <- "diagonal and equal"  # State covariance matrix
+U <- matrix(0, nrow = 3, ncol = 1)  #drift term, not assuming any drift parameters 
+Q <- "diagonal and equal"  # State covariance matrix, process error covariance matrix
+                  # diagonal means no covar between states, diag is variance 
 R <- "diagonal and equal"  # Observation covariance matrix
-x0 <- matrix(c(X1 = 5, X2 = 5, X3 = 10), nrow = 3)  # Initial states
+            # error in one observation are not uncorrelated from errors in the other (not diagonal)
+x0 <- matrix(c(X1 = 5, X2 = 5, X3 = 10), nrow = 3)  # Initial states/starting values 
 V0 <- diag(3)  # Initial state covariance
 
 # Create the MARSS model list
