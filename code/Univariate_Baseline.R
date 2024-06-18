@@ -19,6 +19,7 @@ complete_df <- expand.grid(Year = years, System = unique(data$System), Age = uni
 
 # Merge with the original data to insert NA values for missing data
 merged_df <- left_join(complete_df, data, by = c("Year", "System", "Age"))
+merged_df <- merged_df[order(merged_df$Year, merged_df$Age, merged_df$System), ]
 
 # Split the data by river system and age class
 Wood.2 <- merged_df %>% filter(System == "Wood") %>% filter(Age == 2)
@@ -111,11 +112,36 @@ Kvichak.data_ts <- ts(Kvichak.data, start = 1965, frequency = 1)
 
 plot(Kvichak.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
-
 ### Overall system trends combined not averaged ####
 
 # Wood
+Wood.all <- merged_df[merged_df$System == "Wood", "PHE.mean"]
+Wood.all.ts <- ts(Wood.all, start = 1965, frequency = 2)
 
+mod.list <- list(
+  U = matrix("u"),
+  x0 = matrix("x0"),
+  B = matrix(1),
+  Q = matrix("q"),
+  Z = matrix(1),
+  A = matrix(0),
+  R = matrix("r"), 
+  tinitx = 0
+)
+
+fit.W.all <- MARSS(Wood.all.ts, model = mod.list)
+
+# format states line for plotting purposes 
+odd_indices <- seq(1, length(fit.W.all$states[1,]), by = 2)
+reduced_vector <- fit.W.all$states[1,][odd_indices]
+
+plot(Wood.all.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+lines(1965:2022, reduced_vector, col = "red")
+
+# Egegik 
+
+
+# Kvichak 
 
 #### Model Univariate State-Space Baseline ####
 
