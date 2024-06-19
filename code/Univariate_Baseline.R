@@ -136,9 +136,22 @@ plot(Wood.all.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", ma
 lines(years, fit.W.all$states[1,], col = "red")
 
 # Egegik 
+Egegik.all <- merged_df[merged_df$System == "Egegik", "PHE.mean"]
+Egegik.all.ts <- ts(Egegik.all, start = 1965, frequency = 2)
 
+fit.E.all <- MARSS(Egegik.all.ts, model = mod.list)
+plot(Egegik.all.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+lines(years, fit.E.all$states[1,], col = "red")
 
 # Kvichak 
+Kvichak.all <- merged_df[merged_df$System == "Kvichak", "PHE.mean"]
+Kvichak.all.ts <- ts(Kvichak.all, start = 1965, frequency = 2)
+
+fit.K.all <- MARSS(Kvichak.all.ts, model = mod.list)
+plot(Kvichak.all.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+lines(years, fit.K.all$states[1,], col = "red")
+
+#### 
 
 #### Model Univariate State-Space Baseline ####
 
