@@ -9,6 +9,7 @@ library(dplyr)
 # Load data 
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_correct_final.csv")
 
+#<<<<<<< HEAD
 
 #### MARSS model ####
 
@@ -187,3 +188,5 @@ xx <- mod_fit$states
 
 ## extract standard errors of states; [p x T] matrix
 xx_SE <- mod_fit$states.se
+=======
+>>>>>>> main

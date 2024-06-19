@@ -27,7 +27,6 @@ processed -> this is data that has been drift corrected but has not been consoli
 
 
 ### final folder
-This folder holds my final .csv finals that I use in analysis. 
 
 main.clean.csv -> this is all my drift corrected and triplicate combined data. This file still has duplicates and replicates. 
 
@@ -45,7 +44,7 @@ mass_correct_full.csv -> mass corrected data (only has GLU and PHE signatures). 
 
 mass_correct.csv -> data that has been drift correct, corrected to Nair, and mass corrected, but has not yet been consolidated.
 
-all_correct_final.csv -> data that has undergone all corrections including mass correction, drift correction and correction to Nair. 
+all_correct_final.csv -> data that has undergone all corrections including mass correction, drift correction and correction to Nair and consolidation. 
 
 trophic_position.csv -> file with trophic position calculated from three different methods; from raw data, from time period specified baseline, from modeled baseline. Calculations done in the R script "Trophic.Position.R".
 

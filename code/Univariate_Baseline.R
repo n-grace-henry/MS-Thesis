@@ -87,7 +87,7 @@ Kvichak3.data <- c(NA, NA, NA, NA, NA, NA, 2.855826, NA, NA,
 Kvichak3_ts <- ts(Kvichak3.data, start = 1965, frequency = 1)
 
 # Plot the time series object
-plot(Wood3_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+plot(Egegik2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
 #### Average Age 2 and Age 3 per River System ####
 
@@ -154,21 +154,28 @@ lines(years, fit.K.all$states[1,], col = "red")
 #### Glutamic acid for all systems ####
 
 # Wood
-Wood.glu <- merged_df[merged_df$System == "Wood", "GLU.mean"]
-Wood.glu.ts <- ts(Wood.glu, start = 1965, frequency = 2)
+Wood.glu <- merged_df[merged_df$System == "Wood" & merged_df$Age == 2, "GLU.mean"]
+Wood.glu.ts <- ts(Wood.glu, start = 1965, frequency = 1)
 
 fit.W.glu <- MARSS(Wood.glu.ts, model = mod.list)
-years <- seq(from = 1965, to = 2022.5, by = 0.5)
-
-plot(fit.W.glu, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
-lines(years, fit.W.glu$states[1,], col = "red")
-
+plot(Wood.glu.ts, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+lines(1965:2022, fit.W.glu$states[1,], col = "red")
 
 # Egegik 
+Egegik.glu <- merged_df[merged_df$System == "Egegik" & merged_df$Age == 2, "GLU.mean"]
+Egegik.glu.ts <- ts(Egegik.glu, start = 1965, frequency = 1)
 
+fit.E.glu <- MARSS(Egegik.glu.ts, model = mod.list)
+plot(Egegik.glu.ts, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+lines(1965:2022, fit.E.glu$states[1,], col = "red")
 
 # Kvichak 
+Kvichak.glu <- merged_df[merged_df$System == "Kvichak" & merged_df$Age == 2, "GLU.mean"]
+Kvichak.glu.ts <- ts(Kvichak.glu, start = 1965, frequency = 1)
 
+fit.K.glu <- MARSS(Kvichak.glu.ts, model = mod.list)
+plot(Kvichak.glu.ts, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+lines(1965:2022, fit.K.glu$states[1,], col = "red")
 
 #### Model Univariate State-Space Baseline ####
 
@@ -205,7 +212,8 @@ fit.all <- MARSS(all_data_ts, model = mod.list)
 plot(all_data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(1965:2022, fit.all$states[1,], col = "red")
 
-# Using all data to model baseline  
+#### Using all data to model baseline ####
+
 
 # ChatGPT code 
 
