@@ -153,6 +153,23 @@ lines(years, fit.K.all$states[1,], col = "red")
 
 #### Glutamic acid for all systems ####
 
+# Wood
+Wood.glu <- merged_df[merged_df$System == "Wood", "GLU.mean"]
+Wood.glu.ts <- ts(Wood.glu, start = 1965, frequency = 2)
+
+fit.W.glu <- MARSS(Wood.glu.ts, model = mod.list)
+years <- seq(from = 1965, to = 2022.5, by = 0.5)
+
+plot(fit.W.glu, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+lines(years, fit.W.glu$states[1,], col = "red")
+
+
+# Egegik 
+
+
+# Kvichak 
+
+
 #### Model Univariate State-Space Baseline ####
 
 # Wood
