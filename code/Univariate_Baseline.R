@@ -151,7 +151,7 @@ fit.K.all <- MARSS(Kvichak.all.ts, model = mod.list)
 plot(Kvichak.all.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(years, fit.K.all$states[1,], col = "red")
 
-#### 
+#### Glutamic acid for all systems ####
 
 #### Model Univariate State-Space Baseline ####
 
