@@ -27,7 +27,6 @@ processed -> this is data that has been drift corrected but has not been consoli
 
 
 ### final folder
-This folder holds my final .csv finals that I use in analysis. 
 
 main.clean.csv -> this is all my drift corrected and triplicate combined data. This file still has duplicates and replicates. 
 
