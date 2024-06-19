@@ -9,7 +9,6 @@ library(dplyr)
 # Load data 
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_correct_final.csv")
 
-#<<<<<<< HEAD
 
 #### MARSS model ####
 
