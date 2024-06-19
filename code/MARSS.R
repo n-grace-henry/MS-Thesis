@@ -7,7 +7,7 @@ library(ggplot2)
 library(dplyr)
 
 # Load data 
-data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/mass_correct.csv")
+data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_correct_final.csv")
 
 # Clean 
 data <- data[,-c(1:4)]
