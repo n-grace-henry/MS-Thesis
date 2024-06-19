@@ -130,13 +130,10 @@ mod.list <- list(
 )
 
 fit.W.all <- MARSS(Wood.all.ts, model = mod.list)
-
-# format states line for plotting purposes 
-odd_indices <- seq(1, length(fit.W.all$states[1,]), by = 2)
-reduced_vector <- fit.W.all$states[1,][odd_indices]
+years <- seq(from = 1965, to = 2022.5, by = 0.5)
 
 plot(Wood.all.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
-lines(1965:2022, reduced_vector, col = "red")
+lines(years, fit.W.all$states[1,], col = "red")
 
 # Egegik 
 
