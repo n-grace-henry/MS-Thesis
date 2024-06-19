@@ -212,7 +212,8 @@ fit.all <- MARSS(all_data_ts, model = mod.list)
 plot(all_data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(1965:2022, fit.all$states[1,], col = "red")
 
-# Using all data to model baseline  
+#### Using all data to model baseline ####
+
 
 # ChatGPT code 
 
