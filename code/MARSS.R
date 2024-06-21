@@ -43,10 +43,13 @@ data$System <- system
 data$Age <- substr(data$ID1, 6, 6)
 
 # Format PHE data
-PHE <- data[data$AAID == "PHE", ]
+PHE <- data[data$AAID == "PHE" & data$Age == "2", c("Year", "adj", "System")]
+
+# Order PHE by year
+PHE <- PHE[order(PHE$Year),]
 
 # CharGPT code below
-isotope_zoo_full <- merge(zoo(data, order.by = years), zoo(, all_years), all = TRUE)
+isotope_zoo_full <- zoo(PHE$adj, order.by = PHE$Year)
 
 # Convert to a time series object
 isotope_ts_full <- as.ts(isotope_zoo_full)
