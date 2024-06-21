@@ -42,13 +42,16 @@ data$System <- system
 # Add age column
 data$Age <- substr(data$ID1, 6, 6)
 
+# Get rid of replicates 
+data$Rep <- substr(data$ID1, 8, 8)
+
 # Format PHE data
-PHE <- data[data$AAID == "PHE" & data$Age == "2", c("Year", "adj", "System")]
+PHE <- data[data$AAID == "PHE" & data$Age == "2" & !data$Rep == "R" & !data$Rep == "a", c("Year", "adj", "System")]
 
 # Order PHE by year
 PHE <- PHE[order(PHE$Year),]
 
-# CharGPT code below
+# ChatGPT code below
 isotope_zoo_full <- zoo(PHE$adj, order.by = PHE$Year)
 
 # Convert to a time series object
