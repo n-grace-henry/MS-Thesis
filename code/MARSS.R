@@ -52,14 +52,14 @@ PHE <- data[data$AAID == "PHE" & data$Age == "2" & !data$Rep == "R" & !data$Rep 
 PHE <- PHE[order(PHE$Year),]
 
 # Create a complete sequence of years
-years <- rep(seq(1965, 2022, by = 3), each = 3)
+years <- seq(1965, 2022, by = 3)
 
 # Create a complete data frame for each river system
 complete_df <- expand.grid(Year = years, System = unique(PHE$System))
 
 # Merge with the original data to insert NA values for missing data
-merged_df <- left_join(complete_df, data, by = c("Year", "System", "Age"))
-merged_df <- merged_df[order(merged_df$Year, merged_df$Age, merged_df$System), ]
+merged_df <- merge(complete_df, PHE, by = c("Year", "System"), all.x = TRUE)
+merged_df <- merged_df[order(merged_df$Year, merged_df$System), ]
 
 # ChatGPT code below
 isotope_zoo_full <- zoo(PHE$adj, order.by = PHE$Year)
