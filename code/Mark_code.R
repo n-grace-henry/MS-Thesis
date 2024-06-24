@@ -26,7 +26,7 @@
 nn <- 9
 pp <- 3
 
-ZZ <- matrix(0, nn, pp)
+ZZ <- matrix(0, nn, pp) # try three by three and throwing out triplicates
 ZZ[1:3, 1] <- 1
 ZZ[4:6, 2] <- 1
 ZZ[7:9, 3] <- 1
