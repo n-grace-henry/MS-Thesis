@@ -11,45 +11,6 @@ library(zoo)
 data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/mass_correct.csv")
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_correct_final.csv")
 
-# Clean 
-data.full <- data[,-c(1:4)]
-
-# Add year column from ID1
-year.2digit <- substr(data.full$Sample.ID, 1, 2)
-year <- vector(mode="character")
-for(i in 1:length(year.2digit)){
-  if(year.2digit[i] <= 22){
-    year[i] <- paste0(20, year.2digit[i])
-  } else{
-    year[i] <- paste0(19, year.2digit[i])
-  }
-}
-data.full$Year <- year
-
-# Add system column
-sys <- substr(data.full$Sample.ID, 4, 4)
-system <- vector(mode="character")
-for(i in 1:length(sys)){
-  if(sys[i] == "W"){
-    system[i] <- "Wood"
-  } else if(sys[i] == "K"){
-    system[i] <- "Kvichak"
-  }  else{
-    system[i] <- "Egegik"
-  }
-}
-data.full$System <- system
-
-# Add age column
-data.full$Age <- substr(data.full$Sample.ID, 6, 6)
-
-# Get rid of replicates 
-data$Rep <- substr(data$ID1, 8, 8)
-
-# Write new csv 
-file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/mass_correct.csv"
-write.csv(data.full, file = file.name)
-
 # Format PHE data
 PHE <- data[data$AAID == "PHE" & data$Age == "2" & !data$Rep == "R" & !data$Rep == "a", c("Year", "adj", "System")]
 
