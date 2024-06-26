@@ -6,10 +6,42 @@ library(datasets)
 library(ggplot2)
 library(dplyr)
 library(zoo)
+library(reshape2)
+library(tidyr)
 
 # Load data 
 data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/mass_correct.csv")
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_correct_final.csv")
+
+#### Averaged Samples ####
+
+# Format PHE data 
+PHE <- data[data$Age == "2", c("Year", "PHE.mean", "System")]
+
+# Change incorrect years to fit into the every three years
+PHE[PHE$Year == 1967, "Year"] <- 1968
+PHE[PHE$Year == 1984, "Year"] <- 1983
+PHE[PHE$Year == 1993, "Year"] <- 1992
+
+# Full df with NAs
+years <- seq(1965, 2022, by = 3)
+systems <- unique(PHE$System)
+complete_df <- expand.grid(Year = years, System = systems)
+merged_df <- merge(complete_df, PHE, by = c("Year", "System"), all.x = TRUE)
+
+# Change orientation of data
+df <- pivot_wider(merged_df, names_from = Year, values_from = PHE.mean)
+
+# MARSS on df
+
+
+
+
+
+
+
+
+#### Triplicate Samples ####
 
 # Format PHE data
 PHE <- data[data$AAID == "PHE" & data$Age == "2" & !data$Rep == "R" & !data$Rep == "a", c("Year", "adj", "System")]
@@ -35,8 +67,6 @@ isotope_ts_full <- as.ts(isotope_zoo_full, start = 1965)
 
 
 
-
-# Format GLU data
 
 #### MARSS model ####
 
