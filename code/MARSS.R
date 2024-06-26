@@ -29,8 +29,30 @@ systems <- unique(PHE$System)
 complete_df <- expand.grid(Year = years, System = systems)
 merged_df <- merge(complete_df, PHE, by = c("Year", "System"), all.x = TRUE)
 
-# Change orientation of data
-df <- pivot_wider(merged_df, names_from = Year, values_from = PHE.mean)
+# Change structure of data
+df <- as.data.frame(pivot_wider(merged_df, names_from = System, values_from = PHE.mean))
+years <- df[, "Year"]
+df <- df[, !(colnames(df) %in% "Year")]
+df <- t(df) # transpose to have years across columns
+colnames(df) <- years
+n <- nrow(df) - 1
+
+# Fit MARSS
+mod.list.0 <- list(
+  B = matrix(1),
+  U = matrix("u"),
+  Q = matrix("q"),
+  Z = matrix(1, 3, 1),
+  A = "scaling",
+  R = "diagonal and unequal",
+  x0 = matrix("mu"),
+  tinitx = 0
+)
+
+fit.0 <- MARSS(df, model = mod.list.0)
+
+# Plot
+plot(fit.0)
 
 # MARSS on df
 ## Notes
