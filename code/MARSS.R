@@ -8,7 +8,7 @@ library(dplyr)
 library(zoo)
 
 # Load data 
-data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/mass_correct.csv")
+data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/mass_correct.csv")
 
 # Clean 
 data <- data[,-c(1:4)]
