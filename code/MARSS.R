@@ -79,14 +79,14 @@ fit.2 <- MARSS::MARSS(df, model = mod.list.2)
 # Plot 
 plot(fit.2)
 
-# MARSS using Marks structure
 
+# MARSS using Marks structure
 ## set n & p
-nn <- 1 # one sample per system
-pp <- 3 # three states (systems)
+nn <- 3 # three states (systems)
+pp <- 1 # one sample per system
 
 ZZ <- matrix(0, nrow = nn, ncol = pp)
-ZZ[, 1:3] <- 1
+ZZ[1:3,] <- 1
 
 AA <- matrix(letters[1:nn], nn, 1)
 
@@ -111,6 +111,9 @@ mod_list_1 <- list(
   A = AA,
   R = RR
 )
+
+mod_fit <- MARSS(y = df, model = mod_list_1)
+plot(mod_fit)
 
 
 # MARSS on df
