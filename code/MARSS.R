@@ -37,7 +37,7 @@ df <- t(df) # transpose to have years across columns
 colnames(df) <- years
 n <- nrow(df) - 1
 
-# Fit MARSS
+# Fit MARSS for one mixed population 
 mod.list.0 <- list(
   B = matrix(1),
   U = matrix("u"),
@@ -48,11 +48,70 @@ mod.list.0 <- list(
   x0 = matrix("mu"),
   tinitx = 0
 )
-
 fit.0 <- MARSS(df, model = mod.list.0)
 
 # Plot
 plot(fit.0)
+
+
+# MARSS for three sub populations with temporally uncorrelated errors
+mod.list.1 <- list(
+  B = "identity",
+  U = "equal",
+  Q = "diagonal and equal",
+  Z = "identity",
+  A = "scaling",
+  R = "diagonal and unequal",
+  x0 = "unequal",
+  tinitx = 0
+)
+fit.1 <- MARSS::MARSS(df, model = mod.list.1)
+
+# Plot 
+plot(fit.1)
+
+
+# MARSS for three sub populations with temporally correlated errors
+mod.list.2 <- mod.list.1
+mod.list.2$Q <- "equalvarcov"
+fit.2 <- MARSS::MARSS(df, model = mod.list.2)
+
+# Plot 
+plot(fit.2)
+
+# MARSS using Marks structure
+
+## set n & p
+nn <- 1 # one sample per system
+pp <- 3 # three states (systems)
+
+ZZ <- matrix(0, nrow = nn, ncol = pp)
+ZZ[, 1:3] <- 1
+
+AA <- matrix(letters[1:nn], nn, 1)
+
+# errors are independent and identically distributed (IID)
+RR <- matrix(list(0), nn, nn)
+diag(RR) <- rep("r", nn) 
+
+# a) independent and identically distributed (IID)
+QQ <- matrix(list(0), pp, pp)
+diag(QQ) <- rep("q", pp)
+
+# i) random walk
+BB <- diag(pp)
+UU <- matrix(0, pp, 1)
+mod_list_1 <- list(
+  ## state eqn
+  B = BB,
+  U = UU,
+  Q = QQ,
+  ## obs eqn
+  Z = ZZ,
+  A = AA,
+  R = RR
+)
+
 
 # MARSS on df
 ## Notes
