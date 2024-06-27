@@ -174,11 +174,23 @@ fit.E <- MARSS(Egegik2_ts, model = mod.list)
 plot(Egegik2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(1965:2022, fit.E$states[1,], col = "red")
 
-# Average between all systems 
-all_data <- cbind(Wood.data, Egegik.data, Kvichak.data)
-all_data_ts <- ts(apply(all_data, 1, mean, na.rm = TRUE), start = 1965, frequency = 1)
 
-fit.all <- MARSS(all_data_ts, model = mod.list)
-plot(all_data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
-lines(1965:2022, fit.all$states[1,], col = "red")
+#### Trophic Position from both modeled baselines ####
+
+# Set constants 
+beta <- 3.4 #commonly used constant
+TDF <- 7.06 #from Lerner et al 2020
+
+# State vectors 
+W.phe <- fit.W$states[1,]
+E.phe <- fit.E$states[1,]
+K.phe <- fit.K$states[1,]
+
+W.glu <- fit.W.glu$states[1,]
+E.glu <- fit.E.glu$states[1,]
+K.glu <- fit.K.glu$states[1,]
+
+
+
+
 
