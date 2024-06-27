@@ -10,7 +10,7 @@ library(reshape2)
 library(tidyr)
 
 # Load data 
-data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/mass_correct.csv")
+#data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/mass_correct.csv")
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_correct_final.csv")
 
 #### Averaged Samples ####
