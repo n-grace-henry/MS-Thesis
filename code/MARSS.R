@@ -14,16 +14,16 @@ library(tidyr)
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_correct_final.csv")
 
 #### Averaged Samples ####
-
+# One observation per system per year
 # Format PHE data 
 PHE <- data[data$Age == "2", c("Year", "PHE.mean", "System")]
 
-# Change incorrect years to fit into the every three years
+# Change incorrect years to fit into the every three years (will change this after model is running smoothly) 
 PHE[PHE$Year == 1967, "Year"] <- 1968
 PHE[PHE$Year == 1984, "Year"] <- 1983
 PHE[PHE$Year == 1993, "Year"] <- 1992
 
-# Full df with NAs
+# Full df with NAs where there is missing data
 years <- seq(1965, 2022, by = 3)
 systems <- unique(PHE$System)
 complete_df <- expand.grid(Year = years, System = systems)
@@ -37,7 +37,7 @@ df <- t(df) # transpose to have years across columns
 colnames(df) <- years
 n <- nrow(df) - 1
 
-# Fit MARSS for one mixed population 
+# Fit MARSS for one mixed population (from textbook example)
 mod.list.0 <- list(
   B = matrix(1),
   U = matrix("u"),
@@ -95,7 +95,7 @@ mod_fit <- MARSS(y = df, model = mod_list_3)
 plot(mod_fit)
 
 
-# Marks code
+#### Marks code ####
 ## Notes
 ## n is the total number of observations (= 3 districts * 3 samples = 9)
 ## y_t is an [n x 1] vector of obs
