@@ -212,24 +212,3 @@ fit.all <- MARSS(all_data_ts, model = mod.list)
 plot(all_data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(1965:2022, fit.all$states[1,], col = "red")
 
-#### Using all data to model baseline ####
-
-
-# ChatGPT code 
-
-merged_df <- merged_df[order(merged_df$Year, merged_df$Age, merged_df$System), ]
-values <- merged_df$PHE.mean
-all_data_ts <- ts(values, start = 1965, frequency = 6)
-plot(all_data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
-
-# Define the model list (example)
-
-# Fit the MARSS model
-fit.all <- MARSS(all_data_ts, model = mod.list)
-
-# Plot the data and fitted values
-plot(all_data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
-lines(1965 + (0:((length(fit.all$states[1,]) - 1) / 6)), fit.all$states[1,], col = "red")
-
-str(all_data_ts)
-

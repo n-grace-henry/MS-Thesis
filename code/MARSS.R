@@ -95,6 +95,9 @@ mod_fit <- MARSS(y = df, model = mod_list_3)
 plot(mod_fit)
 
 
+
+
+
 #### Marks code ####
 ## Notes
 ## n is the total number of observations (= 3 districts * 3 samples = 9)
