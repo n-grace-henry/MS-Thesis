@@ -160,18 +160,18 @@ mod.list <- list(
   R = matrix("r"), 
   tinitx = 0
 )
-fit.W <- MARSS(Wood.data_ts, model = mod.list)
-plot(Wood.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+fit.W <- MARSS(Wood2_ts, model = mod.list)
+plot(Wood2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(1965:2022, fit.W$states[1,], col = "red")
 
 # Kvichak 
-fit.K <- MARSS(Kvichak.data_ts, model = mod.list)
-plot(Kvichak.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+fit.K <- MARSS(Kvichak2_ts, model = mod.list)
+plot(Kvichak2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(1965:2022, fit.K$states[1,], col = "red")
 
 # Egegik 
-fit.E <- MARSS(Egegik.data_ts, model = mod.list)
-plot(Egegik.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+fit.E <- MARSS(Egegik2_ts, model = mod.list)
+plot(Egegik2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(1965:2022, fit.E$states[1,], col = "red")
 
 # Average between all systems 
