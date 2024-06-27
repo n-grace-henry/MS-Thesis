@@ -21,14 +21,6 @@ complete_df <- expand.grid(Year = years, System = unique(data$System), Age = uni
 merged_df <- left_join(complete_df, data, by = c("Year", "System", "Age"))
 merged_df <- merged_df[order(merged_df$Year, merged_df$Age, merged_df$System), ]
 
-# Split the data by river system and age class
-Wood.2 <- merged_df %>% filter(System == "Wood") %>% filter(Age == 2)
-Wood.3 <- merged_df %>% filter(System == "Wood") %>% filter(Age == 3)
-Egegik.2 <- merged_df %>% filter(System == "Egegik") %>% filter(Age == 2)
-Egegik.3 <- merged_df %>% filter(System == "Egegik") %>% filter(Age == 3)
-Kvichak.2 <- merged_df %>% filter(System == "Kvichak") %>% filter(Age == 2)
-Kvichak.3 <- merged_df %>% filter(System == "Kvichak") %>% filter(Age == 3)
-
 # Convert to time series objects
 Wood2.data <- c(4.280390, NA, NA, 3.345011, NA, NA, 6.680199, NA, NA,
                               4.416843, NA, NA, 4.794477, NA, NA, 5.024736, NA, NA,
