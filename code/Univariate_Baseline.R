@@ -81,31 +81,8 @@ Kvichak3_ts <- ts(Kvichak3.data, start = 1965, frequency = 1)
 # Plot the time series object
 plot(Egegik2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
-#### Average Age 2 and Age 3 per River System ####
-
-# Wood averages
-Wood <- cbind(Wood2.data, Wood3.data)
-Wood.data <- apply(Wood, 1, mean, na.rm = TRUE)
-Wood.data_ts <- ts(Wood.data, start = 1965, frequency = 1)
-
-plot(Wood.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
-
-# Egegik averages
-Egegik <- cbind(Egegik2.data, Egegik3.data)
-Egegik.data <- apply(Egegik, 1, mean, na.rm = TRUE)
-Egegik.data_ts <- ts(Egegik.data, start = 1965, frequency = 1)
-
-plot(Egegik.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
-
-# Kvichak averages 
-Kvichak <- cbind(Kvichak2.data, Kvichak3.data)
-Kvichak.data <- apply(Kvichak, 1, mean, na.rm = TRUE)
-Kvichak.data_ts <- ts(Kvichak.data, start = 1965, frequency = 1)
-
-plot(Kvichak.data_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
 ### Overall system trends combined not averaged ####
-
 # Wood
 Wood.all <- merged_df[merged_df$System == "Wood", "PHE.mean"]
 Wood.all.ts <- ts(Wood.all, start = 1965, frequency = 2)
@@ -169,7 +146,8 @@ fit.K.glu <- MARSS(Kvichak.glu.ts, model = mod.list)
 plot(Kvichak.glu.ts, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
 lines(1965:2022, fit.K.glu$states[1,], col = "red")
 
-#### Model Univariate State-Space Baseline ####
+
+#### Model Univariate State-Space Baseline Age 2 only ####
 
 # Wood
 mod.list <- list(
