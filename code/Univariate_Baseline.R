@@ -205,9 +205,9 @@ E.tp <- tp(E.phe, E.glu)
 K.tp <- tp(K.phe, K.glu)
 
 # Plot trophic position
-plot(W.tp, type = "o", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Trophic Position")
-plot(E.tp, type = "o", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Trophic Position")
-plot(K.tp, type = "o", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Trophic Position")
+plot(W.tp, type = "l", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Wood TP ")
+plot(E.tp, type = "l", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Egegik TP")
+plot(K.tp, type = "l", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Kvichak TP")
 
 
 
