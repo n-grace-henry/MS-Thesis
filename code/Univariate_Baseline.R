@@ -177,10 +177,6 @@ lines(1965:2022, fit.E$states[1,], col = "red")
 
 #### Trophic Position from both modeled baselines ####
 
-# Set constants 
-beta <- 3.4 #commonly used constant
-TDF <- 7.06 #from Lerner et al 2020
-
 # State vectors 
 W.phe <- fit.W$states[1,]
 E.phe <- fit.E$states[1,]
@@ -195,17 +191,23 @@ tp <- function(phe, glu){
   beta <- 3.4
   TDF <- 7.06
   
-  tp <- matrix(nrow = length(phe), ncol = 1)
-  for(i in 1:length(data$Sample.ID)){
-    tp[i,2] <- 1+ ((data$GLU.mean[i]-data$PHE.mean[i]-beta)/TDF)
-    tp[i,1] <- data$Sample.ID[i]
+  tp <- vector(length = length(phe))
+  for(i in 1:length(phe)){
+    tp[i] <- 1 + ((glu[i]-phe[i]-beta)/TDF)
   }
   
+  print(tp)
 }
 
 # Calculate trophic position
-W.tp <- 1 + ((W.glu-W.phe-beta)/TDF)
+W.tp <- tp(W.phe, W.glu)
+E.tp <- tp(E.phe, E.glu)
+K.tp <- tp(K.phe, K.glu)
 
+# Plot trophic position
+plot(W.tp, type = "o", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Trophic Position")
+plot(E.tp, type = "o", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Trophic Position")
+plot(K.tp, type = "o", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Trophic Position")
 
 
 
