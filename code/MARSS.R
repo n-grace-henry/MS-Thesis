@@ -53,34 +53,7 @@ fit.0 <- MARSS(df, model = mod.list.0)
 # Plot
 plot(fit.0)
 
-
-# MARSS for three sub populations with temporally uncorrelated errors
-mod.list.1 <- list(
-  B = "identity",
-  U = "equal",
-  Q = "diagonal and equal",
-  Z = "identity",
-  A = "scaling",
-  R = "diagonal and unequal",
-  x0 = "unequal",
-  tinitx = 0
-)
-fit.1 <- MARSS::MARSS(df, model = mod.list.1)
-
-# Plot 
-plot(fit.1)
-
-
-# MARSS for three sub populations with temporally correlated errors
-mod.list.2 <- mod.list.1
-mod.list.2$Q <- "equalvarcov"
-fit.2 <- MARSS::MARSS(df, model = mod.list.2)
-
-# Plot 
-plot(fit.2)
-
-
-# MARSS using Marks structure
+# MARSS using Marks code
 ## set n & p
 nn <- 3 # total number of observations
 pp <- 3 # three states (systems)
@@ -104,7 +77,7 @@ diag(QQ) <- rep("q", pp)
 BB <- matrix(list(0), pp, pp)
 
 ## b) each district has its own degree of mean-reversion
-diag(BB) <- paste0("b_", seq(pp))
+diag(BB) <- "b"
 
 ## define model list for MARSS(); C,c & D,d are all 0 by default
 mod_list_3 <- list(
