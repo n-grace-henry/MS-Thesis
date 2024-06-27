@@ -190,6 +190,21 @@ W.glu <- fit.W.glu$states[1,]
 E.glu <- fit.E.glu$states[1,]
 K.glu <- fit.K.glu$states[1,]
 
+# Function to calculate trophic position from two vectors 
+tp <- function(phe, glu){
+  beta <- 3.4
+  TDF <- 7.06
+  
+  tp <- matrix(nrow = length(phe), ncol = 1)
+  for(i in 1:length(data$Sample.ID)){
+    tp[i,2] <- 1+ ((data$GLU.mean[i]-data$PHE.mean[i]-beta)/TDF)
+    tp[i,1] <- data$Sample.ID[i]
+  }
+  
+}
+
+# Calculate trophic position
+W.tp <- 1 + ((W.glu-W.phe-beta)/TDF)
 
 
 
