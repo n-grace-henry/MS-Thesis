@@ -210,4 +210,3 @@ plot(E.tp, type = "l", col = "blue", xlab = "Year", ylab = "Trophic Position", m
 plot(K.tp, type = "l", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Kvichak TP")
 
 
-
