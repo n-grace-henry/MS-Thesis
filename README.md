@@ -19,11 +19,11 @@ Mass_Effects.R -> Corrects for area effects on d15N signature. First drift corre
 ### data folder
 Contains data folders at different levels of processing. 
 
-cleaned -> raw data that has been cleaned in the original excel file and converted to a csv file. This is in the correct format for imputting into the drift correction scripts. 
+raw -> Excel files straight from the GC. Amino acid peaks have been IDed. 
 
-raw -> straight from the GC. This has been formatted prior to being changed to a csv. Peaks have been IDed. 
+cleaned -> Csv files of raw data that has been formatted for drift correction script.  
 
-processed -> this is data that has been drift corrected but has not been consolidated. This also still has the area and other info beyond just delta values. 
+processed -> Csv files that have been drift corrected but has not been consolidated. This also still has the area and other info beyond just delta values. 
 
 
 ### final folder
