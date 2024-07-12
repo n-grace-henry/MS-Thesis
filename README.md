@@ -25,28 +25,23 @@ cleaned -> Csv files of raw data that has been formatted for drift correction sc
 
 processed -> Csv files that have been drift corrected but has not been consolidated. This also still has the area and other info beyond just delta values. 
 
+outliers -> Csv files for each run that had outlier triplicate values removed by hand, meaning that each injection was looked at, and if anything stood out as an outlier it was removed. 
+
+## work - flow 
+correct to Nair, in same script then drift correct with no consolidation. Mass correct drift corrected data with no consolidation.  
 
 ### final folder
-
-main.clean.csv -> this is all my drift corrected and triplicate combined data. This file still has duplicates and replicates. 
-
-main.data.csv -> this is the step after main.clean.csv where I have taken that file and combined all the replicate and duplicate samples and saved into this file. 
-
 replicates.csv -> this file is all the replicate data before I average it with the cooresponding sample and delete the replicates from the data file. 
 
-all.data.csv -> all corrected data including the points that did not end up getting data. Full time series data including the NA points. 
-
-data.csv -> same as the all.data.csv file except I removed the run on 2/7/24 that I think was wrong. This run looked pretty bad and I believe it was because the source blew and there might have also been a leak in the system. It gave some crazy high values and I think it is safer to remove this run entirely. 
-
-data_full.csv -> raw data has been drift corrected but not consolidated. All data in this sheet including AAs and duplicates and replicates. 
-
-mass_correct_full.csv -> mass corrected data (only has GLU and PHE signatures). Has been consolidated from triplicate but duplicates and replicates have not been removed. 
+data_full.csv -> raw data has been drift corrected but not consolidated. All data in this sheet including all AAs and duplicates and replicates. 
 
 mass_correct.csv -> data that has been drift correct, corrected to Nair, and mass corrected, but has not yet been consolidated.
 
-all_correct_final.csv -> data that has undergone all corrections including mass correction, drift correction and correction to Nair and consolidation. 
+all_correct_final.csv -> data that has undergone all corrections including mass correction, drift correction and correction to Nair, consolidation and removal of dupes and reps. 
 
 trophic_position.csv -> file with trophic position calculated from three different methods; from raw data, from time period specified baseline, from modeled baseline. Calculations done in the R script "Trophic.Position.R".
 
 full.csv <- all corrections have been done, but triplicates have not been consolidated and replicates have not been removed. Formatted so that this has a Year, System, and Age column. 
+
+consolidated.csv -> consolidated data with GLU and PHE adjusted data only. Formatted with Year, Age and System columns. Duplicates and triplicates have not been removed. 
 
