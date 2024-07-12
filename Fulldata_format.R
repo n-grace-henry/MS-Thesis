@@ -1,3 +1,6 @@
+# Load packages
+library(dplyr)
+
 # Read in data
 data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv")
 
