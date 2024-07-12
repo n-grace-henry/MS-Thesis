@@ -13,35 +13,11 @@ data.GLU <- data.full[data.full$AAID == "GLU",]
 data.PHE <- data.full[data.full$AAID == "PHE",]
 
 # Delete all replicates and duplicates
-which(substr(data.GLU$ID1, 8, 8) != "")
+index.GLU <- which(substr(data.GLU$ID1, 8, 8) != "")
+index.PHE <- which(substr(data.PHE$ID1, 8, 8) != "")
 
-# Assign each sample a sample number 
-data.GLU$Sample <- 1
-data.PHE$Sample <- 1
+data.GLU <- data.GLU[-index.GLU,]
+data.PHE <- data.PHE[-index.PHE,]
 
-# Replace Sample with 2 for replicate and duplicate samples 
+#
 
-
-
-
-# Write excel files and format by hand 
-write_xlsx(data.GLU, path = "~/Documents/GitHub/CSIA_lab_work/data/final/data.GLU.xlsx")
-write_xlsx(data.PHE, path = "~/Documents/GitHub/CSIA_lab_work/data/final/data.PHE.xlsx")
-
-# Create column for sample number to distinguish reps and dupes 
-data.GLU$Sample <- 1:nrow(data.GLU)
-
-# Get rid of samples that have replicates (keeping replicates)
-data.GLU <- data.GLU[!data.GLU$ID1 == "13_W_2" & 
-                       !data.GLU$ID1 == "13_W_3",]
-data.PHE <- data.PHE[!data.PHE$ID1 == "13_W_2" & 
-                       !data.PHE$ID1 == "13_W_3",]
-data.GLU <- data.GLU[!data.GLU$ID1 == "89_K_2" &
-                       !data.GLU$ID1 == "89_W_2",]
-data.PHE <- data.PHE[!data.PHE$ID1 == "89_K_2" &
-                       !data.PHE$ID1 == "89_W_2",]
-
-# Delete replicates and triplicates??
-
-
-# Format: three points per year, every year represented
