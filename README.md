@@ -48,3 +48,5 @@ all_correct_final.csv -> data that has undergone all corrections including mass 
 
 trophic_position.csv -> file with trophic position calculated from three different methods; from raw data, from time period specified baseline, from modeled baseline. Calculations done in the R script "Trophic.Position.R".
 
+full.csv <- all corrections have been done, but triplicates have not been consolidated and replicates have not been removed. Formatted so that this has a Year, System, and Age column. 
+
