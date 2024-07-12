@@ -2,7 +2,7 @@
 Repository for all CSIA-AA data, code and analysis of AK salmon scales for Grace Henry's Masters thesis at the University of Washington in the Holtgrieve and Schindler labs. 
 
 ## code folder
-All code used to clean, correct and analyze raw data. Raw data files must have seven columns as follows: Analysis, Identifier 1, Rt, Area All, 29N2/28N2, 15N/14N, and Peak_ID and be in csv format. All reference peaks and unidentified peaks should be removed prior to reading into any of these scripts. The analysis run in this repo accounts for only with 5 amino acids: 5 amino acids: alanine, valine, norleucine, glutamic acid and phenylalanine. 
+All code used to clean, correct and analyze raw data. Raw data files must be fomatted with seven columns as follows: Analysis, Identifier 1, Rt, Area All, 29N2/28N2, 15N/14N, and Peak_ID and be in csv format. All reference peaks and unidentified peaks should be removed prior to reading into any of these scripts. The analysis run in this repo accounts for only  5 amino acids: alanine, valine, norleucine, glutamic acid and phenylalanine. 
 
 Below are descriptions of the included scripts along with their products. 
 
