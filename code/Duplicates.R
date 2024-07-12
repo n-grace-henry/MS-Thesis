@@ -6,7 +6,7 @@ setwd("~/Documents/GitHub/CSIA_lab_work/data/final")
 library(dplyr)
 library(readr)
 
-data <- read.csv(file="main.clean.csv")
+data <- read.csv(file="consolidated.csv")
 
 #take a look at all replicate values
 #make a new column with only the first chunk of the sample ID
@@ -110,11 +110,4 @@ data <- data[,-9]
 #write new file
 file.name <- "final/all_correct_final.csv"
 write.csv(data, file.name)
-
-
-
-
-
-
-
 

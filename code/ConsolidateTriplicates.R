@@ -1,25 +1,15 @@
-#this script should be run after drift correcting 
-setwd("~/Documents/GitHub/CSIA_lab_work/data")
-rm(list = ls())
+# Script to consolidate triplicates after drift correcting data and checking for mass effects 
 
+setwd("~/Documents/GitHub/CSIA_lab_work/data")
+
+# Load packages
 library(dplyr)
 library(readr)
 
-# Compile all the csv files to make one dataframe of all data
-df <- list.files(path=setwd("~/Documents/GitHub/CSIA_lab_work/data/with_outliers")) %>% 
-  lapply(read_csv) %>% 
-  bind_rows 
-
 # Read in data if not already in one sheet
-df <- read.csv(file = "final/mass_effect_correct.csv")
-
-# Remove reference values if present 
-df <- df[!df$AAID == "REF",] 
-
-# If working with data that has already been compiled START here
 df <- read.csv(file = "final/mass_correct.csv")
 
-#####Consolidating Triplicates#####
+#### Consolidating Triplicates ####
 #samples should be run in triplicate, the mean and SD of the triplicate should be taken. Output data will include mean and SD for each sample,
 #the standards, with a column for every Amino Acid
 #NOTE: the SD of the standards IS NOT the standard precision, column conditioning injections should be omitted to calculated standard precision
@@ -60,7 +50,8 @@ sdfull
 Corrected <- merge(meanfull,sdfull, by="Sample.ID") #this merges the columns in both the SD and mean dataframes
 Corrected
 
-#####Add Year column ####
+#### Add Year column ####
+
 year.2digit <- substr(Corrected$Sample.ID, 1, 2)
 
 year <- vector(mode="character")
@@ -75,7 +66,8 @@ for(i in 1:length(year.2digit)){
 Corrected$Year <- year
 Corrected <- Corrected %>% relocate(Year, .before = Sample.ID)
 
-#####Add System column####
+#### Add System column ####
+
 sys <- substr(Corrected$Sample.ID, 4, 4)
 
 system <- vector(mode="character")
@@ -92,12 +84,13 @@ for(i in 1:length(sys)){
 Corrected$System <- system
 Corrected <- Corrected %>% relocate(System, .before = Sample.ID)
 
-#####Add Age column####
+##### Add Age column ####
+
 Corrected$Age <- substr(Corrected$Sample.ID, 6, 6)
 Corrected <- Corrected %>% relocate(Age, .before = Sample.ID)
 
-#####Write new .csv file that has this clean data with no outliers####
-setwd("~/Documents/GitHub/CSIA_lab_work/data")
-file.name <- "final/mass_correct_full.csv"
-write.csv(Corrected, file = file.name)
+#### Write new .csv file ####
 
+setwd("~/Documents/GitHub/CSIA_lab_work/data")
+file.name <- "final/consolidated.csv"
+write.csv(Corrected, file = file.name)
