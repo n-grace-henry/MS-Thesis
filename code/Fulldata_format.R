@@ -12,6 +12,18 @@ data.full <- data.full %>% arrange(Year)
 data.GLU <- data.full[data.full$AAID == "GLU",]
 data.PHE <- data.full[data.full$AAID == "PHE",]
 
+# Delete all replicates and duplicates
+which(substr(data.GLU$ID1, 8, 8) != "")
+
+# Assign each sample a sample number 
+data.GLU$Sample <- 1
+data.PHE$Sample <- 1
+
+# Replace Sample with 2 for replicate and duplicate samples 
+
+
+
+
 # Write excel files and format by hand 
 write_xlsx(data.GLU, path = "~/Documents/GitHub/CSIA_lab_work/data/final/data.GLU.xlsx")
 write_xlsx(data.PHE, path = "~/Documents/GitHub/CSIA_lab_work/data/final/data.PHE.xlsx")
