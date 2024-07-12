@@ -13,8 +13,8 @@ data.GLU <- data.full[data.full$AAID == "GLU",]
 data.PHE <- data.full[data.full$AAID == "PHE",]
 
 # Write excel files and format by hand 
-
-
+write_xlsx(data.GLU, path = "~/Documents/GitHub/CSIA_lab_work/data/final/data.GLU.xlsx")
+write_xlsx(data.PHE, path = "~/Documents/GitHub/CSIA_lab_work/data/final/data.PHE.xlsx")
 
 # Create column for sample number to distinguish reps and dupes 
 data.GLU$Sample <- 1:nrow(data.GLU)
