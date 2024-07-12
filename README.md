@@ -4,17 +4,17 @@ Repository for all CSIA-AA data, code and analysis of AK salmon scales for Grace
 ## code folder
 All code used to clean, correct and analyze raw data. Raw data files must be fomatted with seven columns as follows: Analysis, Identifier 1, Rt, Area All, 29N2/28N2, 15N/14N, and Peak_ID and be in csv format. All reference peaks and unidentified peaks should be removed prior to reading into any of these scripts. The analysis run in this repo accounts for only  5 amino acids: alanine, valine, norleucine, glutamic acid and phenylalanine. 
 
-Below are descriptions of the included scripts along with their products. 
+Below are descriptions of the included scripts along with their products: 
 
-DriftCorrection.R -> Takes raw data files (formatted as outlined above) and both drift corrects and consolidates triplicates, after which it puts the corrected data in the "with_outliers" folder, naming each file by it's run date. 
+DriftCorrection.R -> Takes raw data files (formatted as outlined above), corrects to international N air standard and drift corrects. Saves each drift corrected run into a folder called "processed". 
 
 DriftCorrection_ouliers -> Takes raw data files (formatted as outlined above) and applies a drift correction with NO CONSOLIDATION of triplicates. Requires manual inspection of each triplicate set to determine what is characterized as an outlier. Saves data, unconsolidated, in the "outliers_removed" folder, naming each file by it's run date. 
 
-ConsolidateTriplicates -> Compiles all individual drift corrected files in a folder (outliers_removed or other) and consolidates triplicates. Adds a year, system and age class column to the data frame and writes new csv. 
+Mass_Effects.R -> Corrects for area effects on d15N signature. Compiles "processed" files into one csv called "data_full.csv". Identifies outlier points in the PHE data that get removed from the final produced file. Corrects for the apparent low area - low d15N pattern of GLU by fitting a second order polynomial to the data. Saves data frame in the final folder as "mass_correct.csv".
 
-Duplicates.R -> Takes a full data file that has been drift corrected and consolidated already. Creates a function to average the values of all replicate samples and duplicate and replace with only one value in the data sheet. Replicates are defined as the second half of scales that were run because of issues with the first set or simply for the sake of rerunning. Duplicates are defined as samples run more than once from the same sample bottle. Trophic position calculations happen in this script. This is the final step of scripts that should be run to finalize the data file. 
+ConsolidateTriplicates.R -> Takes "mass_correct.csv" and consolidates triplicate samples. Adds Year, System and Age columns. Writes new csv called "consolidated.csv".  
 
-Mass_Effects.R -> Corrects for area effects on d15N signature. First drift corrects the raw data but does not consolidate, and saves each run in a folder called "processed". Compiles these files into one csv called "data_full.csv" and saves this in the final folder. Identifies outlier points in the PHE data that get removed from the final produced file. Corrects for the apparent low area - low d15N pattern of GLU by fitting a second order polynomial to the data. Saves data frame in the final folder as "mass_correct.csv".
+Duplicates.R -> Takes a full data file that has been drift corrected and consolidated already. Creates a function to average the values of all replicate samples and duplicate and replace with only one value in the data sheet. Replicates are defined as the second half of scales that were run because of issues with the first set or simply for the sake of rerunning. Duplicates are defined as samples run more than once from the same sample bottle. Trophic position calculations happen in this script. This is the final step of scripts that should be run to finalize the data file. Writes csv called "all_correct_final.csv". 
 
 ### data folder
 Contains data folders at different levels of processing. 
