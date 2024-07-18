@@ -20,7 +20,8 @@ data.GLU <- data.GLU[-index.GLU,]
 data.PHE <- data.PHE[-index.PHE,]
 
 # Create full data set 
-
+years <- seq(1965, 2022, by = 1)
+complete_df <- expand.grid(Year = years, System = unique(data.full$System), Age = unique(data$Age))
 
 
 #copied from other script 
