@@ -78,9 +78,15 @@ Kvichak3.data <- c(NA, NA, NA, NA, NA, NA, 2.855826, NA, NA,
  
 Kvichak3_ts <- ts(Kvichak3.data, start = 1965, frequency = 1)
 
-# Plot the time series object
+# Plot time series objects (age 2)
+plot(Wood2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 plot(Egegik2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+plot(Kvichak2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
+# Plot time series objects (age 3)
+plot(Wood3_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+plot(Egegik3_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+plot(Kvichak3_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
 ### Overall system trends combined not averaged ####
 # Wood
