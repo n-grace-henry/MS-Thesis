@@ -126,6 +126,49 @@ fit.K.all <- MARSS(Kvichak.all.ts, model = mod.list)
 plot(Kvichak.all.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(years, fit.K.all$states[1,], col = "red")
 
+#### Glutamic acid for all age classes ####
+
+# Wood
+Wood.glu.all <- merged_df[merged_df$System == "Wood", "GLU.mean"]
+Wood.glu.ts.all <- ts(Wood.glu.all, start = 1965, frequency = 2)
+
+years_repeated <- rep(1965:2022, each = 2)
+
+fit.W.glu.all <- MARSS(Wood.glu.ts.all, model = mod.list)
+plot(Wood.glu.ts.all, 
+     type = "p", 
+     col = "blue", 
+     xlab = "Year", 
+     ylab = "Glutamic Acid 15N/14N", 
+     main = "Wood - All")
+lines(years_repeated, fit.W.glu.all$states[1,], col = "red")
+
+# Egegik 
+Egegik.glu.all <- merged_df[merged_df$System == "Egegik", "GLU.mean"]
+Egegik.glu.ts.all <- ts(Egegik.glu.all, start = 1965, frequency = 2)
+
+fit.E.glu.all <- MARSS(Egegik.glu.ts.all, model = mod.list)
+plot(Egegik.glu.ts.all, 
+     type = "p", 
+     col = "blue", 
+     xlab = "Year", 
+     ylab = "Glutamic Acid 15N/14N", 
+     main = "Egegik - All")
+lines(years_repeated, fit.E.glu.all$states[1,], col = "red")
+
+# Kvichak
+Kvichak.glu.all <- merged_df[merged_df$System == "Kvichak", "GLU.mean"]
+Kvichak.glu.ts.all <- ts(Kvichak.glu.all, start = 1965, frequency = 2)
+
+fit.K.glu.all <- MARSS(Kvichak.glu.ts.all, model = mod.list)
+plot(Kvichak.glu.ts.all, 
+     type = "p", 
+     col = "blue", 
+     xlab = "Year", 
+     ylab = "Glutamic Acid 15N/14N", 
+     main = "Kvichak - All")
+lines(years_repeated, fit.K.glu.all$states[1,], col = "red")
+
 #### Glutamic acid for age 2 ####
 
 # Wood
@@ -244,9 +287,32 @@ plot(W.tp, type = "l", col = "blue", xlab = "Year", ylab = "Trophic Position", m
 plot(E.tp, type = "l", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Egegik TP")
 plot(K.tp, type = "l", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Kvichak TP")
 
+#### Trophic Position calculations for both age classes ####
+
+# State vectors 
+W.phe.all <- fit.W.all$states[1,]
+E.phe.all <- fit.E.all$states[1,]
+K.phe.all <- fit.K.all$states[1,]
+
+
+
 
 #### Save new data frame of states ####
 
+# Create data frame 
+states <- cbind(W.phe, E.phe, K.phe, W.glu, E.glu, K.glu, W.tp, E.tp, K.tp)
+as.data.frame(states)
+
+# Add years
+years <- seq(from = 1965, to = 2022, by = 1)
+states <- cbind(years, states)
+
+# Set column names 
+colnames(states) <- c("Year", "Wood.PHE", "Egegik.PHE", "Kvichak.PHE", "Wood.GLU", "Egegik.GLU", "Kvichak.GLU", "Wood.TP", "Egegik.TP", "Kvichak.TP")
+
+# Write csv from data frame 
+file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv"
+write.csv(states, file = file.name)
 
 
 
