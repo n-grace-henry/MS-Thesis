@@ -253,7 +253,7 @@ plot(Egegik2_ts,
 lines(1965:2022, fit.E$states[1,], col = "red")
 
 
-#### Trophic Position from both modeled baselines ####
+#### Trophic Position from both modeled baselines - Age 2####
 
 # State vectors 
 W.phe <- fit.W$states[1,]
@@ -294,29 +294,52 @@ W.phe.all <- fit.W.all$states[1,]
 E.phe.all <- fit.E.all$states[1,]
 K.phe.all <- fit.K.all$states[1,]
 
+W.glu.all <- fit.W.glu.all$states[1,]
+E.glu.all <- fit.E.glu.all$states[1,]
+K.glu.all <- fit.K.glu.all$states[1,]
 
+W.tp.all <- tp(W.phe.all, W.glu.all)
+E.tp.all <- tp(E.phe.all, E.glu.all)
+K.tp.all <- tp(K.phe.all, K.glu.all)
 
+# Plot 
+plot(W.tp.all, type = "l", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Wood TP ")
+plot(E.tp.all, type = "l", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Egegik TP")
+plot(K.tp.all, type = "l", col = "blue", xlab = "Year", ylab = "Trophic Position", main = "Kvichak TP")
 
-#### Save new data frame of states ####
+#### Save new data frame of states for age 2 ####
 
 # Create data frame 
-states <- cbind(W.phe, E.phe, K.phe, W.glu, E.glu, K.glu, W.tp, E.tp, K.tp)
-as.data.frame(states)
+states2 <- cbind(W.phe, E.phe, K.phe, W.glu, E.glu, K.glu, W.tp, E.tp, K.tp)
+as.data.frame(states2)
 
 # Add years
 years <- seq(from = 1965, to = 2022, by = 1)
-states <- cbind(years, states)
+states2 <- cbind(years, states2)
 
 # Set column names 
-colnames(states) <- c("Year", "Wood.PHE", "Egegik.PHE", "Kvichak.PHE", "Wood.GLU", "Egegik.GLU", "Kvichak.GLU", "Wood.TP", "Egegik.TP", "Kvichak.TP")
+colnames(states2) <- c("Year", "Wood.PHE", "Egegik.PHE", "Kvichak.PHE", "Wood.GLU", "Egegik.GLU", "Kvichak.GLU", "Wood.TP", "Egegik.TP", "Kvichak.TP")
 
 # Write csv from data frame 
-file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv"
+file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/states2.csv"
 write.csv(states, file = file.name)
 
+#### Save new data frame of states for all age classes ####
 
+# Create data frame
+states.all <- cbind(W.phe.all, E.phe.all, K.phe.all, W.glu.all, E.glu.all, K.glu.all, W.tp.all, E.tp.all, K.tp.all)
+as.data.frame(states.all)
 
+# Add years
+years <- rep(1965:2022, each = 2)
+states.all <- cbind(years, states.all)
 
+# Set column names
+colnames(states.all) <- c("Year", "Wood.PHE", "Egegik.PHE", "Kvichak.PHE", "Wood.GLU", "Egegik.GLU", "Kvichak.GLU", "Wood.TP", "Egegik.TP", "Kvichak.TP")
+
+# Write csv from data frame
+file.name <- "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv"
+write.csv(states.all, file = file.name)
 
 
 
