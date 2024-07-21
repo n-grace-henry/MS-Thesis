@@ -126,14 +126,19 @@ fit.K.all <- MARSS(Kvichak.all.ts, model = mod.list)
 plot(Kvichak.all.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(years, fit.K.all$states[1,], col = "red")
 
-#### Glutamic acid for all systems ####
+#### Glutamic acid for age 2 ####
 
 # Wood
 Wood.glu <- merged_df[merged_df$System == "Wood" & merged_df$Age == 2, "GLU.mean"]
 Wood.glu.ts <- ts(Wood.glu, start = 1965, frequency = 1)
 
 fit.W.glu <- MARSS(Wood.glu.ts, model = mod.list)
-plot(Wood.glu.ts, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+plot(Wood.glu.ts, 
+     type = "p", 
+     col = "blue", 
+     xlab = "Year", 
+     ylab = "GLU.mean", 
+     main = "Time Series Plot")
 lines(1965:2022, fit.W.glu$states[1,], col = "red")
 
 # Egegik 
@@ -152,7 +157,6 @@ fit.K.glu <- MARSS(Kvichak.glu.ts, model = mod.list)
 plot(Kvichak.glu.ts, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
 lines(1965:2022, fit.K.glu$states[1,], col = "red")
 
-
 #### Model Univariate State-Space Baseline Age 2 only ####
 
 # Wood
@@ -167,17 +171,32 @@ mod.list <- list(
   tinitx = 0
 )
 fit.W <- MARSS(Wood2_ts, model = mod.list)
-plot(Wood2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+plot(Wood2_ts, 
+     type = "o", 
+     col = "blue", 
+     xlab = "Year", 
+     ylab = "Phenylalanine 15N/14N", 
+     main = "Wood - Age 2")
 lines(1965:2022, fit.W$states[1,], col = "red")
 
 # Kvichak 
 fit.K <- MARSS(Kvichak2_ts, model = mod.list)
-plot(Kvichak2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+plot(Kvichak2_ts, 
+     type = "o", 
+     col = "blue", 
+     xlab = "Year", 
+     ylab = "Phenylalanine 15N/14N", 
+     main = "Kvichak - Age 2")
 lines(1965:2022, fit.K$states[1,], col = "red")
 
 # Egegik 
 fit.E <- MARSS(Egegik2_ts, model = mod.list)
-plot(Egegik2_ts, type = "o", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+plot(Egegik2_ts, 
+     type = "o", 
+     col = "blue", 
+     xlab = "Year", 
+     ylab = "Phenylalanine 15N/14N", 
+     main = "Egegik - Age 2")
 lines(1965:2022, fit.E$states[1,], col = "red")
 
 
