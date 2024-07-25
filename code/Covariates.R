@@ -47,6 +47,8 @@ ggplot(data = tp_long, aes(x = years, y = TP, color = System)) +
        y = "TP") +
   theme_minimal()
 
+# Model envi covariates and states 
+
 
 
 
