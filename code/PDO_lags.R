@@ -32,7 +32,14 @@ plot(x = PDO_annual$Year,
      xlab = "Year",
      ylab = "PDO")
 
-#### Linear Model with no lagging of covariates one year before return ####
+#### PDO data formatting per year ####
+# 2 years of PDO averaged before return year
+PDO_avg <- data.frame(nrow = length(PDO$Year), ncol = 2)
+names(PDO_avg) <- c("Year","PDO")
+
+
+
+
 
 #### Linear Model for 6 months before return ####
 #January - July of return year
