@@ -24,30 +24,29 @@ tp_long <- tp %>% pivot_longer(cols = c("W.tp", "E.tp", "K.tp"),
                                        values_to = "TP")
 
 # Plot baseline data for all systems 
-ggplot(data = states, aes())
-
-
-
-
+ggplot(data = phe_long, aes(x = years, y = PHE, color = System)) +
+  geom_line() +
+  labs(title = "PHE data for all systems",
+       x = "Year",
+       y = "PHE") +
+  theme_minimal()
 
 # Plot GLU data for all systems 
-
+ggplot(data = glu_long, aes(x = years, y = GLU, color = System)) +
+  geom_line() +
+  labs(title = "GLU data for all systems",
+       x = "Year",
+       y = "GLU") +
+  theme_minimal()
 
 # Plot trophic position for all systems 
+ggplot(data = tp_long, aes(x = years, y = TP, color = System)) +
+  geom_line() +
+  labs(title = "Trophic position data for all systems",
+       x = "Year",
+       y = "TP") +
+  theme_minimal()
 
 
-df <- data.frame(
-  Year = 2000:2005,
-  W.iso = runif(6, -30, 0),
-  E.iso = runif(6, -30, 0),
-  K.iso = runif(6, -30, 0),
-  W.tp = runif(6, 2, 5),
-  E.tp = runif(6, 2, 5),
-  K.tp = runif(6, 2, 5)
-)
 
-df_long <- df %>%
-  pivot_longer(cols = -Year,
-               names_to = c("System", ".value"),
-               names_pattern = "(.+)\\.(.+)")
 
