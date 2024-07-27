@@ -8,20 +8,14 @@
 # Load data
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/Environmental/ENSO.csv")
 
-# Get rid of last column 
-data <- data[,-14]
-
-# Convert to long format
+# Convert to long format 
 data_long <- data %>% 
   pivot_longer(cols = -1, names_to = "Month", values_to = "MEI")
 
-# Average summer months
-avg_MEI <- data_long %>% 
-  filter(Month %in% c("JJ", "JA", "AS")) %>% 
-  group_by(YEAR) %>% 
-  summarise(MEI = mean(MEI))
+# Grab years 1964-2023
+data_long <- data_long[data_long$Year >= "1964" & data_long$Year <= "2023",]
 
 # Plot 
-plot(x = avg_MEI$YEAR,
-     y = avg_MEI$MEI,
+plot(x = data_long$Year,
+     y = data_long$MEI,
      type ="l")
