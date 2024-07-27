@@ -1,8 +1,9 @@
-# Data from: https://psl.noaa.gov/enso/mei/
-# Reference: Kobayashi, S., Ota, Y., Harada, Y., Ebita, A., Moriya, M., Onoda, H., 
-#Onogi, K., Kamahori, H., Kobayashi, C., Endo, H., Miyaoka, K., Takahashi, K., 2015. 
-#The JRA-55 Reanalysis: general specifications and basic characteristics. J. Meteor. 
-#Soc. Jpn. 93, 5-48. DOI: 10.2151/jmsj.2015-001
+# Data from: https://psl.noaa.gov/gcos_wgsp/Timeseries/Nino4/
+# Reference: Rayner N. A., D. E. Parker, E. B. Horton, C. K. Folland, 
+# L. V. Alexander, D. P. Rowell, E. C. Kent, A. Kaplan, Global analyses 
+# of sea surface temperature, sea ice, and night marine air temperature 
+# since the late nineteenth century, J. Geophys. Res., 108 (D14), 4407, 
+# doi:10.1029/2002JD002670, 2003.
 
 # Load data
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/Environmental/ENSO.csv")

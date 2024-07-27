@@ -5,7 +5,8 @@ library(tidyverse)
 states <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states2.csv")
 
 # Load environmental data 
-
+PDO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/PDO_tidy.csv")
+ENSO <- 
 
 # Separate data into three dfs
 phe <- states[,c("years", "W.phe", "E.phe", "K.phe")]
