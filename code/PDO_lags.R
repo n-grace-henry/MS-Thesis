@@ -40,8 +40,6 @@ names(PDO_avg) <- c("Year","PDO")
 
 
 
-
-
 #### Linear Model for 6 months before return ####
 #January - July of return year
 #Biologically this model doesn't make a lot of sense 
