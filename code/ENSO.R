@@ -5,6 +5,12 @@
 # since the late nineteenth century, J. Geophys. Res., 108 (D14), 4407, 
 # doi:10.1029/2002JD002670, 2003.
 
+# Load packages
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(lubridate)
+
 # Load data
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/Environmental/ENSO.csv")
 
@@ -14,6 +20,10 @@ data_long <- data %>%
 
 # Grab years 1964-2023
 data_long <- data_long[data_long$Year >= "1964" & data_long$Year <= "2023",]
+
+# Convert month to date
+data_long <- data_long %>% 
+  mutate(month_number = match(Month, month.abb))
 
 # Plot 
 plot(x = data_long$Year,

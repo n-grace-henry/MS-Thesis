@@ -33,6 +33,6 @@ plot(x = PDO_annual$Year,
      ylab = "PDO")
 
 # Write csv of tidy PDO data
-write.csv(PDO_long, "~/Documents/GitHub/CSIA_lab_work/data/environmental/PDO_tidy.csv")
+write.csv(PDO_annual, "~/Documents/GitHub/CSIA_lab_work/data/environmental/PDO_tidy.csv")
 
 
