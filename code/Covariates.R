@@ -6,7 +6,8 @@ states <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states2.c
 
 # Load environmental data 
 PDO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/PDO_tidy.csv")
-ENSO <- 
+ENSO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/ENSO_tidy.csv")
+NPGO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/NPGO_tidy.csv")
 
 # Separate data into three dfs
 phe <- states[,c("years", "W.phe", "E.phe", "K.phe")]

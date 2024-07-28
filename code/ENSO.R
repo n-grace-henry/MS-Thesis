@@ -19,7 +19,7 @@ data_long <- data %>%
   pivot_longer(cols = -1, names_to = "Month", values_to = "MEI")
 
 # Grab years 1964-2023
-data_long <- data_long[data_long$Year >= "1964" & data_long$Year <= "2023",]
+data_long <- data_long[data_long$Year >= "1960" & data_long$Year <= "2023",]
 
 # Convert month to date
 data_long <- data_long %>% 
@@ -29,3 +29,9 @@ data_long <- data_long %>%
 plot(x = data_long$Year,
      y = data_long$MEI,
      type ="l")
+
+# Save as csv
+write.csv(data_long, file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/ENSO_tidy.csv")
+
+
+
