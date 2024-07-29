@@ -1,5 +1,7 @@
 # Load packages 
 library(tidyverse)
+library(MARSS)
+library(ggplot2)
 
 # Load state data 
 states <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states2.csv")
@@ -8,6 +10,13 @@ states <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states2.c
 PDO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/PDO_tidy.csv")
 ENSO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/ENSO_tidy.csv")
 NPGO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/NPGO_tidy.csv")
+ret <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/BB_returns.csv")
+ice <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/sea_ice.csv")
+
+# Put all envi data into one df 
+climate <- merge(PDO, NPGO, by = "Year")
+climate <- climate[,-c(2,4)]
+colnames(climate) <- c("Year", "PDO", "NPGO")
 
 # Separate data into three dfs
 phe <- states[,c("years", "W.phe", "E.phe", "K.phe")]
@@ -49,7 +58,18 @@ ggplot(data = tp_long, aes(x = years, y = TP, color = System)) +
        y = "TP") +
   theme_minimal()
 
-# Model envi covariates and states 
+# Model environmental covariates vs states 
+
+# Format response variable (phe)
+dat <- t(phe[-1, c("W.phe", "E.phe", "K.phe")])
+covariates <- t(fulldat[years, c("Temp", "TP")])
+
+# Z-score the response variables (phe) 
+the.mean <- apply(dat, 1, mean, na.rm = TRUE)
+the.sigma <- sqrt(apply(dat, 1, var, na.rm = TRUE))
+dat <- (dat - the.mean) * (1/the.sigma)
+
+
 
 
 
