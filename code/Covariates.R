@@ -23,6 +23,9 @@ phe <- states[,c("years", "W.phe", "E.phe", "K.phe")]
 glu <- states[,c("years", "W.glu", "E.glu", "K.glu")]
 tp <- states[,c("years", "W.tp", "E.tp", "K.tp")]
 
+# Change column names of tp 
+colnames(tp) <- c("years", "Wood", "Egegik", "Kvichak")
+
 # Convert to long format for plotting 
 phe_long <- phe %>% pivot_longer(cols = c("W.phe", "E.phe", "K.phe"), 
                                        names_to = "System",
@@ -30,9 +33,10 @@ phe_long <- phe %>% pivot_longer(cols = c("W.phe", "E.phe", "K.phe"),
 glu_long <- glu %>% pivot_longer(cols = c("W.glu", "E.glu", "K.glu"),
                                        names_to = "System",
                                        values_to = "GLU")
-tp_long <- tp %>% pivot_longer(cols = c("W.tp", "E.tp", "K.tp"),
+tp_long <- tp %>% pivot_longer(cols = c("Wood", "Egegik", "Kvichak"),
                                        names_to = "System",
                                        values_to = "TP")
+
 
 # Plot baseline data for all systems 
 ggplot(data = phe_long, aes(x = years, y = PHE, color = System)) +
@@ -55,8 +59,10 @@ ggplot(data = tp_long, aes(x = years, y = TP, color = System)) +
   geom_line() +
   labs(title = "Trophic position data for all systems",
        x = "Year",
-       y = "TP") +
-  theme_minimal()
+       y = "Trophic Position") +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"))
 
 # Model environmental covariates vs states 
 
