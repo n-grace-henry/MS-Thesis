@@ -80,7 +80,6 @@ GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "System", "ID1")]
 
 # Full df with NAs where there is missing data for each system/AA
 Year <- rep(seq(1965, 2022), each = 6)
-System <- unique(PHE$System)
 full_grid <- expand.grid(Year = Year, System = System)
 expanded_data <- merge(full_grid, PHE, by = c("Year", "System"), all.x = TRUE)
 
