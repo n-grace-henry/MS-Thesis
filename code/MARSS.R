@@ -3,14 +3,12 @@ library(stats)
 library(MARSS)
 library(forecast)
 library(datasets)
-library(ggplot2)
-library(dplyr)
 library(zoo)
 library(reshape2)
-library(tidyr)
+library(tidyverse)
 
 # Load data 
-#data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/mass_correct.csv")
+data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv")
 #data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_correct_final.csv")
 
 #### Averaged Samples ####
@@ -52,6 +50,52 @@ fit.0 <- MARSS(df, model = mod.list.0)
 
 # Plot
 plot(fit.0)
+
+#### Non-averaged triplicates per system (max of 6 injections per sample ####
+# Subset data for age 2 and only PHE
+PHE <- data.full[data.full$Age == "2" &
+                   data.full$AAID == "PHE", c("Year", "adj", "System", "Age", "ID1")]
+
+# Subset data for age 2 and only GLU 
+GLU <- data.full[data.full$Age == "2" &
+                   data.full$AAID == "GLU", c("Year", "adj", "System", "Age", "ID1")]
+
+# Full df with NAs where there is missing data
+years <- seq(1965, 2022, by = 3)
+systems <- unique(PHE$System)
+complete_df <- expand.grid(Year = years, System = systems)
+merged_df <- merge(complete_df, PHE, by = c("Year", "System"), all.x = TRUE)
+
+
+
+# Chat GPT code example to expand data to be year by 6 columns
+# Example data
+original_data <- data.frame(
+  Year = c(1965, 1965, 1968, 1968, 1971, 1971),
+  Value = c(1, 2, 3, 4, 5, 6),
+  System = c('A', 'A', 'B', 'B', 'A', 'B'),
+  ID = c(1, 2, 1, 2, 1, 2)
+)
+
+# Generate a sequence of years
+years <- seq(1965, 2022)
+
+# Assuming 6 IDs per year
+IDs <- 1:6
+
+# Assuming the same Systems
+systems <- unique(original_data$System)
+
+# Create a full grid of all possible combinations
+full_grid <- expand.grid(Year = years, System = systems, ID = IDs)
+
+# Merge with original data
+expanded_data <- merge(full_grid, original_data, by = c("Year", "System", "ID"), all.x = TRUE)
+
+
+
+
+
 
 # MARSS using Marks code
 ## set n & p
