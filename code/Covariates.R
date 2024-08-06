@@ -38,6 +38,14 @@ glu_long <- glu %>% pivot_longer(cols = c("W.glu", "E.glu", "K.glu"),
 tp_long <- tp %>% pivot_longer(cols = c("Wood", "Egegik", "Kvichak"),
                                        names_to = "System",
                                        values_to = "TP")
+# Plot tp 
+ggplot(data = tp_long, aes(x = years, y = TP, col = System)) +
+  geom_line() + 
+  labs(title = "Trophic Position for all Systems",
+       x = "Year",
+       y = "Trophic Position") +
+  theme_minimal()
+
 
 # Model environmental covariates vs states 
 
