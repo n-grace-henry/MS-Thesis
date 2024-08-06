@@ -47,7 +47,6 @@ GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "System", "ID1", "Rep")]
 # Full df with NAs where there is missing data for each AA
 # Determine the maximum number of samples per year
 max_samples <- 6
-years <- rep(1965:2022, times=6) # for expanding
 
 # Create a new data frame with the desired format for Wood PHE
 PHE.W.NA <- PHE.W %>%
@@ -97,12 +96,36 @@ GLU.K.NA <- GLU.K %>%
   arrange(Year, Sample_Number, ID1, Rep) %>%
   select(Year, adj, ID1, Rep)
 
+#### Upload formatted data from excel ####
+PHE.long <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/PHE.long/PHE.W.csv")
+
 #### Pivot Wider to get columns as injections ####
 # Wood PHE
 t.W.PHE <- t(PHE.W.NA)
 a <- PHE.W.NA[,c("Year","adj")]
 
 ?pivot_wider
+
+# ChatGPT code
+# Assuming your original data frame is named df with columns "year" and "value"
+# Sample data
+df <- data.frame(
+  year = rep(1965:1968, each = 6),
+  value = runif(24) # Random values for illustration
+)
+
+# Add an identifier for each value per year
+df <- df %>%
+  group_by(year) %>%
+  mutate(sample_num = row_number()) %>%
+  ungroup()
+
+# Reshape the data frame to wide format
+wide_df <- df %>%
+  pivot_wider(names_from = sample_num, values_from = value, names_prefix = "Value_")
+
+# Print the wide format data frame
+print(wide_df)
 
 
 #### Convert to time series data ####
