@@ -56,15 +56,33 @@ plot(fit.0)
 PHE <- data.full[data.full$Age == "2" &
                    data.full$AAID == "PHE", c("Year", "adj", "System", "Age", "ID1")]
 
+# Wood
+PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "System", "ID1")]
+
+# Egegik 
+PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "System", "ID1")]
+
+# Kvichak
+PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "System", "ID1")]
+
 # Subset data for age 2 and only GLU 
 GLU <- data.full[data.full$Age == "2" &
                    data.full$AAID == "GLU", c("Year", "adj", "System", "Age", "ID1")]
 
-# Full df with NAs where there is missing data
-years <- seq(1965, 2022, by = 3)
-systems <- unique(PHE$System)
-complete_df <- expand.grid(Year = years, System = systems)
-merged_df <- merge(complete_df, PHE, by = c("Year", "System"), all.x = TRUE)
+# Wood
+GLU.W <- GLU[GLU$System == "Wood", c("Year", "adj", "System", "ID1")]
+
+# Egegik
+GLU.E <- GLU[GLU$System == "Egegik", c("Year", "adj", "System", "ID1")]
+
+# Kvichak
+GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "System", "ID1")]
+
+# Full df with NAs where there is missing data for each system/AA
+Year <- rep(seq(1965, 2022), each = 6)
+System <- unique(PHE$System)
+full_grid <- expand.grid(Year = Year, System = System)
+expanded_data <- merge(full_grid, PHE, by = c("Year", "System"), all.x = TRUE)
 
 
 
