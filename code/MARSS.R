@@ -11,108 +11,92 @@ library(tidyverse)
 data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv")
 #data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_correct_final.csv")
 
-#### Averaged Samples ####
-# One observation per system per year
-# Format PHE data 
-PHE <- data[data$Age == "2", c("Year", "PHE.mean", "System")]
+# Add column that takes last two digits of ID1
+data.full$Rep <- substr(data.full$ID1, 8, 8)
 
-# Change incorrect years to fit into the every three years (will change this after model is running smoothly) 
-PHE[PHE$Year == 1967, "Year"] <- 1968
-PHE[PHE$Year == 1984, "Year"] <- 1983
-PHE[PHE$Year == 1993, "Year"] <- 1992
-
-# Full df with NAs where there is missing data
-years <- seq(1965, 2022, by = 3)
-systems <- unique(PHE$System)
-complete_df <- expand.grid(Year = years, System = systems)
-merged_df <- merge(complete_df, PHE, by = c("Year", "System"), all.x = TRUE)
-
-# Change structure of data
-df <- as.data.frame(pivot_wider(merged_df, names_from = System, values_from = PHE.mean))
-years <- df[, "Year"]
-df <- df[, !(colnames(df) %in% "Year")]
-df <- t(df) # transpose to have years across columns
-colnames(df) <- years
-n <- nrow(df) - 1
-
-# Fit MARSS for one mixed population (from textbook example)
-mod.list.0 <- list(
-  B = matrix(1),
-  U = matrix("u"),
-  Q = matrix("q"),
-  Z = matrix(1, 3, 1),
-  A = "scaling",
-  R = "diagonal and unequal",
-  x0 = matrix("mu"),
-  tinitx = 0
-)
-fit.0 <- MARSS(df, model = mod.list.0)
-
-# Plot
-plot(fit.0)
+# Change ID1 column to not show reps
+data.full$ID1 <- substr(data.full$ID1, 1, 6)
 
 #### Non-averaged triplicates per system (max of 6 injections per sample ####
 # Subset data for age 2 and only PHE
 PHE <- data.full[data.full$Age == "2" &
-                   data.full$AAID == "PHE", c("Year", "adj", "System", "Age", "ID1")]
+                   data.full$AAID == "PHE", c("Year", "adj", "System", "Age", "ID1", "Rep")]
 
 # Wood
-PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "System", "ID1")]
+PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
 
 # Egegik 
-PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "System", "ID1")]
+PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "System", "ID1", "Rep")]
 
 # Kvichak
-PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "System", "ID1")]
+PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "System", "ID1", "Rep")]
 
 # Subset data for age 2 and only GLU 
 GLU <- data.full[data.full$Age == "2" &
-                   data.full$AAID == "GLU", c("Year", "adj", "System", "Age", "ID1")]
+                   data.full$AAID == "GLU", c("Year", "adj", "System", "Age", "ID1", "Rep")]
 
 # Wood
-GLU.W <- GLU[GLU$System == "Wood", c("Year", "adj", "System", "ID1")]
+GLU.W <- GLU[GLU$System == "Wood", c("Year", "adj", "System", "ID1", "Rep")]
 
 # Egegik
-GLU.E <- GLU[GLU$System == "Egegik", c("Year", "adj", "System", "ID1")]
+GLU.E <- GLU[GLU$System == "Egegik", c("Year", "adj", "System", "ID1", "Rep")]
 
 # Kvichak
-GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "System", "ID1")]
+GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "System", "ID1", "Rep")]
 
-# Full df with NAs where there is missing data for each system/AA
-Year <- rep(seq(1965, 2022), each = 6)
-full_grid <- expand.grid(Year = Year, System = System)
-expanded_data <- merge(full_grid, PHE, by = c("Year", "System"), all.x = TRUE)
+# Full df with NAs where there is missing data for each AA
+# Determine the maximum number of samples per year
+max_samples <- 6
 
+# Create a new data frame with the desired format for Wood PHE
+PHE.W.NA <- PHE.W %>%
+  group_by(Year) %>%
+  mutate(Sample_Number = row_number()) %>%
+  complete(Sample_Number = 1:max_samples) %>%
+  arrange(Year, Sample_Number, ID1, Rep) %>%
+  select(Year, adj, ID1, Rep)
 
+# Create a new data frame with the desired format for Egegik PHE 
+PHE.E.NA <- PHE.E %>%
+  group_by(Year) %>%
+  mutate(Sample_Number = row_number()) %>%
+  complete(Sample_Number = 1:max_samples) %>%
+  arrange(Year, Sample_Number, ID1, Rep) %>%
+  select(Year, adj, ID1, Rep)
 
-# Chat GPT code example to expand data to be year by 6 columns
-# Example data
-original_data <- data.frame(
-  Year = c(1965, 1965, 1968, 1968, 1971, 1971),
-  Value = c(1, 2, 3, 4, 5, 6),
-  System = c('A', 'A', 'B', 'B', 'A', 'B'),
-  ID = c(1, 2, 1, 2, 1, 2)
-)
+# Create a neww data frame with the desired format for Kvichak PHE
+PHE.K.NA <- PHE.K %>%
+  group_by(Year) %>%
+  mutate(Sample_Number = row_number()) %>%
+  complete(Sample_Number = 1:max_samples) %>%
+  arrange(Year, Sample_Number, ID1, Rep) %>%
+  select(Year, adj, ID1, Rep)
 
-# Generate a sequence of years
-years <- seq(1965, 2022)
+# Rep for GLU Wood 
+GLU.W.NA <- GLU.W %>%
+  group_by(Year) %>%
+  mutate(Sample_Number = row_number()) %>%
+  complete(Sample_Number = 1:max_samples) %>%
+  arrange(Year, Sample_Number, ID1, Rep) %>%
+  select(Year, adj, ID1, Rep)
 
-# Assuming 6 IDs per year
-IDs <- 1:6
+# Rep for GLU Egegik 
+GLU.E.NA <- GLU.E %>%
+  group_by(Year) %>%
+  mutate(Sample_Number = row_number()) %>%
+  complete(Sample_Number = 1:max_samples) %>%
+  arrange(Year, Sample_Number, ID1, Rep) %>%
+  select(Year, adj, ID1, Rep)
 
-# Assuming the same Systems
-systems <- unique(original_data$System)
+# Rep for GLU Kvichak
+GLU.K.NA <- GLU.K %>%
+  group_by(Year) %>%
+  mutate(Sample_Number = row_number()) %>%
+  complete(Sample_Number = 1:max_samples) %>%
+  arrange(Year, Sample_Number, ID1, Rep) %>%
+  select(Year, adj, ID1, Rep)
 
-# Create a full grid of all possible combinations
-full_grid <- expand.grid(Year = years, System = systems, ID = IDs)
-
-# Merge with original data
-expanded_data <- merge(full_grid, original_data, by = c("Year", "System", "ID"), all.x = TRUE)
-
-
-
-
-
+#### Transpose all data frames for analysis ####
 
 # MARSS using Marks code
 ## set n & p
