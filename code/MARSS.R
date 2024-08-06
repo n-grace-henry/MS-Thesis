@@ -98,38 +98,25 @@ GLU.K.NA <- GLU.K %>%
 
 #### Upload formatted data from excel ####
 PHE.long <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/PHE.long/PHE.W.csv")
+PHE.long <- PHE.long[, !names(PHE.long) %in% c("ID1", "Rep")]
 
 #### Pivot Wider to get columns as injections ####
-# Wood PHE
-t.W.PHE <- t(PHE.W.NA)
-a <- PHE.W.NA[,c("Year","adj")]
-
-?pivot_wider
-
-# ChatGPT code
-# Assuming your original data frame is named df with columns "year" and "value"
-# Sample data
-df <- data.frame(
-  year = rep(1965:1968, each = 6),
-  value = runif(24) # Random values for illustration
-)
-
-# Add an identifier for each value per year
-df <- df %>%
-  group_by(year) %>%
+# Wood PHE, add identified 
+PHE.long <- PHE.long %>%
+  group_by(Year) %>%
   mutate(sample_num = row_number()) %>%
   ungroup()
 
 # Reshape the data frame to wide format
-wide_df <- df %>%
-  pivot_wider(names_from = sample_num, values_from = value, names_prefix = "Value_")
+PHE.wide <- PHE.long %>%
+  pivot_wider(names_from = sample_num, values_from = adj, names_prefix = "Value_")
 
-# Print the wide format data frame
-print(wide_df)
-
+# Only keep necessary columns
+PHE.wide <- PHE.wide[, 1:7]
 
 #### Convert to time series data ####
-PHE.W.NA.ts <- ts(PHE.W.NA, start = 1965, frequency = 6)
+PHE.long.ts <- ts(PHE.long, start = 1965, frequency = 6)
+plot(x = PHE.long$Year, PHE.long$adj)
 
 #### Plot ####
 
