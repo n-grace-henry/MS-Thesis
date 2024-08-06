@@ -96,7 +96,16 @@ GLU.K.NA <- GLU.K %>%
   arrange(Year, Sample_Number, ID1, Rep) %>%
   select(Year, adj, ID1, Rep)
 
-#### Transpose all data frames for analysis ####
+#### Pivot Wider to get columns as injections ####
+# Wood PHE
+t.W.PHE <- t(PHE.W.NA)
+a <- PHE.W.NA[,c("Year","adj")]
+
+?pivot_wider
+
+
+
+
 
 # MARSS using Marks code
 ## set n & p
