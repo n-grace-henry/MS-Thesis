@@ -12,8 +12,10 @@ ENSO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/ENS
 NPGO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/NPGO_tidy.csv")
 ret <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/BB_returns.csv")
 ice <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/sea_ice.csv")
+# SST <- 
+# NPI <- 
 
-# Put all envi data into one df 
+# Put all envi data into one df (only two regimes until i figure this out)
 climate <- merge(PDO, NPGO, by = "Year")
 climate <- climate[,-c(2,4)]
 colnames(climate) <- c("Year", "PDO", "NPGO")
@@ -37,38 +39,11 @@ tp_long <- tp %>% pivot_longer(cols = c("Wood", "Egegik", "Kvichak"),
                                        names_to = "System",
                                        values_to = "TP")
 
-
-# Plot baseline data for all systems 
-ggplot(data = phe_long, aes(x = years, y = PHE, color = System)) +
-  geom_line() +
-  labs(title = "PHE data for all systems",
-       x = "Year",
-       y = "PHE") +
-  theme_minimal()
-
-# Plot GLU data for all systems 
-ggplot(data = glu_long, aes(x = years, y = GLU, color = System)) +
-  geom_line() +
-  labs(title = "GLU data for all systems",
-       x = "Year",
-       y = "GLU") +
-  theme_minimal()
-
-# Plot trophic position for all systems 
-ggplot(data = tp_long, aes(x = years, y = TP, color = System)) +
-  geom_line() +
-  labs(title = "Trophic position data for all systems",
-       x = "Year",
-       y = "Trophic Position") +
-  theme_minimal() + 
-  theme(
-    plot.title = element_text(hjust = 0.5, face = "bold"))
-
 # Model environmental covariates vs states 
 
 # Format response variable (phe)
 dat <- t(phe[-1, c("W.phe", "E.phe", "K.phe")])
-covariates <- t(fulldat[years, c("Temp", "TP")])
+covariates <- t(climate[Year, c("Temp", "TP")])
 
 # Z-score the response variables (phe) 
 the.mean <- apply(dat, 1, mean, na.rm = TRUE)
