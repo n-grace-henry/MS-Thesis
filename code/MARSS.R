@@ -101,7 +101,7 @@ PHE.long <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/PHE.lon
 PHE.long <- PHE.long[, !names(PHE.long) %in% c("ID1", "Rep")]
 
 #### Pivot Wider to get columns as injections ####
-# Wood PHE, add identified 
+# Wood PHE, add identifier
 PHE.long <- PHE.long %>%
   group_by(Year) %>%
   mutate(sample_num = row_number()) %>%
@@ -115,14 +115,12 @@ PHE.wide <- PHE.long %>%
 PHE.wide <- PHE.wide[, 1:7]
 
 #### Convert to time series data ####
-PHE.long.ts <- ts(PHE.long, start = 1965, frequency = 6)
-plot(x = PHE.long$Year, PHE.long$adj)
+# Get only value column 
+PHE.W.data <- PHE.long$adj
+PHE.long.ts <- ts(PHE.W.data, start = 1965, end = 2022, frequency = 6)
 
 #### Univariate State-Space Analysis for each system ####
 # Wood
-Wood.all <- merged_df[merged_df$System == "Wood", "PHE.mean"]
-Wood.all.ts <- ts(Wood.all, start = 1965, frequency = 2)
-
 mod.list <- list(
   U = matrix("u"),
   x0 = matrix("x0"),
@@ -134,11 +132,12 @@ mod.list <- list(
   tinitx = 0
 )
 
-fit.W.all <- MARSS(Wood.all.ts, model = mod.list)
-years <- seq(from = 1965, to = 2022.5, by = 0.5)
+fit.W <- MARSS(PHE.long.ts, model = mod.list)
+years <- rep(1965:2022, each = 6)
+years <- years[1:343]
 
-plot(Wood.all.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
-lines(years, fit.W.all$states[1,], col = "red")
+plot(PHE.long.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+lines(years, fit.W$states[1,], col = "red")
 
 
 
