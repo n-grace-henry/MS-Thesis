@@ -114,10 +114,16 @@ PHE.wide <- PHE.long %>%
 # Only keep necessary columns
 PHE.wide <- PHE.wide[, 1:7]
 
+# Get back to only 3 injections per year
+PHE.wide <- PHE.wide[, -c(5:7)]
+
+# Convert wide back to long 
+PHE.long <- pivot_longer(PHE.wide, cols = c(2:4), names_to = "sample_num", values_to = "adj")
+
 #### Convert to time series data ####
 # Get only value column 
 PHE.W.data <- PHE.long$adj
-PHE.long.ts <- ts(PHE.W.data, start = 1965, end = 2022, frequency = 6)
+PHE.long.ts <- ts(PHE.W.data, start = 1965, end = 2022, frequency = 3)
 
 #### Univariate State-Space Analysis for each system ####
 # Wood
@@ -133,8 +139,8 @@ mod.list <- list(
 )
 
 fit.W <- MARSS(PHE.long.ts, model = mod.list)
-years <- rep(1965:2022, each = 6)
-years <- years[1:343]
+years <- rep(1965:2022, each = 3)
+years <- years[1:172]
 
 plot(PHE.long.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(years, fit.W$states[1,], col = "red")
