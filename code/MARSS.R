@@ -118,7 +118,28 @@ PHE.wide <- PHE.wide[, 1:7]
 PHE.long.ts <- ts(PHE.long, start = 1965, frequency = 6)
 plot(x = PHE.long$Year, PHE.long$adj)
 
-#### Plot ####
+#### Univariate State-Space Analysis for each system ####
+# Wood
+Wood.all <- merged_df[merged_df$System == "Wood", "PHE.mean"]
+Wood.all.ts <- ts(Wood.all, start = 1965, frequency = 2)
+
+mod.list <- list(
+  U = matrix("u"),
+  x0 = matrix("x0"),
+  B = matrix(1),
+  Q = matrix("q"),
+  Z = matrix(1),
+  A = matrix(0),
+  R = matrix("r"), 
+  tinitx = 0
+)
+
+fit.W.all <- MARSS(Wood.all.ts, model = mod.list)
+years <- seq(from = 1965, to = 2022.5, by = 0.5)
+
+plot(Wood.all.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+lines(years, fit.W.all$states[1,], col = "red")
+
 
 
 
