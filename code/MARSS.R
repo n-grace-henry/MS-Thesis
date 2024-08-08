@@ -116,6 +116,8 @@ PHE.wide <- PHE.wide[, 1:7]
 
 # Get back to only 3 injections per year
 PHE.wide <- PHE.wide[, -c(5:7)]
+wide.t <- t(PHE.wide)
+wide.t <- wide.t[-1,]
 
 # Convert wide back to long 
 PHE.long <- pivot_longer(PHE.wide, cols = c(2:4), names_to = "sample_num", values_to = "adj")
@@ -145,6 +147,17 @@ years <- years[1:172]
 plot(PHE.long.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(years, fit.W$states[1,], col = "red")
 
+# Trying textbook code 
+mod.list.0 <- list(B = matrix(1), 
+                   U = matrix("u"), 
+                   Q = matrix("q"), 
+                   Z = matrix(1, 3, 1), 
+                   A = "scaling", 
+                   R = "diagonal and unequal", 
+                   x0 = matrix("mu"), 
+                   tinitx = 0)
+fit.0 <- MARSS(wide.t, model = mod.list.0)
+autoplot(fit.0)
 
 
 
