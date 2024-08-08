@@ -96,6 +96,25 @@ GLU.K.NA <- GLU.K %>%
   arrange(Year, Sample_Number, ID1, Rep) %>%
   select(Year, adj, ID1, Rep)
 
+# Pivot wider with missing years PHE.W
+#Subset to get rid of samples with R 
+PHE.W.test <- PHE.W[!PHE.W$Rep %in% c("R", "a"),]
+
+PHE.long.edit <- PHE.W.test %>%
+  group_by(Year) %>%
+  mutate(sample_num = row_number()) %>%
+  ungroup()
+
+PHE.wide.edit <- PHE.long.edit %>%
+  pivot_wider(names_from = sample_num, values_from = adj, names_prefix = "Value_")
+
+# get rid of extra columns 
+PHE.wide.edit <- PHE.wide.edit[, -c(2,3)]
+
+# Transpose
+wide.t <- t(PHE.wide.edit)
+wide.t <- wide.t[-1,]
+
 #### Upload formatted data from excel ####
 PHE.long <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/PHE.long/PHE.W.csv")
 PHE.long <- PHE.long[, !names(PHE.long) %in% c("ID1", "Rep")]
@@ -119,8 +138,10 @@ PHE.wide <- PHE.wide[, -c(5:7)]
 wide.t <- t(PHE.wide)
 wide.t <- wide.t[-1,]
 
-# Convert wide back to long 
-PHE.long <- pivot_longer(PHE.wide, cols = c(2:4), names_to = "sample_num", values_to = "adj")
+# Change wide data frame so that there are no years with NAs
+
+
+
 
 #### Univariate State-Space Analysis for each system ####
 # Wood
@@ -135,7 +156,7 @@ mod.list <- list(
   tinitx = 0
 )
 
-fit.W <- MARSS(PHE.long.ts, model = mod.list)
+fit.W <- MARSS(wide.t, model = mod.list)
 years <- rep(1965:2022, each = 3)
 years <- years[1:172]
 
@@ -152,7 +173,17 @@ mod.list.0 <- list(B = matrix(1),
                    x0 = matrix("mu"), 
                    tinitx = 0)
 fit.0 <- MARSS(wide.t, model = mod.list.0)
-autoplot(fit.0)
+autoplot(fit.1)
+
+mod.list.1 <- list(B = matrix(1), 
+                   U = matrix("u"), 
+                   Q = matrix("q"), 
+                   Z = matrix(1, 3, 1), 
+                   A = "scaling", 
+                   R = "diagonal and equal", 
+                   x0 = matrix("mu"), 
+                   tinitx = 0)
+fit.1 <- MARSS(wide.t, model = mod.list.1)
 
 
 
