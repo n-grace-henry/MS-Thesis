@@ -122,11 +122,6 @@ wide.t <- wide.t[-1,]
 # Convert wide back to long 
 PHE.long <- pivot_longer(PHE.wide, cols = c(2:4), names_to = "sample_num", values_to = "adj")
 
-#### Convert to time series data ####
-# Get only value column 
-PHE.W.data <- PHE.long$adj
-PHE.long.ts <- ts(PHE.W.data, start = 1965, end = 2022, frequency = 3)
-
 #### Univariate State-Space Analysis for each system ####
 # Wood
 mod.list <- list(
