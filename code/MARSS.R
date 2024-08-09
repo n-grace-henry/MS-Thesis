@@ -21,7 +21,7 @@ data.full$ID1 <- substr(data.full$ID1, 1, 6)
 PHE <- data.full[data.full$Age == "2" &
                           data.full$AAID == "PHE", c("Year", "adj", "System", "Age", "ID1", "Rep")]
 
-#### Wood River PHE####
+# Format Wood river data
 # Format long and wide data frames for Wood system
 PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
 
@@ -73,12 +73,11 @@ fit.1 <- MARSS(wide.t, model = mod.list.1)
 autoplot(fit.1)
 
 
-
 #### Write function to do model for each system ####
 
-model <- function(data){
+model <- function(data, inj){
   # number of injections to consider 
-  max_samples <- 6
+  max_samples <- inj
   
   # Orders samples per year
   ordered.data <- data %>% 
@@ -109,25 +108,34 @@ model <- function(data){
   wide <- wide[-1,]
   
   # Specify model parameters  
-  mod.list.1 <- list(
+  mod.list <- list(
     B = matrix(1),           # State transition matrix
     U = matrix(0),           # No deterministic trend
     Q = matrix("q"),         # Process noise covariance
-    Z = matrix(1, 3, 1),     # Observation matrix with 3 observations per time point
-    A = matrix(0, 3, 1),     # No observation bias, correct dimensions
+    Z = matrix(1, inj, 1),     # Observation matrix with 3 observations per time point
+    A = matrix(0, inj, 1),     # No observation bias, correct dimensions
     R = "diagonal and equal",# Observation noise structure (diagonal and equal)
     x0 = matrix("mu"),       # Initial state estimate
     tinitx = 0               # Initial time point
   )
   
+  # Fitting the model
+  fit <- MARSS(wide, model = mod.list)
+  plots <- autoplot(fit)
+  
+  # Print plots
+  return(plots)
 }
 
+model(PHE.W,3)
 
-#### Egegik PHE
+#### Egegik PHE ####
 # Egegik 
-PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "System", "ID1", "Rep")]
+PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
 
 plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+
+model(PHE.E, 3)
 
 # Kvichak
 PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "System", "ID1", "Rep")]
