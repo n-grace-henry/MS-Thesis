@@ -9,7 +9,6 @@ library(tidyverse)
 
 # Load data 
 data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv")
-#data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_correct_final.csv")
 
 # Add column that takes last two digits of ID1
 data.full$Rep <- substr(data.full$ID1, 8, 8)
@@ -69,15 +68,15 @@ mod.list.1 <- list(
 )
 
 # Fitting the model
-fit.1 <- MARSS(wide.t, model = mod.list.1)
+fit.1 <- MARSS(PHE.wide.t, model = mod.list.1)
 autoplot(fit.1)
 
 
 #### Write function to do model for each system ####
 
-model <- function(data, inj){
+model <- function(data){
   # number of injections to consider 
-  max_samples <- inj
+  max_samples <- 6
   
   # Orders samples per year
   ordered.data <- data %>% 
