@@ -17,11 +17,11 @@ data.full$Rep <- substr(data.full$ID1, 8, 8)
 # Change ID1 column to not show reps
 data.full$ID1 <- substr(data.full$ID1, 1, 6)
 
-#### Non-averaged triplicates per system (max of 6 injections per sample ####
 # Subset data for age 2 and only PHE
 PHE <- data.full[data.full$Age == "2" &
-                   data.full$AAID == "PHE", c("Year", "adj", "System", "Age", "ID1", "Rep")]
+                          data.full$AAID == "PHE", c("Year", "adj", "System", "Age", "ID1", "Rep")]
 
+#### Wood River PHE####
 # Format long and wide data frames for Wood system
 PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
 
@@ -56,11 +56,74 @@ PHE.wide <- PHE.wide[, -c(2,3)]
 PHE.wide.t <- t(PHE.wide)
 PHE.wide.t <- PHE.wide.t[-1,]
 
+# Run Wood PHE model 
+mod.list.1 <- list(
+  B = matrix(1),           # State transition matrix
+  U = matrix(0),           # No deterministic trend
+  Q = matrix("q"),         # Process noise covariance
+  Z = matrix(1, 3, 1),     # Observation matrix with 3 observations per time point
+  A = matrix(0, 3, 1),     # No observation bias, correct dimensions
+  R = "diagonal and equal",# Observation noise structure (diagonal and equal)
+  x0 = matrix("mu"),       # Initial state estimate
+  tinitx = 0               # Initial time point
+)
+
+# Fitting the model
+fit.1 <- MARSS(wide.t, model = mod.list.1)
+autoplot(fit.1)
 
 
 
+#### Write function to do model for each system ####
+
+model <- function(data){
+  # number of injections to consider 
+  max_samples <- 6
+  
+  # Orders samples per year
+  ordered.data <- data %>% 
+    group_by(Year) %>%
+    mutate(Sample_Number = row_number()) %>%
+    complete(Sample_Number = 1:max_samples) %>%
+    arrange(Year, Sample_Number, ID1, Rep) %>%
+    select(Year, adj, ID1, Rep)
+  
+  # Get rid of replicate samples
+  no.rep <- ordered.data[!ordered.data$Rep %in% c("R", "a"),]
+  
+  # Assign sample number to long data frame
+  long <- no.rep %>%
+    group_by(Year) %>%
+    mutate(sample_num = row_number()) %>%
+    ungroup()
+  
+  # Convert to wide format
+  wide <- long %>%
+    pivot_wider(names_from = sample_num, values_from = adj, names_prefix = "Value_")
+  
+  # get rid of extra columns 
+  wide <- wide[, -c(2,3)]
+  
+  # Transpose
+  wide <- t(wide)
+  wide <- wide[-1,]
+  
+  # Specify model parameters  
+  mod.list.1 <- list(
+    B = matrix(1),           # State transition matrix
+    U = matrix(0),           # No deterministic trend
+    Q = matrix("q"),         # Process noise covariance
+    Z = matrix(1, 3, 1),     # Observation matrix with 3 observations per time point
+    A = matrix(0, 3, 1),     # No observation bias, correct dimensions
+    R = "diagonal and equal",# Observation noise structure (diagonal and equal)
+    x0 = matrix("mu"),       # Initial state estimate
+    tinitx = 0               # Initial time point
+  )
+  
+}
 
 
+#### Egegik PHE
 # Egegik 
 PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "System", "ID1", "Rep")]
 
@@ -246,20 +309,5 @@ mod.list.1 <- list(
 fit.1 <- MARSS(wide.t, model = mod.list.1)
 autoplot(fit.1)
 
-# Try to make it smoother
-mod.list.smooth <- list(
-  B = matrix(1),              # State transition matrix
-  U = matrix(0),              # No deterministic trend
-  Q = matrix("q"),            # Process noise
-  Z = matrix(1, 3, 1),        # Observation matrix, each replicate still relates to the state
-  A = matrix(0, 3, 1),        # No observation bias
-  R = "diagonal and equal",   # Keep this as is but ensure R is small enough to smooth the state
-  x0 = matrix("mu"),          # Initial state estimate
-  tinitx = 0                  # Initial time point
-)
-
-# Fit the model to the full dataset with replicates
-fit.smooth <- MARSS(wide.t, model = mod.list.smooth)
-plot(fit.smooth)
 
 
