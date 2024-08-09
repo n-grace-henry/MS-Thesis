@@ -22,14 +22,54 @@ data.full$ID1 <- substr(data.full$ID1, 1, 6)
 PHE <- data.full[data.full$Age == "2" &
                    data.full$AAID == "PHE", c("Year", "adj", "System", "Age", "ID1", "Rep")]
 
-# Wood
+# Format long and wide data frames for Wood system
 PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
+
+plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+
+# Create a new data frame with the desired format for Wood PHE
+max_samples <- 6
+PHE.W.NA <- PHE.W %>% # Orders samples by year
+  group_by(Year) %>%
+  mutate(Sample_Number = row_number()) %>%
+  complete(Sample_Number = 1:max_samples) %>%
+  arrange(Year, Sample_Number, ID1, Rep) %>%
+  select(Year, adj, ID1, Rep)
+
+# Get rid of replicate samples
+PHE.W.test <- PHE.W[!PHE.W$Rep %in% c("R", "a"),]
+
+# Assign sample number to long data frame
+PHE.long.num <- PHE.W.test %>%
+  group_by(Year) %>%
+  mutate(sample_num = row_number()) %>%
+  ungroup()
+
+# Switch to wide format
+PHE.wide <- PHE.long.num %>%
+  pivot_wider(names_from = sample_num, values_from = adj, names_prefix = "Value_")
+
+# get rid of extra columns 
+PHE.wide <- PHE.wide[, -c(2,3)]
+
+# Transpose
+PHE.wide.t <- t(PHE.wide)
+PHE.wide.t <- PHE.wide.t[-1,]
+
+
+
+
+
 
 # Egegik 
 PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "System", "ID1", "Rep")]
 
+plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+
 # Kvichak
 PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "System", "ID1", "Rep")]
+
+plot(PHE.K$Year, PHE.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
 # Subset data for age 2 and only GLU 
 GLU <- data.full[data.full$Age == "2" &
@@ -38,11 +78,17 @@ GLU <- data.full[data.full$Age == "2" &
 # Wood
 GLU.W <- GLU[GLU$System == "Wood", c("Year", "adj", "System", "ID1", "Rep")]
 
+plot(x = GLU.W$Year, y = GLU.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+
 # Egegik
 GLU.E <- GLU[GLU$System == "Egegik", c("Year", "adj", "System", "ID1", "Rep")]
 
+plot(x = GLU.E$Year, y = GLU.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+
 # Kvichak
 GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "System", "ID1", "Rep")]
+
+plot(x = GLU.K$Year, y = GLU.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
 
 # Full df with NAs where there is missing data for each AA
 # Determine the maximum number of samples per year
@@ -160,7 +206,7 @@ fit.W <- MARSS(wide.t, model = mod.list)
 years <- rep(1965:2022, each = 3)
 years <- years[1:172]
 
-plot(PHE.long.ts, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+plot(x = PHE.long$Year, y= PHE.long$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 lines(years, fit.W$states[1,], col = "red")
 
 # Trying textbook code 
@@ -199,5 +245,21 @@ mod.list.1 <- list(
 # Fitting the model
 fit.1 <- MARSS(wide.t, model = mod.list.1)
 autoplot(fit.1)
+
+# Try to make it smoother
+mod.list.smooth <- list(
+  B = matrix(1),              # State transition matrix
+  U = matrix(0),              # No deterministic trend
+  Q = matrix("q"),            # Process noise
+  Z = matrix(1, 3, 1),        # Observation matrix, each replicate still relates to the state
+  A = matrix(0, 3, 1),        # No observation bias
+  R = "diagonal and equal",   # Keep this as is but ensure R is small enough to smooth the state
+  x0 = matrix("mu"),          # Initial state estimate
+  tinitx = 0                  # Initial time point
+)
+
+# Fit the model to the full dataset with replicates
+fit.smooth <- MARSS(wide.t, model = mod.list.smooth)
+plot(fit.smooth)
 
 
