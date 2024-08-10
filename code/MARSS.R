@@ -114,24 +114,28 @@ plot(x = GLU.W$Year, y = GLU.W$adj, type = "p", col = "blue", xlab = "Year", yla
 model(GLU.W)
 
 #### Egegik ####
- # Format data to transposed wide for 3 injections 
-  long <- data %>%
-    arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID1, and Rep
-    filter(!Rep %in% c("R", "a")) %>%  # Filter out unwanted replicates
-    group_by(Year) %>%  # Group by Year
-    mutate(SampleNumber = row_number()) %>%  # Assign unique sample numbers
-    select(-ID1, -Rep)  # Remove columns ID1 and Rep
-  
-  # Convert to wide format
-  wide <- long %>%
-    pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
-  
-  # Transpose
-  wide.t <- t(wide)
-  wide.t <- wide.t[-1,]
-   <- GLU[GLU$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
+GLU.E <- GLU[GLU$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
 plot(x = GLU.E$Year, y = GLU.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
 model(GLU.E)
+
+# Format data to transposed wide for 3 injections 
+long <- GLU.E %>%
+  arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID1, and Rep
+  filter(!Rep %in% c("R", "a")) %>%  # Filter out unwanted replicates
+  group_by(Year) %>%  # Group by Year
+  mutate(SampleNumber = row_number()) %>%  # Assign unique sample numbers
+  select(-ID1, -Rep)  # Remove columns ID1 and Rep
+
+# Convert to wide format
+wide <- long %>%
+  pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
+
+# Transpose
+wide.t <- t(wide)
+wide.t <- wide.t[-1,]
+
+
+
 
 
 # Format data to transposed wide for 3 injections 
