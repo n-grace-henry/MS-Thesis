@@ -26,7 +26,7 @@ PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
 plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
 # Format data to transposed wide for 3 injections 
-PHE.W.arrange <- PHE.W %>%
+PHE.W.long <- PHE.W %>%
   arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID1, and Rep
   filter(!Rep %in% c("R", "a")) %>%  # Filter out unwanted replicates
   group_by(Year) %>%  # Group by Year
