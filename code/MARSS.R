@@ -10,6 +10,10 @@ library(tidyverse)
 # Load data 
 data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv")
 
+# 2007 GLU K
+data.full[c(585:587), "Rep"] <- "R"
+
+
 # Subset data for age 2 and only PHE
 PHE <- data.full[data.full$Age == "2" &
                           data.full$AAID == "PHE", c("Year", "System", "Age", "adj", "ID1", "Rep")]
@@ -118,49 +122,43 @@ GLU.E <- GLU[GLU$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
 plot(x = GLU.E$Year, y = GLU.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
 model(GLU.E)
 
-# Format data to transposed wide for 3 injections 
-long <- GLU.E %>%
-  arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID1, and Rep
-  filter(!Rep %in% c("R", "a")) %>%  # Filter out unwanted replicates
-  group_by(Year) %>%  # Group by Year
-  mutate(SampleNumber = row_number()) %>%  # Assign unique sample numbers
-  select(-ID1, -Rep)  # Remove columns ID1 and Rep
-
-# Convert to wide format
-wide <- long %>%
-  pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
-
-# Transpose
-wide.t <- t(wide)
-wide.t <- wide.t[-1,]
-
-
-
-
-
-# Format data to transposed wide for 3 injections 
-long <- data %>%
-  arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID1, and Rep
-  filter(!Rep %in% c("R", "a")) %>%  # Filter out unwanted replicates
-  group_by(Year) %>%  # Group by Year
-  mutate(SampleNumber = row_number()) %>%  # Assign unique sample numbers
-  select(-ID1, -Rep)  # Remove columns ID1 and Rep
-
-# Convert to wide format
-wide <- long %>%
-  pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
-
-# Transpose
-wide.t <- t(wide)
-wide.t <- wide.t[-1,]
-
-
-
-
-# Kvichak
+#### Kvichak ####
 GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
 plot(x = GLU.K$Year, y = GLU.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
 model(GLU.K)
+
+
+
+# Format data to transposed wide for 3 injections 
+long <- GLU.K %>%
+  arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID1, and Rep
+  filter(!Rep %in% c("R", "a")) %>%  # Filter out unwanted replicates
+  group_by(Year) %>%  # Group by Year
+  mutate(SampleNumber = row_number()) %>%  # Assign unique sample numbers
+  select(-ID1, -Rep)  # Remove columns ID1 and Rep
+
+# Convert to wide format
+PHE.wide <- PHE.W.long %>%
+  pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
+
+# Transpose
+PHE.wide.t <- t(PHE.wide)
+PHE.wide.t <- PHE.wide.t[-1,]
+
+# Run Wood PHE model 
+mod.list.1 <- list(
+  B = matrix(1),           # State transition matrix
+  U = matrix(0),           # No deterministic trend
+  Q = matrix("q"),         # Process noise covariance
+  Z = matrix(1, 3, 1),     # Observation matrix with 3 observations per time point
+  A = matrix(0, 3, 1),     # No observation bias, correct dimensions
+  R = "diagonal and equal",# Observation noise structure (diagonal and equal)
+  x0 = matrix("mu"),       # Initial state estimate
+  tinitx = 0               # Initial time point
+)
+
+
+
 
 # Full df with NAs where there is missing data for each AA
 # Determine the maximum number of samples per year
