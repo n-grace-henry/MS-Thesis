@@ -34,7 +34,7 @@ PHE.W.long <- PHE.W %>%
   select(-ID1, -Rep)  # Remove columns ID1 and Rep
 
 # Convert to wide format
-PHE.wide <- PHE.W.labeled %>%
+PHE.wide <- PHE.W.long %>%
   pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
 
 # Transpose
@@ -61,12 +61,8 @@ autoplot(fit.1)
 #### Write function to do model for each system ####
 model <- function(data){
   
-  # Format long and wide data frames for Wood system
-  PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
-  plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
-  
   # Format data to transposed wide for 3 injections 
-  PHE.W.long <- PHE.W %>%
+  long <- data %>%
     arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID1, and Rep
     filter(!Rep %in% c("R", "a")) %>%  # Filter out unwanted replicates
     group_by(Year) %>%  # Group by Year
@@ -74,12 +70,12 @@ model <- function(data){
     select(-ID1, -Rep)  # Remove columns ID1 and Rep
   
   # Convert to wide format
-  PHE.wide <- PHE.W.labeled %>%
+  wide <- long %>%
     pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
   
   # Transpose
-  PHE.wide.t <- t(PHE.wide)
-  PHE.wide.t <- PHE.wide.t[-1,]
+  wide.t <- t(wide)
+  wide.t <- wide.t[-1,]
   
   # Run Wood PHE model 
   mod.list.1 <- list(
@@ -94,22 +90,46 @@ model <- function(data){
   )
   
   # Fitting the model
-  fit.1 <- MARSS(PHE.wide.t, model = mod.list.1)
-  autoplot(fit.1)
+  fit <- MARSS(wide.t, model = mod.list.1)
+  plots <- autoplot(fit)
   
   # Print plots
   return(plots)
 }
 
-model(PHE.W,3)
+model(PHE.W)
 
 #### Egegik PHE ####
 # Egegik 
 PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
-
 plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+model(PHE.E)
 
-model(PHE.E, 3)
+# Convert to wide format
+wide <- long %>%
+  pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
+
+# Transpose
+wide.t <- t(wide)
+wide.t <- wide.t[-1,]
+
+# Run Wood PHE model 
+mod.list.1 <- list(
+  B = matrix(1),           # State transition matrix
+  U = matrix(0),           # No deterministic trend
+  Q = matrix("q"),         # Process noise covariance
+  Z = matrix(1, 3, 1),     # Observation matrix with 3 observations per time point
+  A = matrix(0, 3, 1),     # No observation bias, correct dimensions
+  R = "diagonal and equal",# Observation noise structure (diagonal and equal)
+  x0 = matrix("mu"),       # Initial state estimate
+  tinitx = 0               # Initial time point
+)
+
+# Fitting the model
+fit <- MARSS(wide.t, model = mod.list.1)
+plots <- autoplot(fit)
+
+
 
 # Kvichak
 PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "System", "ID1", "Rep")]
