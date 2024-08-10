@@ -18,41 +18,24 @@ data.full$ID1 <- substr(data.full$ID1, 1, 6)
 
 # Subset data for age 2 and only PHE
 PHE <- data.full[data.full$Age == "2" &
-                          data.full$AAID == "PHE", c("Year", "adj", "ID1", "Rep")]
+                          data.full$AAID == "PHE", c("Year", "System", "Age", "adj", "ID1", "Rep")]
 
-# Format Wood river data
+# Wood river data
 # Format long and wide data frames for Wood system
 PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
-
 plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
 # Format data to transposed wide for 3 injections 
+PHE.W.arrange <- PHE.W %>%
+  arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID1, and Rep
+  filter(!Rep %in% c("R", "a")) %>%  # Filter out unwanted replicates
+  group_by(Year) %>%  # Group by Year
+  mutate(SampleNumber = row_number()) %>%  # Assign unique sample numbers
+  select(-ID1, -Rep)  # Remove columns ID1 and Rep
 
-
-
-samples <- 6
-PHE.W.NA <- PHE.W %>% # Orders samples by year
-  group_by(Year) %>%
-  mutate(Sample_Number = row_number()) %>%
-  complete(Sample_Number = 1:samples) %>%
-  arrange(Year, Sample_Number, ID1, Rep) %>%
-  select(Year, adj, ID1, Rep)
-
-# Get rid of replicate samples use this line if trying to do only 3 injections
-PHE.W.NA <- PHE.W.NA[!PHE.W.NA$Rep %in% c("R", "a"),]
-
-# Assign sample number to long data frame
-PHE.long.num <- PHE.W.NA %>%
-  group_by(Year) %>%
-  mutate(sample_num = row_number()) %>%
-  ungroup()
-
-# Switch to wide format
-PHE.wide <- PHE.long.num %>%
-  pivot_wider(names_from = sample_num, values_from = adj, names_prefix = "Value_")
-
-# get rid of extra columns 
-PHE.wide <- PHE.wide[, -c(2,3)]
+# Convert to wide format
+PHE.wide <- PHE.W.labeled %>%
+  pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
 
 # Transpose
 PHE.wide.t <- t(PHE.wide)
