@@ -10,12 +10,6 @@ library(tidyverse)
 # Load data 
 data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv")
 
-# Add column that takes last two digits of ID1
-data.full$Rep <- substr(data.full$ID1, 8, 8)
-
-# Change ID1 column to not show reps
-data.full$ID1 <- substr(data.full$ID1, 1, 6)
-
 # Subset data for age 2 and only PHE
 PHE <- data.full[data.full$Age == "2" &
                           data.full$AAID == "PHE", c("Year", "System", "Age", "adj", "ID1", "Rep")]
@@ -57,7 +51,6 @@ mod.list.1 <- list(
 fit.1 <- MARSS(PHE.wide.t, model = mod.list.1)
 autoplot(fit.1)
 
-
 #### Write function to do model for each system ####
 model <- function(data){
   
@@ -97,13 +90,57 @@ model <- function(data){
   return(plots)
 }
 
-model(PHE.W)
-
 #### Egegik PHE ####
 # Egegik 
 PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
 plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 model(PHE.E)
+
+#### Kvichak PHE ####
+# Kvichak
+PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
+plot(PHE.K$Year, PHE.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+model(PHE.K)
+
+
+#### GLU ####
+# Subset data for age 2 and only GLU 
+GLU <- data.full[data.full$Age == "2" &
+                   data.full$AAID == "GLU", c("Year", "adj", "System", "Age", "ID1", "Rep")]
+
+#### Wood GLU ####
+GLU.W <- GLU[GLU$System == "Wood", c("Year", "adj", "ID1", "Rep")]
+plot(x = GLU.W$Year, y = GLU.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+model(GLU.W)
+
+#### Egegik ####
+ # Format data to transposed wide for 3 injections 
+  long <- data %>%
+    arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID1, and Rep
+    filter(!Rep %in% c("R", "a")) %>%  # Filter out unwanted replicates
+    group_by(Year) %>%  # Group by Year
+    mutate(SampleNumber = row_number()) %>%  # Assign unique sample numbers
+    select(-ID1, -Rep)  # Remove columns ID1 and Rep
+  
+  # Convert to wide format
+  wide <- long %>%
+    pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
+  
+  # Transpose
+  wide.t <- t(wide)
+  wide.t <- wide.t[-1,]
+   <- GLU[GLU$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
+plot(x = GLU.E$Year, y = GLU.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+model(GLU.E)
+
+
+# Format data to transposed wide for 3 injections 
+long <- data %>%
+  arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID1, and Rep
+  filter(!Rep %in% c("R", "a")) %>%  # Filter out unwanted replicates
+  group_by(Year) %>%  # Group by Year
+  mutate(SampleNumber = row_number()) %>%  # Assign unique sample numbers
+  select(-ID1, -Rep)  # Remove columns ID1 and Rep
 
 # Convert to wide format
 wide <- long %>%
@@ -113,47 +150,13 @@ wide <- long %>%
 wide.t <- t(wide)
 wide.t <- wide.t[-1,]
 
-# Run Wood PHE model 
-mod.list.1 <- list(
-  B = matrix(1),           # State transition matrix
-  U = matrix(0),           # No deterministic trend
-  Q = matrix("q"),         # Process noise covariance
-  Z = matrix(1, 3, 1),     # Observation matrix with 3 observations per time point
-  A = matrix(0, 3, 1),     # No observation bias, correct dimensions
-  R = "diagonal and equal",# Observation noise structure (diagonal and equal)
-  x0 = matrix("mu"),       # Initial state estimate
-  tinitx = 0               # Initial time point
-)
-
-# Fitting the model
-fit <- MARSS(wide.t, model = mod.list.1)
-plots <- autoplot(fit)
 
 
 
 # Kvichak
-PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "System", "ID1", "Rep")]
-
-plot(PHE.K$Year, PHE.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
-
-# Subset data for age 2 and only GLU 
-GLU <- data.full[data.full$Age == "2" &
-                   data.full$AAID == "GLU", c("Year", "adj", "System", "Age", "ID1", "Rep")]
-
-# Wood
-GLU.W <- GLU[GLU$System == "Wood", c("Year", "adj", "System", "ID1", "Rep")]
-
-plot(x = GLU.W$Year, y = GLU.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
-
-# Egegik
-GLU.E <- GLU[GLU$System == "Egegik", c("Year", "adj", "System", "ID1", "Rep")]
-
-plot(x = GLU.E$Year, y = GLU.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
-
-# Kvichak
-GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "System", "ID1", "Rep")]
-
+GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
 plot(x = GLU.K$Year, y = GLU.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+model(GLU.K)
 
 # Full df with NAs where there is missing data for each AA
 # Determine the maximum number of samples per year
