@@ -59,54 +59,43 @@ autoplot(fit.1)
 
 
 #### Write function to do model for each system ####
-
 model <- function(data){
-  # number of injections to consider 
-  max_samples <- 6
   
-  # Orders samples per year
-  ordered.data <- data %>% 
-    group_by(Year) %>%
-    mutate(Sample_Number = row_number()) %>%
-    complete(Sample_Number = 1:max_samples) %>%
-    arrange(Year, Sample_Number, ID1, Rep) %>%
-    select(Year, adj, ID1, Rep)
+  # Format long and wide data frames for Wood system
+  PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
+  plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
   
-  # Get rid of replicate samples
-  no.rep <- ordered.data[!ordered.data$Rep %in% c("R", "a"),]
-  
-  # Assign sample number to long data frame
-  long <- no.rep %>%
-    group_by(Year) %>%
-    mutate(sample_num = row_number()) %>%
-    ungroup()
+  # Format data to transposed wide for 3 injections 
+  PHE.W.long <- PHE.W %>%
+    arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID1, and Rep
+    filter(!Rep %in% c("R", "a")) %>%  # Filter out unwanted replicates
+    group_by(Year) %>%  # Group by Year
+    mutate(SampleNumber = row_number()) %>%  # Assign unique sample numbers
+    select(-ID1, -Rep)  # Remove columns ID1 and Rep
   
   # Convert to wide format
-  wide <- long %>%
-    pivot_wider(names_from = sample_num, values_from = adj, names_prefix = "Value_")
-  
-  # get rid of extra columns 
-  wide <- wide[, -c(2,3)]
+  PHE.wide <- PHE.W.labeled %>%
+    pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
   
   # Transpose
-  wide <- t(wide)
-  wide <- wide[-1,]
+  PHE.wide.t <- t(PHE.wide)
+  PHE.wide.t <- PHE.wide.t[-1,]
   
-  # Specify model parameters  
-  mod.list <- list(
+  # Run Wood PHE model 
+  mod.list.1 <- list(
     B = matrix(1),           # State transition matrix
     U = matrix(0),           # No deterministic trend
     Q = matrix("q"),         # Process noise covariance
-    Z = matrix(1, inj, 1),     # Observation matrix with 3 observations per time point
-    A = matrix(0, inj, 1),     # No observation bias, correct dimensions
+    Z = matrix(1, 3, 1),     # Observation matrix with 3 observations per time point
+    A = matrix(0, 3, 1),     # No observation bias, correct dimensions
     R = "diagonal and equal",# Observation noise structure (diagonal and equal)
     x0 = matrix("mu"),       # Initial state estimate
     tinitx = 0               # Initial time point
   )
   
   # Fitting the model
-  fit <- MARSS(wide, model = mod.list)
-  plots <- autoplot(fit)
+  fit.1 <- MARSS(PHE.wide.t, model = mod.list.1)
+  autoplot(fit.1)
   
   # Print plots
   return(plots)
