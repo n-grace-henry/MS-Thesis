@@ -18,7 +18,7 @@ data.full$ID1 <- substr(data.full$ID1, 1, 6)
 
 # Subset data for age 2 and only PHE
 PHE <- data.full[data.full$Age == "2" &
-                          data.full$AAID == "PHE", c("Year", "adj", "System", "Age", "ID1", "Rep")]
+                          data.full$AAID == "PHE", c("Year", "adj", "ID1", "Rep")]
 
 # Format Wood river data
 # Format long and wide data frames for Wood system
@@ -26,20 +26,23 @@ PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
 
 plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
 
-# Create a new data frame with the desired format for Wood PHE
-max_samples <- 6
+# Format data to transposed wide for 3 injections 
+
+
+
+samples <- 6
 PHE.W.NA <- PHE.W %>% # Orders samples by year
   group_by(Year) %>%
   mutate(Sample_Number = row_number()) %>%
-  complete(Sample_Number = 1:max_samples) %>%
+  complete(Sample_Number = 1:samples) %>%
   arrange(Year, Sample_Number, ID1, Rep) %>%
   select(Year, adj, ID1, Rep)
 
-# Get rid of replicate samples
-PHE.W.test <- PHE.W[!PHE.W$Rep %in% c("R", "a"),]
+# Get rid of replicate samples use this line if trying to do only 3 injections
+PHE.W.NA <- PHE.W.NA[!PHE.W.NA$Rep %in% c("R", "a"),]
 
 # Assign sample number to long data frame
-PHE.long.num <- PHE.W.test %>%
+PHE.long.num <- PHE.W.NA %>%
   group_by(Year) %>%
   mutate(sample_num = row_number()) %>%
   ungroup()
