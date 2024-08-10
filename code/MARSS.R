@@ -51,6 +51,9 @@ mod.list.1 <- list(
 fit.1 <- MARSS(PHE.wide.t, model = mod.list.1)
 autoplot(fit.1)
 
+test <- fit.1$states
+plot(test[1,], type = "l", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+
 #### Write function to do model for each system ####
 model <- function(data){
   
@@ -89,6 +92,8 @@ model <- function(data){
   # Print plots
   return(plots)
 }
+
+PHE.W.mod <- model(PHE.W)
 
 #### Egegik PHE ####
 # Egegik 
@@ -135,6 +140,7 @@ PHE.W.NA <- PHE.W %>%
   select(Year, adj, ID1, Rep)
 
 
+#### Subset state for each system and AA for TP calc ####
 
 
 
