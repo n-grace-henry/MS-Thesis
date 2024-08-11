@@ -45,5 +45,20 @@ wide <- long.all.yr %>%
 wide.t <- t(wide)
 wide.t <- wide.t[-1,]
 
+# Model across all years 
+mod.list.1 <- list(
+  B = matrix(1),           # State transition matrix
+  U = matrix(0),           # No deterministic trend
+  Q = matrix("q"),         # Process noise covariance
+  Z = matrix(1, 3, 1),     # Observation matrix with 3 observations per time point
+  A = matrix(0, 3, 1),     # No observation bias, correct dimensions
+  R = "diagonal and equal",# Observation noise structure (diagonal and equal)
+  x0 = matrix("mu"),       # Initial state estimate
+  tinitx = 0               # Initial time point
+)
+
+# Fitting the model
+fit.1 <- MARSS(wide.t, model = mod.list.1)
+autoplot(fit.1)
 
 

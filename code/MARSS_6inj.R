@@ -9,14 +9,34 @@ library(tidyverse)
 
 # Load data 
 data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv")
+
+# Subset data for age 2 and only PHE
+PHE <- data.full[data.full$Age == "2" &
+                   data.full$AAID == "PHE", c("Year", "System", "Age", "adj", "ID1", "Rep")]
+
 # Create a new data frame with the desired format for Wood PHE
 PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
-samples <- 6
-PHE.W.NA <- PHE.W %>%
-  group_by(Year) %>%
-  mutate(Sample_Number = row_number()) %>%
-  complete(Sample_Number = 1:samples) %>%
-  arrange(Year, Sample_Number, ID1, Rep) %>%
-  select(Year, adj, ID1, Rep)
+
+
+
+
+# Full years to represent in data
+full_years <- seq(1965, 2022, by = 1)
+
+# Format data: three six per year, every year represented
+long.all.yr <- PHE.W %>%
+  arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID, and Rep
+  group_by(Year) %>%  # Group by Year
+  mutate(SampleNumber = as.character(row_number())) %>%  # Assign and convert unique sample numbers to characters
+  select(-ID1, -Rep) %>%  # Remove columns ID and Rep
+  ungroup() %>%  # Ungroup to avoid issues with expand.grid
+  right_join(
+    expand.grid(
+      Year = full_years,
+      SampleNumber = c("1", "2", "3", "4", "5", "6")
+    ),
+    by = c("Year", "SampleNumber")
+  ) %>%
+  arrange(Year, SampleNumber)
 
 
