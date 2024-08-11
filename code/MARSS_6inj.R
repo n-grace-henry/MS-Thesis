@@ -17,9 +17,6 @@ PHE <- data.full[data.full$Age == "2" &
 # Create a new data frame with the desired format for Wood PHE
 PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
 
-
-
-
 # Full years to represent in data
 full_years <- seq(1965, 2022, by = 1)
 
@@ -38,5 +35,33 @@ long.all.yr <- PHE.W %>%
     by = c("Year", "SampleNumber")
   ) %>%
   arrange(Year, SampleNumber)
+
+# Convert to wide format
+wide <- long.all.yr %>%
+  pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
+
+# Transpose wide format
+wide.t <- t(wide)
+wide.t <- wide.t[-1,]
+
+# Run model
+mod.list.1 <- list(
+  B = matrix(1),           # State transition matrix
+  U = matrix(0),           # No deterministic trend
+  Q = matrix("q"),         # Process noise covariance
+  Z = matrix(1, 6, 1),     # Observation matrix with 3 observations per time point
+  A = matrix(0, 6, 1),     # No observation bias, correct dimensions
+  R = "diagonal and equal",# Observation noise structure (diagonal and equal)
+  x0 = matrix("mu"),       # Initial state estimate
+  tinitx = 0               # Initial time point
+)
+
+# Fitting the model
+fit.1 <- MARSS(wide.t, model = mod.list.1)
+autoplot(fit.1)
+
+
+
+
 
 
