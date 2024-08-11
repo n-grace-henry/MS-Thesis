@@ -128,16 +128,6 @@ GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
 plot(x = GLU.K$Year, y = GLU.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
 model(GLU.K)
 
-#### Make model run for 6 injections per year ####
-max_samples <- 6
-
-# Create a new data frame with the desired format for Wood PHE
-PHE.W.NA <- PHE.W %>%
-  group_by(Year) %>%
-  mutate(Sample_Number = row_number()) %>%
-  complete(Sample_Number = 1:max_samples) %>%
-  arrange(Year, Sample_Number, ID1, Rep) %>%
-  select(Year, adj, ID1, Rep)
 
 
 #### Subset state for each system and AA for TP calc ####
