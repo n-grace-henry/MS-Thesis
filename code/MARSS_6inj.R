@@ -51,7 +51,7 @@ mod.list.1 <- list(
   Q = matrix("q"),         # Process noise covariance
   Z = matrix(1, 6, 1),     # Observation matrix with 3 observations per time point
   A = matrix(0, 6, 1),     # No observation bias, correct dimensions
-  R = "diagonal and equal",# Observation noise structure (diagonal and equal)
+  R = "diagonal and unequal",    # Observation noise structure (diagonal and equal)
   x0 = matrix("mu"),       # Initial state estimate
   tinitx = 0               # Initial time point
 )
@@ -60,7 +60,8 @@ mod.list.1 <- list(
 fit.1 <- MARSS(wide.t, model = mod.list.1)
 autoplot(fit.1)
 
-
+# Extract states
+states <- fit.1$states
 
 
 

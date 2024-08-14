@@ -80,7 +80,7 @@ model <- function(data){
     Q = matrix("q"),         # Process noise covariance
     Z = matrix(1, 3, 1),     # Observation matrix with 3 observations per time point
     A = matrix(0, 3, 1),     # No observation bias, correct dimensions
-    R = "diagonal and equal",# Observation noise structure (diagonal and equal)
+    R = "unconstrained",         # Observation noise structure (diagonal and equal)
     x0 = matrix("mu"),       # Initial state estimate
     tinitx = 0               # Initial time point
   )
@@ -129,8 +129,8 @@ plot(x = GLU.K$Year, y = GLU.K$adj, type = "p", col = "blue", xlab = "Year", yla
 model(GLU.K)
 
 
-
 #### Subset state for each system and AA for TP calc ####
+
 
 
 

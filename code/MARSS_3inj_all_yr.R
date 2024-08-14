@@ -52,7 +52,7 @@ mod.list.1 <- list(
   Q = matrix("q"),         # Process noise covariance
   Z = matrix(1, 3, 1),     # Observation matrix with 3 observations per time point
   A = matrix(0, 3, 1),     # No observation bias, correct dimensions
-  R = "diagonal and equal",# Observation noise structure (diagonal and equal)
+  R = "diagonal and unequal",# Observation noise structure (diagonal and equal)
   x0 = matrix("mu"),       # Initial state estimate
   tinitx = 0               # Initial time point
 )
