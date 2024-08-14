@@ -51,9 +51,6 @@ mod.list.1 <- list(
 fit.1 <- MARSS(PHE.wide.t, model = mod.list.1)
 autoplot(fit.1)
 
-test <- fit.1$states
-plot(test[1,], type = "l", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
-
 #### Write function to do model for each system ####
 model <- function(data){
   
