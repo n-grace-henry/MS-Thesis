@@ -94,7 +94,6 @@ all.GLU.scaled <- apply(all.GLU, MARGIN = 1, FUN = mean, na.rm = TRUE)
 all.PHE.centered <- sweep(all.PHE, MARGIN = 1, STATS = all.PHE.scaled, FUN = "-")
 all.GLU.centered <- sweep(all.GLU, MARGIN = 1, STATS = all.GLU.scaled, FUN = "-")
 
-
 # Define Z matrix
 ZZ <- matrix(0, 9, 3) # try three by three and throwing out triplicates
 ZZ[1:3, 1] <- 1
@@ -113,13 +112,17 @@ mod.list <- list(
   tinitx = 0             
 )
 
-fit.1 <- MARSS(all.PHE.centered, model = mod.list)
-autoplot(fit.1)
+# Fit PHE model 
+PHE.fit <- MARSS(all.PHE.centered, model = mod.list)
+autoplot(PHE.fit)
+
+# Fit GLU model 
+GLU.fit <- MARSS(all.GLU.centered, model = mod.list)
+autoplot(GLU.fit)
 
 
-matrix(c(
-  rep(c(1, 0, 0), 3),  # First 3 rows
-  rep(c(0, 1, 0), 3),  # Second 3 rows
-  rep(c(0, 0, 1), 3)))   # Last 3 rows
+
+
+
 
 
