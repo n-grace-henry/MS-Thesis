@@ -17,7 +17,7 @@ PHE <- data.full[data.full$Age == "2" &
 # Wood river data
 # Format long and wide data frames for Wood system
 PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
-plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "PHE Wood")
 
 # Format data to transposed wide for 3 injections 
 PHE.W.long <- PHE.W %>%
@@ -95,13 +95,13 @@ PHE.W.mod <- model(PHE.W)
 #### Egegik PHE ####
 # Egegik 
 PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
-plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "PHE Egegik")
 model(PHE.E)
 
 #### Kvichak PHE ####
 # Kvichak
 PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
-plot(PHE.K$Year, PHE.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "Time Series Plot")
+plot(PHE.K$Year, PHE.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "PHE Kvichak")
 model(PHE.K)
 
 
@@ -112,17 +112,17 @@ GLU <- data.full[data.full$Age == "2" &
 
 #### Wood GLU ####
 GLU.W <- GLU[GLU$System == "Wood", c("Year", "adj", "ID1", "Rep")]
-plot(x = GLU.W$Year, y = GLU.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+plot(x = GLU.W$Year, y = GLU.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "GLU Wood")
 model(GLU.W)
 
 #### Egegik ####
 GLU.E <- GLU[GLU$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
-plot(x = GLU.E$Year, y = GLU.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+plot(x = GLU.E$Year, y = GLU.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "GLU Egegik")
 model(GLU.E)
 
 #### Kvichak ####
 GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
-plot(x = GLU.K$Year, y = GLU.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "Time Series Plot")
+plot(x = GLU.K$Year, y = GLU.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU.mean", main = "GLU Kvichak")
 model(GLU.K)
 
 
