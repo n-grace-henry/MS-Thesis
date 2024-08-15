@@ -86,20 +86,40 @@ all.PHE <- rbind(wide.PHE.W, wide.PHE.K, wide.PHE.E)
 # Combine all GLU systems
 all.GLU <- rbind(wide.GLU.W, wide.GLU.K, wide.GLU.E)
 
-# Model across all years 
-mod.list.1 <- list(
-  B = matrix(1),           # State transition matrix
-  U = matrix(0),           # No deterministic trend
-  Q = matrix("q"),         # Process noise covariance
-  Z = matrix(1, 3, 1),     # Observation matrix with 3 observations per time point
-  A = matrix(0, 3, 1),     # No observation bias, correct dimensions
-  R = "diagonal and unequal",# Observation noise structure (diagonal and equal)
-  x0 = matrix("mu"),       # Initial state estimate
-  tinitx = 0               # Initial time point
+# Scale PHE and GLU data by subtracting the mean
+all.PHE.scaled <- apply(all.PHE, MARGIN = 1, FUN = mean, na.rm = TRUE)
+all.GLU.scaled <- apply(all.GLU, MARGIN = 1, FUN = mean, na.rm = TRUE)
+
+# Substract mean from data
+all.PHE.centered <- sweep(all.PHE, MARGIN = 1, STATS = all.PHE.scaled, FUN = "-")
+all.GLU.centered <- sweep(all.GLU, MARGIN = 1, STATS = all.GLU.scaled, FUN = "-")
+
+
+# Define Z matrix
+ZZ <- matrix(0, 9, 3) # try three by three and throwing out triplicates
+ZZ[1:3, 1] <- 1
+ZZ[4:6, 2] <- 1
+ZZ[7:9, 3] <- 1
+
+# PHE model specifications
+mod.list <- list(
+  B = "identity",  
+  U = "zero",          
+  Q = "diagonal and equal",         
+  Z = ZZ,
+  A = "zero",    
+  R = "diagonal and unequal",
+  x0 = matrix(c("mu1", "mu2", "mu3"), nrow = 3, ncol = 1),      
+  tinitx = 0             
 )
 
-# Fitting the model
-fit.1 <- MARSS(wide.t, model = mod.list.1)
+fit.1 <- MARSS(all.PHE.centered, model = mod.list)
 autoplot(fit.1)
+
+
+matrix(c(
+  rep(c(1, 0, 0), 3),  # First 3 rows
+  rep(c(0, 1, 0), 3),  # Second 3 rows
+  rep(c(0, 0, 1), 3)))   # Last 3 rows
 
 
