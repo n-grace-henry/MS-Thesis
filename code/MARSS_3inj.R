@@ -47,6 +47,15 @@ mod.list.1 <- list(
   tinitx = 0               # Initial time point
 )
 
+#rbind sites 
+# A = "scaling" 
+# Change the mean, don't change the variance subtract the mean, "zero" 
+# B = "identity"
+# U = "zero" or matrix(0, 3, 1)
+# Q = "diagonal and equal"
+# Z = 9 rows, 3 columns, First 3 rows of Z should be c(1, 0, 0), Second 3 rows of Z should be c(0, 1, 0), Last 3 rows of Z should be c(0, 0, 1)
+
+
 # Fitting the model
 fit.1 <- MARSS(PHE.wide.t, model = mod.list.1)
 autoplot(fit.1)
