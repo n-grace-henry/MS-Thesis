@@ -125,9 +125,58 @@ PHE.state.W <- PHE.fit$states[1,]
 PHE.state.K <- PHE.fit$states[2,]
 PHE.state.E <- PHE.fit$states[3,]
 
-GLU.states <- GLU.fit$states + all.GLU.scaled
+GLU.states.W <- GLU.fit$states[1,]
+GLU.states.K <- GLU.fit$states[2,]
+GLU.states.E <- GLU.fit$states[3,]
 
+# Trophic position calculations
+beta <- 3.4 #commonly used constant
+TDF <- 7.06 #from Lerner et al 2020
 
+tp.W <- (((GLU.states.W - PHE.state.W)-beta)/TDF) + 1
+tp.K <- (((GLU.states.K - PHE.state.K)-beta)/TDF) + 1
+tp.E <- (((GLU.states.E - PHE.state.E)-beta)/TDF) + 1
+
+# Put into one data frame for plotting 
+years <- seq(1965, 2022, by = 1)
+tp <- (cbind(years, tp.W, tp.K, tp.E))
+colnames(tp) <- c("Year", "Wood", "Egegik", "Kvichak")
+tp <- as.data.frame(tp)
+
+# Convert to long for plotting 
+tp_long <- pivot_longer(tp, cols = -Year, names_to = "System", values_to = "TP")
+
+# Plot all
+ggplot(tp_long, aes(x = Year, y = TP, color = System)) +
+  geom_line() +
+  labs(title = "Trophic Position Over Time",
+       x = "Year",
+       y = "Trophic Position") +
+  theme_minimal()
+
+# Plot Wood 
+ggplot(tp, aes(x = Year, y = Wood)) +
+  geom_line() +
+  labs(title = "Wood Trophic Position Over Time",
+       x = "Year",
+       y = "Trophic Position") +
+  theme_minimal()
+
+# Plot Egegik
+ggplot(tp, aes(x = Year, y = Egegik)) +
+  geom_line() +
+  labs(title = "Egegik Trophic Position Over Time",
+       x = "Year",
+       y = "Trophic Position") +
+  theme_minimal()
+
+# Plot Kvichak
+ggplot(tp, aes(x = Year, y = Kvichak)) +
+  geom_line() +
+  labs(title = "Kvichak Trophic Position Over Time",
+       x = "Year",
+       y = "Trophic Position") +
+  theme_minimal()
 
 
 
