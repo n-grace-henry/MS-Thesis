@@ -106,19 +106,26 @@ mod.list <- list(
   U = "zero",          
   Q = "diagonal and equal",         
   Z = ZZ,
-  A = "zero",    
+  A = "scaling",    
   R = "diagonal and unequal",
   x0 = matrix(c("mu1", "mu2", "mu3"), nrow = 3, ncol = 1),      
   tinitx = 0             
 )
 
 # Fit PHE model 
-PHE.fit <- MARSS(all.PHE.centered, model = mod.list)
+PHE.fit <- MARSS(all.PHE, model = mod.list)
 autoplot(PHE.fit)
 
 # Fit GLU model 
-GLU.fit <- MARSS(all.GLU.centered, model = mod.list)
+GLU.fit <- MARSS(all.GLU, model = mod.list)
 autoplot(GLU.fit)
+
+# Subset states
+PHE.state.W <- PHE.fit$states[1,]
+PHE.state.K <- PHE.fit$states[2,]
+PHE.state.E <- PHE.fit$states[3,]
+
+GLU.states <- GLU.fit$states + all.GLU.scaled
 
 
 
