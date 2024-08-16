@@ -16,12 +16,15 @@ PHE <- data.full[data.full$Age == "2" &
 
 # Subset Wood PHE
 PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
+plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "PHE Wood")
 
 # Subset Kvichak PHE 
 PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
+plot(x = PHE.K$Year, y = PHE.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "PHE Wood")
 
 # Subset Egegik PHE
 PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
+plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "PHE Wood")
 
 # Subset data for age 2 and only PHE
 GLU <- data.full[data.full$Age == "2" &
