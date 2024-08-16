@@ -148,10 +148,12 @@ tp_long <- pivot_longer(tp, cols = -Year, names_to = "System", values_to = "TP")
 
 # Plot all
 ggplot(tp_long, aes(x = Year, y = TP, color = System)) +
-  geom_line() +
+  geom_line(size = 1.5) +
   labs(title = "Trophic Position Over Time",
        x = "Year",
        y = "Trophic Position") +
+  scale_x_continuous(breaks = seq(min(tp_long$Year), max(tp_long$Year), by = 3), 
+                     labels = function(x) as.character(x)) +  # Custom labeling function
   theme_minimal()
 
 # Plot Wood 
