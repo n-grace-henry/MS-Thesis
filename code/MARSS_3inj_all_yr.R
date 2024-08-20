@@ -143,8 +143,20 @@ lines(x = years, y = PHE.state.W, type = "l", col = "blue", xlab = "Year", ylab 
 # Kvichak
 plot(x = PHE.K$Year, y = PHE.K$adj, type = "p", col = "black", xlab = "Year", ylab = "PHE.mean", main = "PHE Kvichak")
 lines(x = years, y = PHE.state.K, type = "l", col = "blue", xlab = "Year", ylab = "PHE State", main = "PHE Kvichak")
+# Egegik
+plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", col = "black", xlab = "Year", ylab = "PHE.mean", main = "PHE Egegik")
+lines(x = years, y = PHE.state.E, type = "l", col = "blue", xlab = "Year", ylab = "PHE State", main = "PHE Egegik")
 
-
+# Plot GLU states
+# Wood
+plot(x = GLU.W$Year, y = GLU.W$adj, type = "p", col = "black", xlab = "Year", ylab = "GLU.mean", main = "GLU Wood")
+lines(x = years, y = GLU.states.W, type = "l", col = "blue", xlab = "Year", ylab = "GLU State", main = "GLU Wood")
+# Kvichak
+plot(x = GLU.K$Year, y = GLU.K$adj, type = "p", col = "black", xlab = "Year", ylab = "GLU.mean", main = "GLU Kvichak")
+lines(x = years, y = GLU.states.K, type = "l", col = "blue", xlab = "Year", ylab = "GLU State", main = "GLU Kvichak")
+# Egegik
+plot(x = GLU.E$Year, y = GLU.E$adj, type = "p", col = "black", xlab = "Year", ylab = "GLU.mean", main = "GLU Egegik")
+lines(x = years, y = GLU.states.E, type = "l", col = "blue", xlab = "Year", ylab = "GLU State", main = "GLU Egegik")
 
 # Trophic position calculations
 beta <- 3.4 #commonly used constant
