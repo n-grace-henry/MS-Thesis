@@ -32,12 +32,15 @@ GLU <- data.full[data.full$Age == "2" &
 
 # Subset Wood GLU
 GLU.W <- GLU[GLU$System == "Wood", c("Year", "adj", "ID1", "Rep")]
+plot(x = GLU.W$Year, y = GLU.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU", main = "GLU Wood")
 
 # Subset Kvichak GLU
 GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
+plot(x = GLU.K$Year, y = GLU.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU", main = "GLU Kvichak")
 
 # Subset Egegik GLU
 GLU.E <- GLU[GLU$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
+plot(x = GLU.E$Year, y = GLU.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU", main = "GLU Egegik")
 
 # Function to get all data to wide format 
 wide <- function(data){
@@ -132,6 +135,17 @@ GLU.states.W <- GLU.fit$states[1,]
 GLU.states.K <- GLU.fit$states[2,]
 GLU.states.E <- GLU.fit$states[3,]
 
+# Plot PHE states 
+years <- seq(1965, 2022, by = 1)
+# Wood
+plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "black", xlab = "Year", ylab = "PHE.mean", main = "PHE Wood")
+lines(x = years, y = PHE.state.W, type = "l", col = "blue", xlab = "Year", ylab = "PHE State", main = "PHE Wood")
+# Kvichak
+plot(x = PHE.K$Year, y = PHE.K$adj, type = "p", col = "black", xlab = "Year", ylab = "PHE.mean", main = "PHE Kvichak")
+lines(x = years, y = PHE.state.K, type = "l", col = "blue", xlab = "Year", ylab = "PHE State", main = "PHE Kvichak")
+
+
+
 # Trophic position calculations
 beta <- 3.4 #commonly used constant
 TDF <- 7.06 #from Lerner et al 2020
@@ -141,7 +155,6 @@ tp.K <- (((GLU.states.K - PHE.state.K)-beta)/TDF) + 1
 tp.E <- (((GLU.states.E - PHE.state.E)-beta)/TDF) + 1
 
 # Put into one data frame for plotting 
-years <- seq(1965, 2022, by = 1)
 tp <- (cbind(years, tp.W, tp.K, tp.E))
 colnames(tp) <- c("Year", "Wood", "Egegik", "Kvichak")
 tp <- as.data.frame(tp)
