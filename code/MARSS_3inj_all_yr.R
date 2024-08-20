@@ -101,7 +101,7 @@ all.PHE.centered <- sweep(all.PHE, MARGIN = 1, STATS = all.PHE.scaled, FUN = "-"
 all.GLU.centered <- sweep(all.GLU, MARGIN = 1, STATS = all.GLU.scaled, FUN = "-")
 
 # Define Z matrix
-ZZ <- matrix(0, 9, 3) # try three by three and throwing out triplicates
+ZZ <- matrix(0, 9, 3) 
 ZZ[1:3, 1] <- 1
 ZZ[4:6, 2] <- 1
 ZZ[7:9, 3] <- 1
