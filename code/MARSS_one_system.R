@@ -127,5 +127,27 @@ k.GLU.one <- GLU.fit.one$num.params
 n.GLU.one <- nrow(all.GLU) * ncol(all.GLU)
 AICC.GLU.one <- AIC.GLU.one + (2 * k.GLU.one * (k.GLU.one + 1)) / (n.GLU.one - k.GLU.one - 1)
 
+# Subset states
+PHE.state <- PHE.fit.one$states
+GLU.state <- GLU.fit.one$states
+
+# Plot overall PHE state 
+years <- seq(1965, 2022, by = 1)
+plot(x = PHE$Year, y = PHE$adj, type = "p", col = "black", xlab = "Year", ylab = "PHE.mean", main = "PHE Wood")
+lines(x = years, y = PHE.state, type = "l", col = "blue", xlab = "Year", ylab = "PHE State", main = "PHE Wood")
+
+# Plot overall GLU state
+plot(x = GLU$Year, y = GLU$adj, type = "p", col = "black", xlab = "Year", ylab = "GLU.mean", main = "GLU Wood")
+lines(x = years, y = GLU.state, type = "l", col = "blue", xlab = "Year", ylab = "GLU State", main = "GLU Wood")
+
+# Trophic position calculations
+beta <- 3.4 #commonly used constant
+TDF <- 7.06 #from Lerner et al 2020
+
+tp <- (((GLU.state - PHE.state)-beta)/TDF) + 1
+
+# Plot TP 
+plot(x = years, y = tp, type = "l", col = "black", xlab = "Year", ylab = "TP", main = "TP")
+
 
 
