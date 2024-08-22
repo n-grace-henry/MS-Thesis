@@ -117,25 +117,27 @@ GLU.states.E <- fit.glu$states[3,]
 # Plot PHE states 
 years <- seq(1965, 2022, by = 1)
 # Wood
-plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "black", xlab = "Year", ylab = "PHE.mean", main = "PHE Wood")
-lines(x = years, y = PHE.state.W, type = "l", col = "blue", xlab = "Year", ylab = "PHE State", main = "PHE Wood")
+plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", pch = 16, col = "black", cex = 1.2, xlab = "Year", ylab = expression(paste("Phenylalanine ", delta^{15}, "N/ ", delta^{14}, "N")),main = "Wood Phenylalanine")
+lines(x = years, y = PHE.state.W, type = "l", col = "red", lwd = 2)
+legend("topright", legend = c("Raw Data", "PHE State"), col = c("black", "red"), pch = c(16, NA),lty = c(NA, 1), lwd = c(NA, 2))
 # Kvichak
-plot(x = PHE.K$Year, y = PHE.K$adj, type = "p", col = "black", xlab = "Year", ylab = "PHE.mean", main = "PHE Kvichak")
-lines(x = years, y = PHE.state.K, type = "l", col = "blue", xlab = "Year", ylab = "PHE State", main = "PHE Kvichak")
-# Egegik
-plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", col = "black", xlab = "Year", ylab = "PHE.mean", main = "PHE Egegik")
-lines(x = years, y = PHE.state.E, type = "l", col = "blue", xlab = "Year", ylab = "PHE State", main = "PHE Egegik")
+plot(x = PHE.K$Year, y = PHE.K$adj, type = "p", pch = 16, col = "black", cex = 1.2, xlab = "Year", ylab = expression(paste("Phenylalanine ", delta^{15}, "N/ ", delta^{14}, "N")), main = "Kvichak Phenylalanine")
+lines(x = years, y = PHE.state.K, type = "l", col = "red", lwd = 2)
+# Egegik 
+plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", pch = 16, col = "black", cex = 1.2, xlab = "Year", ylab = expression(paste("Phenylalanine ", delta^{15}, "N/ ", delta^{14}, "N")), main = "Egegik Phenylalanine")
+lines(x = years, y = PHE.state.E, col = "red", lwd = 2)
 
 # Plot GLU states
 # Wood
-plot(x = GLU.W$Year, y = GLU.W$adj, type = "p", col = "black", xlab = "Year", ylab = "GLU.mean", main = "GLU Wood")
-lines(x = years, y = GLU.states.W, type = "l", col = "blue", xlab = "Year", ylab = "GLU State", main = "GLU Wood")
-# Kvichak
-plot(x = GLU.K$Year, y = GLU.K$adj, type = "p", col = "black", xlab = "Year", ylab = "GLU.mean", main = "GLU Kvichak")
-lines(x = years, y = GLU.states.K, type = "l", col = "blue", xlab = "Year", ylab = "GLU State", main = "GLU Kvichak")
-# Egegik
-plot(x = GLU.E$Year, y = GLU.E$adj, type = "p", col = "black", xlab = "Year", ylab = "GLU.mean", main = "GLU Egegik")
-lines(x = years, y = GLU.states.E, type = "l", col = "blue", xlab = "Year", ylab = "GLU State", main = "GLU Egegik")
+plot(GLU.W$Year, GLU.W$adj, type = "p", pch = 16, col = "black", cex = 1.2, xlab = "Year", ylab = expression(paste("Glutamic Acid ", delta^{15}, "N/ ", delta^{14}, "N")), main = "Wood Glutamic Acid")
+lines(x = years, y = GLU.states.W, type = "l", col = "red", lwd = 2)
+legend("bottomright", legend = c("Raw Data", "GLU State"), col = c("black", "red"), pch = c(16, NA),lty = c(NA, 1), lwd = c(NA, 2))
+# Kvichak 
+plot(GLU.K$Year, GLU.K$adj, type = "p", pch = 16, col = "black", cex = 1.2, xlab = "Year", ylab = expression(paste("Glutamic Acid ", delta^{15}, "N/ ", delta^{14}, "N")), main = "Kvichak Glutamic Acid")
+lines(x = years, y = GLU.states.K, type = "l", col = "red", lwd = 2)
+# Egegik 
+plot(GLU.E$Year, GLU.E$adj, type = "p", pch = 16, col = "black", cex = 1.2, xlab = "Year", ylab = expression(paste("Glutamic Acid ", delta^{15}, "N/ ", delta^{14}, "N")), main = "Egegik Glutamic Acid")
+lines(x = years, y = GLU.states.E, type = "l", col = "red", lwd = 2)
 
 # Trophic position calculations
 beta <- 3.4 #commonly used constant
