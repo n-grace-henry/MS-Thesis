@@ -14,35 +14,23 @@ data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.c
 PHE <- data.full[data.full$Age == "2" &
                    data.full$AAID == "PHE", c("Year", "System", "Age", "adj", "ID1", "Rep")]
 
-# Create a new data frame with the desired format for Wood PHE
+# Wood
 PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
+# Kvichak
+PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
+# Egegik
+PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
 
-# Full years to represent in data
-full_years <- seq(1965, 2022, by = 1)
+# Subset data for age 2 and only GLU
+GLU <- data.full[data.full$Age == "2" &
+                   data.full$AAID == "GLU", c("Year", "System", "Age", "adj", "ID1", "Rep")]
 
-# Format data: three six per year, every year represented
-long.all.yr <- PHE.W %>%
-  arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID, and Rep
-  group_by(Year) %>%  # Group by Year
-  mutate(SampleNumber = as.character(row_number())) %>%  # Assign and convert unique sample numbers to characters
-  select(-ID1, -Rep) %>%  # Remove columns ID and Rep
-  ungroup() %>%  # Ungroup to avoid issues with expand.grid
-  right_join(
-    expand.grid(
-      Year = full_years,
-      SampleNumber = c("1", "2", "3", "4", "5", "6")
-    ),
-    by = c("Year", "SampleNumber")
-  ) %>%
-  arrange(Year, SampleNumber)
-
-# Convert to wide format
-wide <- long.all.yr %>%
-  pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
-
-# Transpose wide format
-wide.t <- t(wide)
-wide.t <- wide.t[-1,]
+# Wood
+GLU.W <- GLU[GLU$System == "Wood", c("Year", "adj", "ID1", "Rep")]
+# Kvichak
+GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
+# Egegik
+GLU.E <- GLU[GLU$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
 
 # Create function to format data correctly 
 format <- function(data) {
@@ -50,7 +38,7 @@ format <- function(data) {
   full_years <- seq(1965, 2022, by = 1)
   
   # Format data: three six per year, every year represented
-  long.all.yr <- PHE.W %>%
+  long <- data %>%
     arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID, and Rep
     group_by(Year) %>%  # Group by Year
     mutate(SampleNumber = as.character(row_number())) %>%  # Assign and convert unique sample numbers to characters
@@ -66,38 +54,139 @@ format <- function(data) {
     arrange(Year, SampleNumber)
   
   # Convert to wide format
-  wide <- long.all.yr %>%
+  wide <- long %>%
     pivot_wider(names_from = SampleNumber, values_from = adj, names_prefix = "Inj")
   
   # Transpose wide format
   wide.t <- t(wide)
   wide.t <- wide.t[-1,]
   
-  
+  return(wide.t)
 }
 
+# Get all systems in correct format for MARSS
+PHE.wide.W <- format(PHE.W)
+PHE.wide.K <- format(PHE.K)
+PHE.wide.E <- format(PHE.E)
 
+GLU.wide.W <- format(GLU.W)
+GLU.wide.K <- format(GLU.K)
+GLU.wide.E <- format(GLU.E)
 
+# One data frame for PHE 
+all.PHE <- rbind(PHE.wide.W, PHE.wide.K, PHE.wide.E)
 
+# One data frame for GLU 
+all.GLU <- rbind(GLU.wide.W, GLU.wide.K, GLU.wide.E)
 
-# Run model
-mod.list.1 <- list(
-  B = matrix(1),           # State transition matrix
-  U = matrix(0),           # No deterministic trend
-  Q = matrix("q"),         # Process noise covariance
-  Z = matrix(1, 6, 1),     # Observation matrix with 3 observations per time point
-  A = matrix(0, 6, 1),     # No observation bias, correct dimensions
-  R = "diagonal and unequal",    # Observation noise structure (diagonal and equal)
-  x0 = matrix("mu"),       # Initial state estimate
-  tinitx = 0               # Initial time point
+# Define Z matrix
+ZZ <- matrix(0, 18, 3) 
+ZZ[1:6, 1] <- 1
+ZZ[7:12, 2] <- 1
+ZZ[13:18, 3] <- 1
+
+# PHE model specifications
+mod.list <- list(
+  B = "identity",  
+  U = "zero",          
+  Q = "diagonal and equal",         
+  Z = ZZ,
+  A = "scaling",    
+  R = "diagonal and unequal",
+  x0 = matrix(c("mu1", "mu2", "mu3"), nrow = 3, ncol = 1),      
+  tinitx = 0             
 )
 
-# Fitting the model
-fit.1 <- MARSS(wide.t, model = mod.list.1)
-autoplot(fit.1)
+# Fitting the model for PHE
+fit.phe <- MARSS(all.PHE, model = mod.list)
+autoplot(fit.phe)
 
-# Extract states
-states <- fit.1$states
+# Fitting the model for GLU
+fit.glu <- MARSS(all.GLU, model = mod.list)
+autoplot(fit.glu)
+
+# Subset states
+PHE.state.W <- fit.phe$states[1,]
+PHE.state.K <- fit.phe$states[2,]
+PHE.state.E <- fit.phe$states[3,]
+
+GLU.states.W <- fit.glu$states[1,]
+GLU.states.K <- fit.glu$states[2,]
+GLU.states.E <- fit.glu$states[3,]
+
+# Plot PHE states 
+years <- seq(1965, 2022, by = 1)
+# Wood
+plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "black", xlab = "Year", ylab = "PHE.mean", main = "PHE Wood")
+lines(x = years, y = PHE.state.W, type = "l", col = "blue", xlab = "Year", ylab = "PHE State", main = "PHE Wood")
+# Kvichak
+plot(x = PHE.K$Year, y = PHE.K$adj, type = "p", col = "black", xlab = "Year", ylab = "PHE.mean", main = "PHE Kvichak")
+lines(x = years, y = PHE.state.K, type = "l", col = "blue", xlab = "Year", ylab = "PHE State", main = "PHE Kvichak")
+# Egegik
+plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", col = "black", xlab = "Year", ylab = "PHE.mean", main = "PHE Egegik")
+lines(x = years, y = PHE.state.E, type = "l", col = "blue", xlab = "Year", ylab = "PHE State", main = "PHE Egegik")
+
+# Plot GLU states
+# Wood
+plot(x = GLU.W$Year, y = GLU.W$adj, type = "p", col = "black", xlab = "Year", ylab = "GLU.mean", main = "GLU Wood")
+lines(x = years, y = GLU.states.W, type = "l", col = "blue", xlab = "Year", ylab = "GLU State", main = "GLU Wood")
+# Kvichak
+plot(x = GLU.K$Year, y = GLU.K$adj, type = "p", col = "black", xlab = "Year", ylab = "GLU.mean", main = "GLU Kvichak")
+lines(x = years, y = GLU.states.K, type = "l", col = "blue", xlab = "Year", ylab = "GLU State", main = "GLU Kvichak")
+# Egegik
+plot(x = GLU.E$Year, y = GLU.E$adj, type = "p", col = "black", xlab = "Year", ylab = "GLU.mean", main = "GLU Egegik")
+lines(x = years, y = GLU.states.E, type = "l", col = "blue", xlab = "Year", ylab = "GLU State", main = "GLU Egegik")
+
+# Trophic position calculations
+beta <- 3.4 #commonly used constant
+TDF <- 7.06 #from Lerner et al 2020
+
+tp.W <- (((GLU.states.W - PHE.state.W)-beta)/TDF) + 1
+tp.K <- (((GLU.states.K - PHE.state.K)-beta)/TDF) + 1
+tp.E <- (((GLU.states.E - PHE.state.E)-beta)/TDF) + 1
+
+# Put into one data frame for plotting 
+tp <- (cbind(years, tp.W, tp.K, tp.E))
+colnames(tp) <- c("Year", "Wood", "Egegik", "Kvichak")
+tp <- as.data.frame(tp)
+
+# Convert to long for plotting 
+tp_long <- pivot_longer(tp, cols = -Year, names_to = "System", values_to = "TP")
+
+# Plot all
+ggplot(tp_long, aes(x = Year, y = TP, color = System)) +
+  geom_line(size = 1.5) +
+  labs(title = "Trophic Position Over Time",
+       x = "Year",
+       y = "Trophic Position") +
+  scale_x_continuous(breaks = seq(min(tp_long$Year), max(tp_long$Year), by = 3), 
+                     labels = function(x) as.character(x)) +  # Custom labeling function
+  theme_minimal()
+
+# Plot Wood 
+ggplot(tp, aes(x = Year, y = Wood)) +
+  geom_line() +
+  labs(title = "Wood Trophic Position Over Time",
+       x = "Year",
+       y = "Trophic Position") +
+  theme_minimal()
+
+# Plot Egegik
+ggplot(tp, aes(x = Year, y = Egegik)) +
+  geom_line() +
+  labs(title = "Egegik Trophic Position Over Time",
+       x = "Year",
+       y = "Trophic Position") +
+  theme_minimal()
+
+# Plot Kvichak
+ggplot(tp, aes(x = Year, y = Kvichak)) +
+  geom_line() +
+  labs(title = "Kvichak Trophic Position Over Time",
+       x = "Year",
+       y = "Trophic Position") +
+  theme_minimal()
+
 
 
 
