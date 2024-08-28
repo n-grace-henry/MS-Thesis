@@ -101,9 +101,18 @@ mod.list <- list(
 fit.phe <- MARSS(all.PHE, model = mod.list)
 autoplot(fit.phe)
 
+# AICC calculation 
+AIC.phe <- fit.phe$AIC
+k.phe <- fit.phe$num.params
+n.phe <- nrow(all.PHE) * ncol(all.PHE)
+AICC.phe <- AIC.phe + (2 * k.phe * (k.phe + 1)) / (n.phe - k.phe - 1)
+
 # Fitting the model for GLU
 fit.glu <- MARSS(all.GLU, model = mod.list)
 autoplot(fit.glu)
+
+# AICC calculation
+
 
 # Subset states
 PHE.state.W <- fit.phe$states[1,]
