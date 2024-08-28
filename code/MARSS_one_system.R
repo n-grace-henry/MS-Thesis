@@ -16,15 +16,10 @@ PHE <- data.full[data.full$Age == "2" &
 
 # Subset Wood PHE
 PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
-plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "PHE Wood")
-
 # Subset Kvichak PHE 
 PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
-plot(x = PHE.K$Year, y = PHE.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "PHE Wood")
-
 # Subset Egegik PHE
 PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
-plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "PHE.mean", main = "PHE Wood")
 
 # Subset data for age 2 and only PHE
 GLU <- data.full[data.full$Age == "2" &
@@ -32,15 +27,10 @@ GLU <- data.full[data.full$Age == "2" &
 
 # Subset Wood GLU
 GLU.W <- GLU[GLU$System == "Wood", c("Year", "adj", "ID1", "Rep")]
-plot(x = GLU.W$Year, y = GLU.W$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU", main = "GLU Wood")
-
 # Subset Kvichak GLU
 GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
-plot(x = GLU.K$Year, y = GLU.K$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU", main = "GLU Kvichak")
-
 # Subset Egegik GLU
 GLU.E <- GLU[GLU$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
-plot(x = GLU.E$Year, y = GLU.E$adj, type = "p", col = "blue", xlab = "Year", ylab = "GLU", main = "GLU Egegik")
 
 # Function to get all data to wide format 
 wide <- function(data){
@@ -133,12 +123,12 @@ GLU.state <- GLU.fit.one$states
 
 # Plot overall PHE state 
 years <- seq(1965, 2022, by = 1)
-plot(x = PHE$Year, y = PHE$adj, type = "p", col = "black", xlab = "Year", ylab = "PHE.mean", main = "PHE Wood")
-lines(x = years, y = PHE.state, type = "l", col = "blue", xlab = "Year", ylab = "PHE State", main = "PHE Wood")
+plot(x = PHE$Year, y = PHE$adj, type = "p", pch = 16, col = "black", xlab = "Year", ylab = expression(paste("Phenylalanine ", delta^{15}, "N ")), main = "All Phenylalanine")
+lines(x = years, y = PHE.state, type = "l", lwd = 2, col = "blue")
 
 # Plot overall GLU state
-plot(x = GLU$Year, y = GLU$adj, type = "p", col = "black", xlab = "Year", ylab = "GLU.mean", main = "GLU Wood")
-lines(x = years, y = GLU.state, type = "l", col = "blue", xlab = "Year", ylab = "GLU State", main = "GLU Wood")
+plot(x = GLU$Year, y = GLU$adj, type = "p", pch = 16, col = "black", xlab = "Year", ylab = expression(paste("Glutamic Acid ", delta^{15}, "N")), main = "All Glutamic Acid")
+lines(x = years, y = GLU.state, type = "l", lwd = 2, col = "red")
 
 # Trophic position calculations
 beta <- 3.4 #commonly used constant
@@ -147,7 +137,7 @@ TDF <- 7.06 #from Lerner et al 2020
 tp <- (((GLU.state - PHE.state)-beta)/TDF) + 1
 
 # Plot TP 
-plot(x = years, y = tp, type = "l", col = "black", xlab = "Year", ylab = "TP", main = "TP")
+plot(x = years, y = tp, type = "l", lwd =2, col = "black", xlab = "Year", ylab = "Trophic Position", main = "Overall Trophic Position")
 
 
 

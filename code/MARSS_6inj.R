@@ -188,7 +188,7 @@ ggplot(tp, aes(x = Year, y = Egegik)) +
 
 # Plot Kvichak
 ggplot(tp, aes(x = Year, y = Kvichak)) +
-  geom_line(size = 1.5, color = color_mapping["Kvichak"]) +
+  geom_line(size = 1.5, color = custom_colors["Kvichak"]) +
   labs(title = "Kvichak Trophic Position Over Time",
        x = "Year",
        y = "Trophic Position") +
