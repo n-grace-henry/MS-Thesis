@@ -5,11 +5,11 @@ library(ggplot2)
 
 # Load PHE data
 PHE <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_PHE_formatted.csv")
-PHE <- PHE[,-1]
+PHE <- as.matrix(PHE[,-1])
 
 # Load GLU data
 GLU <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_GLU_formatted.csv")
-GLU <- GLU[,-1]
+GLU <- as.matrix(GLU[,-1])
 
 # Load environmental data 
 PDO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/PDO_tidy.csv")
@@ -39,62 +39,46 @@ the.mean <- apply(climate, 1, mean, na.rm = TRUE)
 the.sigma <- sqrt(apply(climate, 1, var, na.rm = TRUE))
 covariates <- (climate - the.mean) * (1/the.sigma)
 
-# Define model parameters
-ZZ <- matrix(1, 9, 1)
+# Define model parameters for one state model 
+ZZ <- matrix(1, 18, 1)
 
 # both process and observation error, but covariates only affect the process
-D <- d <- A <- U <- "zero"
-Z <- "identity"
-B <- "diagonal and unequal"
-Q <- "equalvarcov"
-C <- "unconstrained"
-c <- covariates
-R <- diag(0.16, 2)
-x0 <- "unequal"
-tinitx <- 1
-model.list <- list(B = B, U = U, Q = Q, Z = Z, A = A, R = R, 
-                   D = D, d = d, C = C, c = c, x0 = x0, tinitx = tinitx)
-kem <- MARSS(dat, model = model.list)
-autoplot(kem)
+model.list <- list(B = "diagonal and unequal", 
+                   U = "zero",
+                   Q = "equalvarcov", 
+                   Z = ZZ, 
+                   A = "zero", 
+                   R = "diagonal and unequal", 
+                   D = "zero", 
+                   d = "zero", 
+                   C = "unconstrained", 
+                   c = climate, 
+                   x0 = "unequal", 
+                   tinitx = 1)
+fit.one <- MARSS(PHE, model = model.list)
+autoplot(fit.one)
 
+# Define model parameters for three state model 
+ZZ <- matrix(0, 18, 3) 
+ZZ[1:6, 1] <- 1
+ZZ[7:12, 2] <- 1
+ZZ[13:18, 3] <- 1
 
-
-
-
-# From chatGPT 
-# Assuming PDO is a vector with 58 values corresponding to each year from 1965-2022
-PDO <- as.vector(PDO_data)  # replace PDO_data with your actual PDO data vector
-
-# Create a matrix where each row corresponds to a river system and each column to a year
-# Each system experiences the same PDO each year, so replicate PDO across rows
-covariate_matrix <- matrix(PDO, nrow = 18, ncol = 58, byrow = TRUE)
-
-
-
-
-# Define the C matrix for the covariate
-C_matrix <- matrix(0, 3, 1)  # Assuming PDO has one influence parameter per state
-C_matrix[1, 1] <- "c1"       # Influence on state 1
-C_matrix[2, 1] <- "c2"       # Influence on state 2
-C_matrix[3, 1] <- "c3"       # Influence on state 3
-
-# Update the model list to include the covariate
-mod.list <- list(
-  B = "identity",  
-  U = "zero",          
-  Q = "diagonal and equal",         
-  Z = ZZ,
-  A = "scaling",    
-  R = "diagonal and unequal",
-  x0 = matrix(c("mu1", "mu2", "mu3"), nrow = 3, ncol = 1),      
-  tinitx = 0,
-  C = C_matrix,
-  c = covariate_matrix
-)
-
-# Fit the model with the environmental covariate PDO
-fit.phe <- MARSS(all.PHE, model = mod.list)
-
+# PHE model specifications
+model.list <- list(B = "diagonal and unequal", 
+                   U = "zero",
+                   Q = "equalvarcov", 
+                   Z = ZZ, 
+                   A = "zero", 
+                   R = "diagonal and unequal", 
+                   D = "zero", 
+                   d = "zero", 
+                   C = "unconstrained", 
+                   c = climate, 
+                   x0 = matrix(c("mu1", "mu2", "mu3"), nrow = 3, ncol = 1), 
+                   tinitx = 1)
+fit.three <- MARSS(PHE, model = model.list)
+autoplot(fit.three)
 
 
 
