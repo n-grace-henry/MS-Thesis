@@ -76,8 +76,14 @@ GLU.wide.E <- format(GLU.E)
 # One data frame for PHE 
 all.PHE <- rbind(PHE.wide.W, PHE.wide.K, PHE.wide.E)
 
+# Write csv of formatted data for PHE
+write.csv(all.PHE, file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_PHE_formatted.csv")
+
 # One data frame for GLU 
 all.GLU <- rbind(GLU.wide.W, GLU.wide.K, GLU.wide.E)
+
+# Write csv of formatted data for GLU
+write.csv(all.GLU, file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_GLU_formatted.csv")
 
 # Define Z matrix
 ZZ <- matrix(0, 18, 3) 
