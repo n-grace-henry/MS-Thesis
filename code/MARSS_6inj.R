@@ -166,13 +166,13 @@ p_all <- ggplot(tp_long, aes(x = Year, y = TP, color = System)) +
   theme_minimal()
 
 colors <- ggplot_build(p_all)$data[[1]]$colour
-custom_colors <- c("Wood" = "#F8766D", 
-                   "Egegik" = "#00BA38", 
-                   "Kvichak" = "#619CFF")
+custom_colors <- c("Wood" = "#619CFF", 
+                   "Egegik" = "#F8766D", 
+                   "Kvichak" = "#00BA38")
 
 # Plot Wood
 ggplot(tp, aes(x = Year, y = Wood)) +
-  geom_line(size = 1.5, color = color_mapping["Wood"]) +
+  geom_line(size = 1.5, color = custom_colors["Wood"]) +
   labs(title = "Wood Trophic Position Over Time",
        x = "Year",
        y = "Trophic Position") +
@@ -180,7 +180,7 @@ ggplot(tp, aes(x = Year, y = Wood)) +
 
 # Plot Egegik
 ggplot(tp, aes(x = Year, y = Egegik)) +
-  geom_line(size = 1.5, color = color_mapping["Egegik"]) +
+  geom_line(size = 1.5, color = custom_colors["Egegik"]) +
   labs(title = "Egegik Trophic Position Over Time",
        x = "Year",
        y = "Trophic Position") +
