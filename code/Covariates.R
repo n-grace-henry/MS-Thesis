@@ -39,6 +39,26 @@ the.mean <- apply(climate, 1, mean, na.rm = TRUE)
 the.sigma <- sqrt(apply(climate, 1, var, na.rm = TRUE))
 covariates <- (climate - the.mean) * (1/the.sigma)
 
+# Define model parameters
+ZZ <- matrix(1, 9, 1)
+
+# both process and observation error, but covariates only affect the process
+D <- d <- A <- U <- "zero"
+Z <- "identity"
+B <- "diagonal and unequal"
+Q <- "equalvarcov"
+C <- "unconstrained"
+c <- covariates
+R <- diag(0.16, 2)
+x0 <- "unequal"
+tinitx <- 1
+model.list <- list(B = B, U = U, Q = Q, Z = Z, A = A, R = R, 
+                   D = D, d = d, C = C, c = c, x0 = x0, tinitx = tinitx)
+kem <- MARSS(dat, model = model.list)
+autoplot(kem)
+
+
+
 
 
 # From chatGPT 

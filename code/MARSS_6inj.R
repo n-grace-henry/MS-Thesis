@@ -37,7 +37,7 @@ format <- function(data) {
   # Full years to represent in data
   full_years <- seq(1965, 2022, by = 1)
   
-  # Format data: three six per year, every year represented
+  # Format data: six injections per year, every year represented
   long <- data %>%
     arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID, and Rep
     group_by(Year) %>%  # Group by Year

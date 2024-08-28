@@ -37,10 +37,9 @@ wide <- function(data){
   # Full years to represent in data
   full_years <- seq(1965, 2022, by = 1)
   
-  # Format data: three injections per year, every year represented
+  # Format data: six injections per year, every year represented
   long <- data %>%
     arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID, and Rep
-    filter(!Rep %in% c("R", "a")) %>%  # Filter out unwanted replicates
     group_by(Year) %>%  # Group by Year
     mutate(SampleNumber = as.character(row_number())) %>%  # Assign and convert unique sample numbers to characters
     select(-ID1, -Rep) %>%  # Remove columns ID and Rep
@@ -48,7 +47,7 @@ wide <- function(data){
     right_join(
       expand.grid(
         Year = full_years,
-        SampleNumber = c("1", "2", "3")
+        SampleNumber = c("1", "2", "3", "4", "5", "6")
       ),
       by = c("Year", "SampleNumber")
     ) %>%
@@ -83,7 +82,7 @@ all.PHE <- rbind(wide.PHE.W, wide.PHE.K, wide.PHE.E)
 all.GLU <- rbind(wide.GLU.W, wide.GLU.K, wide.GLU.E)
  
 # Adjust the Z matrix to assume one state for all systems
-ZZ <- matrix(1, 9, 1)
+ZZ <- matrix(1, 18, 1)
 
 # Modify the model specifications
 mod.list <- list(
