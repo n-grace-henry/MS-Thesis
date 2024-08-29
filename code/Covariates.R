@@ -19,7 +19,7 @@ ret <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/BB_r
 ice <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/sea_ice.csv")
 # SST <- 
 
-# Put all envi data into one df (only two regimes until i figure this out)
+# Put all envi data into one df 
 climate <- merge(PDO, NPGO, by = "Year")
 climate <- climate[,-c(2,4)]
 colnames(climate) <- c("Year", "PDO", "NPGO")
