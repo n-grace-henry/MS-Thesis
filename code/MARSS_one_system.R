@@ -135,6 +135,10 @@ TDF <- 7.06 #from Lerner et al 2020
 
 tp <- (((GLU.state - PHE.state)-beta)/TDF) + 1
 
+# Write csv of tp 
+write.csv(tp, file = "~/Documents/GitHub/CSIA_lab_work/data/final/tp.state.csv")
+
+
 # Plot TP 
 plot(x = years, y = tp, type = "l", lwd =2, col = "black", xlab = "Year", ylab = "Trophic Position", main = "Overall Trophic Position")
 

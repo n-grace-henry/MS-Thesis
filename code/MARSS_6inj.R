@@ -76,14 +76,8 @@ GLU.wide.E <- format(GLU.E)
 # One data frame for PHE 
 all.PHE <- rbind(PHE.wide.W, PHE.wide.K, PHE.wide.E)
 
-# Write csv of formatted data for PHE
-write.csv(all.PHE, file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_PHE_formatted.csv")
-
 # One data frame for GLU 
 all.GLU <- rbind(GLU.wide.W, GLU.wide.K, GLU.wide.E)
-
-# Write csv of formatted data for GLU
-write.csv(all.GLU, file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_GLU_formatted.csv")
 
 # Define Z matrix
 ZZ <- matrix(0, 18, 3) 
@@ -169,6 +163,9 @@ tp.E <- (((GLU.states.E - PHE.state.E)-beta)/TDF) + 1
 tp <- (cbind(years, tp.W, tp.K, tp.E))
 colnames(tp) <- c("Year", "Wood", "Egegik", "Kvichak")
 tp <- as.data.frame(tp)
+
+# Write TP as csv 
+write.csv(tp, file = "~/Documents/GitHub/CSIA_lab_work/data/final/system.tp.states.csv")
 
 # Convert to long for plotting 
 tp_long <- pivot_longer(tp, cols = -Year, names_to = "System", values_to = "TP")
