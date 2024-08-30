@@ -130,14 +130,14 @@ GLU.states.E <- fit.glu$states[3,]
 years <- seq(1965, 2022, by = 1)
 # Wood
 plot(x = PHE.W$Year, y = PHE.W$adj, type = "p", pch = 16, col = "black", cex = 1.2, xlab = "Year", ylab = expression(paste("Phenylalanine ", delta^{15}, "N/ ", delta^{14}, "N")),main = "Wood Phenylalanine")
-lines(x = years, y = PHE.state.W, type = "l", col = "red", lwd = 2)
-legend("topright", legend = c("Raw Data", "PHE State"), col = c("black", "red"), pch = c(16, NA),lty = c(NA, 1), lwd = c(NA, 2))
+lines(x = years, y = PHE.state.W, type = "l", col = "blue", lwd = 2)
+legend("topright", legend = c("Raw Data", "PHE State"), col = c("black", "blue"), pch = c(16, NA),lty = c(NA, 1), lwd = c(NA, 2))
 # Kvichak
 plot(x = PHE.K$Year, y = PHE.K$adj, type = "p", pch = 16, col = "black", cex = 1.2, xlab = "Year", ylab = expression(paste("Phenylalanine ", delta^{15}, "N/ ", delta^{14}, "N")), main = "Kvichak Phenylalanine")
-lines(x = years, y = PHE.state.K, type = "l", col = "red", lwd = 2)
+lines(x = years, y = PHE.state.K, type = "l", col = "blue", lwd = 2)
 # Egegik 
 plot(x = PHE.E$Year, y = PHE.E$adj, type = "p", pch = 16, col = "black", cex = 1.2, xlab = "Year", ylab = expression(paste("Phenylalanine ", delta^{15}, "N/ ", delta^{14}, "N")), main = "Egegik Phenylalanine")
-lines(x = years, y = PHE.state.E, col = "red", lwd = 2)
+lines(x = years, y = PHE.state.E, col = "blue", lwd = 2)
 
 # Plot GLU states
 # Wood
