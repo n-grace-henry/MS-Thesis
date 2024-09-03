@@ -1,3 +1,9 @@
+# Notes from ATSA class
+# Dd implies that observations are impacted by covariates instead of process
+
+
+
+
 # Load packages 
 library(tidyverse)
 library(MARSS)
