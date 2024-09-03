@@ -1,6 +1,6 @@
 # Notes from ATSA class
 # Dd implies that observations are impacted by covariates instead of process
-
+# We should probably only put covariates in the process equation (Cc)
 
 
 
