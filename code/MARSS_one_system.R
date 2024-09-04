@@ -138,10 +138,11 @@ for(i in 1:length(PHE.t$Year)){
 }
 
 ggplot(PHE.t, aes(x = Year, y = Anomaly)) +
-  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "blue", alpha = 0.5) +
-  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "red", alpha = 0.5) +
+  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "grey20", alpha = 0.5) +
+  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "grey", alpha = 0.5) +
   geom_line(color = "black") +
   geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  scale_x_continuous(breaks = seq(min(tp.t$Year), max(tp.t$Year), by = 3)) +
   labs(title = "Phenylalanine Anomaly Plot",
        x = "Year",
        y = "Anomaly (Value - Long Term Mean") +
@@ -159,10 +160,11 @@ for(i in 1:length(GLU.t$Year)){
 }
 
 ggplot(GLU.t, aes(x = Year, y = Anomaly)) +
-  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "blue", alpha = 0.5) +
-  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "red", alpha = 0.5) +
+  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "grey20", alpha = 0.5) +
+  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "grey", alpha = 0.5) +
   geom_line(color = "black") +
   geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  scale_x_continuous(breaks = seq(min(tp.t$Year), max(tp.t$Year), by = 3)) +
   labs(title = "Glutamic Acid Anomaly Plot",
        x = "Year",
        y = "Anomaly (Value - Long Term Mean") +
@@ -180,8 +182,8 @@ for(i in 1:length(tp.t$Year)){
 }
 
 ggplot(tp.t, aes(x = Year, y = Anomaly)) +
-  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "blue", alpha = 0.5) +
-  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "red", alpha = 0.5) +
+  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "grey20", alpha = 0.5) +
+  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "grey", alpha = 0.5) +
   geom_line(color = "black") +
   geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
   scale_x_continuous(breaks = seq(min(tp.t$Year), max(tp.t$Year), by = 3)) +
