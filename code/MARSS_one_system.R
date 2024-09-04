@@ -126,7 +126,69 @@ tp <- (((GLU.state - PHE.state)-beta)/TDF) + 1
 # Plot TP 
 plot(x = years, y = tp, type = "l", lwd =2, col = "black", xlab = "Year", ylab = "Trophic Position", main = "Overall Trophic Position")
 
-# Long term mean plots 
+# Anomaly plot for PHE 
+PHE.t <- as.data.frame(t(PHE.state))
+PHE.t$Year <- years
+PHE.t$Mean <- vector(length = length(PHE.t$Year))
+PHE.t$Anomaly <- vector(length = length(PHE.t$Year))
+
+for(i in 1:length(PHE.t$Year)){
+  PHE.t[i, "Mean"] <- mean(PHE.t[,1])
+  PHE.t[i, "Anomaly"] <- PHE.t$X1[i] - PHE.t$Mean[i]
+}
+
+ggplot(PHE.t, aes(x = Year, y = Anomaly)) +
+  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "blue", alpha = 0.5) +
+  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "red", alpha = 0.5) +
+  geom_line(color = "black") +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  labs(title = "Phenylalanine Anomaly Plot",
+       x = "Year",
+       y = "Anomaly (Value - Long Term Mean") +
+  theme_minimal()
+
+# Anomaly plot for GLU
+GLU.t <- as.data.frame(t(GLU.state))
+GLU.t$Year <- years
+GLU.t$Mean <- vector(length = length(GLU.t$Year))
+GLU.t$Anomaly <- vector(length = length(GLU.t$Year))
+
+for(i in 1:length(GLU.t$Year)){
+  GLU.t[i, "Mean"] <- mean(GLU.t[,1])
+  GLU.t[i, "Anomaly"] <- GLU.t$X1[i] - GLU.t$Mean[i]
+}
+
+ggplot(GLU.t, aes(x = Year, y = Anomaly)) +
+  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "blue", alpha = 0.5) +
+  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "red", alpha = 0.5) +
+  geom_line(color = "black") +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  labs(title = "Glutamic Acid Anomaly Plot",
+       x = "Year",
+       y = "Anomaly (Value - Long Term Mean") +
+  theme_minimal()
+
+# Anomaly plot for TP 
+tp.t <- as.data.frame(t(tp))
+tp.t$Year <- years
+tp.t$Mean <- vector(length = length(tp.t$Year))
+tp.t$Anomaly <- vector(length = length(tp.t$Year))
+
+for(i in 1:length(tp.t$Year)){
+  tp.t[i, "Mean"] <- mean(tp.t[,1])
+  tp.t[i, "Anomaly"] <- tp.t$X1[i] - tp.t$Mean[i]
+}
+
+ggplot(tp.t, aes(x = Year, y = Anomaly)) +
+  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "blue", alpha = 0.5) +
+  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "red", alpha = 0.5) +
+  geom_line(color = "black") +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  scale_x_continuous(breaks = seq(min(tp.t$Year), max(tp.t$Year), by = 3)) +
+  labs(title = "Trophic Position Anomaly Plot",
+       x = "Year",
+       y = "Anomaly (Value - Long Term Mean)") +
+  theme_minimal()
 
 
 
