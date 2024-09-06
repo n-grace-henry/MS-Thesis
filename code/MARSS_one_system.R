@@ -142,7 +142,7 @@ ggplot(PHE.t, aes(x = Year, y = Anomaly)) +
   geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "grey", alpha = 0.5) +
   geom_line(color = "black") +
   geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
-  scale_x_continuous(breaks = seq(min(tp.t$Year), max(tp.t$Year), by = 3)) +
+  scale_x_continuous(breaks = seq(min(PHE.t$Year), max(PHE.t$Year), by = 3)) +
   labs(title = "Phenylalanine Anomaly Plot",
        x = "Year",
        y = "Anomaly (Value - Long Term Mean") +
