@@ -34,9 +34,9 @@ ice <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/sea_
 # SST <- 
 
 # Put all envi data into one df 
-climate <- merge(PDO, NPGO, by = "Year")
-climate <- climate[,-c(2,4)]
-colnames(climate) <- c("Year", "PDO", "NPGO")
+climate <- cbind(PDO, ENSO, NPGO)
+climate <- climate[,c(2,3,6,9)]
+colnames(climate) <- c("Year", "PDO", "ENSO", "NPGO")
 
 # Transpose climate 
 climate <- t(climate)

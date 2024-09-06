@@ -5,13 +5,15 @@ library(tidyr)
 library(lubridate)
 
 # Load Data
-data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/data.csv")
 NPGO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/NPGO.csv")
 
 # NPGO average per year
 NPGO_annual <- NPGO %>%
   group_by(Year) %>%
   summarise(avg = mean(NPGO))
+
+# Take only years of interest
+NPGO_annual <- NPGO_annual[NPGO_annual$Year >= 1965 & NPGO_annual$Year <= 2022,]
 
 # Plot 
 plot(NPGO_annual, type = "l")

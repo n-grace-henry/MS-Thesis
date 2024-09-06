@@ -19,11 +19,16 @@ data_long <- data %>%
   pivot_longer(cols = -1, names_to = "Month", values_to = "MEI")
 
 # Grab years 1964-2023
-data_long <- data_long[data_long$Year >= "1960" & data_long$Year <= "2023",]
+data_long <- data_long[data_long$Year >= "1965" & data_long$Year <= "2022",]
 
 # Convert month to date
 data_long <- data_long %>% 
   mutate(month_number = match(Month, month.abb))
+
+# One value per year
+data_long <- data_long %>% 
+  group_by(Year) %>% 
+  summarise(MEI = mean(MEI))
 
 # Plot 
 plot(x = data_long$Year,
