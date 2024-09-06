@@ -7,7 +7,6 @@ library(tidyr)
 library(lubridate)
 
 # Load Data
-data <- read.csv(file = "final/all_correct_final.csv")
 PDO <- read.csv(file = "Environmental/PDO.csv")
 
 # Convert PDO to tidy format 
@@ -31,6 +30,18 @@ plot(x = PDO_annual$Year,
      type = "l",
      xlab = "Year",
      ylab = "PDO")
+
+ggplot(PDO_annual, aes(x = Year, y = Value)) +
+  geom_ribbon(aes(ymin = pmin(Value, 0), ymax = 0), fill = "blue", alpha = 0.5) +
+  geom_ribbon(aes(ymin = 0, ymax = pmax(Value, 0)), fill = "red", alpha = 0.5) +
+  geom_line(color = "black") +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  scale_x_continuous(breaks = seq(min(PDO_annual$Year), max(PDO_annual$Year), by = 3)) +
+  labs(title = "PDO Anomaly Through Time",
+       x = "Year",
+       y = "PDO") +
+  theme_minimal()
+
 
 # Write csv of tidy PDO data
 write.csv(PDO_annual, "~/Documents/GitHub/CSIA_lab_work/data/environmental/PDO_tidy.csv")
