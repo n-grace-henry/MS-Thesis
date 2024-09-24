@@ -59,18 +59,24 @@ ZZ <- matrix(1, 18, 1)
 # both process and observation error, but covariates only affect the process
 model.list <- list(B = "diagonal and unequal", 
                    U = "zero",
-                   Q = "equalvarcov", 
+                   Q = "equalvarcov", #related to each other, if one goes up the other might also go up, try unconstrained maybe 
                    Z = ZZ, 
                    A = "zero", 
-                   R = "diagonal and unequal", 
+                   R = "diagonal and equal", #consistent sampling 
                    D = "zero", 
                    d = "zero", 
-                   C = "unconstrained", 
+                   C = "unconstrained", #maybe diagonal and equal if all systems are equally impacted by climate
                    c = climate, 
                    x0 = "unequal", 
                    tinitx = 1)
-fit.one <- MARSS(PHE, model = model.list)
+fit.one <- MARSS(PHE, model = model.list, method = "BFGS")
 autoplot(fit.one)
+
+#check colinearity between PDO and ENSO 
+#can compare coefficients because standardized 
+fit.one$coef[22]
+fit.one$coef[23]
+fit.one$coef[24]
 
 # Define model parameters for three state model 
 ZZ <- matrix(0, 18, 3) 
