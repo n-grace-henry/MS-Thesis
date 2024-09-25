@@ -1,17 +1,3 @@
-# Notes from ATSA class
-# Dd implies that observations are impacted by covariates instead of process
-# We should probably only put covariates in the process equation (Cc)
-
-# Process error only model from textbook 
-R <- A <- U <- "zero"
-B <- Z <- "identity"
-Q <- "equalvarcov"
-C <- "unconstrained"
-model.list <- list(B = B, U = U, Q = Q, Z = Z, A = A, R = R, 
-                   C = C, c = covariates)
-kem <- MARSS(dat, model = model.list)
-
-
 # Load packages 
 library(tidyverse)
 library(MARSS)
@@ -31,7 +17,6 @@ ENSO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/ENS
 NPGO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/NPGO_tidy.csv")
 ret <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/BB_returns.csv")
 ice <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/sea_ice.csv")
-# SST <- 
 
 # Put all envi data into one df 
 climate <- cbind(PDO, ENSO, NPGO)
@@ -99,6 +84,29 @@ model.list <- list(B = "diagonal and unequal",
                    tinitx = 1)
 fit.three <- MARSS(PHE, model = model.list)
 autoplot(fit.three)
+
+# Terrance for loop code
+Q_vec = c("diagonal and equal", "diagonal and unequal", "equalvarcovar")
+Z_vec = c("big boy", "3 rivers")
+Covariate_vec = c("PDO", "ENSO", "PDO+ENSO")
+big_dateframe = NULL
+for (Q_i in Q_vec){
+  marrs_list$Q = Q_i 
+  for (Z_i in Z_vec){
+    if (Z_i == "big boy"){marrs_list = Z1} else {marrs_list = Z2} ## you will have to define the matrix outside loop
+    for (Covariate_i in Covariate_vec){
+      if(Covariate_i == "PDO") {data_input_matrix = C_pdo} ## you will have to define the matrix outside loop
+      if(Covariate_i == "ENSO") {data_input_matrix = C_enso} ## you will have to define the matrix outside loop
+      if(Covariate_i == "PDO+ENSO") {data_input_matrix = C_enso_pdo} ## you will have to define the matrix outside loop
+      
+      ## run the model with the updated model specifications and covariate data
+      fit = MARSS(marss_list, method = "BFGS")
+      
+      # save stuff out
+      AIC_i = fit$AICc; warning_i = fit$warnings;
+      df_tmp  = data.frame(Q = Q_i, Z = Z_i, Covariates = Covarite_i, AIC = AIC_i, warning=warning_i)
+      big_dateframe = rbind(big_dateframe, df_tmp)
+    }}}
 
 
 
