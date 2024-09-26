@@ -38,54 +38,13 @@ the.mean <- apply(climate, 1, mean, na.rm = TRUE)
 the.sigma <- sqrt(apply(climate, 1, var, na.rm = TRUE))
 covariates <- (climate - the.mean) * (1/the.sigma)
 
-# Define model parameters for one state model 
-ZZ <- matrix(1, 18, 1)
-
-# both process and observation error, but covariates only affect the process
-model.list <- list(B = "diagonal and unequal", 
-                   U = "zero",
-                   Q = "equalvarcov", #related to each other, if one goes up the other might also go up, try unconstrained maybe 
-                   Z = ZZ, 
-                   A = "zero", 
-                   R = "diagonal and equal", #consistent sampling 
-                   D = "zero", 
-                   d = "zero", 
-                   C = "unconstrained", #maybe diagonal and equal if all systems are equally impacted by climate
-                   c = matrix(covariates["NPGO", ], nrow = 1), 
-                   x0 = "unequal", 
-                   tinitx = 1)
-fit.one <- MARSS(PHE, model = model.list, method = "BFGS")
-autoplot(fit.one)
-
 #check colinearity between PDO and ENSO 
 #can compare coefficients because standardized 
 fit.one$coef[22]
 fit.one$coef[23]
 fit.one$coef[24]
 
-# Define model parameters for three state model 
-ZZ <- matrix(0, 18, 3) 
-ZZ[1:6, 1] <- 1
-ZZ[7:12, 2] <- 1
-ZZ[13:18, 3] <- 1
-
-# PHE model specifications
-model.list <- list(B = "diagonal and unequal", 
-                   U = "zero",
-                   Q = "equalvarcov", 
-                   Z = ZZ, 
-                   A = "zero", 
-                   R = "diagonal and unequal", 
-                   D = "zero", 
-                   d = "zero", 
-                   C = "unconstrained", 
-                   c = covariates, 
-                   x0 = matrix(c("mu1", "mu2", "mu3"), nrow = 3, ncol = 1), 
-                   tinitx = 1)
-fit.three <- MARSS(PHE, model = model.list)
-autoplot(fit.three)
-
-# Terrance for loop code
+# For loop to fit all versions of covariates model
 BB_ZZ <- matrix(1, 18, 1)
 system_ZZ <- matrix(0, 18, 3) 
 system_ZZ[1:6, 1] <- 1
