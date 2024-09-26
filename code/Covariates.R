@@ -92,7 +92,7 @@ for (Q_i in Q_vec){
       
       # save stuff out
       AIC_i <- if (!is.null(fit)) fit$AICc else NA
-      df_tmp = data.frame(Q = Q_i, Z = Z_i, Covariates = Covariate_i, AIC = AIC_i)
+      df_tmp = data.frame(Q = Q_i, C = C_i, Z = Z_i, Covariates = Covariate_i, AIC = AIC_i)
       big_dateframe = rbind(big_dateframe, df_tmp)
     }}}}
 
@@ -102,13 +102,26 @@ model.list.1 <- list(B = "diagonal and unequal",
                    Q = "unconstrained", 
                    Z = system_ZZ,
                    A = "zero", 
-                   R = "diagonal and equal", #consistent sampling 
+                   R = "diagonal and equal",
                    D = "zero", 
                    d = "zero", 
-                   C = "unconstrained", #maybe diagonal and equal if all systems are equally impacted by climate
+                   C = "unconstrained", 
                    c = matrix(covariates["PDO", ], nrow = 1), 
                    x0 = "unequal", 
                    tinitx = 1)
 output <- MARSS(PHE, model = model.list.1, method = "BFGS")
 summary(output)
+
+# Trophic position estimation 
+# Read in data
+tp <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/tp.state.csv")
+tp <- tp[,-1]
+sys.tp <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/system.tp.states.csv")
+sys.tp <- sys.tp[,-1]
+
+# Run model with TP instead of PHE 
+
+
+
+
 
