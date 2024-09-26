@@ -1,3 +1,6 @@
+# Citation for package to include 
+citation("MARSS")
+
 # Load packages 
 library(tidyverse)
 library(MARSS)
