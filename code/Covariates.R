@@ -15,8 +15,8 @@ GLU <- as.matrix(GLU[,-1])
 PDO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/PDO_tidy.csv")
 ENSO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/ENSO_tidy.csv")
 NPGO <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/NPGO_tidy.csv")
-ret <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/BB_returns.csv")
-ice <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/sea_ice.csv")
+#ret <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/BB_returns.csv")
+#ice <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/sea_ice.csv")
 
 # Put all envi data into one df 
 climate <- cbind(PDO, ENSO, NPGO)
@@ -51,7 +51,7 @@ model.list <- list(B = "diagonal and unequal",
                    D = "zero", 
                    d = "zero", 
                    C = "unconstrained", #maybe diagonal and equal if all systems are equally impacted by climate
-                   c = climate, 
+                   c = matrix(covariates["NPGO", ], nrow = 1), 
                    x0 = "unequal", 
                    tinitx = 1)
 fit.one <- MARSS(PHE, model = model.list, method = "BFGS")
@@ -79,36 +79,53 @@ model.list <- list(B = "diagonal and unequal",
                    D = "zero", 
                    d = "zero", 
                    C = "unconstrained", 
-                   c = climate, 
+                   c = covariates, 
                    x0 = matrix(c("mu1", "mu2", "mu3"), nrow = 3, ncol = 1), 
                    tinitx = 1)
 fit.three <- MARSS(PHE, model = model.list)
 autoplot(fit.three)
 
 # Terrance for loop code
-Q_vec = c("diagonal and equal", "diagonal and unequal", "equalvarcovar")
-Z_vec = c("big boy", "3 rivers")
-Covariate_vec = c("PDO", "ENSO", "PDO+ENSO")
-big_dateframe = NULL
+BB_ZZ <- matrix(1, 18, 1)
+system_ZZ <- matrix(0, 18, 3) 
+system_ZZ[1:6, 1] <- 1
+system_ZZ[7:12, 2] <- 1
+system_ZZ[13:18, 3] <- 1
+
+Q_vec <- c("diagonal and equal", "diagonal and unequal", "equalvarcov")
+Z_vec <- c("Bristol Bay", "Systems")
+Covariate_vec <- c("PDO", "NPGO", "PDO + NPGO")
+big_dateframe <- NULL
+model.list <- list(B = "diagonal and unequal", 
+                   U = "zero",
+                   Q = "N/A", #will be updated in the loop
+                   Z = "N/A", #will be updated in the loop
+                   A = "zero", 
+                   R = "diagonal and equal", #consistent sampling 
+                   D = "zero", 
+                   d = "zero", 
+                   C = "unconstrained", #maybe diagonal and equal if all systems are equally impacted by climate
+                   c = "N/A", #will be updated in the loop
+                   x0 = "unequal", 
+                   tinitx = 1)
+
 for (Q_i in Q_vec){
-  marrs_list$Q = Q_i 
+  model.list$Q <- Q_i
   for (Z_i in Z_vec){
-    if (Z_i == "big boy"){marrs_list = Z1} else {marrs_list = Z2} ## you will have to define the matrix outside loop
+    if (Z_i == "Bristol Bay"){model.list$Z <- BB_ZZ} else {model.list$Z <- system_ZZ}
     for (Covariate_i in Covariate_vec){
-      if(Covariate_i == "PDO") {data_input_matrix = C_pdo} ## you will have to define the matrix outside loop
-      if(Covariate_i == "ENSO") {data_input_matrix = C_enso} ## you will have to define the matrix outside loop
-      if(Covariate_i == "PDO+ENSO") {data_input_matrix = C_enso_pdo} ## you will have to define the matrix outside loop
+      if(Covariate_i == "PDO") {model.list$c <- matrix(covariates["PDO", ], nrow = 1)}
+      if(Covariate_i == "NPGO") {model.list$c <- matrix(covariates["NPGO", ], nrow = 1)}
+      if(Covariate_i == "PDO + NPGO") {model.list$c <- matrix(covariates[c("NPGO", "PDO"), ], nrow = 2)}
       
       ## run the model with the updated model specifications and covariate data
-      fit = MARSS(marss_list, method = "BFGS")
+      fit <- MARSS(PHE, model = model.list, method = "BFGS")
       
       # save stuff out
-      AIC_i = fit$AICc; warning_i = fit$warnings;
-      df_tmp  = data.frame(Q = Q_i, Z = Z_i, Covariates = Covarite_i, AIC = AIC_i, warning=warning_i)
+      AIC_i = fit$AICc 
+      df_tmp = data.frame(Q = Q_i, Z = Z_i, Covariates = Covariate_i, AIC = AIC_i)
       big_dateframe = rbind(big_dateframe, df_tmp)
     }}}
-
-
 
 
 
