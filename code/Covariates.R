@@ -93,5 +93,18 @@ for (Q_i in Q_vec){
       big_dateframe = rbind(big_dateframe, df_tmp)
     }}}
 
-
-
+# Run just best fit model 
+model.list.1 <- list(B = "diagonal and unequal", 
+                   U = "zero",
+                   Q = "unconstrained", 
+                   Z = system_ZZ,
+                   A = "zero", 
+                   R = "diagonal and equal", #consistent sampling 
+                   D = "zero", 
+                   d = "zero", 
+                   C = "unconstrained", #maybe diagonal and equal if all systems are equally impacted by climate
+                   c = matrix(covariates["PDO", ], nrow = 1), 
+                   x0 = "unequal", 
+                   tinitx = 1)
+output <- MARSS(PHE, model = model.list.1, method = "BFGS")
+summary(output)
