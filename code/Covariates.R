@@ -92,7 +92,7 @@ system_ZZ[1:6, 1] <- 1
 system_ZZ[7:12, 2] <- 1
 system_ZZ[13:18, 3] <- 1
 
-Q_vec <- c("diagonal and equal", "diagonal and unequal", "equalvarcov")
+Q_vec <- c("diagonal and equal", "diagonal and unequal", "equalvarcov", "unconstrained")
 Z_vec <- c("Bristol Bay", "Systems")
 Covariate_vec <- c("PDO", "NPGO", "PDO + NPGO")
 big_dateframe <- NULL
@@ -119,10 +119,14 @@ for (Q_i in Q_vec){
       if(Covariate_i == "PDO + NPGO") {model.list$c <- matrix(covariates[c("NPGO", "PDO"), ], nrow = 2)}
       
       ## run the model with the updated model specifications and covariate data
-      fit <- MARSS(PHE, model = model.list, method = "BFGS")
+      fit <- tryCatch({
+        MARSS(PHE, model = model.list, method = "BFGS")
+      }, error = function(e) {
+        NULL  # return NULL if the model fails
+      })
       
       # save stuff out
-      AIC_i = fit$AICc 
+      AIC_i <- if (!is.null(fit)) fit$AICc else NA
       df_tmp = data.frame(Q = Q_i, Z = Z_i, Covariates = Covariate_i, AIC = AIC_i)
       big_dateframe = rbind(big_dateframe, df_tmp)
     }}}
