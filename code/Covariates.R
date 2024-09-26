@@ -55,6 +55,7 @@ system_ZZ[7:12, 2] <- 1
 system_ZZ[13:18, 3] <- 1
 
 Q_vec <- c("diagonal and equal", "diagonal and unequal", "equalvarcov", "unconstrained")
+C_vec <- c("diagonal and equal", "unconstrained")
 Z_vec <- c("Bristol Bay", "Systems")
 Covariate_vec <- c("PDO", "NPGO", "PDO + NPGO")
 big_dateframe <- NULL
@@ -73,6 +74,8 @@ model.list <- list(B = "diagonal and unequal",
 
 for (Q_i in Q_vec){
   model.list$Q <- Q_i
+  for(C_i in C_vec){
+    model.list$C <- C_i
   for (Z_i in Z_vec){
     if (Z_i == "Bristol Bay"){model.list$Z <- BB_ZZ} else {model.list$Z <- system_ZZ}
     for (Covariate_i in Covariate_vec){
@@ -91,7 +94,7 @@ for (Q_i in Q_vec){
       AIC_i <- if (!is.null(fit)) fit$AICc else NA
       df_tmp = data.frame(Q = Q_i, Z = Z_i, Covariates = Covariate_i, AIC = AIC_i)
       big_dateframe = rbind(big_dateframe, df_tmp)
-    }}}
+    }}}}
 
 # Run just best fit model 
 model.list.1 <- list(B = "diagonal and unequal", 
@@ -108,3 +111,4 @@ model.list.1 <- list(B = "diagonal and unequal",
                    tinitx = 1)
 output <- MARSS(PHE, model = model.list.1, method = "BFGS")
 summary(output)
+
