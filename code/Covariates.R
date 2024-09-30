@@ -6,9 +6,10 @@ library(tidyverse)
 library(MARSS)
 library(ggplot2)
 
-# Load PHE data
+# Load PHE data: order of systems - Wood, Kvichak, Egegik
 PHE <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_PHE_formatted.csv")
 PHE <- as.matrix(PHE[,-1])
+
 
 # Load GLU data
 GLU <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_GLU_formatted.csv")
@@ -42,10 +43,6 @@ the.sigma <- sqrt(apply(climate, 1, var, na.rm = TRUE))
 covariates <- (climate - the.mean) * (1/the.sigma)
 
 #check colinearity between PDO and ENSO 
-#can compare coefficients because standardized 
-fit.one$coef[22]
-fit.one$coef[23]
-fit.one$coef[24]
 
 # For loop to fit all versions of covariates model
 BB_ZZ <- matrix(1, 18, 1)
@@ -111,6 +108,11 @@ model.list.1 <- list(B = "diagonal and unequal",
                    tinitx = 1)
 output <- MARSS(PHE, model = model.list.1, method = "BFGS")
 summary(output)
+output[["coef"]][["C.X1"]]
+output[["coef"]][["C.X2"]]
+output[["coef"]][["C.X3"]]
+
+autoplot(output)
 
 # Trophic position estimation 
 # Read in data
