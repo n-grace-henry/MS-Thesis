@@ -10,7 +10,6 @@ library(ggplot2)
 PHE <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_PHE_formatted.csv")
 PHE <- as.matrix(PHE[,-1])
 
-
 # Load GLU data
 GLU <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/all_GLU_formatted.csv")
 GLU <- as.matrix(GLU[,-1])
@@ -108,22 +107,52 @@ model.list.1 <- list(B = "diagonal and unequal",
                    tinitx = 1)
 output <- MARSS(PHE, model = model.list.1, method = "BFGS")
 summary(output)
-output[["coef"]][["C.X1"]]
-output[["coef"]][["C.X2"]]
-output[["coef"]][["C.X3"]]
-
+w <- output[["coef"]][["C.X1"]]
+k <- output[["coef"]][["C.X2"]]
+e <- output[["coef"]][["C.X3"]]
 autoplot(output)
+
+# Run just best fit model on BB
+model.list.2 <- list(B = "diagonal and unequal", 
+                     U = "zero",
+                     Q = "unconstrained", 
+                     Z = BB_ZZ,
+                     A = "zero", 
+                     R = "diagonal and equal",
+                     D = "zero", 
+                     d = "zero", 
+                     C = "unconstrained", 
+                     c = matrix(covariates["PDO", ], nrow = 1), 
+                     x0 = "unequal", 
+                     tinitx = 1)
+output.2 <- MARSS(PHE, model = model.list.2, method = "BFGS")
+summary(output.2)
+bb <- output.2[["coef"]][["C.C"]]
 
 # Trophic position estimation 
 # Read in data
 tp <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/tp.state.csv")
-tp <- tp[,-1]
+tp <- as.matrix(tp[,-1])
 sys.tp <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/system.tp.states.csv")
-sys.tp <- sys.tp[,-1]
+sys.tp <- as.matrix(sys.tp[,-c(1,2)])
+sys.tp <- t(sys.tp)
 
 # Run model with TP instead of PHE 
-
-
+ZZZ <- diag(3)
+model.list.2 <- list(B = "diagonal and unequal", 
+                     U = "zero",
+                     Q = "unconstrained", 
+                     Z = ZZZ,
+                     A = "zero", 
+                     R = "diagonal and equal",
+                     D = "zero", 
+                     d = "zero", 
+                     C = "unconstrained", 
+                     c = covariates, 
+                     x0 = "unequal", 
+                     tinitx = 1)
+output.3 <- MARSS(sys.tp, model = model.list.2, method = "BFGS")
+summary(output.3)
 
 
 
