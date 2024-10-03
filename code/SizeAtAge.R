@@ -12,3 +12,5 @@ size <- size[!size$Year %in% c(2023, 2024),]
 
 # Delete last two columns
 size <- size[, -c(7, 8)]
+
+# Update Ohlberger data with Woodard data
