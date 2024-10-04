@@ -14,3 +14,13 @@ size <- size[!size$Year %in% c(2023, 2024),]
 size <- size[, -c(7, 8)]
 
 # Update Ohlberger data with Woodard data
+
+
+# Plot updated pink returns 
+
+
+
+# Save new data frame as csv for analysis in other script 
+
+
+
