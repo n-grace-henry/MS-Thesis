@@ -91,17 +91,17 @@ mod.list <- list(
   Q = "diagonal and equal",         
   Z = ZZ,
   A = "scaling",    
-  R = "diagonal and unequal",
+  R = "diagonal and equal",
   x0 = matrix("mu", nrow = 1, ncol = 1),  
   tinitx = 0             
 )
 
 # Fit PHE model 
-PHE.fit.one <- MARSS(all.PHE, model = mod.list)
+PHE.fit.one <- MARSS(all.PHE, model = mod.list, method = "BFGS")
 autoplot(PHE.fit.one)
 
 # Fit GLU model 
-GLU.fit.one <- MARSS(all.GLU, model = mod.list)
+GLU.fit.one <- MARSS(all.GLU, model = mod.list, method = "BFGS")
 autoplot(GLU.fit.one)
 
 # Subset states
@@ -193,6 +193,21 @@ ggplot(tp.t, aes(x = Year, y = Anomaly)) +
   theme_minimal()
 
 
+# Fit PHE system model 
+system_ZZ <- matrix(0, 18, 3) 
+system_ZZ[1:6, 1] <- 1
+system_ZZ[7:12, 2] <- 1
+system_ZZ[13:18, 3] <- 1
+
+model.list <- list(B = "identity", 
+                   U = "zero",
+                   Q = "diagonal and equal", 
+                   Z = "system_ZZ", 
+                   A = "scaling", 
+                   R = "diagonal and unequal",
+                   x0 = matrix(c("mu1", "mu2", "mu3"), nrow = 3, ncol = 1), 
+                   tinitx = 0)
+PHE.system <- MARSS(all.PHE, model = model.list, method = "BFGS")
 
 
 
