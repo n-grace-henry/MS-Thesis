@@ -202,12 +202,42 @@ system_ZZ[13:18, 3] <- 1
 model.list <- list(B = "identity", 
                    U = "zero",
                    Q = "diagonal and equal", 
-                   Z = "system_ZZ", 
+                   Z = system_ZZ, 
                    A = "scaling", 
                    R = "diagonal and unequal",
                    x0 = matrix(c("mu1", "mu2", "mu3"), nrow = 3, ncol = 1), 
                    tinitx = 0)
 PHE.system <- MARSS(all.PHE, model = model.list, method = "BFGS")
+GlU.system <- MARSS(all.GLU, model = model.list, method = "BFGS")
+
+# Subset system states
+W.PHE <- PHE.system[["states"]][1,]
+K.PHE <- PHE.system[["states"]][2,]
+E.PHE <- PHE.system[["states"]][3,]
+
+W.GLU <- GlU.system[["states"]][1,]
+K.GLU <- GlU.system[["states"]][2,]
+E.GLU <- GlU.system[["states"]][3,]
+
+# Calculate TP for each system 
+tp.W <- (((W.GLU - W.PHE)-beta)/TDF) + 1
+tp.K <- (((K.GLU - K.PHE)-beta)/TDF) + 1
+tp.E <- (((E.GLU - E.PHE)-beta)/TDF) + 1
+
+# Make df of all states
+PHE.state <- PHE.state[1,]
+GLU.state <- GLU.state[1,]
+
+all.states <- data.frame(W.PHE, K.PHE, E.PHE, W.GLU, K.GLU, E.GLU,PHE.state,GLU.state, tp.W, tp.K, tp.E, tp)
+year <- 1965:2022
+all.states$Year <- year
+
+colnames(all.states) <- c("W.PHE", "K.PHE", "E.PHE", "W.GLU", "K.GLU", "E.GLU", "BB.PHE", "BB.GLU", "tp.W", "tp.K", "tp.E", "BB.tp","Year")
+
+# Save as csv
+write.csv(all.states, file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
+
+
 
 
 
