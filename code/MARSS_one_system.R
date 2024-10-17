@@ -99,10 +99,14 @@ mod.list <- list(
 # Fit PHE model 
 PHE.fit.one <- MARSS(all.PHE, model = mod.list, method = "BFGS")
 autoplot(PHE.fit.one)
+PHE.fit.one$AICc
+PHE.fit.one$AIC
 
 # Fit GLU model 
 GLU.fit.one <- MARSS(all.GLU, model = mod.list, method = "BFGS")
 autoplot(GLU.fit.one)
+GLU.fit.one$AICc
+GLU.fit.one$AIC
 
 # Subset states
 PHE.state <- PHE.fit.one$states
@@ -204,11 +208,15 @@ model.list <- list(B = "identity",
                    Q = "diagonal and equal", 
                    Z = system_ZZ, 
                    A = "scaling", 
-                   R = "diagonal and unequal",
+                   R = "diagonal and equal",
                    x0 = matrix(c("mu1", "mu2", "mu3"), nrow = 3, ncol = 1), 
                    tinitx = 0)
 PHE.system <- MARSS(all.PHE, model = model.list, method = "BFGS")
+PHE.system$AICc
+PHE.system$AIC
 GlU.system <- MARSS(all.GLU, model = model.list, method = "BFGS")
+GlU.system$AICc
+GlU.system$AIC
 
 # Subset system states
 W.PHE <- PHE.system[["states"]][1,]
