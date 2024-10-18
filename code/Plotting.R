@@ -22,35 +22,128 @@ tp.long <- tp %>% pivot_longer(cols = -Year, names_to = "System", values_to = "t
 PHE.long <- PHE %>% pivot_longer(cols = -Year, names_to = "System", values_to = "PHE")
 GLU.long <- GLU %>% pivot_longer(cols = -Year, names_to = "System", values_to = "GLU")
 
-# TP plot 
-ggplot(tp.long, aes(x = Year, y = tp, color = System)) +
-  geom_line() +
-  facet_wrap(~System) +
-  labs(title = "Trophic Position Over Time",
-       x = "Year",
-       y = "Trophic Position") +
-  theme_minimal() + 
-  theme(legend.position = "none")
+# PHE data format for panel plot
+PHE_BB <- subset(PHE.long, System == unique(PHE.long$System)[4])
+PHE_W <- subset(PHE.long, System == unique(PHE.long$System)[1])
+PHE_K <- subset(PHE.long, System == unique(PHE.long$System)[2])
+PHE_E <- subset(PHE.long, System == unique(PHE.long$System)[3])
 
-# PHE plot
-ggplot(PHE.long, aes(x = Year, y = PHE, color = System)) +
-  geom_line() +
-  facet_wrap(~System) +
-  labs(title = "Phenylalanine Through Time",
-       x = "Year",
-       y = "Phenylalanine d15N/d14N") +
-  theme_minimal() + 
-  theme(legend.position = "none")
+# PHE plots
+PHEBB <- ggplot(PHE_BB, aes(x = Year, y = PHE)) +
+  geom_line() + 
+  labs(title = "Bristol Bay",
+       y = "Phenylalanine") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman") 
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
 
-# GLU plot
-ggplot(GLU.long, aes(x = Year, y = GLU, color = System)) +
-  geom_line() +
-  facet_wrap(~System) +
-  labs(title = "Glutamic Acid Through Time",
-       x = "Year",
-       y = "Glutamic Acid d15N/d14N") +
-  theme_minimal() + 
-  theme(legend.position = "none")
+PHEW <- ggplot(PHE_W, aes(x = Year, y = PHE)) +
+  geom_line() + 
+  labs(title = "Wood") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(), 
+        axis.title.y = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman") 
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(b)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+
+PHEK <- ggplot(PHE_K, aes(x = Year, y = PHE)) +
+  geom_line() + 
+  labs(title = "Kvichak",
+       xlab = "Year") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.title.y = element_blank(), 
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman") 
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(c)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+
+PHEE <- ggplot(PHE_E, aes(x = Year, y = PHE)) +
+  geom_line() + 
+  labs(title = "Egegik") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(), 
+        axis.title.y = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman") 
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(d)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+
+# Combine the plots: plot_1 on top, and plot_2, plot_3, plot_4 in one row below
+combined_plot <- PHEBB / (PHEW | PHEK | PHEE) + plot_layout(heights = c(2, 1))
+
+# Display the combined plot
+combined_plot
+
+
+# GLU data format for panel plot
+GLU_BB <- subset(GLU.long, System == unique(GLU.long$System)[4])
+GLU_W <- subset(GLU.long, System == unique(GLU.long$System)[1])
+GLU_K <- subset(GLU.long, System == unique(GLU.long$System)[2])
+GLU_E <- subset(GLU.long, System == unique(GLU.long$System)[3])
+
+# GLU plots 
+GLUBB <- ggplot(GLU_BB, aes(x = Year, y = GLU)) +
+  geom_line() + 
+  labs(title = "Bristol Bay",
+       y = "Glutamic Acid") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
+        text = element_text(family = "Times New Roman")
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+
+GLUW <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
+  geom_line() + 
+  labs(title = "Wood") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(), 
+        axis.title.y = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman") 
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(b)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+
+GLUK <- ggplot(GLU_K, aes(x = Year, y = GLU)) +
+  geom_line() + 
+  labs(title = "Kvichak") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.title.y = element_blank(), 
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman") 
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(c)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+
+GLUE <- ggplot(GLU_E, aes(x = Year, y = GLU)) +
+  geom_line() + 
+  labs(title = "Egegik") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(), 
+        axis.title.y = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman") 
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(d)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+
+# Combine the plots: plot_1 on top, and plot_2, plot_3, plot_4 in one row below
+combined_plot <- GLUBB / (GLUW | GLUK | GLUE) + plot_layout(heights = c(2, 1))
+
+# Display the combined plot
+combined_plot
+
 
 # Anomaly plot of tp 
 anomaly <- function(data){
@@ -76,23 +169,7 @@ anomaly <- data.frame(Year = data$Year, Wood = W.anomaly[,2], Kvichak = K.anomal
 # Pivot to long format
 anomaly.long <- anomaly %>% pivot_longer(cols = -Year, names_to = "System", values_to = "Anomaly")
 
-# Plot
-ggplot(anomaly.long, aes(x = Year, y = Anomaly)) +
-  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "grey20", alpha = 0.5) +
-  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "grey", alpha = 0.5) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
-  geom_line() +
-  facet_wrap(~System) +
-  labs(title = "Trophic Position Anomaly Over Time",
-       x = "Year",
-       y = "Trophic position anomaly") +
-  theme_minimal() 
-
-
-library(ggplot2)
-library(patchwork)
-
-# Assuming you have four systems in your 'anomaly.long' dataset
+# Format data
 anomaly_BB <- subset(anomaly.long, System == unique(anomaly.long$System)[4])
 anomaly_W <- subset(anomaly.long, System == unique(anomaly.long$System)[1])
 anomaly_K <- subset(anomaly.long, System == unique(anomaly.long$System)[2])
@@ -110,7 +187,8 @@ plot_BB <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   theme(legend.position = "none",
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman") 
-        ) 
+        ) +
+  annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
 
 plot_W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
@@ -122,9 +200,10 @@ plot_W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
     axis.title.x = element_blank(), 
     axis.title.y = element_blank(),
     legend.position = "none",
-    plot.title = element_text(hjust = 0.5, family = "Times New Roman"),  # Centers title and sets font
+    plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
-  ) 
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(b)", hjust = 1.1, vjust = 1, size = 4, family = "Times New Roman")
 
 plot_K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
@@ -137,8 +216,9 @@ plot_K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
     axis.title.y = element_blank(),
     legend.position = "none", 
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"),  # Centers title and sets font
-    text = element_text(family = "Times New Roman") 
-  )
+    text = element_text(family = "Times New Roman")
+    ) +
+  annotate("text", x = Inf, y = Inf, label = "(c)", hjust = 1.1, vjust = 1, size = 4, family = "Times New Roman")
 
 plot_E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
@@ -152,7 +232,8 @@ plot_E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
     legend.position = "none",
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"),  # Centers title and sets font
     text = element_text(family = "Times New Roman") 
-  )
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(d)", hjust = 1.1, vjust = 1, size = 4, family = "Times New Roman")
 
 # Combine the plots: plot_1 on top, and plot_2, plot_3, plot_4 in one row below
 combined_plot <- plot_BB / (plot_W | plot_K | plot_E) + plot_layout(heights = c(2, 1))
