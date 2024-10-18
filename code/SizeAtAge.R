@@ -6,6 +6,9 @@ library(dplyr)
 size <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/SaA_covariates_2024.csv")
 str(size)
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/Ohlberger.csv")
+SaA_BB <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/SaA/Mean_SaA_esc_ocean2s_by_year_BB_wide.csv")
+SaA_system <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/SaA/Mean_SaA_esc_ocean2s_by_year_each_system.csv")
+SaA_system_avg <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/SaA/Mean_SaA_esc_ocean2s_by_year_across_systems.csv")
 
 # Format size df
 size <- size[!size$Year %in% c(2023, 2024),]
@@ -38,9 +41,10 @@ ggplot(data, aes(x = Year, y = Pink)) +
   geom_point() +
   labs(title = "Pink Salmon Returns", x = "Year", y = "Number of Pink Salmon")
 
-
-
-# Save new data frame as csv for analysis in other script 
+# Plot size at age through time 
+ggplot(data = SaA_system_avg, aes(year, mean_SaA)) +
+  geom_line() +
+  geom_smooth()
 
 
 

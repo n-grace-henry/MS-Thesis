@@ -3,9 +3,11 @@
 
 # Load libraries
 library(tidyverse)
+library(patchwork)
 
 # Load data 
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
+SaA <- SaA_BB <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/SaA/Mean_SaA_esc_ocean2s_by_year_BB_wide.csv")
 
 # Separate into three data frames
 tp <- data %>% select(Year, tp.W, tp.K, tp.E, BB.tp)
@@ -87,5 +89,73 @@ ggplot(anomaly.long, aes(x = Year, y = Anomaly)) +
   theme_minimal() 
 
 
+library(ggplot2)
+library(patchwork)
 
+# Assuming you have four systems in your 'anomaly.long' dataset
+anomaly_BB <- subset(anomaly.long, System == unique(anomaly.long$System)[4])
+anomaly_W <- subset(anomaly.long, System == unique(anomaly.long$System)[1])
+anomaly_K <- subset(anomaly.long, System == unique(anomaly.long$System)[2])
+anomaly_E <- subset(anomaly.long, System == unique(anomaly.long$System)[3])
 
+# Create individual plots
+plot_BB <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +  
+  labs(title = "Bristol Bay",
+       x = "Year",
+       y = "TP anomaly") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman") 
+        ) 
+
+plot_W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +
+  labs(title = "Wood") +
+  theme_minimal() + 
+  theme(
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank(),
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, family = "Times New Roman"),  # Centers title and sets font
+    text = element_text(family = "Times New Roman") 
+  ) 
+
+plot_K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +
+  labs(title = "Kvichak") +
+  theme_minimal() + 
+  theme(
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank(),
+    legend.position = "none", 
+    plot.title = element_text(hjust = 0.5, family = "Times New Roman"),  # Centers title and sets font
+    text = element_text(family = "Times New Roman") 
+  )
+
+plot_E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +
+  labs(title = "Egegik") +
+  theme_minimal() + 
+  theme(
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank(),
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, family = "Times New Roman"),  # Centers title and sets font
+    text = element_text(family = "Times New Roman") 
+  )
+
+# Combine the plots: plot_1 on top, and plot_2, plot_3, plot_4 in one row below
+combined_plot <- plot_BB / (plot_W | plot_K | plot_E) + plot_layout(heights = c(2, 1))
+
+# Display the combined plot
+combined_plot
