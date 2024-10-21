@@ -5,6 +5,11 @@
 library(tidyverse)
 library(patchwork)
 
+# Load raw data
+
+
+
+
 # Load data 
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
 SaA <- SaA_BB <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/SaA/Mean_SaA_esc_ocean2s_by_year_BB_wide.csv")
