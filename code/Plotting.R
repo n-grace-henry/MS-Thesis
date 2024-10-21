@@ -38,7 +38,7 @@ PHEBB <- ggplot(PHE_BB, aes(x = Year, y = PHE)) +
   geom_line() + 
   labs(title = "Bristol Bay",
        y = "Phenylalanine") +
-  theme_minimal() +
+  theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(),
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
@@ -49,7 +49,7 @@ PHEBB <- ggplot(PHE_BB, aes(x = Year, y = PHE)) +
 PHEW <- ggplot(PHE_W, aes(x = Year, y = PHE)) +
   geom_line() + 
   labs(title = "Wood") +
-  theme_minimal() +
+  theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(), 
         axis.title.y = element_blank(),
@@ -62,7 +62,7 @@ PHEK <- ggplot(PHE_K, aes(x = Year, y = PHE)) +
   geom_line() + 
   labs(title = "Kvichak",
        xlab = "Year") +
-  theme_minimal() +
+  theme_classic() +
   theme(legend.position = "none",
         axis.title.y = element_blank(), 
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
@@ -73,7 +73,7 @@ PHEK <- ggplot(PHE_K, aes(x = Year, y = PHE)) +
 PHEE <- ggplot(PHE_E, aes(x = Year, y = PHE)) +
   geom_line() + 
   labs(title = "Egegik") +
-  theme_minimal() +
+  theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(), 
         axis.title.y = element_blank(),
@@ -188,7 +188,7 @@ plot_BB <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   labs(title = "Bristol Bay",
        x = "Year",
        y = "TP anomaly") +
-  theme_minimal() +
+  theme_classic() +
   theme(legend.position = "none",
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman") 
@@ -200,7 +200,7 @@ plot_W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_col() +
   scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +
   labs(title = "Wood") +
-  theme_minimal() + 
+  theme_classic() + 
   theme(
     axis.title.x = element_blank(), 
     axis.title.y = element_blank(),
@@ -215,7 +215,7 @@ plot_K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_col() +
   scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +
   labs(title = "Kvichak") +
-  theme_minimal() + 
+  theme_classic() + 
   theme(
     axis.title.x = element_blank(), 
     axis.title.y = element_blank(),
@@ -230,7 +230,7 @@ plot_E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_col() +
   scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +
   labs(title = "Egegik") +
-  theme_minimal() + 
+  theme_classic() + 
   theme(
     axis.title.x = element_blank(), 
     axis.title.y = element_blank(),
