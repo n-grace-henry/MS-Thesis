@@ -100,7 +100,7 @@ GLUBB <- ggplot(GLU_BB, aes(x = Year, y = GLU)) +
   geom_line() + 
   labs(title = "Bristol Bay",
        y = "Glutamic Acid") +
-  theme_minimal() +
+  theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(),
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
@@ -111,7 +111,7 @@ GLUBB <- ggplot(GLU_BB, aes(x = Year, y = GLU)) +
 GLUW <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
   geom_line() + 
   labs(title = "Wood") +
-  theme_minimal() +
+  theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(), 
         axis.title.y = element_blank(),
@@ -123,7 +123,7 @@ GLUW <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
 GLUK <- ggplot(GLU_K, aes(x = Year, y = GLU)) +
   geom_line() + 
   labs(title = "Kvichak") +
-  theme_minimal() +
+  theme_classic() +
   theme(legend.position = "none",
         axis.title.y = element_blank(), 
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
@@ -134,7 +134,7 @@ GLUK <- ggplot(GLU_K, aes(x = Year, y = GLU)) +
 GLUE <- ggplot(GLU_E, aes(x = Year, y = GLU)) +
   geom_line() + 
   labs(title = "Egegik") +
-  theme_minimal() +
+  theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(), 
         axis.title.y = element_blank(),
