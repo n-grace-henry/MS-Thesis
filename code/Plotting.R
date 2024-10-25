@@ -193,7 +193,7 @@ plot_BB <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman") 
         ) +
-  annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+  annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman") 
 
 plot_W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
