@@ -7,9 +7,6 @@ library(patchwork)
 
 # Load raw data
 
-
-
-
 # Load data 
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
 SaA <- SaA_BB <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/SaA/Mean_SaA_esc_ocean2s_by_year_BB_wide.csv")
@@ -87,7 +84,6 @@ combined_plot <- PHEBB / (PHEW | PHEK | PHEE) + plot_layout(heights = c(2, 1))
 
 # Display the combined plot
 combined_plot
-
 
 # GLU data format for panel plot
 GLU_BB <- subset(GLU.long, System == unique(GLU.long$System)[4])
