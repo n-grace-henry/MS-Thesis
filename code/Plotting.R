@@ -1,6 +1,3 @@
-# Make a data frame that has the hidden state data from MARSS
-# make a facet wrap plot with four panels, one for each system and one for BB as a whole
-
 # Load libraries
 library(tidyverse)
 library(patchwork)
@@ -9,7 +6,7 @@ library(patchwork)
 
 # Load data 
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
-SaA <- SaA_BB <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/SaA/Mean_SaA_esc_ocean2s_by_year_BB_wide.csv")
+SaA <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/SaA/Mean_SaA_esc_ocean2s_by_year_BB_wide.csv")
 
 # Separate into three data frames
 tp <- data %>% select(Year, tp.W, tp.K, tp.E, BB.tp)
