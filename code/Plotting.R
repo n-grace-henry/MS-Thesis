@@ -256,7 +256,7 @@ ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
 
 ggplot(anomaly_BB, aes(x = Year, y = size)) +
-  geom_line(color = "blue", linewidth = 1) +
+  geom_line(color = "red", linewidth = 1) +
   labs(title = "Bristol Bay",
        x = "Year",
        y = "Mean SaA") +
@@ -265,13 +265,14 @@ ggplot(anomaly_BB, aes(x = Year, y = size)) +
 ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  geom_line(aes(x = Year, y = size), color = "blue", linewidth = 1) +
+  geom_line(aes(x = Year, y = size * (0.015)), color = "red", linewidth = 0.5) +  # Apply scaling to 'size'
   scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +  
   labs(title = "Bristol Bay",
        x = "Year",
        y = "TP anomaly") +
   scale_y_continuous(
-    sec.axis = sec_axis(~ . * 0.1, name = "Secondary Axis Label")  # Adjust scale_factor based on your data
+    limits = c(-0.3, 0.3),
+    sec.axis = sec_axis(~ . / 0.005, name = "Size")  # Reverse the transformation for the secondary axis
   ) +
   theme_classic() +
   theme(legend.position = "none",
