@@ -262,17 +262,20 @@ ggplot(anomaly_BB, aes(x = Year, y = size)) +
        y = "Mean SaA") +
   theme_classic() 
 
+
+
+anomaly_BB$scaled_size <- anomaly_BB$size * 0.005
 ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  geom_line(aes(x = Year, y = size * (0.015)), color = "red", linewidth = 0.5) +  # Apply scaling to 'size'
+  geom_path(aes(x = Year, y = scaled_size), color = "red", linewidth = 0.5) +  # Apply scaling to 'size'
   scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +  
   labs(title = "Bristol Bay",
        x = "Year",
        y = "TP anomaly") +
   scale_y_continuous(
     limits = c(-0.3, 0.3),
-    sec.axis = sec_axis(~ . / 0.005, name = "Size")  # Reverse the transformation for the secondary axis
+    sec.axis = sec_axis(~ . / 0.01, name = "Size")  # Reverse the transformation for the secondary axis
   ) +
   theme_classic() +
   theme(legend.position = "none",
@@ -282,6 +285,26 @@ ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
 
 
 
+ggplot(anomaly_BB, aes(x = Year)) +
+  # Bar plot for anomalies
+  geom_col(aes(y = Anomaly, fill = Anomaly > 0)) +
+  # Red line plot for size
+  geom_line(aes(y = scaled_size), color = "red", linewidth = 1) +
+  # Horizontal dashed line at y=0
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  # Customizing fill colors for positive/negative anomalies
+  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +  
+  # Titles and labels
+  labs(title = "Bristol Bay",
+       x = "Year",
+       y = "TP anomaly") +
+  # Theme and annotation
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman")) +
+  # Add annotation text
+  annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
 
 
 
