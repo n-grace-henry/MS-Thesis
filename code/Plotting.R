@@ -23,6 +23,7 @@ GLU.long <- GLU %>% pivot_longer(cols = -Year, names_to = "System", values_to = 
 
 # PHE data format for panel plot
 PHE_BB <- subset(PHE.long, System == unique(PHE.long$System)[4])
+PHE_BB$size <- SaA$mean_SaA
 PHE_W <- subset(PHE.long, System == unique(PHE.long$System)[1])
 PHE_K <- subset(PHE.long, System == unique(PHE.long$System)[2])
 PHE_E <- subset(PHE.long, System == unique(PHE.long$System)[3])
@@ -151,7 +152,6 @@ anomaly <- function(data){
     df[i, 1] <- mean(data)
     df[i, 2] <- data[i] - df[i, 1]
   }
-  
   return(df)
 }
 
@@ -160,6 +160,7 @@ W.anomaly <- anomaly(data$tp.W)
 K.anomaly <- anomaly(data$tp.K)
 E.anomaly <- anomaly(data$tp.E)
 BB.anomaly <- anomaly(data$BB.tp)
+size.anomaly <- anomaly(SaA$mean_SaA)
 
 # Make data frame for plotting
 anomaly <- data.frame(Year = data$Year, Wood = W.anomaly[,2], Kvichak = K.anomaly[,2], Egegik = E.anomaly[,2], BristolBay = BB.anomaly[,2])
@@ -169,6 +170,7 @@ anomaly.long <- anomaly %>% pivot_longer(cols = -Year, names_to = "System", valu
 
 # Format data
 anomaly_BB <- subset(anomaly.long, System == unique(anomaly.long$System)[4])
+anomaly_BB$size <- size.anomaly[,2]
 anomaly_W <- subset(anomaly.long, System == unique(anomaly.long$System)[1])
 anomaly_K <- subset(anomaly.long, System == unique(anomaly.long$System)[2])
 anomaly_E <- subset(anomaly.long, System == unique(anomaly.long$System)[3])
@@ -238,3 +240,47 @@ combined_plot <- plot_BB / (plot_W | plot_K | plot_E) + plot_layout(heights = c(
 
 # Display the combined plot
 combined_plot
+
+# BB TP plot with SaA 
+ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +  
+  labs(title = "Bristol Bay",
+       x = "Year",
+       y = "TP anomaly") +
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman")) +
+  annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+
+ggplot(anomaly_BB, aes(x = Year, y = size)) +
+  geom_line(color = "blue", linewidth = 1) +
+  labs(title = "Bristol Bay",
+       x = "Year",
+       y = "Mean SaA") +
+  theme_classic() 
+
+ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  geom_line(aes(x = Year, y = size), color = "blue", linewidth = 1) +
+  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +  
+  labs(title = "Bristol Bay",
+       x = "Year",
+       y = "TP anomaly") +
+  scale_y_continuous(
+    sec.axis = sec_axis(~ . * 0.1, name = "Secondary Axis Label")  # Adjust scale_factor based on your data
+  ) +
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman")) +
+  annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+
+
+
+
+
+
