@@ -289,7 +289,7 @@ ggplot(anomaly_BB, aes(x = Year)) +
   # Bar plot for anomalies
   geom_col(aes(y = Anomaly, fill = Anomaly > 0)) +
   # Red line plot for size
-  geom_line(aes(y = scaled_size), color = "red", linewidth = 1) +
+  geom_line(aes(y = scaled_size), color = "pink2", linewidth = 1) +
   # Horizontal dashed line at y=0
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   # Customizing fill colors for positive/negative anomalies
