@@ -8,6 +8,10 @@ library(zoo)
 # Load data 
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
 SaA <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/SaA/Mean_SaA_esc_ocean2s_by_year_BB_wide.csv")
+pink <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/Pink.csv")
+
+# Trim pink data for appropriate years
+pink <- subset(pink, Year >= 1965 & Year <= 2022)
 
 # Separate into three data frames
 tp <- data %>% select(Year, tp.W, tp.K, tp.E, BB.tp)
@@ -150,7 +154,7 @@ anomaly <- function(data){
   df <- matrix(nrow = length(data), ncol = 2)
   
   for(i in 1:length(data)){
-    df[i, 1] <- mean(data)
+    df[i, 1] <- mean(data, na.rm = TRUE)
     df[i, 2] <- data[i] - df[i, 1]
   }
   return(df)
@@ -173,6 +177,9 @@ anomaly.long <- anomaly %>% pivot_longer(cols = -Year, names_to = "System", valu
 anomaly_BB <- subset(anomaly.long, System == unique(anomaly.long$System)[4])
 anomaly_BB$size <- size.anomaly[,2]
 anomaly_BB$avg_size <- rollmean(anomaly_BB$size, k = 5, align = "center", na.pad = TRUE)
+a.pink <- anomaly(pink$Pink)
+anomaly_BB$pink <- rollmean(a.pink[,2], k = 5, align = "center", na.pad = TRUE)
+
 anomaly_W <- subset(anomaly.long, System == unique(anomaly.long$System)[1])
 anomaly_K <- subset(anomaly.long, System == unique(anomaly.long$System)[2])
 anomaly_E <- subset(anomaly.long, System == unique(anomaly.long$System)[3])
@@ -251,49 +258,39 @@ ggplot(anomaly_BB, aes(x = Year, y = avg_size)) +
        y = "Mean SaA") +
   theme_classic() 
 
+ggplot(anomaly_BB, aes(Year, scaled_pink)) +
+  geom_line()
 
-
-anomaly_BB$scaled_size <- anomaly_BB$size * 0.005
-ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
-  geom_col() +
-  geom_path(aes(x = Year, y = scaled_size), color = "red", linewidth = 0.5) +  # Apply scaling to 'size'
-  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +  
-  labs(title = "Bristol Bay",
-       x = "Year",
-       y = "TP anomaly") +
-  scale_y_continuous(
-    limits = c(-0.3, 0.3),
-    sec.axis = sec_axis(~ . / 0.01, name = "Size")  # Reverse the transformation for the secondary axis
-  ) +
-  theme_classic() +
-  theme(legend.position = "none",
-        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
-        text = element_text(family = "Times New Roman")) +
-  annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
-
-
-
+anomaly_BB$scaled_size <- anomaly_BB$avg_size * 0.0205
 ggplot(anomaly_BB, aes(x = Year)) +
-  # Bar plot for anomalies
   geom_col(aes(y = Anomaly, fill = Anomaly > 0)) +
-  # Red line plot for size
-  geom_line(aes(y = scaled_size), color = "pink2", linewidth = 1) +
-  # Horizontal dashed line at y=0
+  geom_line(aes(y = scaled_size), color = "deepskyblue2", linewidth = 1) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
-  # Customizing fill colors for positive/negative anomalies
-  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +  
-  # Titles and labels
+  scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +  
+  scale_y_continuous(limits = c(-0.30, 0.30), breaks = c(-.3,-.15, 0, .15, .3), sec.axis = sec_axis(~ . / 0.0205, name = "Size Anomaly")) + 
   labs(title = "Bristol Bay",
        x = "Year",
-       y = "TP anomaly") +
-  # Theme and annotation
+       y = "Trophic Position anomaly") +
   theme_classic() +
   theme(legend.position = "none",
-        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        plot.title = element_text(hjust = 0.5, size = 16, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman")) +
-  # Add annotation text
   annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
 
+anomaly_BB$scaled_pink <- anomaly_BB$pink * 0.0013
+ggplot(anomaly_BB, aes(x = Year)) +
+  geom_col(aes(y = Anomaly, fill = Anomaly > 0)) +
+  geom_line(aes(y = scaled_pink), color = "deepskyblue2", linewidth = 1) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +  
+  scale_y_continuous(limits = c(-0.30, 0.30), breaks = c(-.3,-.15, 0, .15, .3), sec.axis = sec_axis(~ . / 0.0013, name = "Size Anomaly")) + 
+  labs(title = "Bristol Bay",
+       x = "Year",
+       y = "Trophic Position anomaly") +
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, size = 16, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman")) +
+  annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
 
 
