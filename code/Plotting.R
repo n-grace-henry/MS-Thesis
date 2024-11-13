@@ -251,16 +251,6 @@ combined_plot <- plot_BB / (plot_W | plot_K | plot_E) + plot_layout(heights = c(
 combined_plot
 
 # BB TP plot with SaA 
-ggplot(anomaly_BB, aes(x = Year, y = avg_size)) +
-  geom_line(color = "red", linewidth = 1) +
-  labs(title = "Bristol Bay",
-       x = "Year",
-       y = "Mean SaA") +
-  theme_classic() 
-
-ggplot(anomaly_BB, aes(Year, scaled_pink)) +
-  geom_line()
-
 anomaly_BB$scaled_size <- anomaly_BB$avg_size * 0.0205
 ggplot(anomaly_BB, aes(x = Year)) +
   geom_col(aes(y = Anomaly, fill = Anomaly > 0)) +
