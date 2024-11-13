@@ -188,7 +188,7 @@ anomaly_E <- subset(anomaly.long, System == unique(anomaly.long$System)[3])
 plot_BB <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +  
+  scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +  
   labs(title = "Bristol Bay",
        x = "Year",
        y = "TP anomaly") +
@@ -202,7 +202,7 @@ plot_BB <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
 plot_W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +
+  scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +
   labs(title = "Wood") +
   theme_classic() + 
   theme(
@@ -217,7 +217,7 @@ plot_W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
 plot_K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +
+  scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +
   labs(title = "Kvichak") +
   theme_classic() + 
   theme(
@@ -232,7 +232,7 @@ plot_K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
 plot_E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  scale_fill_manual(values = c("TRUE" = "lightgrey", "FALSE" = "darkgrey")) +
+  scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +
   labs(title = "Egegik") +
   theme_classic() + 
   theme(
