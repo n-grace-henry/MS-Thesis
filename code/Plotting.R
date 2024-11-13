@@ -254,7 +254,7 @@ combined_plot
 anomaly_BB$scaled_size <- anomaly_BB$avg_size * 0.0205
 ggplot(anomaly_BB, aes(x = Year)) +
   geom_col(aes(y = Anomaly, fill = Anomaly > 0)) +
-  geom_line(aes(y = scaled_size), color = "deepskyblue1", linewidth = 1) +
+  geom_line(aes(y = scaled_size), color = "red2", linewidth = 1) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +  
   scale_y_continuous(limits = c(-0.30, 0.30), breaks = c(-.3,-.15, 0, .15, .3), sec.axis = sec_axis(~ . / 0.0205, name = "Size Anomaly")) + 
@@ -273,7 +273,7 @@ ggplot(anomaly_BB, aes(x = Year)) +
   geom_line(aes(y = scaled_pink), color = "deepskyblue1", linewidth = 1) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +  
-  scale_y_continuous(limits = c(-0.30, 0.30), breaks = c(-.3,-.15, 0, .15, .3), sec.axis = sec_axis(~ . / 0.0013, name = "Size Anomaly")) + 
+  scale_y_continuous(limits = c(-0.30, 0.30), breaks = c(-.3,-.15, 0, .15, .3), sec.axis = sec_axis(~ . / 0.0013, name = "Pink Abundance Anomaly")) + 
   labs(title = "Bristol Bay",
        x = "Year",
        y = "Trophic Position anomaly") +
