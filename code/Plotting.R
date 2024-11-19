@@ -168,10 +168,10 @@ BB.anomaly <- anomaly(data$BB.tp)
 size.anomaly <- anomaly(SaA$mean_SaA)
 
 # Make data frame for plotting
-anomaly <- data.frame(Year = data$Year, Wood = W.anomaly[,2], Kvichak = K.anomaly[,2], Egegik = E.anomaly[,2], BristolBay = BB.anomaly[,2])
+anomaly.df <- data.frame(Year = data$Year, Wood = W.anomaly[,2], Kvichak = K.anomaly[,2], Egegik = E.anomaly[,2], BristolBay = BB.anomaly[,2])
 
 # Pivot to long format
-anomaly.long <- anomaly %>% pivot_longer(cols = -Year, names_to = "System", values_to = "Anomaly")
+anomaly.long <- anomaly.df %>% pivot_longer(cols = -Year, names_to = "System", values_to = "Anomaly")
 
 # Format data
 anomaly_BB <- subset(anomaly.long, System == unique(anomaly.long$System)[4])
@@ -282,5 +282,112 @@ ggplot(anomaly_BB, aes(x = Year)) +
         plot.title = element_text(hjust = 0.5, size = 16, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman")) +
   annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+
+
+
+
+# Figure 1: Three panel plot of Bristol Bay wide data
+PHE.BB <- ggplot(PHE_BB, aes(x = Year, y = PHE)) +
+  geom_line() + 
+  labs(title = "Bristol Bay",
+       y = expression(delta^15*N ~ "(‰)")) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman"),
+        axis.line.y = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = max(PHE_BB$PHE), label = "(a) phenylalanine (source AA)", 
+           hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+GLU.BB <- ggplot(GLU_BB, aes(x = Year, y = GLU)) +
+  geom_line() + 
+  labs(y = expression(delta^15*N ~ "(‰)")) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
+        text = element_text(family = "Times New Roman",),
+        axis.line.y = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = max(GLU_BB$GLU), label = "(b) glutamic acid (trophic AA)", 
+           hjust = 0, vjust = 0.5, size = 4, family = "Times New Roman")
+TP.BB <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +  
+  labs(x = "Year",
+       y = "Deviation from mean") +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  scale_y_continuous(limits = c(-0.28, 0.28), breaks = c(-0.30, -0.2, -0.1, 0.0, 0.1, 0.2, 0.30)) + 
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, size = 7, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman"),
+        axis.line.y = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = 0.28, label = "(c) trophic position", 
+           hjust = 0, vjust = 0.19, size = 4, family = "Times New Roman")
+
+figure1 <- PHE.BB / GLU.BB / TP.BB 
+figure1
+
+# Figure 2: system specific
+
+PHEW <- ggplot(PHE_W, aes(x = Year, y = PHE)) +
+  geom_line() + 
+  labs(title = "Wood") +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(), 
+        axis.title.y = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman") 
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(b)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+
+GLUW <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
+  geom_line() + 
+  labs(title = "Wood") +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(), 
+        axis.title.y = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman") 
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(b)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+
+plot_W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +
+  labs(title = "Wood") +
+  theme_classic() + 
+  theme(
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank(),
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+    text = element_text(family = "Times New Roman") 
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(b)", hjust = 1.1, vjust = 1, size = 4, family = "Times New Roman")
+
+
+
+
+
+
+figure2 <- (plot_W | plot_K | plot_E) / 
+  (plot_W | plot_K | plot_E) / 
+  (plot_W | plot_K | plot_E) + 
+  plot_layout(heights = c(3,3))
+
+
 
 
