@@ -338,56 +338,136 @@ figure1 <- PHE.BB / GLU.BB / TP.BB
 figure1
 
 # Figure 2: system specific
-
-PHEW <- ggplot(PHE_W, aes(x = Year, y = PHE)) +
+PHE.W <- ggplot(PHE_W, aes(x = Year, y = PHE)) +
   geom_line() + 
-  labs(title = "Wood") +
+  labs(title = "Wood", 
+       y = expression(delta^15*N ~ "(‰)")) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman"),
+        axis.line.y = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = max(PHE_W$PHE), label = "(a) phenylalanine (source AA)", hjust = 0, vjust = 1, size = 4, family = "Times New Roman")
+PHE.K <- ggplot(PHE_K, aes(x = Year, y = PHE)) +
+  geom_line() + 
+  labs(title = "Kvichak", 
+       y = expression(delta^15*N ~ "(‰)")) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman"),
+        axis.line.y = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  )
+PHE.E <- ggplot(PHE_E, aes(x = Year, y = PHE)) +
+  geom_line() + 
+  labs(title = "Egegik", 
+       y = expression(delta^15*N ~ "(‰)")) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman"),
+        axis.line.y = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  )
+
+
+GLU.W <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
+  geom_line() + 
+  labs(title = "Wood", 
+       y = expression(delta^15*N ~ "(‰)")) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(), 
-        axis.title.y = element_blank(),
+        axis.line.y = element_blank(),
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman") 
   ) +
-  annotate("text", x = Inf, y = Inf, label = "(b)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
-
-GLUW <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
+  annotate("text", x = 1965, y = max(GLU_W$GLU), label = "(b) glutamic acid (trophic AA)", hjust = 0, vjust = 1, size = 4, family = "Times New Roman")
+GLU.K <- ggplot(GLU_K, aes(x = Year, y = GLU)) +
   geom_line() + 
-  labs(title = "Wood") +
+  labs(y = expression(delta^15*N ~ "(‰)")) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(), 
-        axis.title.y = element_blank(),
+        axis.line.y = element_blank(),
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman") 
-  ) +
-  annotate("text", x = Inf, y = Inf, label = "(b)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
+  ) 
+GLU.E <- ggplot(GLU_E, aes(x = Year, y = GLU)) +
+  geom_line() + 
+  labs(y = expression(delta^15*N ~ "(‰)")) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(), 
+        axis.line.y = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman") 
+  )
 
-plot_W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+plot.W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +
-  labs(title = "Wood") +
+  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +
+  labs(title = "Wood", 
+       y = "Deviation from mean") +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   theme_classic() + 
   theme(
     axis.title.x = element_blank(), 
-    axis.title.y = element_blank(),
     legend.position = "none",
+    axis.line.y = element_blank(),
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
   ) +
-  annotate("text", x = Inf, y = Inf, label = "(b)", hjust = 1.1, vjust = 1, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = max(anomaly_W$Anomaly), label = "(c) trophic position", hjust = 0, vjust = 1, size = 4, family = "Times New Roman")
+plot.K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +
+  labs(y = "Deviation from mean") +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() + 
+  theme(
+    axis.title.x = element_blank(), 
+    legend.position = "none",
+    axis.line.y = element_blank(),
+    plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+    text = element_text(family = "Times New Roman") 
+  ) 
+plot.E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +
+  labs(y = "Deviation from mean") +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() + 
+  theme(
+    axis.title.x = element_blank(), 
+    legend.position = "none",
+    axis.line.y = element_blank(),
+    plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+    text = element_text(family = "Times New Roman") 
+  )
 
 
 
 
-
-
-figure2 <- (plot_W | plot_K | plot_E) / 
-  (plot_W | plot_K | plot_E) / 
-  (plot_W | plot_K | plot_E) + 
-  plot_layout(heights = c(3,3))
-
+figure2 <- (PHE.W | PHE.K | PHE.E) / 
+  (GLU.W | GLU.K | GLU.E) / 
+  (plot.W | plot.K | plot.E)
+figure2
 
 
 
