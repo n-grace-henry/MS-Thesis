@@ -352,39 +352,39 @@ PHE.W <- ggplot(PHE_W, aes(x = Year, y = PHE)) +
         axis.text.x = element_blank(),
         plot.margin = margin(10, 10, 10, 10)
   ) +
-  annotate("text", x = 1965, y = 8, label = "(a) phenylalanine (source AA)", hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 8, label = expression(bold("(a) phenylalanine (source AA)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 PHE.K <- ggplot(PHE_K, aes(x = Year, y = PHE)) +
   geom_line() + 
-  labs(title = "Kvichak", 
-       y = expression(delta^15*N ~ "(‰)")) +
+  labs(title = "Kvichak") +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   scale_y_continuous(limits = c(1.6,8.9), breaks = c(2,3,4,5,6,7,8)) +
   theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman"),
         axis.line.y = element_blank(),
         axis.text.x = element_blank(),
         plot.margin = margin(10, 10, 10, 10)
   ) +
-  annotate("text", x = 1965, y = 8.9, label = "(b)", hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 8.9, label = expression(bold("(b)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 PHE.E <- ggplot(PHE_E, aes(x = Year, y = PHE)) +
   geom_line() + 
-  labs(title = "Egegik", 
-       y = expression(delta^15*N ~ "(‰)")) +
+  labs(title = "Egegik") +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   scale_y_continuous(limits = c(1.2,7), breaks = c(2,3,4,5,6,7)) +
   theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman"),
         axis.line.y = element_blank(),
         axis.text.x = element_blank(),
         plot.margin = margin(10, 10, 10, 10)
   ) +
-  annotate("text", x = 1965, y = 7, label = "(c)", hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 7, label = expression(bold("(c)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 
 GLU.W <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
   geom_line() + 
@@ -399,31 +399,35 @@ GLU.W <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman") 
   ) +
-  annotate("text", x = 1965, y = 26, label = "(d) glutamic acid (trophic AA)", hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 26, label = expression(bold("(d) glutamic acid (trophic AA)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 GLU.K <- ggplot(GLU_K, aes(x = Year, y = GLU)) +
   geom_line() + 
-  labs(y = expression(delta^15*N ~ "(‰)")) +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  scale_y_continuous(limits = c(21.3,26), breaks = c(22,23,24,25,26)) +
   theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(), 
+        axis.title.y = element_blank(),
         axis.line.y = element_blank(),
         axis.text.x = element_blank(),
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman") 
-  ) 
+  )  +
+  annotate("text", x = 1965, y = 26, label = expression(bold("(e)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 GLU.E <- ggplot(GLU_E, aes(x = Year, y = GLU)) +
   geom_line() + 
-  labs(y = expression(delta^15*N ~ "(‰)")) +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  scale_y_continuous(limits = c(21.7,26), breaks = c(22,23,24,25,26)) +
   theme_classic() +
   theme(legend.position = "none",
-        axis.title.x = element_blank(), 
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
         axis.line.y = element_blank(),
         axis.text.x = element_blank(),
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman") 
-  )
+  ) +
+  annotate("text", x = 1965, y = 26, label = expression(bold("(f)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 
 plot.W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
@@ -440,35 +444,40 @@ plot.W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
   ) +
-  annotate("text", x = 1965, y = 0.36, label = "(g) trophic position", hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 0.36, label = expression(bold("(i) trophic position")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 plot.K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
   scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +
-  labs(x = "Year", 
-       y = "Deviation from mean") +
+  labs(x = "Year") +
   scale_x_continuous(breaks = c(1965, 1985, 2005, 2022)) +
+  scale_y_continuous(limits = c(-0.4, 0.57), breaks = c(-0.4, -0.2, 0, 0.2, 0.4)) +
   theme_classic() + 
   theme(
     legend.position = "none",
     axis.line.y = element_blank(),
+    axis.title.y = element_blank(),
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
-  ) 
+  ) +
+  annotate("text", x = 1965, y = 0.57, label = expression(bold("(h)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 plot.E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
   scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +
-  labs(x = "Year", 
-       y = "Deviation from mean") +
+  labs(x = "Year") +
   scale_x_continuous(breaks = c(1965, 1985, 2005, 2022)) +
+  scale_y_continuous(limits = c(-0.5, 0.55), breaks = c(-0.5, -0.25, 0, 0.25, 0.5)) +
   theme_classic() + 
   theme(
     legend.position = "none",
+    axis.title.y = element_blank(),
     axis.line.y = element_blank(),
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
-  )
+  ) +
+  annotate("text", x = 1965, y = 0.55, label = expression(bold("(i)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+
 
 figure2 <- (PHE.W | PHE.K | PHE.E) / 
   (GLU.W | GLU.K | GLU.E) / 
