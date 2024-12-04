@@ -43,6 +43,23 @@ ggplot(PDO_annual, aes(x = Year, y = Value)) +
   theme_minimal()
 
 
+plot_W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +
+  labs(title = "Wood") +
+  theme_classic() + 
+  theme(
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank(),
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+    text = element_text(family = "Times New Roman") 
+  ) +
+  annotate("text", x = Inf, y = Inf, label = "(b)", hjust = 1.1, vjust = 1, size = 4, family = "Times New Roman")
+
+
+
 # Write csv of tidy PDO data
 write.csv(PDO_annual, "~/Documents/GitHub/CSIA_lab_work/data/environmental/PDO_tidy.csv")
 
