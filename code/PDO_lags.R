@@ -31,32 +31,22 @@ plot(x = PDO_annual$Year,
      xlab = "Year",
      ylab = "PDO")
 
-ggplot(PDO_annual, aes(x = Year, y = Value)) +
-  geom_ribbon(aes(ymin = pmin(Value, 0), ymax = 0), fill = "blue", alpha = 0.5) +
-  geom_ribbon(aes(ymin = 0, ymax = pmax(Value, 0)), fill = "red", alpha = 0.5) +
-  geom_line(color = "black") +
+ggplot(PDO_annual, aes(x = Year, y = Value, fill = Value > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
-  scale_x_continuous(breaks = seq(min(PDO_annual$Year), max(PDO_annual$Year), by = 3)) +
-  labs(title = "PDO Anomaly Through Time",
+  geom_col() + 
+  scale_fill_manual(values = c("TRUE" = "red2", "FALSE" = "blue3")) +
+  labs(title = "PDO Index",
        x = "Year",
        y = "PDO") +
-  theme_minimal()
-
-
-plot_W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
-  geom_col() +
-  scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +
-  labs(title = "Wood") +
-  theme_classic() + 
+  scale_x_continuous(expand = c(0, 0)) +
+  theme_classic() +
   theme(
     axis.title.x = element_blank(), 
     axis.title.y = element_blank(),
     legend.position = "none",
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
-  ) +
-  annotate("text", x = Inf, y = Inf, label = "(b)", hjust = 1.1, vjust = 1, size = 4, family = "Times New Roman")
+  )
 
 
 

@@ -35,6 +35,28 @@ plot(x = data_long$Year,
      y = data_long$MEI,
      type ="l")
 
+# Calculate anomaly
+data_long <- data_long %>% 
+  mutate(anomaly = MEI - mean(MEI))
+
+# Plot with ggplot 
+ggplot(data_long, aes(x = Year, y = anomaly, fill = anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() + 
+  scale_fill_manual(values = c("TRUE" = "red2", "FALSE" = "blue3")) +
+  labs(title = "ENSO Index",
+       x = "Year",
+       y = "ENSO") +
+  scale_x_continuous(expand = c(0, 0)) +
+  theme_classic() +
+  theme(
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank(),
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+    text = element_text(family = "Times New Roman") 
+  )
+
 # Save as csv
 write.csv(data_long, file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/ENSO_tidy.csv")
 

@@ -18,6 +18,27 @@ NPGO_annual <- NPGO_annual[NPGO_annual$Year >= 1965 & NPGO_annual$Year <= 2022,]
 # Plot 
 plot(NPGO_annual, type = "l")
 
+# Plot with ggplot
+ggplot(NPGO_annual, aes(x = Year, y = avg, fill = avg > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() + 
+  scale_fill_manual(values = c("TRUE" = "red2", "FALSE" = "blue3")) +
+  labs(title = "NPGO Index",
+       x = "Year",
+       y = "NPGO") +
+  scale_x_continuous(expand = c(0, 0)) +
+  theme_classic() +
+  theme(
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank(),
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+    text = element_text(family = "Times New Roman") 
+  )
+
+
+
+
 # Convert to time series 
 ts.NPGO <- ts(NPGO_annual[,2],
               start = NPGO_annual[1,1],
