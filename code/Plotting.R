@@ -2,6 +2,7 @@
 library(tidyverse)
 library(patchwork)
 library(zoo)
+library(wesanderson)
 
 # Load raw data
 
@@ -339,9 +340,9 @@ figure1
 
 # Figure 2: system specific
 PHE.W <- ggplot(PHE_W, aes(x = Year, y = PHE)) +
-  geom_line() + 
+  geom_line(color = wes_palette("Zissou1")[3]) + 
   labs(title = "Wood", 
-       y = expression(delta^15*N ~ "(‰)")) +
+       y = expression(bold("phenylalanine" ~ delta^15*N ~ "(‰)"))) +
   scale_y_continuous(limits = c(2.5, 8), breaks = c(3,4,5,6,7,8)) +
   theme_classic() +
   theme(legend.position = "none",
@@ -352,9 +353,9 @@ PHE.W <- ggplot(PHE_W, aes(x = Year, y = PHE)) +
         axis.text.x = element_blank(),
         plot.margin = margin(10, 10, 10, 10)
   ) +
-  annotate("text", x = 1965, y = 8, label = expression(bold("(a) phenylalanine (source AA)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 8, label = expression(bold("(a)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 PHE.K <- ggplot(PHE_K, aes(x = Year, y = PHE)) +
-  geom_line() + 
+  geom_line(color = wes_palette("Zissou1")[5]) + 
   labs(title = "Kvichak") +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   scale_y_continuous(limits = c(1.6,8.9), breaks = c(2,3,4,5,6,7,8)) +
@@ -370,7 +371,7 @@ PHE.K <- ggplot(PHE_K, aes(x = Year, y = PHE)) +
   ) +
   annotate("text", x = 1965, y = 8.9, label = expression(bold("(b)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 PHE.E <- ggplot(PHE_E, aes(x = Year, y = PHE)) +
-  geom_line() + 
+  geom_line(color = wes_palette("Zissou1")[1]) + 
   labs(title = "Egegik") +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   scale_y_continuous(limits = c(1.2,7), breaks = c(2,3,4,5,6,7)) +
@@ -387,8 +388,8 @@ PHE.E <- ggplot(PHE_E, aes(x = Year, y = PHE)) +
   annotate("text", x = 1965, y = 7, label = expression(bold("(c)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 
 GLU.W <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
-  geom_line() + 
-  labs(y = expression(delta^15*N ~ "(‰)")) +
+  geom_line(color = wes_palette("Zissou1")[3]) + 
+  labs(y = expression(bold("glutamic acid" ~ delta^15*N ~ "(‰)"))) +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   scale_y_continuous(limits = c(21.3, 26), breaks = c(22, 23, 24, 25, 26)) +
   theme_classic() +
@@ -399,9 +400,9 @@ GLU.W <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
         text = element_text(family = "Times New Roman") 
   ) +
-  annotate("text", x = 1965, y = 26, label = expression(bold("(d) glutamic acid (trophic AA)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 26, label = expression(bold("(d)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 GLU.K <- ggplot(GLU_K, aes(x = Year, y = GLU)) +
-  geom_line() + 
+  geom_line(color = wes_palette("Zissou1")[5]) + 
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   scale_y_continuous(limits = c(21.3,26), breaks = c(22,23,24,25,26)) +
   theme_classic() +
@@ -415,7 +416,7 @@ GLU.K <- ggplot(GLU_K, aes(x = Year, y = GLU)) +
   )  +
   annotate("text", x = 1965, y = 26, label = expression(bold("(e)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 GLU.E <- ggplot(GLU_E, aes(x = Year, y = GLU)) +
-  geom_line() + 
+  geom_line(color = wes_palette("Zissou1")[1]) + 
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   scale_y_continuous(limits = c(21.7,26), breaks = c(22,23,24,25,26)) +
   theme_classic() +
@@ -432,9 +433,9 @@ GLU.E <- ggplot(GLU_E, aes(x = Year, y = GLU)) +
 plot.W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +
+  scale_fill_manual(values = c("TRUE" = wes_palette("Zissou1")[3], "FALSE" = wes_palette("Zissou1")[4])) +
   labs(x = "Year", 
-       y = "Deviation from mean") +
+       y = expression(bold("Trophic Position Anomaly")) +
   scale_x_continuous(breaks = c(1965, 1985, 2005, 2022)) +
   scale_y_continuous(limits = c(-0.5, 0.36), breaks = c(-0.5, -0.25, 0, 0.25)) +
   theme_classic() + 
@@ -444,11 +445,11 @@ plot.W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
   ) +
-  annotate("text", x = 1965, y = 0.36, label = expression(bold("(i) trophic position")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 0.36, label = expression(bold("(i)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 plot.K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +
+  scale_fill_manual(values = c("TRUE" = wes_palette("Zissou1")[5], "FALSE" = wes_palette("Zissou1")[5])) +
   labs(x = "Year") +
   scale_x_continuous(breaks = c(1965, 1985, 2005, 2022)) +
   scale_y_continuous(limits = c(-0.4, 0.57), breaks = c(-0.4, -0.2, 0, 0.2, 0.4)) +
@@ -464,7 +465,7 @@ plot.K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
 plot.E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +
+  scale_fill_manual(values = c("TRUE" = wes_palette("Zissou1")[1], "FALSE" = wes_palette("Zissou1")[2])) +
   labs(x = "Year") +
   scale_x_continuous(breaks = c(1965, 1985, 2005, 2022)) +
   scale_y_continuous(limits = c(-0.5, 0.55), breaks = c(-0.5, -0.25, 0, 0.25, 0.5)) +
