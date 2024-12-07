@@ -433,9 +433,9 @@ GLU.E <- ggplot(GLU_E, aes(x = Year, y = GLU)) +
 plot.W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  scale_fill_manual(values = c("TRUE" = wes_palette("Zissou1")[3], "FALSE" = wes_palette("Zissou1")[4])) +
+  scale_fill_manual(values = c("TRUE" = "wheat", "FALSE" = wes_palette("Zissou1")[3])) +
   labs(x = "Year", 
-       y = expression(bold("Trophic Position Anomaly")) +
+       y = expression(bold("Trophic Position Anomaly"))) +
   scale_x_continuous(breaks = c(1965, 1985, 2005, 2022)) +
   scale_y_continuous(limits = c(-0.5, 0.36), breaks = c(-0.5, -0.25, 0, 0.25)) +
   theme_classic() + 
@@ -449,7 +449,7 @@ plot.W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
 plot.K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  scale_fill_manual(values = c("TRUE" = wes_palette("Zissou1")[5], "FALSE" = wes_palette("Zissou1")[5])) +
+  scale_fill_manual(values = c("TRUE" = "lightsalmon", "FALSE" = wes_palette("Zissou1")[5])) +
   labs(x = "Year") +
   scale_x_continuous(breaks = c(1965, 1985, 2005, 2022)) +
   scale_y_continuous(limits = c(-0.4, 0.57), breaks = c(-0.4, -0.2, 0, 0.2, 0.4)) +
@@ -465,7 +465,7 @@ plot.K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
 plot.E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
-  scale_fill_manual(values = c("TRUE" = wes_palette("Zissou1")[1], "FALSE" = wes_palette("Zissou1")[2])) +
+  scale_fill_manual(values = c("TRUE" = "skyblue1", "FALSE" = wes_palette("Zissou1")[1])) +
   labs(x = "Year") +
   scale_x_continuous(breaks = c(1965, 1985, 2005, 2022)) +
   scale_y_continuous(limits = c(-0.5, 0.55), breaks = c(-0.5, -0.25, 0, 0.25, 0.5)) +
