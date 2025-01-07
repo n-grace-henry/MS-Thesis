@@ -161,6 +161,11 @@ anomaly <- function(data){
   return(df)
 }
 
+mean(data$BB.tp)
+mean(data$tp.W)
+mean(data$tp.K)
+mean(data$tp.E)
+
 # Use function
 W.anomaly <- anomaly(data$tp.W)
 K.anomaly <- anomaly(data$tp.K)
