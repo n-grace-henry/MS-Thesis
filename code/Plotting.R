@@ -166,6 +166,8 @@ mean(data$tp.W)
 mean(data$tp.K)
 mean(data$tp.E)
 
+max(data$BB.tp) - min(data$BB.tp)
+
 # Use function
 W.anomaly <- anomaly(data$tp.W)
 K.anomaly <- anomaly(data$tp.K)
