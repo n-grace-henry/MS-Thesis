@@ -347,7 +347,8 @@ figure1
 PHE.W <- ggplot(PHE_W, aes(x = Year, y = PHE)) +
   geom_line() + 
   labs(title = "Wood", 
-       y = expression(bold("phenylalanine" ~ delta^15*N ~ "(‰)"))) +
+       y = expression(bold("PHE" ~ delta^15*N ~ "(‰)"))) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   scale_y_continuous(limits = c(1.6,8.9), breaks = c(2,3,4,5,6,7,8)) +
   theme_classic() +
   theme(legend.position = "none",
@@ -358,7 +359,7 @@ PHE.W <- ggplot(PHE_W, aes(x = Year, y = PHE)) +
         axis.text.x = element_blank(),
         plot.margin = margin(10, 10, 10, 10)
   ) +
-  annotate("text", x = 1965, y = 8, label = expression(bold("(a)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 8.9, label = expression(bold("(a)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 PHE.K <- ggplot(PHE_K, aes(x = Year, y = PHE)) +
   geom_line() + 
   labs(title = "Kvichak") +
@@ -390,11 +391,11 @@ PHE.E <- ggplot(PHE_E, aes(x = Year, y = PHE)) +
         axis.text.x = element_blank(),
         plot.margin = margin(10, 10, 10, 10)
   ) +
-  annotate("text", x = 1965, y = 7, label = expression(bold("(c)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 8.9, label = expression(bold("(c)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 
 GLU.W <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
   geom_line() + 
-  labs(y = expression(bold("glutamic acid" ~ delta^15*N ~ "(‰)"))) +
+  labs(y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   scale_y_continuous(limits = c(21.7,26), breaks = c(22,23,24,25,26)) +
   theme_classic() +
@@ -440,7 +441,7 @@ plot.W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_col() +
   scale_fill_manual(values = c("TRUE" = "grey80", "FALSE" = "grey60")) +
   labs(x = "Year", 
-       y = expression(bold("Trophic Position Anomaly"))) +
+       y = expression(bold("TP Anomaly"))) +
   scale_x_continuous(breaks = c(1965, 1985, 2005, 2022)) +
   scale_y_continuous(limits = c(-0.5, 0.55), breaks = c(-0.5, -0.25, 0, 0.25, 0.5)) +
   theme_classic() + 
@@ -450,7 +451,7 @@ plot.W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
   ) +
-  annotate("text", x = 1965, y = 0.36, label = expression(bold("(i)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = annotation_y_position, label = expression(bold("(g)")), size = 4, family = "Times New Roman")
 plot.K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
@@ -466,7 +467,7 @@ plot.K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
   ) +
-  annotate("text", x = 1965, y = 0.57, label = expression(bold("(h)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = annotation_y_position, label = expression(bold("(h)")), size = 4, family = "Times New Roman")
 plot.E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
@@ -482,13 +483,10 @@ plot.E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
   ) +
-  annotate("text", x = 1965, y = 0.55, label = expression(bold("(i)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = annotation_y_position, label = expression(bold("(i)")), size = 4, family = "Times New Roman")
 
 
 figure2 <- (PHE.W | PHE.K | PHE.E) / 
   (GLU.W | GLU.K | GLU.E) / 
   (plot.W | plot.K | plot.E)
 figure2
-
-
-
