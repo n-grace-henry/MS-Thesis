@@ -2,7 +2,6 @@
 library(tidyverse)
 library(patchwork)
 library(zoo)
-library(wesanderson)
 
 # Load data 
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
@@ -295,8 +294,10 @@ ggplot(anomaly_BB, aes(x = Year)) +
 # Figure 1: Three panel plot of Bristol Bay wide data
 PHE.BB <- ggplot(PHE_BB, aes(x = Year, y = PHE)) +
   geom_line() + 
+  geom_errorbar(aes(ymin = PHE_lower, ymax = PHE_upper), 
+                width = 0.5, color = "black") +
   labs(title = "Bristol Bay",
-       y = expression(delta^15*N ~ "(‰)")) +
+       y = expression(bold("PHE" ~ delta^15*N ~ "(‰)"))) +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   theme_classic() +
   theme(legend.position = "none",
@@ -306,11 +307,11 @@ PHE.BB <- ggplot(PHE_BB, aes(x = Year, y = PHE)) +
         axis.line.y = element_blank(),
         plot.margin = margin(10, 10, 10, 10)
   ) +
-  annotate("text", x = 1965, y = max(PHE_BB$PHE), label = "(a) phenylalanine (source AA)", 
+  annotate("text", x = 1965, y = max(PHE_BB$PHE), label = "(a)", 
            hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 GLU.BB <- ggplot(GLU_BB, aes(x = Year, y = GLU)) +
   geom_line() + 
-  labs(y = expression(delta^15*N ~ "(‰)")) +
+  labs(y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   theme_classic() +
   theme(legend.position = "none",
@@ -320,14 +321,14 @@ GLU.BB <- ggplot(GLU_BB, aes(x = Year, y = GLU)) +
         axis.line.y = element_blank(),
         plot.margin = margin(10, 10, 10, 10)
   ) +
-  annotate("text", x = 1965, y = max(GLU_BB$GLU), label = "(b) glutamic acid (trophic AA)", 
+  annotate("text", x = 1965, y = max(GLU_BB$GLU), label = "(b)", 
            hjust = 0, vjust = 0.5, size = 4, family = "Times New Roman")
 TP.BB <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
   scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +  
   labs(x = "Year",
-       y = "Deviation from mean") +
+       y = expression(bold("TP Anomaly"))) +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   scale_y_continuous(limits = c(-0.28, 0.28), breaks = c(-0.30, -0.2, -0.1, 0.0, 0.1, 0.2, 0.30)) + 
   theme_classic() +
@@ -337,7 +338,7 @@ TP.BB <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
         axis.line.y = element_blank(),
         plot.margin = margin(10, 10, 10, 10)
   ) +
-  annotate("text", x = 1965, y = 0.28, label = "(c) trophic position", 
+  annotate("text", x = 1965, y = 0.28, label = "(c)", 
            hjust = 0, vjust = 0.19, size = 4, family = "Times New Roman")
 
 figure1 <- PHE.BB / GLU.BB / TP.BB 

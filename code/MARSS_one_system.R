@@ -112,90 +112,15 @@ GLU.fit.one$AIC
 PHE.state <- PHE.fit.one$states
 GLU.state <- GLU.fit.one$states
 
-# Plot overall PHE state 
-years <- seq(1965, 2022, by = 1)
-plot(x = PHE$Year, y = PHE$adj, type = "p", pch = 16, col = "black", xlab = "Year", ylab = expression(paste("Phenylalanine ", delta^{15}, "N ")), main = "All Phenylalanine")
-lines(x = years, y = PHE.state, type = "l", lwd = 2, col = "blue")
-
-# Plot overall GLU state
-plot(x = GLU$Year, y = GLU$adj, type = "p", pch = 16, col = "black", xlab = "Year", ylab = expression(paste("Glutamic Acid ", delta^{15}, "N")), main = "All Glutamic Acid")
-lines(x = years, y = GLU.state, type = "l", lwd = 2, col = "red")
+# Subset SE states
+PHE.states.SE <- PHE.fit.one$states.se
+GLU.states.SE <- GLU.fit.one$states.se
 
 # Trophic position calculations
 beta <- 3.4 #commonly used constant
 TDF <- 7.06 #from Lerner et al 2020
 
 tp <- (((GLU.state - PHE.state)-beta)/TDF) + 1
-
-# Plot TP 
-plot(x = years, y = tp, type = "l", lwd =2, col = "black", xlab = "Year", ylab = "Trophic Position", main = "Overall Trophic Position")
-
-# Anomaly plot for PHE 
-PHE.t <- as.data.frame(t(PHE.state))
-PHE.t$Year <- years
-PHE.t$Mean <- vector(length = length(PHE.t$Year))
-PHE.t$Anomaly <- vector(length = length(PHE.t$Year))
-
-for(i in 1:length(PHE.t$Year)){
-  PHE.t[i, "Mean"] <- mean(PHE.t[,1])
-  PHE.t[i, "Anomaly"] <- PHE.t$X1[i] - PHE.t$Mean[i]
-}
-
-ggplot(PHE.t, aes(x = Year, y = Anomaly)) +
-  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "grey20", alpha = 0.5) +
-  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "grey", alpha = 0.5) +
-  geom_line(color = "black") +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
-  scale_x_continuous(breaks = seq(min(PHE.t$Year), max(PHE.t$Year), by = 3)) +
-  labs(title = "Phenylalanine Anomaly Plot",
-       x = "Year",
-       y = "Anomaly (Value - Long Term Mean") +
-  theme_minimal()
-
-# Anomaly plot for GLU
-GLU.t <- as.data.frame(t(GLU.state))
-GLU.t$Year <- years
-GLU.t$Mean <- vector(length = length(GLU.t$Year))
-GLU.t$Anomaly <- vector(length = length(GLU.t$Year))
-
-for(i in 1:length(GLU.t$Year)){
-  GLU.t[i, "Mean"] <- mean(GLU.t[,1])
-  GLU.t[i, "Anomaly"] <- GLU.t$X1[i] - GLU.t$Mean[i]
-}
-
-ggplot(GLU.t, aes(x = Year, y = Anomaly)) +
-  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "grey20", alpha = 0.5) +
-  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "grey", alpha = 0.5) +
-  geom_line(color = "black") +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
-  scale_x_continuous(breaks = seq(min(GLU.t$Year), max(GLU.t$Year), by = 3)) +
-  labs(title = "Glutamic Acid Anomaly Plot",
-       x = "Year",
-       y = "Anomaly (Value - Long Term Mean") +
-  theme_minimal()
-
-# Anomaly plot for TP 
-tp.t <- as.data.frame(t(tp))
-tp.t$Year <- years
-tp.t$Mean <- vector(length = length(tp.t$Year))
-tp.t$Anomaly <- vector(length = length(tp.t$Year))
-
-for(i in 1:length(tp.t$Year)){
-  tp.t[i, "Mean"] <- mean(tp.t[,1])
-  tp.t[i, "Anomaly"] <- tp.t$X1[i] - tp.t$Mean[i]
-}
-
-ggplot(tp.t, aes(x = Year, y = Anomaly)) +
-  geom_ribbon(aes(ymin = pmin(Anomaly, 0), ymax = 0), fill = "grey20", alpha = 0.5) +
-  geom_ribbon(aes(ymin = 0, ymax = pmax(Anomaly, 0)), fill = "grey", alpha = 0.5) +
-  geom_line(color = "black") +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
-  scale_x_continuous(breaks = seq(min(tp.t$Year), max(tp.t$Year), by = 3)) +
-  labs(title = "Trophic Position Anomaly Plot",
-       x = "Year",
-       y = "Anomaly (Value - Long Term Mean)") +
-  theme_minimal()
-
 
 # Fit PHE system model 
 system_ZZ <- matrix(0, 18, 3) 
@@ -236,7 +161,23 @@ tp.E <- (((E.GLU - E.PHE)-beta)/TDF) + 1
 PHE.state <- PHE.state[1,]
 GLU.state <- GLU.state[1,]
 
-all.states <- data.frame(W.PHE, K.PHE, E.PHE, W.GLU, K.GLU, E.GLU,PHE.state,GLU.state, tp.W, tp.K, tp.E, tp)
+all.states <- data.frame(
+  W.PHE = as.vector(W.PHE),
+  K.PHE = as.vector(K.PHE),
+  E.PHE = as.vector(E.PHE),
+  W.GLU = as.vector(W.GLU),
+  K.GLU = as.vector(K.GLU),
+  E.GLU = as.vector(E.GLU),
+  PHE.state = as.vector(PHE.state),
+  GLU.state = as.vector(GLU.state),
+  tp.W = as.vector(tp.W),
+  tp.K = as.vector(tp.K),
+  tp.E = as.vector(tp.E),
+  tp = as.vector(tp),
+  PHE.states.SE = as.vector(PHE.states.SE),
+  GLU.states.SE = as.vector(GLU.states.SE)
+)
+
 year <- 1965:2022
 all.states$Year <- year
 
