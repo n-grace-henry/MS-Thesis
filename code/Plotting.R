@@ -288,14 +288,18 @@ ggplot(anomaly_BB, aes(x = Year)) +
         text = element_text(family = "Times New Roman")) +
   annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
 
+# Format SE to be an upper and a lower bound
+data$PHE_lower <- data$BB.PHE - data$PHE.SE
+data$PHE_upper <- data$BB.PHE + data$PHE.SE
 
-
+data$GLU_lower <- data$BB.GLU - data$GLU.SE
+data$GLU_upper <- data$BB.GLU + data$GLU.SE
 
 # Figure 1: Three panel plot of Bristol Bay wide data
-PHE.BB <- ggplot(PHE_BB, aes(x = Year, y = PHE)) +
+PHE.BB <- ggplot(data, aes(x = Year, y = BB.PHE)) +
   geom_line() + 
-  geom_errorbar(aes(ymin = PHE_lower, ymax = PHE_upper), 
-                width = 0.5, color = "black") +
+  geom_ribbon(aes(ymin = PHE_lower, ymax = PHE_upper), 
+              fill = "grey", alpha = 0.3) +  
   labs(title = "Bristol Bay",
        y = expression(bold("PHE" ~ delta^15*N ~ "(‰)"))) +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
@@ -307,10 +311,12 @@ PHE.BB <- ggplot(PHE_BB, aes(x = Year, y = PHE)) +
         axis.line.y = element_blank(),
         plot.margin = margin(10, 10, 10, 10)
   ) +
-  annotate("text", x = 1965, y = max(PHE_BB$PHE), label = "(a)", 
-           hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
-GLU.BB <- ggplot(GLU_BB, aes(x = Year, y = GLU)) +
+  annotate("text", x = 1965, y = max(data$BB.PHE), label = "(a)", 
+           hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman") 
+GLU.BB <- ggplot(data, aes(x = Year, y = BB.GLU)) +
   geom_line() + 
+  geom_ribbon(aes(ymin = GLU_lower, ymax = GLU_upper), 
+              fill = "grey", alpha = 0.3) +  
   labs(y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   theme_classic() +

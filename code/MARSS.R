@@ -181,7 +181,7 @@ all.states <- data.frame(
 year <- 1965:2022
 all.states$Year <- year
 
-colnames(all.states) <- c("W.PHE", "K.PHE", "E.PHE", "W.GLU", "K.GLU", "E.GLU", "BB.PHE", "BB.GLU", "tp.W", "tp.K", "tp.E", "BB.tp","Year")
+colnames(all.states) <- c("W.PHE", "K.PHE", "E.PHE", "W.GLU", "K.GLU", "E.GLU", "BB.PHE", "BB.GLU", "tp.W", "tp.K", "tp.E", "BB.tp","PHE.SE", "GLU.SE", "Year")
 
 # Save as csv
 write.csv(all.states, file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
