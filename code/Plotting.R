@@ -146,7 +146,6 @@ combined_plot <- GLUBB / (GLUW | GLUK | GLUE) + plot_layout(heights = c(2, 1))
 # Display the combined plot
 combined_plot
 
-
 # Anomaly plot of tp 
 anomaly <- function(data){
   df <- matrix(nrow = length(data), ncol = 2)
@@ -351,8 +350,31 @@ figure1 <- PHE.BB / GLU.BB / TP.BB
 figure1
 
 # Figure 2: system specific
-PHE.W <- ggplot(PHE_W, aes(x = Year, y = PHE)) +
+# Format SE to be an upper and a lower bound
+data$PHE_lower_W <- data$W.PHE - data$W.PHE.SE
+data$PHE_upper_W <- data$W.PHE + data$W.PHE.SE
+
+data$PHE_lower_K <- data$K.PHE - data$K.PHE.SE
+data$PHE_upper_K <- data$K.PHE + data$K.PHE.SE
+
+data$PHE_lower_E <- data$E.PHE - data$E.PHE.SE
+data$PHE_upper_E <- data$E.PHE + data$E.PHE.SE
+
+# Repeat for GLU
+data$GLU_lower_W <- data$W.GLU - data$W.GLU.SE
+data$GLU_upper_W <- data$W.GLU + data$W.GLU.SE
+
+data$GLU_lower_K <- data$K.GLU - data$K.GLU.SE
+data$GLU_upper_K <- data$K.GLU + data$K.GLU.SE
+
+data$GLU_lower_E <- data$E.GLU - data$E.GLU.SE
+data$GLU_upper_E <- data$E.GLU + data$E.GLU.SE
+
+# Plot
+PHE.W <- ggplot(data, aes(x = Year, y = W.PHE)) +
   geom_line() + 
+  geom_ribbon(aes(ymin = PHE_lower_W, ymax = PHE_upper_W), 
+              fill = "grey", alpha = 0.3) +  
   labs(title = "Wood", 
        y = expression(bold("PHE" ~ delta^15*N ~ "(‰)"))) +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
@@ -367,8 +389,10 @@ PHE.W <- ggplot(PHE_W, aes(x = Year, y = PHE)) +
         plot.margin = margin(10, 10, 10, 10)
   ) +
   annotate("text", x = 1965, y = 8.9, label = expression(bold("(a)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
-PHE.K <- ggplot(PHE_K, aes(x = Year, y = PHE)) +
+PHE.K <- ggplot(data, aes(x = Year, y = K.PHE)) +
   geom_line() + 
+  geom_ribbon(aes(ymin = PHE_lower_K, ymax = PHE_upper_K), 
+              fill = "grey", alpha = 0.3) +  
   labs(title = "Kvichak") +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   scale_y_continuous(limits = c(1.6,8.9), breaks = c(2,3,4,5,6,7,8)) +
@@ -383,8 +407,10 @@ PHE.K <- ggplot(PHE_K, aes(x = Year, y = PHE)) +
         plot.margin = margin(10, 10, 10, 10)
   ) +
   annotate("text", x = 1965, y = 8.9, label = expression(bold("(b)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
-PHE.E <- ggplot(PHE_E, aes(x = Year, y = PHE)) +
+PHE.E <- ggplot(data, aes(x = Year, y = E.PHE)) +
   geom_line() + 
+  geom_ribbon(aes(ymin = PHE_lower_E, ymax = PHE_upper_E), 
+              fill = "grey", alpha = 0.3) +  
   labs(title = "Egegik") +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
   scale_y_continuous(limits = c(1.6,8.9), breaks = c(2,3,4,5,6,7,8)) +
@@ -400,11 +426,13 @@ PHE.E <- ggplot(PHE_E, aes(x = Year, y = PHE)) +
   ) +
   annotate("text", x = 1965, y = 8.9, label = expression(bold("(c)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 
-GLU.W <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
+GLU.W <- ggplot(data, aes(x = Year, y = W.GLU)) +
   geom_line() + 
+  geom_ribbon(aes(ymin = GLU_lower_W, ymax = GLU_upper_W), 
+              fill = "grey", alpha = 0.3) +  
   labs(y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
-  scale_y_continuous(limits = c(21.7,26), breaks = c(22,23,24,25,26)) +
+  scale_y_continuous(limits = c(21,26), breaks = c(22,23,24,25,26)) +
   theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(), 
@@ -414,10 +442,12 @@ GLU.W <- ggplot(GLU_W, aes(x = Year, y = GLU)) +
         text = element_text(family = "Times New Roman") 
   ) +
   annotate("text", x = 1965, y = 26, label = expression(bold("(d)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
-GLU.K <- ggplot(GLU_K, aes(x = Year, y = GLU)) +
+GLU.K <- ggplot(data, aes(x = Year, y = K.GLU)) +
   geom_line() + 
+  geom_ribbon(aes(ymin = GLU_lower_K, ymax = GLU_upper_K), 
+              fill = "grey", alpha = 0.3) +  
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
-  scale_y_continuous(limits = c(21.7,26), breaks = c(22,23,24,25,26)) +
+  scale_y_continuous(limits = c(21,26), breaks = c(22,23,24,25,26)) +
   theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(), 
@@ -428,10 +458,12 @@ GLU.K <- ggplot(GLU_K, aes(x = Year, y = GLU)) +
         text = element_text(family = "Times New Roman") 
   )  +
   annotate("text", x = 1965, y = 26, label = expression(bold("(e)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
-GLU.E <- ggplot(GLU_E, aes(x = Year, y = GLU)) +
+GLU.E <- ggplot(data, aes(x = Year, y = E.GLU)) +
   geom_line() + 
+  geom_ribbon(aes(ymin = GLU_lower_E, ymax = GLU_upper_E), 
+              fill = "grey", alpha = 0.3) +  
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
-  scale_y_continuous(limits = c(21.7,26), breaks = c(22,23,24,25,26)) +
+  scale_y_continuous(limits = c(21,26), breaks = c(22,23,24,25,26)) +
   theme_classic() +
   theme(legend.position = "none",
         axis.title.x = element_blank(),
@@ -458,7 +490,7 @@ plot.W <- ggplot(anomaly_W, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
   ) +
-  annotate("text", x = 1965, y = annotation_y_position, label = expression(bold("(g)")), size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 0.5, label = expression(bold("(g)")), size = 4, family = "Times New Roman")
 plot.K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
@@ -474,7 +506,7 @@ plot.K <- ggplot(anomaly_K, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
   ) +
-  annotate("text", x = 1965, y = annotation_y_position, label = expression(bold("(h)")), size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 0.5, label = expression(bold("(h)")), size = 4, family = "Times New Roman")
 plot.E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   geom_col() +
@@ -490,7 +522,7 @@ plot.E <- ggplot(anomaly_E, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
     plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
     text = element_text(family = "Times New Roman") 
   ) +
-  annotate("text", x = 1965, y = annotation_y_position, label = expression(bold("(i)")), size = 4, family = "Times New Roman")
+  annotate("text", x = 1965, y = 0.5, label = expression(bold("(i)")), size = 4, family = "Times New Roman")
 
 
 figure2 <- (PHE.W | PHE.K | PHE.E) / 
