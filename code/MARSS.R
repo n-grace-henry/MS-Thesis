@@ -139,18 +139,31 @@ model.list <- list(B = "identity",
 PHE.system <- MARSS(all.PHE, model = model.list, method = "BFGS")
 PHE.system$AICc
 PHE.system$AIC
+
+# Fit GLU system model
 GlU.system <- MARSS(all.GLU, model = model.list, method = "BFGS")
 GlU.system$AICc
 GlU.system$AIC
 
-# Subset system states
+# Subset PHE states
 W.PHE <- PHE.system[["states"]][1,]
 K.PHE <- PHE.system[["states"]][2,]
 E.PHE <- PHE.system[["states"]][3,]
 
+# Subset SE states
+W.PHE.SE <- PHE.system[["states.se"]][1,]
+K.PHE.SE <- PHE.system[["states.se"]][2,]
+E.PHE.SE <- PHE.system[["states.se"]][3,]
+
+# Subset GLU states
 W.GLU <- GlU.system[["states"]][1,]
 K.GLU <- GlU.system[["states"]][2,]
 E.GLU <- GlU.system[["states"]][3,]
+
+# Subset SE states
+W.GLU.SE <- GlU.system[["states.se"]][1,]
+K.GLU.SE <- GlU.system[["states.se"]][2,]
+E.GLU.SE <- GlU.system[["states.se"]][3,]
 
 # Calculate TP for each system 
 tp.W <- (((W.GLU - W.PHE)-beta)/TDF) + 1
@@ -165,9 +178,15 @@ all.states <- data.frame(
   W.PHE = as.vector(W.PHE),
   K.PHE = as.vector(K.PHE),
   E.PHE = as.vector(E.PHE),
+  W.PHE.SE = as.vector(W.PHE.SE),
+  K.PHE.SE = as.vector(K.PHE.SE),
+  E.PHE.SE = as.vector(E.PHE.SE),
   W.GLU = as.vector(W.GLU),
   K.GLU = as.vector(K.GLU),
   E.GLU = as.vector(E.GLU),
+  W.GLU.SE = as.vector(W.GLU.SE),
+  K.GLU.SE = as.vector(K.GLU.SE),
+  E.GLU.SE = as.vector(E.GLU.SE),
   PHE.state = as.vector(PHE.state),
   GLU.state = as.vector(GLU.state),
   tp.W = as.vector(tp.W),
@@ -181,7 +200,27 @@ all.states <- data.frame(
 year <- 1965:2022
 all.states$Year <- year
 
-colnames(all.states) <- c("W.PHE", "K.PHE", "E.PHE", "W.GLU", "K.GLU", "E.GLU", "BB.PHE", "BB.GLU", "tp.W", "tp.K", "tp.E", "BB.tp","PHE.SE", "GLU.SE", "Year")
+colnames(all.states) <- c("W.PHE", 
+                          "K.PHE", 
+                          "E.PHE", 
+                          "W.PHE.SE",
+                          "K.PHE.SE",
+                          "E.PHE.SE",
+                          "W.GLU", 
+                          "K.GLU", 
+                          "E.GLU", 
+                          "W.GLU.SE",
+                          "K.GLU.SE",
+                          "E.GLU.SE",
+                          "BB.PHE",
+                          "BB.GLU", 
+                          "tp.W", 
+                          "tp.K", 
+                          "tp.E", 
+                          "BB.tp",
+                          "PHE.SE", 
+                          "GLU.SE", 
+                          "Year")
 
 # Save as csv
 write.csv(all.states, file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
