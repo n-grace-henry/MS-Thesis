@@ -5,7 +5,7 @@ library(zoo)
 
 # Load data 
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
-
+raw <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv")
 
 # Separate into three data frames
 tp <- data %>% select(Year, tp.W, tp.K, tp.E, BB.tp)
@@ -22,7 +22,6 @@ GLU.long <- GLU %>% pivot_longer(cols = -Year, names_to = "System", values_to = 
 
 # PHE data format for panel plot
 PHE_BB <- subset(PHE.long, System == unique(PHE.long$System)[4])
-PHE_BB$size <- SaA$mean_SaA
 PHE_W <- subset(PHE.long, System == unique(PHE.long$System)[1])
 PHE_K <- subset(PHE.long, System == unique(PHE.long$System)[2])
 PHE_E <- subset(PHE.long, System == unique(PHE.long$System)[3])
@@ -45,25 +44,33 @@ anomaly <- function(data){
 }
 
 # Use function
-W.anomaly <- anomaly(data$tp.W)
-K.anomaly <- anomaly(data$tp.K)
-E.anomaly <- anomaly(data$tp.E)
-BB.anomaly <- anomaly(data$BB.tp)
-size.anomaly <- anomaly(SaA$mean_SaA)
+W.anomaly.tp <- anomaly(data$tp.W)
+K.anomaly.tp <- anomaly(data$tp.K)
+E.anomaly.tp <- anomaly(data$tp.E)
+BB.anomaly.tp <- anomaly(data$BB.tp)
+
+W.anomaly.phe <- anomaly(data$W.PHE)
+K.anomaly.phe <- anomaly(data$K.PHE)
+E.anomaly.phe <- anomaly(data$E.PHE)
+BB.anomaly.phe <- anomaly(data$BB.PHE)
+
+W.anomaly.glu <- anomaly(data$W.GLU)
+K.anomaly.glu <- anomaly(data$K.GLU)
+E.anomaly.glu <- anomaly(data$E.GLU)
+BB.anomaly.glu <- anomaly(data$BB.GLU)
 
 # Make data frame for plotting
 anomaly.df <- data.frame(Year = data$Year, Wood = W.anomaly[,2], Kvichak = K.anomaly[,2], Egegik = E.anomaly[,2], BristolBay = BB.anomaly[,2])
+anomaly.df.phe <- data.frame(Year = data$Year, Wood = W.anomaly.phe[,2], Kvichak = K.anomaly.phe[,2], Egegik = E.anomaly.phe[,2], BristolBay = BB.anomaly.phe[,2])
+anomaly.df.glu <- data.frame(Year = data$Year, Wood = W.anomaly.glu[,2], Kvichak = K.anomaly.glu[,2], Egegik = E.anomaly.glu[,2], BristolBay = BB.anomaly.glu[,2])
 
 # Pivot to long format
 anomaly.long <- anomaly.df %>% pivot_longer(cols = -Year, names_to = "System", values_to = "Anomaly")
+anomaly.long.phe <- anomaly.df.phe %>% pivot_longer(cols = -Year, names_to = "System", values_to = "Anomaly")
+anomaly.long.glu <- anomaly.df.glu %>% pivot_longer(cols = -Year, names_to = "System", values_to = "Anomaly")
 
 # Format data
 anomaly_BB <- subset(anomaly.long, System == unique(anomaly.long$System)[4])
-anomaly_BB$size <- size.anomaly[,2]
-anomaly_BB$avg_size <- rollmean(anomaly_BB$size, k = 5, align = "center", na.pad = TRUE)
-a.pink <- anomaly(pink$Pink)
-anomaly_BB$pink <- rollmean(a.pink[,2], k = 5, align = "center", na.pad = TRUE)
-
 anomaly_W <- subset(anomaly.long, System == unique(anomaly.long$System)[1])
 anomaly_K <- subset(anomaly.long, System == unique(anomaly.long$System)[2])
 anomaly_E <- subset(anomaly.long, System == unique(anomaly.long$System)[3])
@@ -78,6 +85,9 @@ data$GLU_upper <- data$BB.GLU + data$GLU.SE
 # Figure 1: Three panel plot of Bristol Bay wide data
 PHE.BB <- ggplot(data, aes(x = Year, y = BB.PHE)) +
   geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "PHE", Age == "2"), 
+             aes(x = Year, y = adj), 
+             color = "grey", size = 2, alpha = 0.75, shape = 16) + 
   geom_ribbon(aes(ymin = PHE_lower, ymax = PHE_upper), 
               fill = "grey", alpha = 0.3) +  
   labs(title = "Bristol Bay",
@@ -95,6 +105,9 @@ PHE.BB <- ggplot(data, aes(x = Year, y = BB.PHE)) +
            hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman") 
 GLU.BB <- ggplot(data, aes(x = Year, y = BB.GLU)) +
   geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "GLU", Age == "2"), 
+             aes(x = Year, y = adj), 
+             color = "grey", size = 2, alpha = 0.75, shape = 16) + 
   geom_ribbon(aes(ymin = GLU_lower, ymax = GLU_upper), 
               fill = "grey", alpha = 0.3) +  
   labs(y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
@@ -154,6 +167,9 @@ data$GLU_upper_E <- data$E.GLU + data$E.GLU.SE
 # Plot
 PHE.W <- ggplot(data, aes(x = Year, y = W.PHE)) +
   geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "PHE", Age == "2", System == "Wood"), 
+             aes(x = Year, y = adj), 
+             color = "grey", size = 2, alpha = 0.75, shape = 16) + 
   geom_ribbon(aes(ymin = PHE_lower_W, ymax = PHE_upper_W), 
               fill = "grey", alpha = 0.3) +  
   labs(title = "Wood", 
@@ -172,6 +188,9 @@ PHE.W <- ggplot(data, aes(x = Year, y = W.PHE)) +
   annotate("text", x = 1965, y = 8.9, label = expression(bold("(a)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 PHE.K <- ggplot(data, aes(x = Year, y = K.PHE)) +
   geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "PHE", Age == "2", System == "Kvichak"), 
+             aes(x = Year, y = adj), 
+             color = "grey", size = 2, alpha = 0.75, shape = 16) +
   geom_ribbon(aes(ymin = PHE_lower_K, ymax = PHE_upper_K), 
               fill = "grey", alpha = 0.3) +  
   labs(title = "Kvichak") +
@@ -190,6 +209,9 @@ PHE.K <- ggplot(data, aes(x = Year, y = K.PHE)) +
   annotate("text", x = 1965, y = 8.9, label = expression(bold("(b)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 PHE.E <- ggplot(data, aes(x = Year, y = E.PHE)) +
   geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "PHE", Age == "2", System == "Egegik"), 
+             aes(x = Year, y = adj), 
+             color = "grey", size = 2, alpha = 0.75, shape = 16) +
   geom_ribbon(aes(ymin = PHE_lower_E, ymax = PHE_upper_E), 
               fill = "grey", alpha = 0.3) +  
   labs(title = "Egegik") +
@@ -209,6 +231,9 @@ PHE.E <- ggplot(data, aes(x = Year, y = E.PHE)) +
 
 GLU.W <- ggplot(data, aes(x = Year, y = W.GLU)) +
   geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "GLU", Age == "2", System == "Wood"), 
+             aes(x = Year, y = adj), 
+             color = "grey", size = 2, alpha = 0.75, shape = 16) +
   geom_ribbon(aes(ymin = GLU_lower_W, ymax = GLU_upper_W), 
               fill = "grey", alpha = 0.3) +  
   labs(y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
@@ -224,6 +249,9 @@ GLU.W <- ggplot(data, aes(x = Year, y = W.GLU)) +
   ) +
   annotate("text", x = 1965, y = 26, label = expression(bold("(d)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 GLU.K <- ggplot(data, aes(x = Year, y = K.GLU)) +
+  geom_point(data = raw %>% filter(AAID == "GLU", Age == "2", System == "Kvichak"), 
+             aes(x = Year, y = adj), 
+             color = "grey", size = 2, alpha = 0.75, shape = 16) +
   geom_line() + 
   geom_ribbon(aes(ymin = GLU_lower_K, ymax = GLU_upper_K), 
               fill = "grey", alpha = 0.3) +  
@@ -241,6 +269,9 @@ GLU.K <- ggplot(data, aes(x = Year, y = K.GLU)) +
   annotate("text", x = 1965, y = 26, label = expression(bold("(e)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 GLU.E <- ggplot(data, aes(x = Year, y = E.GLU)) +
   geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "GLU", Age == "2", System == "Egegik"), 
+             aes(x = Year, y = adj), 
+             color = "grey", size = 2, alpha = 0.75, shape = 16) +
   geom_ribbon(aes(ymin = GLU_lower_E, ymax = GLU_upper_E), 
               fill = "grey", alpha = 0.3) +  
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
@@ -310,3 +341,110 @@ figure2 <- (PHE.W | PHE.K | PHE.E) /
   (GLU.W | GLU.K | GLU.E) / 
   (plot.W | plot.K | plot.E)
 figure2
+
+# Different look for figures 1 and 2
+PHE.BB <- ggplot(data, aes(x = Year, y = BB.PHE)) +
+  geom_line() + 
+  geom_ribbon(aes(ymin = PHE_lower, ymax = PHE_upper), 
+              fill = "grey", alpha = 0.3) +  
+  labs(title = "Bristol Bay",
+       y = expression(bold("PHE" ~ delta^15*N ~ "(‰)"))) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman"),
+        axis.line.y = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = max(data$BB.PHE), label = "(a)", 
+           hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman") 
+GLU.BB <- ggplot(data, aes(x = Year, y = BB.GLU)) +
+  geom_line() + 
+  geom_ribbon(aes(ymin = GLU_lower, ymax = GLU_upper), 
+              fill = "grey", alpha = 0.3) +  
+  labs(y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
+        text = element_text(family = "Times New Roman",),
+        axis.line.y = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = max(GLU_BB$GLU), label = "(b)", 
+           hjust = 0, vjust = 0.5, size = 4, family = "Times New Roman")
+TP.BB <- ggplot(data, aes(x = Year, y = BB.tp)) +
+  geom_line() + 
+  labs(y = expression(bold("Trophic Position"))) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
+        text = element_text(family = "Times New Roman",),
+        axis.line.y = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = max(data$BB.tp) + 0.02, label = "(c)", 
+           hjust = 0, vjust = 0.5, size = 4, family = "Times New Roman")
+
+newfig1 <- PHE.BB / GLU.BB / TP.BB
+
+
+
+PHE.BB.an <- ggplot(anomaly.long.phe %>%  filter(System == "BristolBay"), aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +  
+  labs(title = "Bristol Bay Anomaly",
+       y = expression(bold("PHE"))) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        text = element_text(family = "Times New Roman"),
+        axis.line.y = element_blank(),
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = 0.5, label = "(a)", 
+           size = 4, family = "Times New Roman")
+GLU.BB.an <- ggplot(anomaly.long.glu %>%  filter(System == "BristolBay"), aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +  
+  labs(y = expression(bold("GLU"))) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, size = 7, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman"),
+        axis.line.y = element_blank(),
+        axis.title.x = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = 1, label = "(b)", 
+            size = 4, family = "Times New Roman")
+TP.BB.an <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +  
+  labs(x = "Year",
+       y = expression(bold("Trophic Position"))) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  scale_y_continuous(limits = c(-0.28, 0.28), breaks = c(-0.30, -0.2, -0.1, 0.0, 0.1, 0.2, 0.30)) + 
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, size = 7, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman"),
+        axis.line.y = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = 0.28, label = "(c)", 
+           hjust = 0, vjust = 0.19, size = 4, family = "Times New Roman")
+
+fig <- PHE.BB.an / GLU.BB.an / TP.BB.an
+
