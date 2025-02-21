@@ -5,11 +5,7 @@ library(zoo)
 
 # Load data 
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
-SaA <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/SaA/Mean_SaA_esc_ocean2s_by_year_BB_wide.csv")
-pink <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/environmental/Pink.csv")
 
-# Trim pink data for appropriate years
-pink <- subset(pink, Year >= 1965 & Year <= 2022)
 
 # Separate into three data frames
 tp <- data %>% select(Year, tp.W, tp.K, tp.E, BB.tp)
@@ -47,13 +43,6 @@ anomaly <- function(data){
   }
   return(df)
 }
-
-mean(data$BB.tp)
-mean(data$tp.W)
-mean(data$tp.K)
-mean(data$tp.E)
-
-max(data$BB.tp) - min(data$BB.tp)
 
 # Use function
 W.anomaly <- anomaly(data$tp.W)
