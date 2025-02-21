@@ -79,39 +79,6 @@ anomaly_W <- subset(anomaly.long, System == unique(anomaly.long$System)[1])
 anomaly_K <- subset(anomaly.long, System == unique(anomaly.long$System)[2])
 anomaly_E <- subset(anomaly.long, System == unique(anomaly.long$System)[3])
 
-# BB TP plot with SaA 
-anomaly_BB$scaled_size <- anomaly_BB$avg_size * 0.0205
-ggplot(anomaly_BB, aes(x = Year)) +
-  geom_col(aes(y = Anomaly, fill = Anomaly > 0)) +
-  geom_line(aes(y = scaled_size), color = "red2", linewidth = 1) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
-  scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +  
-  scale_y_continuous(limits = c(-0.30, 0.30), breaks = c(-.3,-.15, 0, .15, .3), sec.axis = sec_axis(~ . / 0.0205, name = "Size Anomaly")) + 
-  labs(title = "Bristol Bay",
-       x = "Year",
-       y = "Trophic Position anomaly") +
-  theme_classic() +
-  theme(legend.position = "none",
-        plot.title = element_text(hjust = 0.5, size = 16, family = "Times New Roman"), 
-        text = element_text(family = "Times New Roman")) +
-  annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
-
-anomaly_BB$scaled_pink <- anomaly_BB$pink * 0.0013
-ggplot(anomaly_BB, aes(x = Year)) +
-  geom_col(aes(y = Anomaly, fill = Anomaly > 0)) +
-  geom_line(aes(y = scaled_pink), color = "deepskyblue1", linewidth = 1) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
-  scale_fill_manual(values = c("TRUE" = "gray65", "FALSE" = "gray40")) +  
-  scale_y_continuous(limits = c(-0.30, 0.30), breaks = c(-.3,-.15, 0, .15, .3), sec.axis = sec_axis(~ . / 0.0013, name = "Pink Abundance Anomaly")) + 
-  labs(title = "Bristol Bay",
-       x = "Year",
-       y = "Trophic Position anomaly") +
-  theme_classic() +
-  theme(legend.position = "none",
-        plot.title = element_text(hjust = 0.5, size = 16, family = "Times New Roman"), 
-        text = element_text(family = "Times New Roman")) +
-  annotate("text", x = Inf, y = Inf, label = "(a)", hjust = 1.1, vjust = 1, size = 5, family = "Times New Roman")
-
 # Format SE to be an upper and a lower bound
 data$PHE_lower <- data$BB.PHE - data$PHE.SE
 data$PHE_upper <- data$BB.PHE + data$PHE.SE
