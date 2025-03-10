@@ -6,7 +6,6 @@ library(osmdata)
 library(tidyverse)
 library(grid)
 
-
 # Load Alaska map
 alaska <- ne_states(country = "United States of America", returnclass = "sf") %>%
   filter(name == "Alaska")
