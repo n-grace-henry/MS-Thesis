@@ -8,13 +8,8 @@ Below are descriptions of the included scripts along with their products:
 
 DriftCorrection.R -> Takes raw data files (formatted as outlined above), corrects to international N air standard and drift corrects. Saves each drift corrected run into a folder called "processed". 
 
-DriftCorrection_ouliers -> Takes raw data files (formatted as outlined above) and applies a drift correction with NO CONSOLIDATION of triplicates. Requires manual inspection of each triplicate set to determine what is characterized as an outlier. Saves data, unconsolidated, in the "outliers_removed" folder, naming each file by it's run date. 
-
 Mass_Effects.R -> Corrects for area effects on d15N signature. Compiles "processed" files into one csv called "data_full.csv". Identifies outlier points in the PHE data that get removed from the final produced file. Corrects for the apparent low area - low d15N pattern of GLU by fitting a second order polynomial to the data. Saves data frame in the final folder as "mass_correct.csv".
 
-ConsolidateTriplicates.R -> Takes "mass_correct.csv" and consolidates triplicate samples. Adds Year, System and Age columns. Writes new csv called "consolidated.csv".  
-
-Duplicates.R -> Takes a full data file that has been drift corrected and consolidated already. Creates a function to average the values of all replicate samples and duplicate and replace with only one value in the data sheet. Replicates are defined as the second half of scales that were run because of issues with the first set or simply for the sake of rerunning. Duplicates are defined as samples run more than once from the same sample bottle. Trophic position calculations happen in this script. This is the final step of scripts that should be run to finalize the data file. Writes csv called "all_correct_final.csv". 
 
 ### data folder
 Contains data folders at different levels of processing. 
