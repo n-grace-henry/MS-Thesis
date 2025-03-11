@@ -8,7 +8,7 @@ library(reshape2)
 library(tidyverse)
 
 # Load data 
-data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv")
+data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/mass_correct.csv") #CHANGED THIS FROM FULL.CSV SO IF IT DOESNT WORK THAT IS WHY
 
 # Subset data for age 2 and only PHE
 PHE <- data.full[data.full$Age == "2" &

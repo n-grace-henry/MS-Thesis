@@ -145,5 +145,5 @@ final.masscorrected <- rbind(phe_no_out, glu.no.std)
 
 # Write new csv with no mass outliers 
 write.csv(final.masscorrected, file = "final/mass_correct.csv")
-
+a <- read.csv(file = "mass_correct.csv")
 
