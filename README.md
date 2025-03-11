@@ -43,8 +43,6 @@ trophic_position.csv -> file with trophic position calculated from three differe
 
 full.csv -> all corrections have been done, but triplicates have not been consolidated and replicates have not been removed. Formatted so that this has a Year, System, and Age column. 
 
-consolidated.csv -> consolidated data with GLU and PHE adjusted data only. Formatted with Year, Age and System columns. Duplicates and triplicates have not been removed. 
-
 states2.csv -> csv file with final states of PHE baselines and TP from age 2 data generated via univariate state-space models. 
 
 states.csv -> csv file with final states of PHE baselines and TP using all age data (both 2 and 3 ocean)
