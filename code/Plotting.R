@@ -144,9 +144,6 @@ data$GLU_upper_E <- data$E.GLU + data$E.GLU.SE
 # Plot
 PHE.W <- ggplot(data, aes(x = Year, y = W.PHE)) +
   geom_line() + 
-  geom_point(data = raw %>% filter(AAID == "PHE", Age == "2", System == "Wood"), 
-             aes(x = Year, y = adj), 
-             color = "grey", size = 2, alpha = 0.75, shape = 16) + 
   geom_ribbon(aes(ymin = PHE_lower_W, ymax = PHE_upper_W), 
               fill = "grey", alpha = 0.3) +  
   labs(title = "Wood", 
@@ -165,9 +162,6 @@ PHE.W <- ggplot(data, aes(x = Year, y = W.PHE)) +
   annotate("text", x = 1965, y = 8.9, label = expression(bold("(a)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 PHE.K <- ggplot(data, aes(x = Year, y = K.PHE)) +
   geom_line() + 
-  geom_point(data = raw %>% filter(AAID == "PHE", Age == "2", System == "Kvichak"), 
-             aes(x = Year, y = adj), 
-             color = "grey", size = 2, alpha = 0.75, shape = 16) +
   geom_ribbon(aes(ymin = PHE_lower_K, ymax = PHE_upper_K), 
               fill = "grey", alpha = 0.3) +  
   labs(title = "Kvichak") +
@@ -186,9 +180,6 @@ PHE.K <- ggplot(data, aes(x = Year, y = K.PHE)) +
   annotate("text", x = 1965, y = 8.9, label = expression(bold("(b)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 PHE.E <- ggplot(data, aes(x = Year, y = E.PHE)) +
   geom_line() + 
-  geom_point(data = raw %>% filter(AAID == "PHE", Age == "2", System == "Egegik"), 
-             aes(x = Year, y = adj), 
-             color = "grey", size = 2, alpha = 0.75, shape = 16) +
   geom_ribbon(aes(ymin = PHE_lower_E, ymax = PHE_upper_E), 
               fill = "grey", alpha = 0.3) +  
   labs(title = "Egegik") +
@@ -208,9 +199,6 @@ PHE.E <- ggplot(data, aes(x = Year, y = E.PHE)) +
 
 GLU.W <- ggplot(data, aes(x = Year, y = W.GLU)) +
   geom_line() + 
-  geom_point(data = raw %>% filter(AAID == "GLU", Age == "2", System == "Wood"), 
-             aes(x = Year, y = adj), 
-             color = "grey", size = 2, alpha = 0.75, shape = 16) +
   geom_ribbon(aes(ymin = GLU_lower_W, ymax = GLU_upper_W), 
               fill = "grey", alpha = 0.3) +  
   labs(y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
@@ -226,9 +214,6 @@ GLU.W <- ggplot(data, aes(x = Year, y = W.GLU)) +
   ) +
   annotate("text", x = 1965, y = 26, label = expression(bold("(d)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 GLU.K <- ggplot(data, aes(x = Year, y = K.GLU)) +
-  geom_point(data = raw %>% filter(AAID == "GLU", Age == "2", System == "Kvichak"), 
-             aes(x = Year, y = adj), 
-             color = "grey", size = 2, alpha = 0.75, shape = 16) +
   geom_line() + 
   geom_ribbon(aes(ymin = GLU_lower_K, ymax = GLU_upper_K), 
               fill = "grey", alpha = 0.3) +  
@@ -246,9 +231,6 @@ GLU.K <- ggplot(data, aes(x = Year, y = K.GLU)) +
   annotate("text", x = 1965, y = 26, label = expression(bold("(e)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 GLU.E <- ggplot(data, aes(x = Year, y = E.GLU)) +
   geom_line() + 
-  geom_point(data = raw %>% filter(AAID == "GLU", Age == "2", System == "Egegik"), 
-             aes(x = Year, y = adj), 
-             color = "grey", size = 2, alpha = 0.75, shape = 16) +
   geom_ribbon(aes(ymin = GLU_lower_E, ymax = GLU_upper_E), 
               fill = "grey", alpha = 0.3) +  
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
