@@ -15,23 +15,6 @@ colnames(PHE) <- c("Year", "Wood", "Kvichak", "Egegik", "Bristol Bay")
 GLU <- data %>% select(Year, W.GLU, K.GLU, E.GLU, BB.GLU)
 colnames(GLU) <- c("Year", "Wood", "Kvichak", "Egegik", "Bristol Bay")
 
-# Convert all to long format
-tp.long <- tp %>% pivot_longer(cols = -Year, names_to = "System", values_to = "tp")
-PHE.long <- PHE %>% pivot_longer(cols = -Year, names_to = "System", values_to = "PHE")
-GLU.long <- GLU %>% pivot_longer(cols = -Year, names_to = "System", values_to = "GLU")
-
-# PHE data format for panel plot
-PHE_BB <- subset(PHE.long, System == unique(PHE.long$System)[4])
-PHE_W <- subset(PHE.long, System == unique(PHE.long$System)[1])
-PHE_K <- subset(PHE.long, System == unique(PHE.long$System)[2])
-PHE_E <- subset(PHE.long, System == unique(PHE.long$System)[3])
-
-# GLU data format for panel plot
-GLU_BB <- subset(GLU.long, System == unique(GLU.long$System)[4])
-GLU_W <- subset(GLU.long, System == unique(GLU.long$System)[1])
-GLU_K <- subset(GLU.long, System == unique(GLU.long$System)[2])
-GLU_E <- subset(GLU.long, System == unique(GLU.long$System)[3])
-
 # Anomaly plot of tp 
 anomaly <- function(data){
   df <- matrix(nrow = length(data), ncol = 2)
@@ -85,9 +68,6 @@ data$GLU_upper <- data$BB.GLU + data$GLU.SE
 # Figure 1: Three panel plot of Bristol Bay wide data
 PHE.BB <- ggplot(data, aes(x = Year, y = BB.PHE)) +
   geom_line() + 
-  geom_point(data = raw %>% filter(AAID == "PHE", Age == "2"), 
-             aes(x = Year, y = adj), 
-             color = "grey", size = 2, alpha = 0.75, shape = 16) + 
   geom_ribbon(aes(ymin = PHE_lower, ymax = PHE_upper), 
               fill = "grey", alpha = 0.3) +  
   labs(title = "Bristol Bay",
@@ -105,9 +85,6 @@ PHE.BB <- ggplot(data, aes(x = Year, y = BB.PHE)) +
            hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman") 
 GLU.BB <- ggplot(data, aes(x = Year, y = BB.GLU)) +
   geom_line() + 
-  geom_point(data = raw %>% filter(AAID == "GLU", Age == "2"), 
-             aes(x = Year, y = adj), 
-             color = "grey", size = 2, alpha = 0.75, shape = 16) + 
   geom_ribbon(aes(ymin = GLU_lower, ymax = GLU_upper), 
               fill = "grey", alpha = 0.3) +  
   labs(y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
@@ -120,7 +97,7 @@ GLU.BB <- ggplot(data, aes(x = Year, y = BB.GLU)) +
         axis.line.y = element_blank(),
         plot.margin = margin(10, 10, 10, 10)
   ) +
-  annotate("text", x = 1965, y = max(GLU_BB$GLU), label = "(b)", 
+  annotate("text", x = 1965, y = max(data$BB.GLU), label = "(b)", 
            hjust = 0, vjust = 0.5, size = 4, family = "Times New Roman")
 TP.BB <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
