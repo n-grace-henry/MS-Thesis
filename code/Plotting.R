@@ -5,6 +5,7 @@ library(zoo)
 
 # Load data 
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
+raw <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv")
 
 # Separate into three data frames
 tp <- data %>% select(Year, tp.W, tp.K, tp.E, BB.tp)
@@ -299,4 +300,162 @@ figure2 <- (PHE.W | PHE.K | PHE.E) /
   (GLU.W | GLU.K | GLU.E) / 
   (plot.W | plot.K | plot.E)
 figure2
+
+# Supplement 1
+PHE.sup <- ggplot(data, aes(x = Year, y = BB.PHE)) +
+  geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "PHE", Age == "2"), 
+             aes(x = Year, y = adj), 
+             color = "grey30", size = 2, alpha = 0.75, shape = 16) + 
+  geom_ribbon(aes(ymin = PHE_lower, ymax = PHE_upper), 
+              fill = "grey", alpha = 0.3) +  
+  labs(title = "Bristol Bay",
+       y = expression(bold("PHE" ~ delta^15*N ~ "(‰)"))) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman"),
+        axis.line.y = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = 7.5, label = "(a)", 
+           hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman") 
+
+GLU.sup <- ggplot(data, aes(x = Year, y = BB.GLU)) +
+  geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "GLU", Age == "2"), 
+             aes(x = Year, y = adj), 
+             color = "grey30", size = 2, alpha = 0.75, shape = 16) + 
+  geom_ribbon(aes(ymin = GLU_lower, ymax = GLU_upper), 
+              fill = "grey", alpha = 0.3) +  
+  labs(x = "Year", y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
+        text = element_text(family = "Times New Roman",),
+        axis.line.y = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = 26, label = "(b)", 
+           hjust = 0, vjust = 0.5, size = 4, family = "Times New Roman")
+
+sup1 <- PHE.sup / GLU.sup
+sup1
+
+# Supplement 2
+PHE.W.sup <- ggplot(data, aes(x = Year, y = W.PHE)) +
+  geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "PHE", Age == "2", System == "Wood"), 
+             aes(x = Year, y = adj), 
+             color = "grey30", size = 2, alpha = 0.75, shape = 16) +
+  geom_ribbon(aes(ymin = PHE_lower_W, ymax = PHE_upper_W), 
+              fill = "grey", alpha = 0.3) +  
+  labs(title = "Wood", 
+       y = expression(bold("PHE" ~ delta^15*N ~ "(‰)"))) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  scale_y_continuous(limits = c(1.6,8.9), breaks = c(2,3,4,5,6,7,8)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman"),
+        axis.line.y = element_blank(),
+        axis.text.x = element_blank(),
+        plot.margin = margin(10, 10, 10, 10)
+  ) +
+  annotate("text", x = 1965, y = 8.9, label = expression(bold("(a)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+PHE.K.sup <- ggplot(data, aes(x = Year, y = K.PHE)) +
+  geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "PHE", Age == "2", System == "Kvichak"), 
+             aes(x = Year, y = adj), 
+             color = "grey30", size = 2, alpha = 0.75, shape = 16) +
+  geom_ribbon(aes(ymin = PHE_lower_K, ymax = PHE_upper_K), 
+              fill = "grey", alpha = 0.3) +  
+  labs(title = "Kvichak") +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  scale_y_continuous(limits = c(1.6,8.9), breaks = c(2,3,4,5,6,7,8)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman")) +
+  annotate("text", x = 1965, y = 8.9, label = expression(bold("(b)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+PHE.E.sup <- ggplot(data, aes(x = Year, y = E.PHE)) +
+  geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "PHE", Age == "2", System == "Egegik"), 
+             aes(x = Year, y = adj), 
+             color = "grey30", size = 2, alpha = 0.75, shape = 16) +
+  geom_ribbon(aes(ymin = PHE_lower_E, ymax = PHE_upper_E), 
+              fill = "grey", alpha = 0.3) +  
+  labs(title = "Egegik") +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  scale_y_continuous(limits = c(1.6,8.9), breaks = c(2,3,4,5,6,7,8)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman")) +
+  annotate("text", x = 1965, y = 8.9, label = expression(bold("(c)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+GLU.W.sup <- ggplot(data, aes(x = Year, y = W.GLU)) +
+  geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "GLU", Age == "2", System == "Wood"), 
+             aes(x = Year, y = adj), 
+             color = "grey30", size = 2, alpha = 0.75, shape = 16) +
+  geom_ribbon(aes(ymin = GLU_lower_W, ymax = GLU_upper_W), 
+              fill = "grey", alpha = 0.3) +  
+  labs(y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  scale_y_continuous(limits = c(21,26), breaks = c(22,23,24,25,26)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(), 
+        axis.line.y = element_blank(),
+        axis.text.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
+        text = element_text(family = "Times New Roman") 
+  ) +
+  annotate("text", x = 1965, y = 26, label = expression(bold("(d)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+GLU.K.sup <- ggplot(data, aes(x = Year, y = K.GLU)) +
+  geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "GLU", Age == "2", System == "Kvichak"),
+             aes(x = Year, y = adj), 
+             color = "grey30", size = 2, alpha = 0.75, shape = 16) +
+  geom_ribbon(aes(ymin = GLU_lower_K, ymax = GLU_upper_K), 
+              fill = "grey", alpha = 0.3) +  
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  scale_y_continuous(limits = c(21,26), breaks = c(22,23,24,25,26)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(), 
+        axis.title.y = element_blank(),
+        axis.line.y = element_blank(),
+        axis.text.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman")) +
+  annotate("text", x = 1965, y = 26, label = expression(bold("(e)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+GLU.E.sup <- ggplot(data, aes(x = Year, y = E.GLU)) +
+  geom_line() + 
+  geom_point(data = raw %>% filter(AAID == "GLU", Age == "2", System == "Egegik"), 
+             aes(x = Year, y = adj), 
+             color = "grey30", size = 2, alpha = 0.75, shape = 16) +
+  geom_ribbon(aes(ymin = GLU_lower_E, ymax = GLU_upper_E), 
+              fill = "grey", alpha = 0.3) +  
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  scale_y_continuous(limits = c(21,26), breaks = c(22,23,24,25,26)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.line.y = element_blank(),
+        axis.text.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman")) +
+  annotate("text", x = 1965, y = 26, label = expression(bold("(f)")), hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
+
+
+sup2 <- (PHE.W.sup | PHE.K.sup | PHE.E.sup) / 
+  (GLU.W.sup | GLU.K.sup | GLU.E.sup)
+sup2
+
 
