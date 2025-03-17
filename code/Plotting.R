@@ -5,7 +5,6 @@ library(zoo)
 
 # Load data 
 data <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
-raw <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv")
 
 # Separate into three data frames
 tp <- data %>% select(Year, tp.W, tp.K, tp.E, BB.tp)
