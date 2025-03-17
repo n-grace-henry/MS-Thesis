@@ -60,7 +60,7 @@ E.anomaly.glu <- anomaly(data$E.GLU)
 BB.anomaly.glu <- anomaly(data$BB.GLU)
 
 # Make data frame for plotting
-anomaly.df <- data.frame(Year = data$Year, Wood = W.anomaly[,2], Kvichak = K.anomaly[,2], Egegik = E.anomaly[,2], BristolBay = BB.anomaly[,2])
+anomaly.df <- data.frame(Year = data$Year, Wood = W.anomaly.tp[,2], Kvichak = K.anomaly.tp[,2], Egegik = E.anomaly.tp[,2], BristolBay = BB.anomaly.tp[,2])
 anomaly.df.phe <- data.frame(Year = data$Year, Wood = W.anomaly.phe[,2], Kvichak = K.anomaly.phe[,2], Egegik = E.anomaly.phe[,2], BristolBay = BB.anomaly.phe[,2])
 anomaly.df.glu <- data.frame(Year = data$Year, Wood = W.anomaly.glu[,2], Kvichak = K.anomaly.glu[,2], Egegik = E.anomaly.glu[,2], BristolBay = BB.anomaly.glu[,2])
 
@@ -341,110 +341,4 @@ figure2 <- (PHE.W | PHE.K | PHE.E) /
   (GLU.W | GLU.K | GLU.E) / 
   (plot.W | plot.K | plot.E)
 figure2
-
-# Different look for figures 1 and 2
-PHE.BB <- ggplot(data, aes(x = Year, y = BB.PHE)) +
-  geom_line() + 
-  geom_ribbon(aes(ymin = PHE_lower, ymax = PHE_upper), 
-              fill = "grey", alpha = 0.3) +  
-  labs(title = "Bristol Bay",
-       y = expression(bold("PHE" ~ delta^15*N ~ "(‰)"))) +
-  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
-  theme_classic() +
-  theme(legend.position = "none",
-        axis.title.x = element_blank(),
-        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
-        text = element_text(family = "Times New Roman"),
-        axis.line.y = element_blank(),
-        plot.margin = margin(10, 10, 10, 10)
-  ) +
-  annotate("text", x = 1965, y = max(data$BB.PHE), label = "(a)", 
-           hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman") 
-GLU.BB <- ggplot(data, aes(x = Year, y = BB.GLU)) +
-  geom_line() + 
-  geom_ribbon(aes(ymin = GLU_lower, ymax = GLU_upper), 
-              fill = "grey", alpha = 0.3) +  
-  labs(y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
-  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
-  theme_classic() +
-  theme(legend.position = "none",
-        axis.title.x = element_blank(),
-        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
-        text = element_text(family = "Times New Roman",),
-        axis.line.y = element_blank(),
-        plot.margin = margin(10, 10, 10, 10)
-  ) +
-  annotate("text", x = 1965, y = max(GLU_BB$GLU), label = "(b)", 
-           hjust = 0, vjust = 0.5, size = 4, family = "Times New Roman")
-TP.BB <- ggplot(data, aes(x = Year, y = BB.tp)) +
-  geom_line() + 
-  labs(y = expression(bold("Trophic Position"))) +
-  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
-  theme_classic() +
-  theme(legend.position = "none",
-        axis.title.x = element_blank(),
-        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
-        text = element_text(family = "Times New Roman",),
-        axis.line.y = element_blank(),
-        plot.margin = margin(10, 10, 10, 10)
-  ) +
-  annotate("text", x = 1965, y = max(data$BB.tp) + 0.02, label = "(c)", 
-           hjust = 0, vjust = 0.5, size = 4, family = "Times New Roman")
-
-newfig1 <- PHE.BB / GLU.BB / TP.BB
-
-
-
-PHE.BB.an <- ggplot(anomaly.long.phe %>%  filter(System == "BristolBay"), aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
-  geom_col() +
-  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +  
-  labs(title = "Bristol Bay Anomaly",
-       y = expression(bold("PHE"))) +
-  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
-  theme_classic() +
-  theme(legend.position = "none",
-        text = element_text(family = "Times New Roman"),
-        axis.line.y = element_blank(),
-        axis.title.x = element_blank(),
-        plot.title = element_text(hjust = 0.5, family = "Times New Roman"), 
-        plot.margin = margin(10, 10, 10, 10)
-  ) +
-  annotate("text", x = 1965, y = 0.5, label = "(a)", 
-           size = 4, family = "Times New Roman")
-GLU.BB.an <- ggplot(anomaly.long.glu %>%  filter(System == "BristolBay"), aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
-  geom_col() +
-  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +  
-  labs(y = expression(bold("GLU"))) +
-  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
-  theme_classic() +
-  theme(legend.position = "none",
-        plot.title = element_text(hjust = 0.5, size = 7, family = "Times New Roman"), 
-        text = element_text(family = "Times New Roman"),
-        axis.line.y = element_blank(),
-        axis.title.x = element_blank(),
-        plot.margin = margin(10, 10, 10, 10)
-  ) +
-  annotate("text", x = 1965, y = 1, label = "(b)", 
-            size = 4, family = "Times New Roman")
-TP.BB.an <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
-  geom_col() +
-  scale_fill_manual(values = c("TRUE" = "gray80", "FALSE" = "gray60")) +  
-  labs(x = "Year",
-       y = expression(bold("Trophic Position"))) +
-  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
-  scale_y_continuous(limits = c(-0.28, 0.28), breaks = c(-0.30, -0.2, -0.1, 0.0, 0.1, 0.2, 0.30)) + 
-  theme_classic() +
-  theme(legend.position = "none",
-        plot.title = element_text(hjust = 0.5, size = 7, family = "Times New Roman"), 
-        text = element_text(family = "Times New Roman"),
-        axis.line.y = element_blank(),
-        plot.margin = margin(10, 10, 10, 10)
-  ) +
-  annotate("text", x = 1965, y = 0.28, label = "(c)", 
-           hjust = 0, vjust = 0.19, size = 4, family = "Times New Roman")
-
-fig <- PHE.BB.an / GLU.BB.an / TP.BB.an
 
