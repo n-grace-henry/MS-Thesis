@@ -13,7 +13,7 @@ ggplot(data, aes(x = Year, y = Value, fill = Value > 0)) +
   geom_vline(xintercept = 1977, linetype = "dashed", color = "black") +
   geom_col() +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
-  scale_fill_manual(values = c("TRUE" = "red2", "FALSE" = "darkblue")) +
+  scale_fill_manual(values = c("TRUE" = "grey80", "FALSE" = "grey60")) +
   labs(title = "Pacific Decadal Oscillation (PDO) Index",
        x = "Year",
        y = "PDO Index") +
