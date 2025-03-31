@@ -94,11 +94,9 @@ mod.list <- list(
 
 # Fit PHE model 
 PHE.fit.one <- MARSS(all.PHE, model = mod.list, method = "BFGS")
-autoplot(PHE.fit.one)
 
 # Fit GLU model 
 GLU.fit.one <- MARSS(all.GLU, model = mod.list, method = "BFGS")
-autoplot(GLU.fit.one)
 
 # Subset states
 PHE.state <- PHE.fit.one$states
@@ -113,6 +111,9 @@ beta <- 3.4 #commonly used constant
 TDF <- 7.06 #from Lerner et al 2020
 
 tp <- (((GLU.state - PHE.state)-beta)/TDF) + 1
+
+# Calculate standard error on TP 
+tp.SE <- sqrt((GLU.states.SE^2 + PHE.states.SE^2)/TDF^2)
 
 # Fit PHE system model 
 system_ZZ <- matrix(0, 18, 3) 
@@ -129,13 +130,9 @@ model.list <- list(B = "identity",
                    x0 = matrix(c("mu1", "mu2", "mu3"), nrow = 3, ncol = 1), 
                    tinitx = 0)
 PHE.system <- MARSS(all.PHE, model = model.list, method = "BFGS")
-PHE.system$AICc
-PHE.system$AIC
 
 # Fit GLU system model
 GlU.system <- MARSS(all.GLU, model = model.list, method = "BFGS")
-GlU.system$AICc
-GlU.system$AIC
 
 # Subset PHE states
 W.PHE <- PHE.system[["states"]][1,]
@@ -162,6 +159,11 @@ tp.W <- (((W.GLU - W.PHE)-beta)/TDF) + 1
 tp.K <- (((K.GLU - K.PHE)-beta)/TDF) + 1
 tp.E <- (((E.GLU - E.PHE)-beta)/TDF) + 1
 
+# Calculate standard error on TP for each system 
+tp.W.SE <- sqrt((W.GLU.SE^2 + W.PHE.SE^2)/TDF^2)
+tp.K.SE <- sqrt((K.GLU.SE^2 + K.PHE.SE^2)/TDF^2)
+tp.E.SE <- sqrt((E.GLU.SE^2 + E.PHE.SE^2)/TDF^2)
+
 # Make df of all states
 PHE.state <- PHE.state[1,]
 GLU.state <- GLU.state[1,]
@@ -186,7 +188,11 @@ all.states <- data.frame(
   tp.E = as.vector(tp.E),
   tp = as.vector(tp),
   PHE.states.SE = as.vector(PHE.states.SE),
-  GLU.states.SE = as.vector(GLU.states.SE)
+  GLU.states.SE = as.vector(GLU.states.SE),
+  tp.SE = as.vector(tp.SE),
+  tp.W.SE = as.vector(tp.W.SE),
+  tp.K.SE = as.vector(tp.K.SE),
+  tp.E.SE = as.vector(tp.E.SE)
 )
 
 year <- 1965:2022
@@ -212,6 +218,10 @@ colnames(all.states) <- c("W.PHE",
                           "BB.tp",
                           "PHE.SE", 
                           "GLU.SE", 
+                          "tp.SE",
+                          "tp.W.SE",
+                          "tp.K.SE",
+                          "tp.E.SE",
                           "Year")
 
 # Save as csv
