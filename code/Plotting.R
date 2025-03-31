@@ -472,4 +472,73 @@ sup2 <- (PHE.W.sup | PHE.K.sup | PHE.E.sup) /
   (GLU.W.sup | GLU.K.sup | GLU.E.sup)
 sup2
 
+# Supplement 3
+# Format SE to be an upper and a lower bound
+data$tp.lower <- data$BB.tp - data$tp.SE
+data$tp.upper <- data$BB.tp + data$tp.SE
+
+data$tp.lower_W <- data$tp.W - data$tp.W.SE
+data$tp.upper_W <- data$tp.W + data$tp.W.SE
+data$tp.lower_K <- data$tp.K - data$tp.K.SE
+data$tp.upper_K <- data$tp.K + data$tp.K.SE
+data$tp.lower_E <- data$tp.E - data$tp.E.SE
+data$tp.upper_E <- data$tp.E + data$tp.E.SE
+
+tp.all <- ggplot(data, aes(Year, BB.tp)) +
+  geom_line() +
+  geom_hline(yintercept = mean(data$BB.tp), linetype = "dashed", color = "black") +
+  geom_ribbon(aes(ymin = tp.lower, ymax = tp.upper), 
+              fill = "grey", alpha = 0.3) +  
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  labs(title = "Bay-Wide Trophic Position", y = "Trophic Position", x = NULL) +
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
+        text = element_text(family = "Times New Roman",),
+        plot.margin = margin(10, 10, 10, 10)
+  )
+
+tp.W <- ggplot(data, aes(Year, tp.W)) +
+  geom_line() +
+  geom_hline(yintercept = mean(data$tp.W), linetype = "dashed", color = "black") +
+  geom_ribbon(aes(ymin = tp.lower_W, ymax = tp.upper_W), 
+              fill = "grey", alpha = 0.3) +  
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  labs(title = "Wood", y = NULL, x = NULL) +
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
+        text = element_text(family = "Times New Roman",),
+        plot.margin = margin(10, 10, 10, 10)
+  )
+
+tp.K <- ggplot(data, aes(Year, tp.K)) +
+  geom_line() +
+  geom_hline(yintercept = mean(data$tp.K), linetype = "dashed", color = "black") +
+  geom_ribbon(aes(ymin = tp.lower_K, ymax = tp.upper_K), 
+              fill = "grey", alpha = 0.3) +  
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  labs(title = "Kvichak", y = NULL) +
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
+        text = element_text(family = "Times New Roman",),
+        plot.margin = margin(10, 10, 10, 10)
+  )
+
+tp.E <- ggplot(data, aes(Year, tp.E)) +
+  geom_line() +
+  geom_hline(yintercept = mean(data$tp.E), linetype = "dashed", color = "black") +
+  geom_ribbon(aes(ymin = tp.lower_E, ymax = tp.upper_E), 
+              fill = "grey", alpha = 0.3) +  
+  scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
+  labs(title = "Egegik", y = NULL, x = NULL) +
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
+        text = element_text(family = "Times New Roman",),
+        plot.margin = margin(10, 10, 10, 10)
+  )
+
+sup3 <- (tp.all / (tp.W | tp.K | tp.E))
 
