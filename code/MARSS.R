@@ -8,29 +8,25 @@ library(reshape2)
 library(tidyverse)
 
 # Load data 
-data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/mass_correct.csv") #CHANGED THIS FROM FULL.CSV SO IF IT DOESNT WORK THAT IS WHY
+data.full <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv") 
 
-# Subset data for age 2 and only PHE
-PHE <- data.full[data.full$Age == "2" &
-                   data.full$AAID == "PHE", c("Year", "System", "Age", "adj", "ID1", "Rep")]
+# Function to subset by system 
+subset_data <- function(data, system, aa) {
+  df <- data %>% 
+    filter(AAID == aa & System == system & Age == "2") %>%
+    dplyr::select(Year, adj, ID1, Rep)
+  
+  return(df)
+}
 
-# Subset Wood PHE
-PHE.W <- PHE[PHE$System == "Wood", c("Year", "adj", "ID1", "Rep")]
-# Subset Kvichak PHE 
-PHE.K <- PHE[PHE$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
-# Subset Egegik PHE
-PHE.E <- PHE[PHE$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
+# Subset systems 
+PHE.W <- subset_data(data.full, "Wood", "PHE")
+PHE.K <- subset_data(data.full, "Kvichak", "PHE")
+PHE.E <- subset_data(data.full, "Egegik", "PHE")
 
-# Subset data for age 2 and only PHE
-GLU <- data.full[data.full$Age == "2" &
-                   data.full$AAID == "GLU", c("Year", "System", "Age", "adj", "ID1", "Rep")]
-
-# Subset Wood GLU
-GLU.W <- GLU[GLU$System == "Wood", c("Year", "adj", "ID1", "Rep")]
-# Subset Kvichak GLU
-GLU.K <- GLU[GLU$System == "Kvichak", c("Year", "adj", "ID1", "Rep")]
-# Subset Egegik GLU
-GLU.E <- GLU[GLU$System == "Egegik", c("Year", "adj", "ID1", "Rep")]
+GLU.W <- subset_data(data.full, "Wood", "GLU")
+GLU.K <- subset_data(data.full, "Kvichak", "GLU")
+GLU.E <- subset_data(data.full, "Egegik", "GLU")
 
 # Function to get all data to wide format 
 wide <- function(data){
@@ -42,7 +38,7 @@ wide <- function(data){
     arrange(Year, ID1, Rep) %>%  # Arrange data by Year, ID, and Rep
     group_by(Year) %>%  # Group by Year
     mutate(SampleNumber = as.character(row_number())) %>%  # Assign and convert unique sample numbers to characters
-    select(-ID1, -Rep) %>%  # Remove columns ID and Rep
+    dplyr::select(-ID1, -Rep) %>%  # Remove columns ID and Rep
     ungroup() %>%  # Ungroup to avoid issues with expand.grid
     right_join(
       expand.grid(
@@ -80,7 +76,7 @@ all.PHE <- rbind(wide.PHE.W, wide.PHE.K, wide.PHE.E)
 
 # Combine all GLU systems
 all.GLU <- rbind(wide.GLU.W, wide.GLU.K, wide.GLU.E)
- 
+
 # Adjust the Z matrix to assume one state for all systems
 ZZ <- matrix(1, 18, 1)
 
@@ -99,14 +95,10 @@ mod.list <- list(
 # Fit PHE model 
 PHE.fit.one <- MARSS(all.PHE, model = mod.list, method = "BFGS")
 autoplot(PHE.fit.one)
-PHE.fit.one$AICc
-PHE.fit.one$AIC
 
 # Fit GLU model 
 GLU.fit.one <- MARSS(all.GLU, model = mod.list, method = "BFGS")
 autoplot(GLU.fit.one)
-GLU.fit.one$AICc
-GLU.fit.one$AIC
 
 # Subset states
 PHE.state <- PHE.fit.one$states
@@ -224,8 +216,4 @@ colnames(all.states) <- c("W.PHE",
 
 # Save as csv
 write.csv(all.states, file = "~/Documents/GitHub/CSIA_lab_work/data/final/states.csv")
-
-
-
-
 
