@@ -65,12 +65,13 @@ data$PHE_upper <- data$BB.PHE + data$PHE.SE
 data$GLU_lower <- data$BB.GLU - data$GLU.SE
 data$GLU_upper <- data$BB.GLU + data$GLU.SE
 
-# Figure 1: Three panel plot of Bristol Bay wide data
+# Figure 1: Three panel plot of Bay wide data
 PHE.BB <- ggplot(data, aes(x = Year, y = BB.PHE)) +
   geom_line() + 
   geom_ribbon(aes(ymin = PHE_lower, ymax = PHE_upper), 
               fill = "grey", alpha = 0.3) +  
   geom_vline(xintercept = 1977, linetype = "dashed", color = "black") +
+  geom_hline(yintercept = mean(data$BB.PHE), linetype = "dashed", color = "black") +
   labs(title = "Bristol Bay",
        y = expression(bold("PHE" ~ delta^15*N ~ "(‰)"))) +
   scale_x_continuous(breaks = c(1965, 1975, 1985, 1995, 2005, 2015, 2022)) +
@@ -88,6 +89,7 @@ PHE.BB <- ggplot(data, aes(x = Year, y = BB.PHE)) +
            hjust = 0, vjust = 0.3, size = 4, family = "Times New Roman")
 GLU.BB <- ggplot(data, aes(x = Year, y = BB.GLU)) +
   geom_line() + 
+  geom_hline(yintercept = mean(data$BB.GLU), linetype = "dashed", color = "black") +
   geom_ribbon(aes(ymin = GLU_lower, ymax = GLU_upper), 
               fill = "grey", alpha = 0.3) +  
   geom_vline(xintercept = 1977, linetype = "dashed", color = "black") +
