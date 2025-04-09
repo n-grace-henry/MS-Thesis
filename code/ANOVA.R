@@ -52,7 +52,3 @@ ggplot(BB.TP, aes(x = Period, y = TP.anomaly)) +
   labs(title = "Trophic Position Anomalies by Time Period in Bristol Bay",
        y = "Trophic Position Anomaly", x = "Time Period")
 
-
-
-
-
