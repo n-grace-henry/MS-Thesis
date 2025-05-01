@@ -127,6 +127,8 @@ TP.BB <- ggplot(anomaly_BB, aes(x = Year, y = Anomaly, fill = Anomaly > 0)) +
 figure1 <- PHE.BB / GLU.BB / TP.BB 
 figure1
 
+
+
 # Figure 2: system specific
 # Format SE to be an upper and a lower bound
 data$PHE_lower_W <- data$W.PHE - data$W.PHE.SE
