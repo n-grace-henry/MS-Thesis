@@ -546,3 +546,43 @@ tp.E <- ggplot(data, aes(Year, tp.E)) +
 
 sup3 <- (tp.all / (tp.W | tp.K | tp.E))
 
+
+# Raw data plots 
+ggplot(raw %>%  filter(Age == "2"), aes(x = Year, y = adj, color = AAID)) +
+  geom_point() +
+  labs(x = "Year", y = expression(bold(delta^15*N ~ "(‰)")),
+       title = "GLU and PHE Through Time") +
+  theme_classic() +
+  theme(text = element_text(family = "Times New Roman"),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
+        plot.margin = margin(10, 10, 10, 10))
+
+# Raw GLU
+raw.glu <- raw %>% 
+  filter(Age == "2", AAID == "GLU") %>% 
+  mutate(System = factor(System, levels = c("Wood", "Kvichak", "Egegik")))
+
+ggplot(raw.glu, aes(x = Year, y = adj)) +
+  geom_point() +
+  labs(x = "Year", y = expression(bold(delta^15*N ~ "(‰)")),
+       title = "Glutamic Acid Through Time") +
+  theme_classic() +
+  theme(text = element_text(family = "Times New Roman"),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
+        plot.margin = margin(10, 10, 10, 10))
+
+# Raw PHE
+raw.phe <- raw %>% 
+  filter(Age == "2", AAID == "PHE") %>% 
+  mutate(System = factor(System, levels = c("Wood", "Kvichak", "Egegik")))
+
+ggplot(raw.phe, aes(x = Year, y = adj)) +
+  geom_point() +
+  labs(x = "Year", y = expression(bold(delta^15*N ~ "(‰)")),
+       title = "Phenylalanine Through Time") +
+  theme_classic() +
+  theme(text = element_text(family = "Times New Roman"),
+        plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
+        plot.margin = margin(10, 10, 10, 10))
+
+
