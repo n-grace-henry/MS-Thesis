@@ -315,7 +315,7 @@ PHE.sup <- ggplot(data, aes(x = Year, y = BB.PHE)) +
   geom_line() + 
   geom_point(data = raw %>% filter(AAID == "PHE", Age == "2"), 
              aes(x = Year, y = adj), 
-             color = "grey30", size = 2, alpha = 0.75, shape = 16) + 
+             color = phe.color, size = 2, alpha = 0.75, shape = 16) + 
   geom_ribbon(aes(ymin = PHE_lower, ymax = PHE_upper), 
               fill = "grey", alpha = 0.3) +  
   labs(title = "Bristol Bay",
@@ -336,7 +336,7 @@ GLU.sup <- ggplot(data, aes(x = Year, y = BB.GLU)) +
   geom_line() + 
   geom_point(data = raw %>% filter(AAID == "GLU", Age == "2"), 
              aes(x = Year, y = adj), 
-             color = "grey30", size = 2, alpha = 0.75, shape = 16) + 
+             color = glu.color, size = 2, alpha = 0.75, shape = 16) + 
   geom_ribbon(aes(ymin = GLU_lower, ymax = GLU_upper), 
               fill = "grey", alpha = 0.3) +  
   labs(x = "Year", y = expression(bold("GLU" ~ delta^15*N ~ "(‰)"))) +
@@ -563,7 +563,7 @@ raw.glu <- raw %>%
   mutate(System = factor(System, levels = c("Wood", "Kvichak", "Egegik")))
 
 ggplot(raw.glu, aes(x = Year, y = adj)) +
-  geom_point() +
+  geom_point(color = "#F8766D") +
   labs(x = "Year", y = expression(bold(delta^15*N ~ "(‰)")),
        title = "Glutamic Acid Through Time") +
   theme_classic() +
@@ -577,7 +577,7 @@ raw.phe <- raw %>%
   mutate(System = factor(System, levels = c("Wood", "Kvichak", "Egegik")))
 
 ggplot(raw.phe, aes(x = Year, y = adj)) +
-  geom_point() +
+  geom_point(color = "#00BFC4") +
   labs(x = "Year", y = expression(bold(delta^15*N ~ "(‰)")),
        title = "Phenylalanine Through Time") +
   theme_classic() +
@@ -585,4 +585,5 @@ ggplot(raw.phe, aes(x = Year, y = adj)) +
         plot.title = element_text(hjust = 0.5, family = "Times New Roman"),
         plot.margin = margin(10, 10, 10, 10))
 
-
+phe.color = "#00BFC4"
+glu.color = "#F8766D"
