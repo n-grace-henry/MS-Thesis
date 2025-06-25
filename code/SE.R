@@ -38,6 +38,10 @@ p3.mean <- BB.TP %>%
   filter(Year >= 2008 & Year <= 2022) %>%
   summarise(mean = mean(BB.tp, na.rm = TRUE))
 
+# Step 1: Calculate long-term mean TP
+overall_mean <- round(mean(BB.TP$BB.tp, na.rm = TRUE), digit = 1)
+overall_sd <- round(sd(BB.TP$BB.tp, na.rm = TRUE), digits = 2)
+
 # SE of each time period as compared to long term mean 
 p1.se <- (p1.mean$mean - overall_mean)/overall_sd
 p2.se <- (overall_mean - p2.mean$mean)/overall_sd
@@ -84,5 +88,15 @@ period_summary <- bind_rows(
 print(period_summary)
 
 
+# Follow same process for system specific model
+# Calculate means for each system
+w_mean <- round(mean(data$tp.W, na.rm = TRUE), digits = 1)
+k_mean <- round(mean(data$tp.K, na.rm = TRUE), digits = 1)
+e_mean <- round(mean(data$tp.E, na.rm = TRUE), digits = 1)
+
+# Calculate sd for each system
+w_sd <- round(sd(data$tp.W, na.rm = TRUE), digits = 2)
+k_sd <- round(sd(data$tp.K, na.rm = TRUE), digits = 2)
+e_sd <- round(sd(data$tp.E, na.rm = TRUE), digits = 2)
 
 
