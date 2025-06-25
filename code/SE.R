@@ -16,8 +16,36 @@ raw <- read.csv(file = "~/Documents/GitHub/CSIA_lab_work/data/final/full.csv")
 BB.TP <- data %>%
   select(Year, BB.tp, tp.SE)
 
+# Calculate the standard deviation of each time period 
+p1.sd <- BB.TP %>%
+  filter(Year >= 1965 & Year <= 1976) %>%
+  summarise(sd = sd(BB.tp, na.rm = TRUE))
+p2.sd <- BB.TP %>%
+  filter(Year >= 1977 & Year <= 2007) %>%
+  summarise(sd = sd(BB.tp, na.rm = TRUE))
+p3.sd <- BB.TP %>%
+  filter(Year >= 2008 & Year <= 2022) %>%
+  summarise(sd = sd(BB.tp, na.rm = TRUE))
+
+# Calculate the mean of each time period
+p1.mean <- BB.TP %>%
+  filter(Year >= 1965 & Year <= 1976) %>%
+  summarise(mean = mean(BB.tp, na.rm = TRUE))
+p2.mean <- BB.TP %>%
+  filter(Year >= 1977 & Year <= 2007) %>%
+  summarise(mean = mean(BB.tp, na.rm = TRUE))
+p3.mean <- BB.TP %>%
+  filter(Year >= 2008 & Year <= 2022) %>%
+  summarise(mean = mean(BB.tp, na.rm = TRUE))
+
+# SE of each time period as compared to long term mean 
+p1.se <- (p1.mean$mean - overall_mean)/overall_sd
+p2.se <- (overall_mean - p2.mean$mean)/overall_sd
+p3.se <- (p3.mean$mean - overall_mean)/overall_sd
+
 # Step 1: Calculate long-term mean TP
-overall_mean <- mean(BB.TP$BB.tp, na.rm = TRUE)
+overall_mean <- round(mean(BB.TP$BB.tp, na.rm = TRUE), digit = 1)
+overall_sd <- round(sd(BB.TP$BB.tp, na.rm = TRUE), digits = 2)
 
 # Step 2: Define a function to calculate stats for each period
 period_stats <- function(df_period) {
